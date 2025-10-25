@@ -2,47 +2,65 @@
 
 ## Theory
 
-### Configuration over Code
+### The Core of an ADK Agent
 
-One of the powerful features of the Google ADK is the ability to define agents without writing any Python or Java code. This is achieved through a simple, human-readable configuration file format called **YAML** (YAML Ain't Markup Language).
+At its heart, an ADK Agent is a blueprint that tells a Large Language Model (LLM) how to behave. This blueprint consists of a few key pieces of information:
 
-This "configuration-over-code" approach offers several advantages:
+*   **`name`:** A unique identifier for your agent.
+*   **`model`:** The specific LLM that will act as the agent's "brain" (e.g., `gemini-2.5-flash`).
+*   **`instruction`:** The most critical part. This is the detailed prompt that defines the agent's persona, goals, and constraints. Crafting a clear and effective instruction is the key to building a successful agent.
+*   **`description`:** A short, human-readable summary of the agent's purpose.
 
-*   **Simplicity:** It's much faster to define an agent's core properties in a few lines of YAML than to write a full script.
-*   **Clarity:** The agent's purpose, model, and instructions are laid out in a clear, structured format, making it easy for anyone to understand what the agent does.
-*   **Rapid Prototyping:** You can quickly create and test new agent ideas by simply creating a new YAML file and modifying a few lines.
-*   **Accessibility:** It allows people who are not programmers, such as prompt engineers or product managers, to build and experiment with agents.
+### Two Ways to Define an Agent
 
-### Anatomy of an Agent Configuration File
+The ADK provides two primary methods for creating this blueprint, catering to different needs and complexity levels.
 
-The primary configuration file for an agent is typically named `root_agent.yaml`. This file acts as the main entry point for your agent. Let's break down the essential components you'll find in a basic configuration:
+#### 1. Configuration-Based (YAML)
 
+The simplest way to define an agent is with a **YAML** configuration file (e.g., `root_agent.yaml`). This "configuration-over-code" approach is excellent for rapid prototyping and for agents that don't require complex logic.
+
+**Advantages:**
+*   **Simple & Fast:** Define an agent in just a few lines.
+*   **Clear:** The agent's purpose and instructions are easy to read and understand.
+*   **Accessible:** Non-programmers can easily create and modify agents.
+
+A typical YAML configuration looks like this:
 ```yaml
-# A unique identifier for your agent.
-name: my_first_agent
-
-# The specific LLM the agent will use for its reasoning.
+name: echo_agent
 model: gemini-2.5-flash
-
-# A brief, human-readable summary of what the agent does.
-description: A simple agent that introduces itself.
-
-# The core prompt that defines the agent's persona, goals, and constraints.
-instruction: You are a friendly assistant. Your job is to say hello to the user.
+description: An agent that repeats the user's input.
+instruction: You are an echo agent. Your only job is to repeat the user's input back to them exactly as they wrote it.
 ```
 
-*   **`name`:** A unique identifier for the agent. This is important for logging and for distinguishing between agents in a multi-agent system.
-*   **`model`:** Specifies which Large Language Model will power the agent's "brain." The choice of model can affect the agent's performance, cost, and capabilities.
-*   **`description`:** A short summary of the agent's purpose. While optional for a single agent, this becomes very important in multi-agent systems, as it's how other agents know what this agent is capable of.
-*   **`instruction`:** This is the most critical part. The instruction is the detailed prompt given to the LLM that tells the agent who it is, what its goal is, how it should behave, and what it should do. Crafting a clear and effective instruction is the key to building a successful agent.
+#### 2. Programmatic (Python)
 
-### The `adk create` Command
+For more advanced scenarios, you can define your agent directly in a Python script (e.g., `agent.py`) using the `LlmAgent` class. This is the more powerful and flexible method.
 
-To streamline the process of creating a new agent, the ADK provides a command-line tool: `adk create`.
+**Advantages:**
+*   **Flexibility:** Allows for dynamic configuration and logic.
+*   **Advanced Features:** Required for implementing features like tools and callbacks, which you will learn about in later modules.
+*   **Integration:** Easily integrates with other Python code and systems.
 
-When you run `adk create --type=config <agent_name>`, it scaffolds a new project directory for you. This directory includes:
+The same agent defined in Python would look like this:
+```python
+from google.adk.agents import LlmAgent
 
-*   **`root_agent.yaml`:** A pre-populated agent configuration file, ready for you to edit.
-*   **`.env`:** A file for storing environment variables, such as your API keys. This keeps your secret keys separate from your main configuration.
+root_agent = LlmAgent(
+    name="echo_agent",
+    model="gemini-2.5-flash",
+    description="An agent that repeats the user's input.",
+    instruction="You are an echo agent. Your only job is to repeat the user's input back to them exactly as they wrote it."
+)
+```
+**Important:** When defining an agent in Python, the ADK requires that the main agent variable be named exactly `root_agent`.
 
-In the upcoming lab, you will use these concepts to create, configure, and run your first agent.
+### Scaffolding Your Project with `adk create`
+
+The ADK command-line tool helps you quickly set up the necessary file structure for a new agent.
+
+Running `adk create <agent_name>` initiates a wizard that lets you choose your preferred method (Config-based or Programmatic). It then creates a directory containing:
+
+*   **`root_agent.yaml`** (for config-based) or **`agent.py`** (for programmatic).
+*   **`.env`:** A file for storing environment variables, such as your API keys. This keeps your secrets separate from your agent's code and configuration.
+
+In the upcoming lab, you will use these concepts to create, configure, and run your first agent using both methods.
