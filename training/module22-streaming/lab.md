@@ -91,11 +91,10 @@ We will create a simple conversational agent. The key change is enabling the str
 
 ### Lab Summary
 
-Congratulations! You have experienced the power of bidirectional streaming. While you didn't build a custom voice front-end, you have learned the fundamental concepts and witnessed the key benefits.
+Congratulations! You have now experienced both bidirectional (voice) and SSE (text) streaming.
 
 You have learned to:
-*   Enable bidirectional streaming for an ADK agent by setting `streaming: True` in its configuration.
-*   Use the ADK Dev UI's built-in audio features to have a voice conversation with an agent.
-*   Experience the low-latency and interruptible nature of a streaming-enabled agent.
-
-This opens the door to building a new generation of AI applications that feel more natural and responsive than ever before. In the next module, you will learn how to systematically evaluate your agents to ensure they are performing correctly and meeting quality standards.
+*   Enable bidirectional streaming for an ADK agent by setting `streaming: True`.
+*   Use the ADK Dev UI's audio features to have an interruptible voice conversation.
+*   Write a Python script to programmatically run an agent with `StreamingMode.SSE`.
+*   Process and display progressive text output from a streaming agent in a console application.

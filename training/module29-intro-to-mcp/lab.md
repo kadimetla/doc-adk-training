@@ -94,7 +94,26 @@ Because the `MCPToolset` requires Python code to configure the connection, we mu
 
 4.  **Set up your `.env` file** with your API key or Vertex AI project.
 
-### Step 4: Test the Stateful Tool
+### Step 4: Available Filesystem Operations
+
+The filesystem MCP server automatically provides a rich set of tools to your agent. Your agent's `instruction` prompt should guide it on how to use them.
+
+*   **`read_file`**: Reads the content of a file.
+    *   *Example Prompt:* "Read the contents of report.txt"
+*   **`write_file`**: Creates or overwrites a file.
+    *   *Example Prompt:* "Create a new file called notes.md with the content: Hello World"
+*   **`list_directory`**: Lists all files and folders in a directory.
+    *   *Example Prompt:* "Show me all files in the current directory"
+*   **`create_directory`**: Creates a new folder.
+    *   *Example Prompt:* "Create a new folder called 'projects'"
+*   **`move_file`**: Moves or renames a file.
+    *   *Example Prompt:* "Rename old_report.txt to archived_report.txt"
+*   **`search_files`**: Searches for files containing specific text.
+    *   *Example Prompt:* "Find all Python files that contain the word 'TODO'"
+*   **`get_file_info`**: Gets metadata about a file, like its size and modification date.
+    *   *Example Prompt:* "What's the size of config.json?"
+
+### Step 5: Test the Stateful Tool
 
 1.  **Start the web server:**
 

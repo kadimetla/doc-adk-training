@@ -96,6 +96,85 @@ Let's see what a failure looks like.
 
 4.  **Don't forget to fix the bug!** Stop the server, change the `add` function back to `result = a + b`, and restart it.
 
+### Step 6: Understanding the EvalSet File
+
+When you saved the evaluation case, the ADK created a JSON file in your agent's directory at `eval_results/calculator_tests.evalset.json`. Understanding this file is key to creating more complex tests manually.
+
+The structure looks like this:
+
+```json
+{
+  "eval_set_id": "calculator_tests",
+  "eval_cases": [
+    {
+      "eval_id": "addition_test",
+      "conversation": [
+        {
+          "user_content": {
+            "role": "user",
+            "parts": [{ "text": "What is 10 + 5?" }]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [{ "text": "The result of 10 + 5 is 15." }]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "tools.calculator.add",
+                "args": { "a": 10, "b": 5 }
+              }
+            ],
+            "tool_responses": [
+              {
+                "name": "tools.calculator.add",
+                "response": { "status": "success", "result": 15 }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+*   **`eval_set_id`**: The name of the collection of tests.
+*   **`eval_cases`**: An array of individual test cases.
+*   **`conversation`**: An array of turns in the conversation.
+*   **`user_content`**: The user's message for this turn.
+*   **`final_response`**: The expected final text from the agent.
+*   **`intermediate_data`**: This is where the expected **trajectory** is defined.
+    *   **`tool_uses`**: A list of the tools the agent is expected to call, with the exact arguments.
+    *   **`tool_responses`**: The expected results from those tool calls.
+
+### Step 7: Running Evaluations from the Command Line
+
+While the Dev UI is great for creating and running evaluations interactively, you can also run them from the command line. This is essential for integrating your agent tests into an automated CI/CD pipeline.
+
+1.  **Stop the `adk web` server.**
+2.  **Run the `adk eval` command:**
+    From your `calculator-agent` directory, run the following command:
+
+    ```shell
+    adk eval . eval_results/calculator_tests.evalset.json
+    ```
+    *   **`adk eval`**: The main command.
+    *   **`.`**: The path to the agent to be tested (the current directory).
+    *   **`eval_results/calculator_tests.evalset.json`**: The path to the evaluation file to run.
+
+3.  **Analyze the Output:**
+    The command will run the evaluation and print the results directly to your terminal.
+
+    ```
+    Running evaluations for: .
+    Eval Set: calculator_tests
+      ✓ addition_test PASSED
+
+    Total: 1/1 passed (100%)
+    ```
+    This provides a fast, automated way to confirm your agent is still behaving as expected after you make changes.
+
 ### Lab Summary
 
 You have successfully created and run your first agent evaluation! This is a critical skill for building reliable, production-ready agents.

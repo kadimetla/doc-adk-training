@@ -54,3 +54,46 @@ Once you have a set of evaluation cases, you can run them automatically:
 *   Programmatically (using `pytest`), to integrate agent evaluation into your CI/CD pipeline.
 
 By building a suite of evaluation cases, you create a safety net. Every time you change your agent's instructions or tools, you can re-run your evaluations to ensure you haven't caused a regression in its behavior. This brings the reliability of traditional software testing to the non-deterministic world of AI agents.
+
+### A Deeper Dive into Evaluation
+
+#### The Testing Pyramid
+
+A robust testing strategy for AI agents involves multiple layers, often visualized as a pyramid. This approach, adapted from traditional software engineering, ensures you have a fast and reliable feedback loop.
+
+```text
+                    ╔══════════════════════════════════════════════╗
+                    ║              EVALUATION TESTS                ║
+                    ║ (End-to-End Quality, LLM-in-the-loop)        ║
+                    ╚══════════════════════════════════════════════╝
+                                       │
+                                       │ Slowest, most realistic, checks overall quality
+                                       ▼
+                    ╔══════════════════════════════════════════════╗
+                    ║            INTEGRATION TESTS                 ║
+                    ║ (Agent logic, tool orchestration)            ║
+                    ╚══════════════════════════════════════════════╝
+                                       │
+                                       │ Medium speed, validates system interactions
+                                       ▼
+                    ╔══════════════════════════════════════════════╗
+                    ║             UNIT TESTS                       ║
+                    ║ (Tool functions, deterministic logic)        ║
+                    ╚══════════════════════════════════════════════╝
+```
+
+*   **Unit Tests (Base):** These are fast, deterministic tests for the smallest parts of your agent, primarily your custom tool functions. You test them with `pytest` just like any other Python code, mocking any external dependencies. The vast majority of your tests should be here.
+*   **Integration Tests (Middle):** These tests verify that the components of your agent work together. For example, does your agent correctly call a sequence of tools? These tests often involve running the agent but mocking the final LLM call to keep them deterministic.
+*   **Evaluation Tests (Top):** This is the layer you've been learning about. These are end-to-end tests that involve the real LLM. They are the most realistic but also the slowest and non-deterministic. You use them to validate the overall quality of the agent's reasoning and final responses.
+
+#### Available Evaluation Metrics
+
+The ADK provides a comprehensive set of built-in metrics to assess different aspects of agent behavior.
+
+*   **`response_match_score` (ROUGE):** Measures the n-gram overlap (similarity) between the agent's generated response and your expected response. A score of `1.0` is a perfect match. This is useful for checking if the key information is present.
+*   **`tool_trajectory_avg_score`:** Measures the accuracy of the agent's tool call sequence. It checks if the agent called the right tools in the right order with the right arguments. A score of `1.0` means the trajectory was exactly as expected.
+*   **`response_evaluation_score`:** Uses an "LLM-as-a-judge" approach to rate the overall quality and coherence of the final response on a scale from 1.0 to 5.0.
+*   **`safety_v1`:** Detects unsafe or harmful content in the agent's responses. A higher score (closer to 1.0) is safer.
+*   **`hallucinations_v1`:** Detects fabricated or incorrect information in the agent's response. A lower score (closer to 0.0) is better.
+*   **`rubric_based_final_response_quality_v1`:** Allows you to define your own custom criteria (a rubric) for what makes a "good" response, and then uses an LLM to score the agent's output against it.
+*   **`rubric_based_tool_use_quality_v1`:** Similar to the above, but evaluates the quality of the tool usage against your custom rubric.

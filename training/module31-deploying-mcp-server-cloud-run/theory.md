@@ -43,3 +43,27 @@ When the MCP server is running on a public URL on Cloud Run, our ADK agent can n
 Instead, the agent must be configured to connect to the remote server over the network. The MCP library provides connection types for this, such as `StreamableHTTPConnectionParams`, which allows the ADK `MCPToolset` to communicate with the deployed server using standard HTTP requests.
 
 In the lab, you will modify the shopping cart server to be stateless, containerize it, and deploy it to Cloud Run. You will then reconfigure your ADK agent to connect to its public URL.
+
+### Production Considerations for MCP
+
+When deploying MCP servers to production, security and safety become paramount. The ADK provides advanced features to handle these requirements.
+
+#### Authentication
+
+You must secure your MCP server to ensure that only authorized agents can access its tools. The `MCPToolset` supports several authentication methods:
+
+*   **OAuth2 (Recommended):** The most secure, standard method for production systems. The ADK handles the client credentials flow, automatically requesting and refreshing access tokens.
+*   **HTTP Bearer Token:** For services that use a simple static bearer token for authentication.
+*   **HTTP Basic Authentication:** For legacy systems or internal tools that use a simple username and password.
+*   **API Key:** For services that require an API key to be passed in a specific header.
+
+You configure the chosen method via the `credential` parameter in the `MCPToolset`, and the ADK handles the rest.
+
+#### Human-in-the-Loop (HITL)
+
+When an MCP server provides powerful or destructive tools (e.g., `write_file`, `delete_database_entry`), it's crucial to have a human approval step to prevent accidental data loss or misuse. This is known as a "Human-in-the-Loop" (HITL) workflow.
+
+You can implement HITL in the ADK using a `before_tool_callback`. This callback function is triggered *before* any tool is executed. Inside the callback, you can:
+1.  Check if the tool being called is on a list of "destructive" operations.
+2.  If it is, you can block the execution and return a message to the agent indicating that approval is required.
+3.  This allows a user in the UI (or an automated policy) to review the requested operation and approve or deny it before it runs.
