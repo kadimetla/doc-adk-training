@@ -1,17 +1,17 @@
-# Module 18: Iterative Refinement with Loop Agents
+# Module 19: Iterative Refinement with Loop Agents
 
-## Lab 18: Building an Essay Refinement System
+## Lab 19: Building an Essay Refinement System
 
 ### Goal
 
-In this lab, you will build a self-improving agent system that uses a `LoopAgent` to iteratively refine an essay. This will demonstrate the powerful "Critic -> Refiner" pattern for achieving high-quality results.
+In this lab, you will build a self-improving agent system that uses a `LoopAgent` to iteratively refine an essay, demonstrating the powerful "Critic -> Refiner" pattern.
 
 ### The Architecture
 
-1.  **Initial Writer:** A single `LlmAgent` runs once to create the first draft of an essay.
-2.  **Refinement Loop:** A `LoopAgent` then runs for a maximum of 5 iterations. In each loop:
-    *   **Critic Agent:** Evaluates the current essay draft and provides specific feedback for improvement, or an "APPROVED" message if it's good enough.
-    *   **Refiner Agent:** Reads the critique. If it's "APPROVED", it calls an `exit_loop` tool to terminate the process. Otherwise, it applies the feedback to create a better version of the essay, overwriting the previous draft in the state.
+1.  **Initial Writer:** An agent runs once to create the first draft.
+2.  **Refinement Loop:** A `LoopAgent` runs repeatedly. In each loop:
+    *   **Critic Agent:** Evaluates the current draft and provides feedback or an "APPROVED" message.
+    *   **Refiner Agent:** Applies the feedback to improve the draft, or calls an `exit_loop` tool if the draft is approved.
 
 ### Step 1: Create the Project Structure
 
@@ -26,61 +26,72 @@ In this lab, you will build a self-improving agent system that uses a `LoopAgent
     cd essay-refiner
     ```
 
-### Step 2: Build the Loop-Based Refiner
+### Step 2: Assemble the Refinement System
 
-**Exercise:** Open `agent.py` and replace its contents with the full solution from the `lab-solution.md`.
+**Exercise:** Open `agent.py`. The `exit_loop` tool and the three specialist agents (`initial_writer`, `critic`, `refiner`) have been provided for you. Your task is to assemble them into the complete looping architecture.
 
-Your task is to study this code and understand its key components:
+```python
+# In agent.py (Starter Code)
 
-1.  **`exit_loop` Tool:**
-    *   This is a simple function tool. Notice the critical line: `tool_context.actions.end_of_agent = True`. This is the signal that tells the parent `LoopAgent` to stop iterating.
+from __future__ import annotations
+from google.adk.agents import Agent, LoopAgent, SequentialAgent
+from google.adk.tools.tool_context import ToolContext
 
-2.  **`initial_writer` Agent:**
-    *   A standard `LlmAgent` that runs once and saves its output to the `current_essay` state key.
+# ===== Specialist Agents and Tools (Provided for you) =====
 
-3.  **`critic` Agent:**
-    *   This agent's instruction is key. It has a conditional prompt: IF the essay is good, it MUST output the exact phrase "APPROVED - Essay is complete.". OTHERWISE, it must provide feedback.
+def exit_loop(tool_context: ToolContext):
+    """Signals that the essay refinement is complete."""
+    tool_context.actions.end_of_agent = True
+    return {"text": "Loop exited successfully."}
 
-4.  **`refiner` Agent:**
-    *   This agent also has a conditional instruction. IF it sees the "APPROVED" message in the `{critique}` state variable, it MUST call the `exit_loop` tool. OTHERWISE, it rewrites the essay.
-    *   Notice its `output_key` is also `current_essay`. This is the **state overwriting pattern**, where each iteration replaces the old draft with the newly improved one.
+initial_writer = Agent(name="InitialWriter", ..., output_key="current_essay")
+critic = Agent(name="Critic", ..., output_key="critique")
+refiner = Agent(name="Refiner", ..., tools=[exit_loop], output_key="current_essay")
 
-5.  **`refinement_loop` (`LoopAgent`):**
-    *   This agent orchestrates the Critic and Refiner.
-    *   It has `max_iterations=5` set as a safety net.
+# =====================================================
+# ASSEMBLE THE AGENT SYSTEM
+# =====================================================
 
-6.  **`essay_refinement_system` (`SequentialAgent`):**
-    *   The root agent that runs the `initial_writer` once, followed by the `refinement_loop`.
+# ===== Create Refinement Loop =====
+
+# TODO: 1. Create a `LoopAgent` named `refinement_loop`.
+# TODO: 2. Add the `critic` and `refiner` agents to its `sub_agents` list
+# in the correct order.
+# TODO: 3. Set the `max_iterations` to a safe number, like 5.
+refinement_loop = None
+
+# ===== COMPLETE SYSTEM: Initial Draft + Refinement Loop =====
+
+# TODO: 4. Create a `SequentialAgent` named `essay_refinement_system`.
+# TODO: 5. Add the `initial_writer` as the first step and the
+# `refinement_loop` as the second step.
+essay_refinement_system = None
+
+# TODO: 6. Set the `root_agent` to be your `essay_refinement_system`.
+root_agent = None
+```
+*(Note: The full agent definitions are in the `lab-solution.md` if you need to inspect them.)*
 
 ### Step 3: Run and Test the System
 
-1.  **Set up your API key** in the `.env` file.
+1.  **Set up your `.env` file** and start the Dev UI: `adk web`
+2.  **Interact with the system:**
+    *   Select "essay_refiner" and give it a topic, like: "The impact of artificial intelligence on society".
+3.  **Analyze the Trace View:**
+    *   Expand the trace to see the `InitialWriter` run once.
+    *   Expand the `RefinementLoop` to see the multiple "Iterations".
+    *   Inside each iteration, observe the `Critic` and `Refiner` at work.
+    *   Watch the `current_essay` in the **State** tab improve with each loop.
+    *   Find the final iteration where the `Refiner` calls the `exit_loop` tool.
 
-2.  **Navigate to the parent directory** and start the Dev UI:
-    ```shell
-    cd ..
-    adk web
-    ```
+### Having Trouble?
 
-3.  **Interact with the system:**
-    *   Open `http://localhost:8080` and select "essay_refiner".
-    *   Give the system a topic for an essay.
-
-    **Try these prompts:**
-    *   "Write an essay about the importance of education"
-    *   "Write an essay arguing for renewable energy adoption"
-
-4.  **Analyze the Trace View:**
-    *   This is the most important part of the lab. Expand the trace to see the `SequentialAgent` run the `InitialWriter`.
-    *   Then, expand the `RefinementLoop`. You will see multiple "Iterations".
-    *   Inside each iteration, you can see the `Critic` run, followed by the `Refiner`.
-    *   Observe how the `current_essay` in the state changes and improves with each iteration.
-    *   Find the final iteration where the `Refiner` calls the `exit_loop` tool, causing the loop to terminate.
+If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
 ### Lab Summary
 
 You have successfully built a self-correcting system using a `LoopAgent`. You have learned:
-*   How to implement the "Critic -> Refiner" pattern for iterative improvement.
-*   How to use `max_iterations` as a safety net.
-*   How to create and use an `exit_loop` tool with `tool_context.actions.end_of_agent = True` for smart loop termination.
-*   How to use state overwriting to refine a piece of data over multiple iterations.
+*   How to implement the "Critic -> Refiner" pattern.
+*   How to create and use an `exit_loop` tool for smart loop termination.
+*   How to use state overwriting to refine data over multiple iterations.
+*   How to combine a `LoopAgent` with a `SequentialAgent` to create complex workflows.

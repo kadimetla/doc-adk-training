@@ -1,10 +1,10 @@
-# Module 26: Building a Custom Streaming Client
+# Module 32: Building a Custom Streaming Client
 
 ## Theory
 
 ### Beyond the Dev UI
 
-In Module 16, you experienced the power of bidirectional streaming through the ADK Developer UI. The UI's microphone button provided a convenient way to have a voice conversation with your agent. However, the Dev UI is a tool for development, not a production-ready application.
+In Module 22, you experienced the power of bidirectional streaming through the ADK Developer UI. The UI's microphone button provided a convenient way to have a voice conversation with your agent. However, the Dev UI is a tool for development, not a production-ready application.
 
 To integrate ADK's streaming capabilities into your own website or application, you need to build a **custom streaming client**. This involves creating a front-end (e.g., using HTML and JavaScript) that can communicate directly with the ADK agent server.
 

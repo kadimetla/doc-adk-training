@@ -1,4 +1,4 @@
-# Module 27: Advanced - Building a Personalized Shopping Agent
+# Module 33: Advanced - Building a Personalized Shopping Agent
 
 ## Challenging Lab - Solution
 

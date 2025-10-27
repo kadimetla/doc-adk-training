@@ -1,24 +1,22 @@
-# Module 17: Multi-Agent Systems - Complex Orchestration
+# Module 18: Advanced Multi-Agent Architectures
 
-## Lab 17: Building a Content Publishing System
+## Lab 18: Building a Content Publishing System
 
 ### Goal
 
-In this lab, you will build a sophisticated **Content Publishing System** that demonstrates a complex multi-agent architecture. You will combine sequential and parallel patterns to create a system that researches a topic from multiple angles concurrently and then synthesizes the findings into a final article.
-
-This system will use the **Nested Sequential Pipelines** pattern.
+In this lab, you will build a sophisticated **Content Publishing System** that demonstrates a complex multi-agent architecture. You will combine sequential and parallel patterns to create a system that researches a topic from multiple angles concurrently and then synthesizes the findings into a final article. This is a capstone exercise for the multi-agent section of the course.
 
 ### The Architecture
 
 1.  **Phase 1: Parallel Research (Fan-Out)**
     Three independent, sequential pipelines will run concurrently:
-    *   **News Pipeline:** Fetches current events using the `google_search` tool, then summarizes the key points.
-    *   **Social Pipeline:** Gathers trending topics and sentiment from social media (simulated via `google_search`), then analyzes the insights.
-    *   **Expert Pipeline:** Finds expert opinions on the topic (`google_search`), then extracts key quotes.
+    *   **News Pipeline:** Fetches current events, then summarizes the key points.
+    *   **Social Pipeline:** Gathers trending topics, then analyzes the insights.
+    *   **Expert Pipeline:** Finds expert opinions, then extracts key quotes.
 
 2.  **Phase 2: Sequential Content Creation (Gather)**
     A final sequential pipeline will run after all research is complete:
-    *   **Writer Agent:** Combines the summaries from all three research pipelines into a single draft article.
+    *   **Writer Agent:** Combines the summaries from all three research pipelines into a draft article.
     *   **Editor Agent:** Reviews and improves the draft.
     *   **Formatter Agent:** Formats the final article for publication.
 
@@ -35,47 +33,63 @@ This system will use the **Nested Sequential Pipelines** pattern.
     cd content-publisher
     ```
 
-### Step 2: Define the Multi-Agent System
+### Step 2: Assemble the Multi-Agent System
 
-**Exercise:** Open `agent.py` and replace its contents with the full solution from the `lab-solution.md`.
+**Exercise:** Open `agent.py`. All eight of the individual specialist agents (e.g., `news_fetcher`, `news_summarizer`, `article_writer`, etc.) have been provided for you. Your task is to assemble them into the complete, multi-level architecture described above.
 
-Your task is to study this complex architecture and understand how the different agents and workflows are composed:
+```python
+# In agent.py (Starter Code)
 
-1.  **The Research Agents:** Identify the three pairs of agents for the News, Social, and Expert pipelines. Notice how the first agent in each pair uses the `google_search` tool and saves its raw findings to state with an `output_key`.
-2.  **The Research Pipelines:** Find the three `SequentialAgent` instances (`news_pipeline`, `social_pipeline`, `expert_pipeline`) that group the research agents into two-step workflows.
-3.  **The Parallel Orchestrator:** Locate the `parallel_research` agent, which is a `ParallelAgent` that runs the three sequential research pipelines concurrently.
-4.  **The Content Creation Agents:** Identify the `article_writer`, `article_editor`, and `article_formatter` agents. Trace how they use `output_key` and `{state_keys}` to pass the article from one stage to the next.
-5.  **The Root Agent:** See how the final `content_publishing_system` is a `SequentialAgent` that combines the parallel research phase with the sequential creation phase.
+from __future__ import annotations
+from google.adk.agents import Agent, ParallelAgent, SequentialAgent
+from google.adk.tools import google_search
+
+# ===== All 8 Specialist Agent Definitions Are Provided Here... =====
+# (news_fetcher, news_summarizer, social_monitor, sentiment_analyzer, 
+#  expert_finder, quote_extractor, article_writer, article_editor, 
+#  article_formatter)
+
+# =====================================================
+# ASSEMBLE THE MULTI-AGENT SYSTEM
+# =====================================================
+
+# TODO: 1. Create the three sequential research pipelines.
+# - `news_pipeline` should contain `news_fetcher` then `news_summarizer`.
+# - `social_pipeline` should contain `social_monitor` then `sentiment_analyzer`.
+# - `expert_pipeline` should contain `expert_finder` then `quote_extractor`.
+news_pipeline = SequentialAgent(...)
+social_pipeline = SequentialAgent(...)
+expert_pipeline = SequentialAgent(...)
+
+# TODO: 2. Create the parallel research phase. This `ParallelAgent` should
+# contain the three sequential pipelines you just defined.
+parallel_research = ParallelAgent(...)
+
+# TODO: 3. Create the final `SequentialAgent` for the entire system.
+# It should run the `parallel_research` phase first, followed by the
+# `article_writer`, `article_editor`, and `article_formatter` in order.
+content_publishing_system = SequentialAgent(...)
+
+# TODO: 4. Set the `root_agent` to be your final `content_publishing_system`.
+root_agent = None
+```
+*(Note: The full agent definitions are in the `lab-solution.md` if you need to inspect them.)*
 
 ### Step 3: Run and Test the System
 
-1.  **Set up your API key** in the `.env` file.
+1.  **Set up your `.env` file** and start the Dev UI: `adk web`
+2.  **Interact with the system:**
+    *   Select "content_publisher" and give it a topic, like: "The future of electric vehicles".
+3.  **Analyze the Trace:**
+    *   This is the most important step. Expand the trace to see the nested structure. Verify that the three research pipelines run in parallel, and that the content creation agents run sequentially after the parallel phase is complete.
 
-2.  **Navigate to the parent directory** and start the Dev UI:
-    ```shell
-    cd ..
-    adk web
-    ```
+### Having Trouble?
 
-3.  **Interact with the system:**
-    *   Open `http://localhost:8080` and select "content_publisher".
-    *   Give the system a topic to write about.
-
-    **Try these prompts:**
-    *   "Write an article about artificial intelligence in healthcare"
-    *   "Create an article about renewable energy adoption"
-
-4.  **Analyze the Trace:**
-    The Trace view is essential for understanding this complex system.
-    *   Expand the top-level `SequentialAgent`.
-    *   You will see the `ParallelAgent` run first. Expand it to confirm that the three research pipelines (`NewsPipeline`, `SocialPipeline`, `ExpertPipeline`) all started at the same time.
-    *   Expand one of the research pipelines (e.g., `NewsPipeline`) to see its two steps (e.g., `news_fetcher` and `news_summarizer`) run sequentially.
-    *   After the `ParallelAgent` completes, you will see the three content creation agents run one after another.
+If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
 ### Lab Summary
 
 You have successfully built and orchestrated a complex, production-quality multi-agent system. You have learned:
 *   How to nest `SequentialAgent` workflows inside a `ParallelAgent`.
 *   How to combine parallel and sequential patterns to create a fan-out/gather architecture.
-*   How to use the built-in `google_search` tool to give agents access to real-world information.
 *   How to analyze the execution of a complex, nested trace in the Dev UI.

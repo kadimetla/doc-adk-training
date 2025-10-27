@@ -1,6 +1,6 @@
-# Module 16: Parallel Processing with ParallelAgent
+# Module 17: Parallel Processing with ParallelAgent
 
-## Lab 16: Solution
+## Lab 17: Solution
 
 This file contains the complete code for the `agent.py` script in the Smart Travel Planner lab.
 
@@ -18,7 +18,7 @@ from google.adk.agents import Agent, ParallelAgent, SequentialAgent
 # ===== Parallel Branch 1: Flight Finder =====
 flight_finder = Agent(
     name="flight_finder",
-    model="gemini-2.5-flash",
+    model="gemini-1.5-flash",
     description="Searches for available flights",
     instruction=(
         "You are a flight search specialist. Based on the user's travel request, "
@@ -38,7 +38,7 @@ flight_finder = Agent(
 # ===== Parallel Branch 2: Hotel Finder =====
 hotel_finder = Agent(
     name="hotel_finder",
-    model="gemini-2.5-flash",
+    model="gemini-1.5-flash",
     description="Searches for available hotels",
     instruction=(
         "You are a hotel search specialist. Based on the user's travel request, "
@@ -58,7 +58,7 @@ hotel_finder = Agent(
 # ===== Parallel Branch 3: Activity Finder =====
 activity_finder = Agent(
     name="activity_finder",
-    model="gemini-2.5-flash",
+    model="gemini-1.5-flash",
     description="Finds activities and attractions",
     instruction=(
         "You are a local activities expert. Based on the user's travel request, "
@@ -86,7 +86,7 @@ parallel_search = ParallelAgent(
         flight_finder,
         hotel_finder,
         activity_finder
-    ],  # All run AT THE SAME TIME!
+    ],
     description="Searches flights, hotels, and activities concurrently"
 )
 
@@ -97,7 +97,7 @@ parallel_search = ParallelAgent(
 # ===== Gather: Merge Results into Itinerary =====
 itinerary_builder = Agent(
     name="itinerary_builder",
-    model="gemini-2.5-flash",
+    model="gemini-1.5-flash",
     description="Combines all search results into a complete travel itinerary",
     instruction=(
         "You are a travel planner. Create a complete, well-organized itinerary "
@@ -131,8 +131,8 @@ itinerary_builder = Agent(
 travel_planning_system = SequentialAgent(
     name="TravelPlanningSystem",
     sub_agents=[
-        parallel_search,     # Step 1: Gather data in parallel (FAST!)
-        itinerary_builder    # Step 2: Merge results (synthesis)
+        parallel_search,
+        itinerary_builder
     ],
     description="Complete travel planning system with parallel search and itinerary building"
 )

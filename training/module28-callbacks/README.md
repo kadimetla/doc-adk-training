@@ -1,4 +1,4 @@
-# Module 26: Callbacks and Guardrails - Agent Safety and Monitoring
+# Module 28: Callbacks and Guardrails - Agent Safety and Monitoring
 
 ## Theory
 

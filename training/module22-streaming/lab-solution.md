@@ -1,8 +1,8 @@
 # Module 22: Real-time Interaction with Streaming
 
-## Lab 22: Solution
+## Lab 22: Solution (Part 2)
 
-This file contains the complete code for the `stream_text.py` script used in Part 2 of the lab.
+This file contains the complete code for the `stream_text.py` script used in **Part 2** of the lab.
 
 ### `stream_text.py`
 

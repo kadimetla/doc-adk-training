@@ -1,6 +1,6 @@
-# Module 30: Deploying an MCP Server to Cloud Run
+# Module 31: Deploying an MCP Server to Cloud Run
 
-## Lab 30: Solution
+## Lab 31: Solution
 
 This file contains the complete code for the `stateless_cart_server.py` and the `agent.py` client for the lab.
 

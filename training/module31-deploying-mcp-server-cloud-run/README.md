@@ -1,4 +1,4 @@
-# Module 25: Deploying an MCP Server to Cloud Run
+# Module 31: Deploying an MCP Server to Cloud Run
 
 ## Theory
 

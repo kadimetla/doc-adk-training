@@ -1,4 +1,4 @@
-# Module 29: Building a Custom MCP Tool
+# Module 30: Building a Custom MCP Tool
 
 ## Theory
 

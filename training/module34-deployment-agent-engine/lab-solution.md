@@ -1,6 +1,6 @@
-# Module 28: Deploying to Agent Engine
+# Module 34: Deploying to Agent Engine
 
-## Lab 28: Solution
+## Lab 34: Solution
 
 This file contains the complete code for the `deploy.py` and `interact.py` scripts used in the lab.
 

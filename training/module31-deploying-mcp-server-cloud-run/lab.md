@@ -1,10 +1,10 @@
-# Module 25: Deploying an MCP Server to Cloud Run
+# Module 31: Deploying an MCP Server to Cloud Run
 
-## Lab 25: Deploying the "Shopping Cart" Server
+## Lab 31: Deploying the "Shopping Cart" Server
 
 ### Goal
 
-In this lab, you will take the "Shopping Cart" MCP server from Module 24, re-architect it to be stateless, containerize it with a `Dockerfile`, and deploy it to Google Cloud Run. You will then configure an ADK agent to connect to this live, cloud-hosted tool.
+In this lab, you will take the "Shopping Cart" MCP server from Module 30, re-architect it to be stateless, containerize it with a `Dockerfile`, and deploy it to Google Cloud Run. You will then configure an ADK agent to connect to this live, cloud-hosted tool.
 
 **Note:** This is an advanced lab. For simplicity, we will simulate an external state store with a file written to a temporary directory. In a real production system, you would replace this with a connection to a service like Redis or Memorystore.
 
@@ -57,7 +57,7 @@ We need to modify our server so it doesn't store the shopping carts in memory.
 
     @app.list_tools()
     async def list_mcp_tools() -> list[mcp_types.Tool]:
-        # (Same as Module 24's list_tools function)
+        # (Same as Module 30's list_tools function)
         add_item_tool = mcp_types.Tool(name="add_item_to_cart", description="Adds an item to the cart.", inputSchema={"type": "object", "properties": {"item": {"type": "string"}}, "required": ["item"]})
         view_cart_tool = mcp_types.Tool(name="view_cart", description="Views items in the cart.", inputSchema={"type": "object", "properties": {}})
         return [add_item_tool, view_cart_tool]

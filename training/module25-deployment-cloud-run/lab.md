@@ -1,10 +1,10 @@
-# Module 18: Deployment to Cloud Run
+# Module 25: Deployment to Cloud Run
 
-## Lab 18: Deploying the Customer Support Agent
+## Lab 25: Deploying the Customer Support Agent
 
 ### Goal
 
-In this lab, you will take the multi-agent customer support system you built in Module 11 and deploy it to Google Cloud Run. This will make your agent accessible via a public URL, transforming it from a local project into a shareable, cloud-hosted service.
+In this lab, you will take the multi-agent customer support system you built in Module 15 and deploy it to Google Cloud Run. This will make your agent accessible via a public URL, transforming it from a local project into a shareable, cloud-hosted service.
 
 ### Prerequisites
 
@@ -23,7 +23,7 @@ The `adk deploy cloud_run` command is a powerful tool that automates most of the
     ```
 
 2.  **Create a new project for this lab:**
-    We'll use the multi-agent customer support system from Module 11. Let's create a fresh copy to ensure it's set up correctly.
+    We'll use the multi-agent customer support system from Module 15. Let's create a fresh copy to ensure it's set up correctly.
 
     ```shell
     # Create the main project directory
@@ -36,7 +36,7 @@ The `adk deploy cloud_run` command is a powerful tool that automates most of the
     ```
 
 3.  **Re-create the agent files:**
-    Inside the `support_agent` directory, create the three YAML files from Module 11.
+    Inside the `support_agent` directory, create the three YAML files from Module 15.
 
     *   **`billing_agent.yaml`:**
         ```yaml

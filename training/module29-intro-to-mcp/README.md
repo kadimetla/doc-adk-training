@@ -1,4 +1,4 @@
-# Module 28: Introduction to MCP & Stateful Tools
+# Module 29: Introduction to MCP & Stateful Tools
 
 ## Theory
 

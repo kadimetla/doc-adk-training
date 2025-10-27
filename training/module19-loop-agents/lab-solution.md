@@ -1,6 +1,6 @@
-# Module 18: Iterative Refinement with Loop Agents
+# Module 19: Iterative Refinement with Loop Agents
 
-## Lab 18: Solution
+## Lab 19: Solution
 
 This file contains the complete code for the `agent.py` script in the Essay Refinement System lab.
 
@@ -28,7 +28,7 @@ def exit_loop(tool_context: ToolContext):
 # =====================================================
 initial_writer = Agent(
     name="InitialWriter",
-    model="gemini-2.5-flash",
+    model="gemini-1.5-flash",
     description="Writes the first draft of an essay",
     instruction=(
         "You are a creative writer. Write a first draft essay on the topic "
@@ -53,7 +53,7 @@ initial_writer = Agent(
 # ===== Loop Agent 1: Critic =====
 critic = Agent(
     name="Critic",
-    model="gemini-2.5-flash",
+    model="gemini-1.5-flash",
     description="Evaluates essay quality and provides feedback",
     instruction=(
         "You are an experienced essay critic and teacher. Review the essay below "
@@ -84,7 +84,7 @@ critic = Agent(
 # ===== Loop Agent 2: Refiner =====
 refiner = Agent(
     name="Refiner",
-    model="gemini-2.5-flash",
+    model="gemini-1.5-flash",
     tools=[exit_loop],  # Provide exit tool!
     description="Improves essay based on critique or signals completion",
     instruction=(

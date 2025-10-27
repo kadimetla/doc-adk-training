@@ -1,4 +1,4 @@
-# Module 16: Parallel Processing with ParallelAgent
+# Module 17: Parallel Processing with ParallelAgent
 
 ## Theory
 

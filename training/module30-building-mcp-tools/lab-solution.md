@@ -1,6 +1,6 @@
-# Module 29: Building a Custom MCP Tool
+# Module 30: Building a Custom MCP Tool
 
-## Lab 29: Solution
+## Lab 30: Solution
 
 This file contains the complete code for both the `cart_server.py` and the `agent.py` client script for the Shopping Cart MCP lab.
 
@@ -62,7 +62,7 @@ async def call_mcp_tool(name: str, arguments: dict, session_id: str) -> list[mcp
         item = arguments.get("item")
         if item:
             SESSION_CARTS[session_id].append(item)
-            response_text = json.dumps({"status": "success", "message": f"Added '{item}' to the cart."})
+            response_text = json.dumps({"status": "success", "message": f"Added '{item}' to the cart."}) 
         else:
             response_text = json.dumps({"status": "error", "message": "No item provided."})
         
@@ -74,7 +74,7 @@ async def call_mcp_tool(name: str, arguments: dict, session_id: str) -> list[mcp
         return [mcp_types.TextContent(type="text", text=response_text)]
 
     else:
-        response_text = json.dumps({"status": "error", "message": f"Tool '{name}' not found."})
+        response_text = json.dumps({"status": "error", "message": f"Tool '{name}' not found."}) 
         return [mcp_types.TextContent(type="text", text=response_text)]
 
 # --- MCP Server Runner ---
@@ -126,4 +126,3 @@ root_agent = LlmAgent(
     ],
 )
 ```
-

@@ -1,4 +1,4 @@
-# Module 11: Building a Coordinator/Dispatcher Agent
+# Module 15: Building a Coordinator/Dispatcher Agent
 
 ## Theory
 
@@ -19,7 +19,7 @@ The first step is to define the parent-child relationship. The coordinator agent
 ```yaml
 # In the coordinator's root_agent.yaml
 name: coordinator_agent
-model: gemini-2.5-flash
+model: gemini-1.5-flash
 instruction: You are a router...
 # ...
 sub_agents:

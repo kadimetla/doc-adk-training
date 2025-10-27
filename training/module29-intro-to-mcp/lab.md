@@ -1,6 +1,6 @@
-# Module 23: Introduction to MCP & Stateful Tools
+# Module 29: Introduction to MCP & Stateful Tools
 
-## Lab 23: Using a Stateful File System Tool
+## Lab 29: Using a Stateful File System Tool
 
 ### Goal
 

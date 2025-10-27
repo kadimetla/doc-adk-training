@@ -1,4 +1,4 @@
-# Module 18: Deployment to Cloud Run
+# Module 25: Deployment to Cloud Run
 
 ## Theory
 
@@ -40,4 +40,4 @@ When you run this command, it performs a series of steps behind the scenes:
 
 The result is a publicly accessible HTTPS endpoint for your agent, all from a single command. This streamlined process allows you to focus on building your agent's logic, not on the complexities of cloud infrastructure.
 
-In the lab for this module, you will use the `adk deploy cloud_run` command to deploy the multi-agent customer support system you built in Module 11.
+In the lab for this module, you will use the `adk deploy cloud_run` command to deploy the multi-agent customer support system you built in Module 15.

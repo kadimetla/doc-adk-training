@@ -1,6 +1,6 @@
-# Module 34: Agent-to-Agent Communication
+# Module 35: Agent-to-Agent Communication
 
-## Lab 34: Building a Distributed Research System
+## Lab 35: Building a Distributed Research System
 
 ### Goal
 
@@ -8,95 +8,80 @@ In this lab, you will build a distributed multi-agent system. You will create a 
 
 ### Step 1: Create the Project Structure
 
-For this lab, we need two separate agent projects that will run independently.
-
-1.  **Navigate to your training directory.**
-2.  **Create the Orchestrator project:**
-    ```shell
-    adk create a2a-orchestrator
-    ```
-    Choose the **Programmatic (Python script)** option.
-
-3.  **Create the Research Specialist project:**
-    ```shell
-    adk create research-specialist
-    ```
-    Choose the **Programmatic (Python script)** option.
+Create two separate agent projects that will run independently.
+```shell
+adk create a2a-orchestrator
+adk create research-specialist
+```
+Choose the **Programmatic (Python script)** option for both.
 
 ### Step 2: Build the Research Specialist (The Server)
 
-First, we'll build the remote agent that will provide the research service.
+**Exercise:** Navigate into the `research-specialist` directory. Open `agent.py` and implement the specialist agent and expose it as an A2A server.
 
-1.  **Navigate into the specialist's directory:**
-    ```shell
-    cd research-specialist
-    ```
+```python
+# In research-specialist/agent.py (Starter Code)
+from google.adk.agents import Agent
+from google.adk.a2a.utils.agent_to_a2a import to_a2a
+from google.adk.tools import google_search
 
-2.  **Configure the environment:**
-    *   Set up your `.env` file for **Vertex AI**, as the `google_search` tool requires it.
+# TODO: 1. Define the `root_agent`. It should be an `Agent` that:
+# - Is named "research_specialist".
+# - Has an instruction to act as a research specialist using the `google_search` tool.
+# - Includes the `google_search` tool in its `tools` list.
+root_agent = None
 
-3.  **Implement the agent:**
-    **Exercise:** Open `agent.py` and replace its contents with the code from the `lab-solution.md` file under the `research-specialist/agent.py` heading.
-
-    **Key things to study:**
-    *   The `root_agent` is a standard `LlmAgent` with the `google_search` tool.
-    *   The crucial line is `a2a_app = to_a2a(root_agent, port=8001)`. This wraps your agent in a web application that speaks the A2A protocol.
+# TODO: 2. Use the `to_a2a()` function to wrap your `root_agent`.
+# This exposes it as a web application on port 8001.
+a2a_app = to_a2a(root_agent, port=8001)
+```
+Remember to configure your `.env` file for **Vertex AI** for the `google_search` tool to work.
 
 ### Step 3: Build the Orchestrator (The Client)
 
-Now, let's build the main agent that will consume the remote service.
+**Exercise:** Navigate into the `a2a-orchestrator` directory. Open `agent.py` and implement the orchestrator agent that consumes the remote service.
 
-1.  **Navigate into the orchestrator's directory:**
-    ```shell
-    cd ../a2a-orchestrator
-    ```
+```python
+# In a2a-orchestrator/agent.py (Starter Code)
+from google.adk.agents import Agent
+from google.adk.agents.remote_a2a_agent import RemoteA2aAgent, AGENT_CARD_WELL_KNOWN_PATH
 
-2.  **Configure the environment:**
-    *   Set up your `.env` file with your API key or Vertex AI project.
+# TODO: 1. Create a `RemoteA2aAgent` instance named `remote_researcher`.
+# - Give it a name and a description.
+# - Point its `agent_card` URL to the specialist server you will be running at
+#   `http://localhost:8001/a2a/research_specialist/.well-known/agent-card.json`.
+#   (Using the `AGENT_CARD_WELL_KNOWN_PATH` constant is recommended).
+remote_researcher = None
 
-3.  **Implement the agent:**
-    **Exercise:** Open `agent.py` and replace its contents with the code from the `lab-solution.md` file under the `a2a-orchestrator/agent.py` heading.
-
-    **Key things to study:**
-    *   `RemoteA2aAgent`: This class is used to create a proxy for our remote agent.
-    *   `agent_card`: We provide the URL to the remote agent's auto-generated agent card. The ADK uses this to discover and connect to the specialist.
-    *   `sub_agents`: The `remote_researcher` is treated just like any other sub-agent, making the orchestration logic simple.
+# TODO: 2. Define the `root_agent` as an orchestrator.
+# - Its instruction should tell it to delegate research tasks to the `remote_researcher`.
+# - Add the `remote_researcher` to its `sub_agents` list.
+root_agent = None
+```
+Remember to configure your `.env` file.
 
 ### Step 4: Run and Test the Distributed System
 
 This requires two separate terminals.
 
-1.  **Terminal 1: Start the Research Specialist Server**
+1.  **Terminal 1 (Specialist Server):**
     *   Navigate to the `research-specialist` directory.
-    *   Use `uvicorn` to run the A2A server.
+    *   Run `uvicorn agent:a2a_app --host localhost --port 8001`.
 
-    ```shell
-    cd /path/to/your/training/research-specialist
-    uvicorn agent:a2a_app --host localhost --port 8001
-    ```
-    You should see the server start up.
-
-2.  **Terminal 2: Start the Orchestrator Client**
+2.  **Terminal 2 (Orchestrator Client):**
     *   Navigate to the `a2a-orchestrator` directory.
-    *   Run the `adk web` server as usual.
-
-    ```shell
-    cd /path/to/your/training/a2a-orchestrator
-    adk web
-    ```
+    *   Run `adk web`.
 
 3.  **Interact with the System:**
     *   Open the Dev UI for the orchestrator (`http://localhost:8080`).
-    *   Give it a research task.
-        *   **User:** "Please research the latest news on AI-powered drug discovery."
-    *   **Observe the Trace:** In the Trace View, you will see the `orchestrator_agent` run. It will then call the `remote_researcher` sub-agent. This confirms that the main agent successfully delegated the task to the remote specialist over the network.
+    *   Give it a research task, like: "Please research the latest advancements in quantum computing."
+    *   Observe the **Trace View** to confirm that the `orchestrator_agent` successfully delegates the task to the `remote_researcher`.
+
+### Having Trouble?
+If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
 ### Lab Summary
-
-You have successfully built a distributed multi-agent system! This is a powerful architecture for creating scalable and modular AI applications.
-
-You have learned to:
-*   Expose an ADK agent as a network service using the `to_a2a()` utility and `uvicorn`.
-*   Connect to a remote agent from an orchestrator using the `RemoteA2aAgent` class.
-*   Understand how agent discovery works via the `agent-card.json` file.
+You have successfully built a distributed multi-agent system. You have learned to:
+*   Expose an ADK agent as a network service using `to_a2a()`.
+*   Connect to a remote agent using the `RemoteA2aAgent` class.
 *   Orchestrate tasks between agents running in separate processes.

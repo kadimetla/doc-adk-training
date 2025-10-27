@@ -1,12 +1,12 @@
-# Module 15: Building Agent Pipelines with SequentialAgent
+# Module 16: Building Agent Pipelines with SequentialAgent
 
-## Lab 15: Building a Blog Post Generator Pipeline
+## Lab 16: Building a Blog Post Generator Pipeline
 
 ### Goal
 
-In this lab, you will build a sophisticated, multi-step content creation pipeline using a `SequentialAgent`. This will demonstrate how to chain multiple specialist agents together, passing data from one to the next to accomplish a complex task.
+In this lab, you will build a multi-step content creation pipeline using a `SequentialAgent`. This will demonstrate how to chain multiple specialist agents together, passing data from one to the next.
 
-You will create a pipeline with four stages:
+### The Pipeline Stages
 1.  **Research Agent:** Gathers key facts about a topic.
 2.  **Writer Agent:** Creates a draft blog post from the research.
 3.  **Editor Agent:** Reviews the draft and suggests improvements.
@@ -14,9 +14,8 @@ You will create a pipeline with four stages:
 
 ### Step 1: Create the Project Structure
 
-1.  **Navigate to your training directory** and create a new project.
+1.  **Create a new project:**
     ```shell
-    cd /path/to/your/adk-training
     adk create blog-pipeline
     ```
     When prompted, choose the **Programmatic (Python script)** option.
@@ -26,57 +25,68 @@ You will create a pipeline with four stages:
     cd blog-pipeline
     ```
 
-### Step 2: Define the Pipeline Agents in `agent.py`
+### Step 2: Assemble the Pipeline
 
-**Exercise:** Open `agent.py` and replace its contents with the full solution from the `lab-solution.md`.
+**Exercise:** Open `agent.py`. The four specialist agents (`research_agent`, `writer_agent`, etc.) have been provided for you. Your task is to assemble them into a functioning pipeline.
 
-Your task is to carefully read and understand the code, which is divided into four parts:
+```python
+# In agent.py (Starter Code)
 
-1.  **The Four Specialist Agents:**
-    *   `research_agent`, `writer_agent`, `editor_agent`, `formatter_agent`.
-    *   Notice how each agent has a very specific `instruction`.
-    *   Pay close attention to the `output_key` on each agent. This is the key that the agent's response will be saved to in the session state.
-    *   Observe how later agents use curly braces (e.g., `{research_findings}`) in their `instruction` to read the output from previous agents.
+from __future__ import annotations
+from google.adk.agents import Agent, SequentialAgent
 
-2.  **The `SequentialAgent`:**
-    *   The `blog_creation_pipeline` is a `SequentialAgent`.
-    *   Its `sub_agents` list defines the exact order of execution.
+# ===== Specialist Agents (Provided for you) =====
 
-3.  **The `root_agent`:**
-    *   The `root_agent` is set to the `blog_creation_pipeline`, making the pipeline the main entry point.
+research_agent = Agent(
+    name="researcher", model="gemini-1.5-flash",
+    instruction="...", # Gathers facts
+    output_key="research_findings"
+)
+writer_agent = Agent(
+    name="writer", model="gemini-1.5-flash",
+    instruction="...writes a draft based on {research_findings}...",
+    output_key="draft_post"
+)
+editor_agent = Agent(
+    name="editor", model="gemini-1.5-flash",
+    instruction="...reviews the {draft_post}...",
+    output_key="editorial_feedback"
+)
+formatter_agent = Agent(
+    name="formatter", model="gemini-1.5-flash",
+    instruction="...applies {editorial_feedback} to the {draft_post}...",
+    output_key="final_post"
+)
+
+# ===== Create the Sequential Pipeline =====
+
+# TODO: 1. Create a `SequentialAgent` named `blog_creation_pipeline`.
+# TODO: 2. In the `sub_agents` list, add the four specialist agents
+# in the correct logical order: research -> write -> edit -> format.
+blog_creation_pipeline = None
+
+# TODO: 3. The ADK requires a `root_agent` to be defined.
+# Set the `root_agent` to be your `blog_creation_pipeline`.
+root_agent = None
+```
+*(Note: The full agent instructions are in the `lab-solution.md` if you need to inspect them, but you don't need to change them for this exercise.)*
 
 ### Step 3: Run and Test the Pipeline
 
-1.  **Set up your API key** in the `.env` file.
+1.  **Set up your `.env` file** and start the Dev UI: `adk web`
+2.  **Interact with the pipeline:**
+    *   Select "blog_pipeline" and send a topic to write about, like: "the history of the internet".
+3.  **Examine the Trace and State Tabs:**
+    *   **Trace View:** Expand the trace to see the `SequentialAgent` running its four sub-agents in order.
+    *   **State View:** After the run, inspect the state to see the output of each step (`research_findings`, `draft_post`, etc.).
 
-2.  **Navigate to the parent directory** of your `blog-pipeline` project.
-    ```shell
-    cd ..
-    ```
+### Having Trouble?
 
-3.  **Start the Dev UI:**
-    ```shell
-    adk web
-    ```
-
-4.  **Interact with the pipeline:**
-    *   Open `http://localhost:8080` and select "blog_pipeline".
-    *   Send a message to trigger the pipeline. The content of the message will be used as the topic for the `research_agent`.
-
-    **Try these prompts:**
-    *   "Write a blog post about artificial intelligence"
-    *   "Create a blog post explaining how solar panels work"
-
-5.  **Examine the Trace and State Tabs:**
-    *   **Trace View:** This is the most important tool for this lab. Expand the trace to see the `SequentialAgent` running. Inside, you will see each of the four sub-agents executing one after another. Click on each one to inspect its specific inputs and outputs.
-    *   **State View:** After the run is complete, go to the "State" tab. You will see the keys (`research_findings`, `draft_post`, etc.) and the values that were generated by each step of the pipeline.
+If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
 ### Lab Summary
 
-You have successfully built a deterministic, multi-agent pipeline. This is a powerful pattern for creating reliable, complex workflows.
-
-You have learned to:
+You have successfully built a deterministic, multi-agent pipeline. You have learned to:
 *   Configure a `SequentialAgent` to orchestrate multiple sub-agents.
-*   Use `output_key` to save an agent's result to the session state.
-*   Pass data between agents by injecting state variables (`{key}`) into instruction prompts.
-*   Analyze the execution of a pipeline using the Trace and State views in the Dev UI.
+*   Understand how `output_key` and state variables (`{key}`) are used to pass data between agents in a sequence.
+*   Analyze the execution of a pipeline using the Trace and State views.

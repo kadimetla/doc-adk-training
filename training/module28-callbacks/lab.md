@@ -1,19 +1,10 @@
-# Module 26: Callbacks and Guardrails - Building a Content Moderator
+# Module 28: Callbacks and Guardrails - Building a Content Moderator
 
-## Lab 26: Building a Content Moderation Assistant
+## Lab 28: Building a Content Moderation Assistant
 
 ### Goal
 
 In this lab, you will implement a full suite of callbacks to create a **Content Moderation Assistant**. This agent will demonstrate how to build production-grade safety guardrails, validation, logging, and response filtering.
-
-### The Use Case
-
-You will build a writing assistant that:
-*   **Blocks** inappropriate requests before they reach the LLM (`before_model_callback`).
-*   **Validates** tool arguments to prevent invalid values (`before_tool_callback`).
-*   **Logs** all LLM and tool interactions for monitoring.
-*   **Filters** personally identifiable information (PII) from LLM responses (`after_model_callback`).
-*   **Tracks** usage metrics (like blocked requests) in the session state.
 
 ### Step 1: Create the Project Structure
 
@@ -28,67 +19,108 @@ You will build a writing assistant that:
     cd content-moderator
     ```
 
-### Step 2: Implement the Agent and Callbacks
+### Step 2: Implement the Callbacks
 
-**Exercise:** Open `agent.py` and replace its contents with the full solution from the `lab-solution.md`.
+**Exercise:** Open `agent.py`. Skeletons for the callback functions are provided. Your task is to implement the logic for each one based on the `# TODO` comments, and then register them with the agent.
 
-Your task is to study this comprehensive example and understand how each callback contributes to the agent's safety and observability:
+```python
+# In agent.py (Starter Code)
 
-1.  **`BLOCKED_WORDS` and `PII_PATTERNS`:** Review these simple configurations that define what the guardrails will look for.
+from google.adk.agents import Agent, CallbackContext
+from google.genai import types
+from typing import Dict, Any, Optional
+import logging
 
-2.  **`before_model_callback` (Input Guardrail):**
-    *   This is the primary safety check. Notice how it inspects the `llm_request` for any blocked words.
-    *   If a blocked word is found, it **returns an `LlmResponse` object**. This is the control flow pattern: by returning a response, it tells the ADK to **skip the actual LLM call** and use this response instead.
-    *   It also increments a `user:blocked_requests` counter in the state.
+# (Blocklist and PII patterns are provided for you)
+BLOCKED_WORDS = ['inappropriate-word']
+PII_PATTERNS = {'email': r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'}
 
-3.  **`before_tool_callback` (Argument Validation):**
-    *   This callback checks the arguments *before* a tool is run.
-    *   If the `word_count` for the `generate_text` tool is invalid (e.g., negative), it **returns a dictionary**. This dictionary is treated as the tool's output, and the actual tool function is never executed.
+# ============================================================================ 
+# CALLBACK FUNCTIONS
+# ============================================================================ 
 
-4.  **`after_model_callback` (Output Filtering):**
-    *   This callback inspects the `llm_response` *after* it comes back from the model.
-    *   It uses regular expressions to find and replace potential PII.
-    *   If it finds PII, it constructs and **returns a new, modified `LlmResponse` object**, replacing the original one.
+def before_model_callback(
+    callback_context: CallbackContext,
+    llm_request: types.GenerateContentRequest
+) -> Optional[types.GenerateContentResponse]:
+    """Input Guardrail: Blocks requests containing inappropriate words."""
+    user_text = llm_request.contents[-1].parts[0].text
+    
+    # TODO: 1. Loop through BLOCKED_WORDS.
+    # TODO: 2. If a blocked word is in `user_text`:
+    #    a. Log a warning.
+    #    b. Return a `types.GenerateContentResponse` with a safety message
+    #       to block the LLM call and override the response.
+    
+    # TODO: 3. If no blocked words are found, return None to continue.
+    return None
 
-5.  **Logging and Metrics:**
-    *   Notice how nearly every callback uses `logger.info()` for **observation**.
-    *   Several callbacks also interact with the `callback_context.state` to increment counters, demonstrating how to build a simple metrics system.
+def before_tool_callback(
+    callback_context: CallbackContext,
+    tool_name: str,
+    args: Dict[str, Any]
+) -> Optional[Dict[str, Any]]:
+    """Argument Validation: Blocks tool calls with invalid arguments."""
+    # TODO: 4. Check if the `tool_name` is 'generate_text'.
+    # TODO: 5. If it is, get the `word_count` from the `args`.
+    # TODO: 6. If `word_count` is not between 1 and 5000:
+    #    a. Log a warning.
+    #    b. Return an error dictionary to block the tool call, like:
+    #       {'status': 'error', 'message': 'Invalid word_count...'}
+    
+    # TODO: 7. If arguments are valid, return None.
+    return None
 
-6.  **Agent Definition:**
-    *   Finally, see how all the callback functions are registered with the `Agent` at the bottom of the file.
+def after_model_callback(
+    callback_context: CallbackContext,
+    llm_response: types.GenerateContentResponse
+) -> Optional[types.GenerateContentResponse]:
+    """Output Filtering: Removes PII from LLM responses."""
+    response_text = llm_response.candidates[0].content.parts[0].text
+    
+    # TODO: 8. Use the `re.sub` function with the `PII_PATTERNS` to replace
+    # any found PII in `response_text` with '[REDACTED]'.
+    # TODO: 9. If the text was changed, construct and return a new
+    # `types.GenerateContentResponse` with the filtered text.
+    # TODO: 10. If no changes were made, return None.
+    return None
+
+# (Other callbacks for logging are in the solution file for reference)
+
+# ============================================================================ 
+# AGENT DEFINITION
+# ============================================================================ 
+
+# (Tools are provided for you)
+def generate_text(topic: str, word_count: int) -> Dict[str, Any]:
+    """Generates text on a topic."""
+    return {'status': 'success', 'message': f'Generated {word_count}-word article.'}
+
+# TODO: 11. Register your three implemented callback functions with the Agent.
+root_agent = Agent(
+    name="content_moderator",
+    model="gemini-1.5-flash",
+    tools=[generate_text],
+    # before_model_callback=...
+    # before_tool_callback=...
+    # after_model_callback=...
+)
+```
 
 ### Step 3: Run and Test the Guardrails
 
-1.  **Set up your API key** in the `.env` file.
+1.  **Set up your `.env` file** and start the Dev UI: `adk web`
+2.  **Interact with the agent and test your guardrails:**
+    *   **Blocked Request:** "Write about inappropriate-word." (Should be blocked by `before_model_callback`).
+    *   **Invalid Argument:** "Generate an article with -50 words." (Should be blocked by `before_tool_callback`).
+    *   **PII Filtering:** "My email is test@example.com, what do you think?" (The final response should be redacted by `after_model_callback`).
 
-2.  **Navigate to the parent directory** and start the Dev UI:
-    ```shell
-    cd ..
-    adk web
-    ```
-
-3.  **Interact with the agent:**
-    *   Open `http://localhost:8080` and select "content_moderator".
-    *   Test each of the safety features.
-
-    **Test Scenarios:**
-    *   **Normal Request:** "Generate a 100-word article about dogs."
-        *   _(Observe the console logs to see all the callbacks firing in sequence.)_
-    *   **Blocked Request:** "Write an article about profanity1."
-        *   **Expected Output:** The agent should immediately respond with the "inappropriate content" message. Check the console to see the `[LLM BLOCKED]` log.
-    *   **Invalid Tool Argument:** "Generate an article with -50 words."
-        *   **Expected Output:** The agent should respond with the "Invalid word_count" error message. Check the console to see the `[TOOL BLOCKED]` log.
-    *   **PII Filtering:** "My email is test@example.com, can you format it?"
-        *   **Expected LLM Response (in Events tab):** The raw LLM response will contain the email.
-        *   **Expected Final Output:** The agent's final response in the chat will be "[EMAIL_REDACTED]".
-    *   **Check Stats:** "Show my usage stats."
-        *   _(The agent will call the `get_usage_stats` tool, which reads the counters that were updated by the callbacks in the state.)_
+### Having Trouble?
+If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
 ### Lab Summary
-
-You have built a robust agent with a comprehensive suite of safety guardrails and monitoring hooks. You have learned:
-*   How to implement an input guardrail with `before_model_callback`.
-*   How to validate tool arguments with `before_tool_callback`.
-*   How to filter and redact sensitive information from LLM responses with `after_model_callback`.
-*   How to use callbacks for logging and collecting metrics.
-*   The critical control flow pattern of returning `None` to allow execution vs. returning an object to override it.
+You have built an agent with a suite of safety guardrails. You have learned to:
+*   Implement an input guardrail with `before_model_callback`.
+*   Validate tool arguments with `before_tool_callback`.
+*   Filter sensitive information from responses with `after_model_callback`.
+*   Use the "return an object to override" control flow pattern.

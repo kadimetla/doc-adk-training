@@ -4,7 +4,7 @@
 
 ### Goal
 
-In this lab, you will build a comprehensive, production-grade observability system for an agent using the ADK's **Plugin System**. You will implement separate plugins for metrics collection, alerting, and performance profiling, demonstrating a powerful, modular approach to monitoring.
+In this lab, you will build a comprehensive observability system for an agent using the ADK's **Plugin System**. You will implement separate plugins for metrics collection, alerting, and performance profiling.
 
 ### Step 1: Create the Agent Project
 
@@ -21,55 +21,113 @@ In this lab, you will build a comprehensive, production-grade observability syst
 
 ### Step 2: Implement the Observability Plugins
 
-**Exercise:** Open `agent.py` and replace its contents with the full solution from the `lab-solution.md`.
+**Exercise:** Open `agent.py`. Skeletons for three plugins are provided. Your task is to implement the logic inside the `on_event_callback` method for each one, and then register them with the runner.
 
-Your task is to study this code and understand how the plugin-based architecture works:
+```python
+# In agent.py (Starter Code)
+import asyncio
+import time
+from typing import Dict, List, Optional, Any
+from dataclasses import dataclass, field
 
-1.  **`BasePlugin`:** Notice that all three plugins (`MetricsCollectorPlugin`, `AlertingPlugin`, `PerformanceProfilerPlugin`) inherit from `BasePlugin`.
+from google.adk.agents import Agent, InMemoryRunner
+from google.adk.plugins import BasePlugin
+from google.adk.events import Event
 
-2.  **`on_event_callback`:** This is the core method for every plugin. The ADK runner calls this method for every event, passing the `event` object to each registered plugin.
+# --- Data Classes (Provided for you) ---
+@dataclass
+class RequestMetrics:
+    request_id: str
+    start_time: float
+    end_time: Optional[float] = None
+    latency: Optional[float] = None
 
-3.  **`MetricsCollectorPlugin`:**
-    *   This plugin watches for `request_start` and `request_complete` events.
-    *   It uses these events to calculate latency and track aggregate metrics like total requests, success rate, and average latency.
+@dataclass
+class AggregateMetrics:
+    total_requests: int = 0
+    total_latency: float = 0.0
+    requests: List[RequestMetrics] = field(default_factory=list)
 
-4.  **`AlertingPlugin`:**
-    *   This plugin watches for `request_error` events.
-    *   It maintains a `consecutive_errors` counter and prints a `[CRITICAL ALERT]` if the count exceeds a threshold, simulating an alert that could be sent to an on-call engineer.
+# --- Custom Observability Plugins ---
 
-5.  **`PerformanceProfilerPlugin`:**
-    *   This plugin watches for `tool_call_start` and `tool_call_complete` events.
-    *   It uses the timestamps of these events to precisely measure the duration of each tool call, helping to identify performance bottlenecks.
+class MetricsCollectorPlugin(BasePlugin):
+    """A plugin to collect request/response metrics."""
+    def __init__(self, name: str = 'metrics_collector_plugin'):
+        super().__init__(name)
+        self.metrics = AggregateMetrics()
+        self.current_requests: Dict[str, RequestMetrics] = {}
 
-6.  **Registering Plugins:**
-    *   At the bottom of the file, in the `main` block, see how the plugins are instantiated and passed to the `InMemoryRunner` in a list: `plugins=[metrics_plugin, alerting_plugin, profiler_plugin]`.
+    async def on_event_callback(self, *, event: Event, **kwargs):
+        # TODO: 1. Check if event.event_type is 'request_start'.
+        # If so, create a RequestMetrics object and store it in `self.current_requests`
+        # using the event.invocation_id as the key.
+        
+        # TODO: 2. Check if event.event_type is 'request_complete'.
+        # If so, retrieve the metric, calculate latency, update aggregate metrics,
+        # and print a confirmation.
+        pass
+
+class AlertingPlugin(BasePlugin):
+    """A plugin for alerting on anomalies."""
+    def __init__(self, name: str = 'alerting_plugin', error_threshold: int = 3):
+        super().__init__(name)
+        self.error_threshold = error_threshold
+        self.consecutive_errors = 0
+
+    async def on_event_callback(self, *, event: Event, **kwargs):
+        # TODO: 3. Check for 'request_complete' and 'request_error' event types.
+        # - On success, reset `self.consecutive_errors` to 0.
+        # - On error, increment the counter.
+        # - If the counter reaches the threshold, print a CRITICAL ALERT.
+        pass
+
+class PerformanceProfilerPlugin(BasePlugin):
+    """A plugin for performance profiling of tool calls."""
+    def __init__(self, name: str = 'performance_profiler_plugin'):
+        super().__init__(name)
+        self.current_profile: Optional[Dict] = None
+
+    async def on_event_callback(self, *, event: Event, **kwargs):
+        # TODO: 4. Check for 'tool_call_start' and 'tool_call_complete'.
+        # - On start, record the tool name and start time.
+        # - On complete, calculate and print the duration.
+        pass
+
+# --- Agent Definition (Provided for you) ---
+root_agent = Agent(
+    model='gemini-1.5-flash',
+    name='observability_agent',
+    instruction="You are a helpful assistant.",
+)
+
+# --- Main Execution Block ---
+def main():
+    """Demonstrates how to register plugins with the runner."""
+    # TODO: 5. Instantiate your three plugins.
+    
+    # TODO: 6. Create an InMemoryRunner and pass your plugins
+    # to its `plugins` list.
+    
+    print("Runner with observability plugins is configured.")
+    print("Run `adk web` and interact with the agent to see plugin output in the console.")
+
+if __name__ == "__main__":
+    main()
+```
 
 ### Step 3: Run and Test the Plugin System
 
-1.  **Set up your `.env` file** with your API key or Vertex AI project.
+1.  **Set up your `.env` file** and run `adk web`.
+2.  **Interact with the Agent and Observe the Console:**
+    *   Open the Dev UI and send a few prompts.
+    *   Check the console where `adk web` is running. You should see the `[METRICS]`, `[ALERT]`, and `[PROFILER]` logs from your plugins.
 
-2.  **Run the agent with the Dev UI:**
-    The solution file is designed to be run with the web UI, and the plugins will print their output to the console where `adk web` is running.
-
-    ```shell
-    adk web
-    ```
-
-3.  **Interact with the Agent and Observe the Console:**
-    *   Open the Dev UI (`http://localhost:8080`).
-    *   Send a few successful prompts to the agent, such as "Hello, how are you?"
-    *   **Check the console where `adk web` is running.** You will see the output from your plugins:
-        *   `[METRICS]` logs showing the start and completion of requests.
-        *   `[PROFILER]` logs showing the start and completion of any tool calls the agent makes.
-    *   Now, trigger an error (e.g., by asking it to use a tool with invalid arguments if you have one, or by simulating an error). You will see the `[ALERT]` log from the `AlertingPlugin`.
+### Having Trouble?
+If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
 ### Lab Summary
-
-You have successfully built a modular, enterprise-grade observability system using the ADK's Plugin System. This separates your monitoring logic from your agent's business logic, making both easier to maintain and scale.
-
-You have learned to:
+You have successfully built a modular observability system using the ADK's Plugin System. You have learned to:
 *   Create custom plugins by inheriting from `BasePlugin`.
 *   Implement the `on_event_callback` method to intercept and process agent events.
-*   Filter events based on their `event_type` to implement specific logic (metrics, alerts, etc.).
+*   Filter events based on their `event_type` to implement specific logic.
 *   Register plugins with the `InMemoryRunner`.
-*   Observe the output of multiple, independent plugins running as part of the agent's execution lifecycle.

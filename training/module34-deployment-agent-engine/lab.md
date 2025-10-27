@@ -1,6 +1,6 @@
-# Module 28: Deploying to Agent Engine
+# Module 34: Deploying to Agent Engine
 
-## Lab 28: Deploying the Calculator Agent
+## Lab 34: Deploying the Calculator Agent
 
 ### Goal
 
@@ -38,7 +38,7 @@ In this lab, you will take the `calculator-agent` and deploy it to a live, scala
 
 2.  **Copy the Calculator Agent project:**
     ```shell
-    cp -r module07-custom-function-tools/calculator-agent/ deploy-calculator/
+    cp -r module08-intro-custom-function-tools/calculator-agent/ deploy-calculator/
     cd deploy-calculator/
     ```
 
@@ -69,7 +69,7 @@ In this lab, you will take the `calculator-agent` and deploy it to a live, scala
 2.  **Add the deployment code to `deployment/deploy.py`:**
     This script will handle packaging and deploying your agent.
 
-    **Exercise:** Fill in the `PROJECT_ID`, `LOCATION`, and `STAGING_BUCKET` variables with your own Google Cloud project details.
+    **Action:** Configure your project details by filling in the `PROJECT_ID`, `LOCATION`, and `STAGING_BUCKET` variables with your own Google Cloud project values.
 
     ```python
     import vertexai
@@ -129,7 +129,7 @@ In this lab, you will take the `calculator-agent` and deploy it to a live, scala
 2.  **Add the following code to `interact.py`:**
     This script shows how to connect to the deployed agent and send it a query.
 
-    **Exercise:** Replace `YOUR_AGENT_ENGINE_ID` with the ID from the deployment output or the Cloud Console.
+    **Action:** Configure the connection by replacing `YOUR_AGENT_ENGINE_ID` with the ID from the deployment output or the Cloud Console.
 
     ```python
     import asyncio

@@ -1,6 +1,6 @@
-# Module 34: Agent-to-Agent Communication
+# Module 35: Agent-to-Agent Communication
 
-## Lab 34: Solution
+## Lab 35: Solution
 
 This file contains the complete code for the two separate agent projects in the lab: the `research-specialist` (server) and the `a2a-orchestrator` (client).
 

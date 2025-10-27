@@ -1,4 +1,4 @@
-# Module 34: Agent-to-Agent Communication
+# Module 35: Agent-to-Agent Communication
 
 ## Theory
 

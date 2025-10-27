@@ -1,4 +1,4 @@
-# Module 18: Iterative Refinement with Loop Agents
+# Module 19: Iterative Refinement with Loop Agents
 
 ## Theory
 
@@ -17,7 +17,7 @@ The `LoopAgent` is a workflow agent that executes its `sub_agents` sequentially,
 
 **Key Concepts:**
 *   **Execution:** In each iteration, sub-agents run in order, just like in a `SequentialAgent`.
-*   **Shared State:** The `LoopAgent` passes the same session state to its sub-agents on every iteration. This is crucial, as it allows agents to read the output of the previous iteration and write a refined result back to the same state key.
+*   **Shared State:** The `LoopAgent` passes the same session state to its `sub_agents` on every iteration. This is crucial, as it allows agents to read the output of the previous iteration and write a refined result back to the same state key.
 
 ### The Critic -> Refiner Pattern
 

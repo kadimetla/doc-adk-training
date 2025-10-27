@@ -1,4 +1,4 @@
-# Module 19: Deployment to Google Kubernetes Engine (GKE)
+# Module 26: Deployment to Google Kubernetes Engine (GKE)
 
 ## Theory
 

@@ -1,4 +1,4 @@
-# Module 15: Sequential Workflows - Building Agent Pipelines
+# Module 16: Sequential Workflows - Building Agent Pipelines
 
 ## Theory
 
