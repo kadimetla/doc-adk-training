@@ -37,10 +37,10 @@ The ADK is built on a philosophy of **modularity, flexibility, and scalability**
 
 *   **Agent:** The fundamental worker unit. An agent can be powered by an LLM for reasoning (`LlmAgent`) or be a deterministic controller for a workflow (`SequentialAgent`, `ParallelAgent`, `LoopAgent`).
 *   **Tool:** An interface that gives an agent a specific capability, such as searching the web, accessing a database, or calling a custom function.
-*   **Session & State:** Manages the short-term memory and context of a single conversation.
-*   **Memory:** Enables an agent to recall information about a user across multiple conversations, providing long-term context.
-*   **Runner:** The engine that orchestrates the entire execution flow, managing the interaction between the user, the agent, and its tools.
-*   **Evaluation:** A built-in framework for systematically testing and measuring your agent's performance to ensure quality and reliability.
-*   **Deployment:** Tools to easily package and deploy your agent to scalable environments like Google Cloud Run and GKE.
+*   **Session & State:** Manages the short-term memory and context of a single conversation, ensuring the agent can handle multi-turn dialogues effectively.
+*   **Memory:** Enables an agent to recall information about a user across multiple conversations, providing the long-term context needed for personalized interactions.
+*   **Runner:** The engine that orchestrates the entire execution flow, managing the interaction between the user, the agent, and its tools. This simplifies development by abstracting away the complexities of the agent's execution lifecycle.
+*   **Evaluation:** A built-in framework for systematically testing and measuring your agent's performance to ensure quality and reliability before deployment.
+*   **Deployment:** Tools to easily package and deploy your agent to scalable environments like Google Cloud Run and GKE, bridging the gap from development to production.
 
 In this course, you will learn how to master these concepts to build powerful and intelligent AI agents.

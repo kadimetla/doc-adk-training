@@ -26,6 +26,9 @@ The ADK is an open-source project with repositories on GitHub. These repositorie
 3.  **Find a Simple Example:** Navigate into `examples/python/` and look for a simple agent, such as the `01-hello-world` or `02-tools-and-functions` example.
 4.  **Examine the Code:** Click on the Python files (e.g., `agent.py` or `main.py`). Read through the code and the comments. Try to connect what you see in the code with the concepts you skimmed in the documentation (e.g., creating an `LlmAgent`, defining a `tool`).
 
+***Scavenger Hunt!***
+> Find the `01-hello-world` example and identify the name of the main function used to run the agent.
+
 **Key Takeaway:** The official examples are the best place to find working code that you can learn from and adapt for your own projects.
 
 ### Step 3: Understand the Community and Support Channels
