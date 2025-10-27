@@ -1,6 +1,6 @@
-# Module 19: State and Memory - Building a Personal Tutor Agent
+# Module 20: State and Memory - Building a Personal Tutor Agent
 
-## Lab 19: Solution
+## Lab 20: Solution
 
 This file contains the complete code for the `agent.py` script in the Personal Learning Tutor lab.
 
@@ -199,7 +199,7 @@ def search_past_lessons(
 
 root_agent = Agent(
     name="personal_tutor",
-    model="gemini-2.5-flash",
+    model="gemini-1.5-flash",
     description="Personal learning tutor that tracks your progress, preferences, and learning history.",
     instruction="""
     You are a personalized learning tutor (Course Version {app:course_version?}) with memory of the user's progress.
@@ -230,4 +230,3 @@ root_agent = Agent(
     ],
     output_key="last_tutor_response"
 )
-```

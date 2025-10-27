@@ -1,6 +1,6 @@
-# Module 19: State and Memory - Building a Personal Tutor Agent
+# Module 20: State and Memory - Building a Personal Tutor Agent
 
-## Lab 19: Building a Personal Learning Tutor
+## Lab 20: Building a Personal Learning Tutor
 
 ### Goal
 
@@ -28,58 +28,90 @@ You will build a tutor that:
     cd personal-tutor
     ```
 
-### Step 2: Implement the Agent and Tools
+### Step 2: Implement the State-Management Tools
 
-**Exercise:** Open `agent.py` and replace its contents with the full solution from the `lab-solution.md`.
+**Exercise:** Open `agent.py`. You will find a skeleton script. Your task is to complete the tool functions by using the correct state prefixes (`user:`, `temp:`, or no prefix) based on the requirements in the docstrings.
 
-Your task is to study this code and understand how the different state scopes are used:
+```python
+# agent.py (Starter Code)
 
-1.  **`set_user_preferences` tool:** Notice how it writes to `tool_context.state['user:language']` and `tool_context.state['user:difficulty_level']`. This data will persist across sessions for the same user.
+from google.adk.agents import Agent
+from google.adk.tools.tool_context import ToolContext
+from typing import Dict, Any
 
-2.  **`start_learning_session` tool:** This tool writes to `tool_context.state['current_topic']` (no prefix), making it available only for the current conversation.
+# ============================================================================
+# TOOLS: State Management & Memory Operations
+# ============================================================================
 
-3.  **`calculate_quiz_grade` tool:** This tool uses `tool_context.state['temp:raw_score']` for an intermediate calculation. This data will be discarded immediately after the current turn is complete.
+def set_user_preferences(
+    language: str,
+    difficulty_level: str,
+    tool_context: ToolContext
+) -> Dict[str, Any]:
+    """
+    Set user learning preferences that should be stored persistently
+    across all sessions for the current user.
+    """
+    # TODO: Store the language and difficulty_level in the tool_context.state.
+    # Use the correct prefix for data that should persist for the user.
+    print(f"TODO: Set user preferences: {language}, {difficulty_level}")
+    return {'status': 'success', 'message': 'Preferences saved!'}
 
-4.  **`get_user_progress` tool:** This tool reads from multiple `user:` prefixed keys to give a summary of the user's history.
 
-5.  **`search_past_lessons` tool:** This simulates a memory search by reading from the persistent `user:topics_covered` state.
+def start_learning_session(
+    topic: str,
+    tool_context: ToolContext
+) -> Dict[str, Any]:
+    """
+    Start a new learning session. The current topic should only be
+    remembered for the duration of the current conversation session.
+    """
+    # TODO: Store the topic in the tool_context.state.
+    # Use the correct prefix for data that should only last for one session.
+    print(f"TODO: Start session on topic: {topic}")
+    return {'status': 'success', 'message': f'Started learning session: {topic}'}
 
-6.  **Agent `instruction`:** Notice how the prompt reads the `app:course_version` to announce which version of the course it is running.
+
+def calculate_quiz_grade(
+    correct_answers: int,
+    total_questions: int,
+    tool_context: ToolContext
+) -> Dict[str, Any]:
+    """
+    Calculate a quiz grade. The raw percentage should be stored, but only
+    for the current turn. It should be discarded immediately after this
+    tool finishes.
+    """
+    percentage = (correct_answers / total_questions) * 100
+    # TODO: Store the 'percentage' in the tool_context.state.
+    # Use the correct prefix for data that is temporary for one turn.
+    print(f"TODO: Calculate quiz grade. Percentage: {percentage}")
+    return {'status': 'success', 'percentage': round(percentage, 1)}
+
+
+# (Other tools like record_topic_completion, get_user_progress, etc. would also be completed here)
+
+# ============================================================================
+# AGENT DEFINITION
+# ============================================================================
+
+# TODO: Define the root_agent, including the tools you have just implemented.
+# Make sure the agent's instruction can read an `app:course_version` from the state.
+
+```
 
 ### Step 3: Run and Test the State Scopes
 
 1.  **Set up your API key** in the `.env` file.
-
-2.  **Start the Dev UI:**
-    ```shell
-    cd ..
-    adk web
-    ```
-
+2.  **Start the Dev UI:** `adk web`
 3.  **Interact with the agent:**
-    *   Open `http://localhost:8080` and select "personal_tutor".
-    *   Go to the **State** tab. Set the global app state by entering the following and clicking "Set State":
-        ```json
-        {"app:course_version": "2.1"}
-        ```
-    *   Go back to the **Chat** tab and follow this script:
+    *   Go to the **State** tab. Set the global app state by entering `{"app:course_version": "2.1"}` and clicking "Set State".
+    *   Go back to the **Chat** tab and test your agent. Ask it to set your preferences, start a lesson, and check your progress.
+    *   Start a new session (refresh the page) and verify that your preferences were remembered but the current lesson topic was forgotten.
 
-    **Session 1: Set Preferences and Learn**
-    *   **User:** "Hi! Set my language to French and my difficulty to 'intermediate'."
-        *   _(Agent calls `set_user_preferences` tool)_
-    *   **User:** "I want to learn about Python decorators."
-        *   _(Agent calls `start_learning_session` and explains the topic)_
-    *   **User:** "Okay, I'm ready for the quiz. I got 9 out of 10."
-        *   _(Agent calls `calculate_quiz_grade` and then `record_topic_completion`)_
-    *   **Observe:** Go to the **State** tab. You will see `user:`, session (`current_topic`), and `temp:` state all populated.
+### Having Trouble?
 
-    **Session 2: Verify Persistence**
-    *   **Refresh the browser page** to start a new session.
-    *   **Observe:** Go to the **State** tab. The session and `temp:` state are gone, but the `user:` state remains.
-    *   **User:** "What's my progress so far?"
-        *   _(Agent calls `get_user_progress` and correctly reports your completed topic and score from the previous session)_
-    *   **User:** "Remind me what we covered about decorators."
-        *   _(Agent calls `search_past_lessons` and finds the "Python decorators" topic from your user history)_
+If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
 ### Lab Summary
 

@@ -1,4 +1,4 @@
-# Module 10: Introduction to Multi-Agent Systems
+# Module 14: Introduction to Multi-Agent Systems
 
 ## Theory
 

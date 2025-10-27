@@ -1,4 +1,4 @@
-# Module 21: Running an Agent Programmatically
+# Module 6: Running an Agent Programmatically
 
 ## Theory
 

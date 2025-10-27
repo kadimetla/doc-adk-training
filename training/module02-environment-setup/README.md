@@ -15,7 +15,7 @@ A virtual environment is an isolated directory that contains a specific version 
 **Key Benefits:**
 
 *   **Dependency Isolation:** You can install the exact versions of libraries your project needs (like `google-adk`) without affecting any other project. If Project A needs version 1.0 of a library and Project B needs version 2.0, a virtual environment prevents them from clashing.
-*   **Reproducibility:** You can easily generate a `requirements.txt` file that lists all the packages and their exact versions used in your project. Anyone else can then create an identical environment by installing the packages from that file.
+*   **Reproducibility:** You can easily generate a `requirements.txt` file that lists all the packages and their exact versions using the command `pip freeze > requirements.txt`. Anyone else can then create an identical environment by installing the packages from that file.
 *   **System Cleanliness:** It keeps your global Python installation clean and free from project-specific packages, which helps prevent system-wide issues.
 
 In this course, we will be using `venv`, the standard virtual environment tool that comes built-in with Python 3.

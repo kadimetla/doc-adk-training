@@ -1,6 +1,6 @@
-# Module 21: Running an Agent Programmatically
+# Module 6: Running an Agent Programmatically
 
-## Lab 21: Solution
+## Lab 6: Solution
 
 This file contains the complete code for the `agent.py` script used in the lab.
 

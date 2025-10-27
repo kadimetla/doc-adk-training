@@ -1,4 +1,4 @@
-# Module 7: Creating Custom Function Tools
+# Module 8: Creating Custom Function Tools
 
 ## Theory
 

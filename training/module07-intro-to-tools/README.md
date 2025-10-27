@@ -1,4 +1,4 @@
-# Module 6: Introduction to Tools
+# Module 7: Introduction to Tools
 
 ## Theory
 
