@@ -4,24 +4,19 @@
 
 ### Goal
 
-In this lab, you will build a very simple, standalone HTML file with JavaScript that acts as a custom chat client for an ADK agent. This will demonstrate the fundamental principles of connecting a UI to the ADK's native API server without relying on any front-end frameworks.
+In this lab, you will build a simple, standalone HTML file with JavaScript that acts as a custom chat client for an ADK agent, demonstrating how to connect a UI to the ADK's native API server.
 
 ### Step 1: Create the Agent Project
 
-1.  **Create the agent project:**
+1.  **Create and navigate to the agent project:**
     ```shell
     adk create ui-agent
-    ```
-    When prompted, choose the **Programmatic (Python script)** option.
-
-2.  **Navigate into the new directory:**
-    ```shell
     cd ui-agent
     ```
+    Choose the **Programmatic (Python script)** option.
 
-3.  **Implement the agent:**
-    Open `agent.py` and replace its contents with a simple conversational agent.
-
+2.  **Implement the agent:**
+    Open `agent.py` and replace its contents with this simple agent:
     ```python
     from google.adk.agents import Agent
 
@@ -32,56 +27,105 @@ In this lab, you will build a very simple, standalone HTML file with JavaScript 
     )
     ```
 
-4.  **Set up your `.env` file** with your API key or Vertex AI project.
+3.  **Set up your `.env` file.**
 
 ### Step 2: Create the Custom HTML/JavaScript Client
 
-1.  **Create an `index.html` file** in the `ui-agent` directory.
+**Exercise:** Create an `index.html` file. A skeleton is provided below. Your task is to complete the JavaScript logic inside the `submit` event listener to handle the streaming chat.
 
-2.  **Add the client code:**
-    **Exercise:** Open `index.html` and paste in the full client code from the `lab-solution.md`.
+```html
+<!-- In index.html (Starter Code) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADK Custom UI</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; margin: 0; }
+        #chat-container { flex: 1; overflow-y: auto; padding: 20px; }
+        .message { margin-bottom: 15px; padding: 10px; border-radius: 10px; max-width: 80%; }
+        .user { background-color: #dcf8c6; align-self: flex-end; }
+        .assistant { background-color: #f1f0f0; align-self: flex-start; }
+        #input-form { display: flex; padding: 20px; border-top: 1px solid #ccc; }
+        input { flex: 1; padding: 10px; border-radius: 5px; }
+        button { padding: 10px 20px; margin-left: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div id="chat-container"></div>
+    <form id="input-form">
+        <input type="text" id="message-input" placeholder="Type your message..." autocomplete="off">
+        <button type="submit">Send</button>
+    </form>
 
-    **Key things to study in the JavaScript:**
-    *   **`sendMessage` function:** This is the core of the client.
-    *   **`fetch` call:** It makes a `POST` request to the `/run_sse` endpoint that `adk api_server` provides. This is the native ADK streaming endpoint.
-    *   **Streaming Response:** It uses the `ReadableStream` API to process the response chunk by chunk as it arrives from the server.
-    *   **DOM Manipulation:** It dynamically creates new `div` elements to display the user's message and the agent's streaming response.
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const inputForm = document.getElementById('input-form');
+        const messageInput = document.getElementById('message-input');
+        const sessionId = `session-${Date.now()}`;
+
+        inputForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const query = messageInput.value.trim();
+            if (!query) return;
+            addMessage(query, 'user');
+            messageInput.value = '';
+            const assistantMessageDiv = addMessage('...', 'assistant');
+            
+            try {
+                // TODO: 1. Use the `fetch` API to make a POST request to the
+                // ADK's `/run_sse` endpoint (http://localhost:8080/run_sse).
+                // - Set the method, headers, and construct the JSON body with the
+                //   app_name, session_id, and the user's query.
+                const response = await fetch('http://localhost:8080/run_sse', {
+                    // Your fetch options here
+                });
+
+                // TODO: 2. Get the `reader` from the response body to process the stream.
+                const reader = null; // Replace null
+                const decoder = new TextDecoder();
+                let fullResponse = '';
+
+                // TODO: 3. Write a `while (true)` loop to read chunks from the stream.
+                // - Inside the loop, get the `value` and `done` from `reader.read()`.
+                // - If `done`, break the loop.
+                // - Decode the chunk, split it by newlines, and parse the SSE `data:` lines.
+                // - Extract the `text` from the event data and append it to the UI.
+                
+            } catch (error) {
+                assistantMessageDiv.textContent = 'Error: Could not connect to the agent.';
+                console.error('Error:', error);
+            }
+        });
+
+        function addMessage(text, role) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', role);
+            messageDiv.textContent = text;
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            return messageDiv;
+        }
+    </script>
+</body>
+</html>
+```
 
 ### Step 3: Run the Full-Stack Application
 
-This requires two separate terminals.
-
-1.  **Terminal 1: Start the ADK Agent Server**
-    *   Navigate to the `ui-agent` directory.
-    *   Run the `adk api_server`. This starts the agent as a headless backend service.
-
-    ```shell
-    adk api_server
-    ```
-
-2.  **Terminal 2: Start a Web Server for the Client**
-    *   Navigate to the same `ui-agent` directory.
-    *   Use Python's built-in web server to serve the `index.html` file.
-
-    ```shell
-    python3 -m http.server 8081
-    ```
+1.  **Terminal 1 (Agent Server):** In the `ui-agent` directory, run `adk api_server`.
+2.  **Terminal 2 (Client Server):** In the same directory, run `python3 -m http.server 8081`.
 
 ### Step 4: Test Your Custom UI
 
-1.  **Open the Client:**
-    In your web browser, navigate to `http://localhost:8081`. You should see your custom chat interface.
+1.  **Open the Client:** In your browser, navigate to `http://localhost:8081`.
+2.  **Chat with the Agent:** Send a message and watch the agent's response stream in.
 
-2.  **Chat with the Agent:**
-    *   Type a message, like "Hello, what is the Google ADK?" and click "Send".
-    *   You should see your message appear, followed by the agent's response streaming in token by token.
+### Having Trouble?
+If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
 ### Lab Summary
-
-You have successfully built a full-stack agent application with a custom front-end!
-
-You have learned:
+You have successfully built a full-stack agent application with a custom front-end. You have learned:
 *   How to run an ADK agent as a backend service using `adk api_server`.
 *   How to connect a custom JavaScript client to the ADK's native `/run_sse` streaming endpoint.
 *   The basic principles of handling streaming responses in a web UI.
-*   How to create a complete, interactive experience for your agent, independent of the ADK Dev UI.

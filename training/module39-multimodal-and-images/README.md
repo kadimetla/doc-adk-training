@@ -1,4 +1,4 @@
-# Module 35: Multimodal and Image Processing
+# Module 39: Multimodal and Image Processing
 
 ## Theory
 

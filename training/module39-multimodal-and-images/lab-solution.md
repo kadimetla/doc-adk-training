@@ -1,6 +1,6 @@
-# Module 35: Multimodal and Image Processing
+# Module 39: Multimodal and Image Processing
 
-## Lab 35: Solution
+## Lab 39: Solution
 
 This file contains the complete code for the `agent.py` script in the Visual Product Catalog Analyzer lab.
 

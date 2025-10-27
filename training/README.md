@@ -1,94 +1,78 @@
-# Google ADK Developer Training Course (Comprehensive)
+# Google ADK Developer Training Course
 
-This training course provides a comprehensive, 20-module introduction to the Google Agent Development Kit (ADK). Through a series of modules, you will learn the core and advanced concepts of the ADK and gain extensive hands-on experience by building, testing, deploying, and observing your own AI agents.
+This repository contains a comprehensive, multi-module training course for the Google Agent Development Kit (ADK). Through a series of hands-on modules, you will learn the core and advanced concepts of the ADK to build, test, deploy, and observe your own AI agents.
 
 ## Course Structure
 
-The course is divided into five parts, each containing several modules. Each module includes a theory section and a hands-on lab to reinforce the concepts.
+The course is divided into several parts, each containing a set of modules. Each module includes a theory section (`README.md`) and a hands-on lab (`lab.md` and `lab-solution.md`) to reinforce the concepts.
 
 ---
 
-### Part 1: Foundations (Modules 1-5)
-
-This part covers the absolute basics of AI agents and the ADK, getting your environment set up and guiding you through building and running your first agent.
+### Part 1: Foundations (Modules 1-6)
+This part covers the absolute basics of AI agents and the ADK, getting your environment set up and guiding you through building and running your first agents.
 
 *   **Module 1: Introduction to AI Agents & Google ADK**
-    *   [Theory](./module01-intro-to-ai-agents/theory.md) | [Lab](./module01-intro-to-ai-agents/lab.md)
 *   **Module 2: Setting Up Your Development Environment**
-    *   [Theory](./module02-environment-setup/theory.md) | [Lab](./module02-environment-setup/lab.md)
 *   **Module 3: Your First Agent: The "Echo" Agent**
-    *   [Theory](./module03-first-agent-echo/theory.md) | [Lab](./module03-first-agent-echo/lab.md)
 *   **Module 4: Core Agent Concepts: `LlmAgent` Deep Dive**
-    *   [Theory](./module04-llmagent-deep-dive/theory.md) | [Lab](./module04-llmagent-deep-dive/lab.md)
 *   **Module 5: Running and Interacting with Agents**
-    *   [Theory](./module05-running-agents/theory.md) | [Lab](./module05-running-agents/lab.md)
+*   **Module 6: Running an Agent Programmatically**
 
-### Part 2: Building Blocks - Tools (Modules 6-9)
+### Part 2: Tools & Capabilities (Modules 7-13 & 39)
+This part focuses on giving your agents "superpowers" by connecting them to tools and enabling advanced capabilities like vision.
 
-This part focuses on giving your agents "superpowers" by connecting them to tools, from built-in capabilities to custom functions and third-party libraries.
+*   **Module 7: Introduction to Tools**
+*   **Module 8: Intro to Custom Function Tools**
+*   **Module 9: Advanced Function Tools**
+*   **Module 10: OpenAPI Tools**
+*   **Module 11: Built-in Tools and Grounding**
+*   **Module 12: Tool Context**
+*   **Module 13: Third-Party Tools**
+*   **Module 39: Multimodal and Images**
 
-*   **Module 6: Introduction to Tools**
-    *   [Theory](./module06-intro-to-tools/theory.md) | [Lab](./module06-intro-to-tools/lab.md)
-*   **Module 7: Creating Custom Function Tools**
-    *   [Theory](./module07-custom-function-tools/theory.md) | [Lab](./module07-custom-function-tools/lab.md)
-*   **Module 8: Advanced Tool Concepts: Tool Context**
-    *   [Theory](./module08-tool-context/theory.md) | [Lab](./module08-tool-context/lab.md)
-*   **Module 9: Integrating Third-Party Tools**
-    *   [Theory](./module09-third-party-tools/theory.md) | [Lab](./module09-third-party-tools/lab.md)
+### Part 3: Multi-Agent Systems (Modules 14-19 & 35)
+Learn how to go beyond single agents and build complex systems where multiple agents collaborate to solve complex problems, both locally and in a distributed fashion.
 
-### Part 3: Multi-Agent Systems (Modules 10-13)
+*   **Module 14: Introduction to Multi-Agent Systems**
+*   **Module 15: Coordinator Agent**
+*   **Module 16: Sequential Workflow Agents**
+*   **Module 17: Parallel Workflow Agents**
+*   **Module 18: Advanced Multi-Agent Architectures**
+*   **Module 19: Loop Agents**
+*   **Module 35: Agent-to-Agent Communication**
 
-Learn how to go beyond single agents and build complex systems where multiple agents collaborate and are orchestrated to solve complex problems.
+### Part 4: Production Readiness (Modules 20, 21, 23, 27, 28)
+This part covers the essential features for making your agents robust, observable, and reliable in a production environment.
 
-*   **Module 10: Introduction to Multi-Agent Systems**
-    *   [Theory](./module10-intro-to-multi-agent-systems/theory.md) | [Lab](./module10-intro-to-multi-agent-systems/lab.md)
-*   **Module 11: Building a Coordinator/Dispatcher Agent**
-    *   [Theory](./module11-coordinator-agent/theory.md) | [Lab](./module11-coordinator-agent/lab.md)
-*   **Module 12: Orchestration with Workflow Agents: Sequential & Parallel**
-    *   [Theory](./module12-sequential-parallel-workflow-agents/theory.md) | [Lab](./module12-sequential-parallel-workflow-agents/lab.md)
-*   **Module 13: Advanced Orchestration: Loop Agents**
-    *   [Theory](./module13-loop-agents/theory.md) | [Lab](./module13-loop-agents/lab.md)
+*   **Module 20: State and Memory**
+*   **Module 21: Artifacts**
+*   **Module 23: Evaluation**
+*   **Module 27: Observability**
+*   **Module 28: Callbacks**
 
-### Part 4: Advanced Capabilities (Modules 14-17)
+### Part 5: Advanced Integrations & UI (Modules 29, 30, 32, 38)
+This section covers advanced tooling with the Model Context Protocol (MCP) and strategies for integrating your agents with user interfaces.
 
-This part dives into the advanced features of the ADK, covering memory, file handling, real-time streaming, and agent evaluation.
+*   **Module 29: Introduction to MCP**
+*   **Module 30: Building MCP Tools**
+*   **Module 38: UI Integration Intro**
+*   **Module 32: Custom Streaming Client**
 
-*   **Module 14: Managing Conversation State and Memory**
-    *   [Theory](./module14-state-and-memory/theory.md) | [Lab](./module14-state-and-memory/lab.md)
-*   **Module 15: Handling Files with Artifacts**
-    *   [Theory](./module15-artifacts/theory.md) | [Lab](./module15-artifacts/lab.md)
-*   **Module 16: Real-time Interaction with Streaming**
-    *   [Theory](./module16-streaming/theory.md) | [Lab](./module16-streaming/lab.md)
-*   **Module 17: Evaluating Agent Performance**
-    *   [Theory](./module17-evaluation/theory.md) | [Lab](./module17-evaluation/lab.md)
-*   **Module 26: Building a Custom Streaming Client**
-    *   [Theory](./module26-custom-streaming-client/theory.md) | [Lab](./module26-custom-streaming-client/lab.md)
+### Part 6: Deployment & Enterprise (Modules 24, 25, 26, 31, 34, 37)
+Learn how to deploy your agents and their components to various scalable cloud environments, including enterprise-grade platforms.
 
-### Part 5: Production & Deployment (Modules 18-20)
+*   **Module 24: Production Deployment Strategies**
+*   **Module 25: Deployment to Cloud Run**
+*   **Module 26: Deployment to GKE**
+*   **Module 31: Deploying an MCP Server to Cloud Run**
+*   **Module 34: Deployment to Agent Engine**
+*   **Module 37: Gemini Enterprise**
 
-The final part of the course covers everything you need to know to take your agent from a local project to a production-ready, observable service in the cloud.
+### Part 7: Capstone Project & Best Practices (Modules 33, 36)
+Apply everything you've learned in a final capstone project and review the essential best practices for building production-ready agents.
 
-*   **Module 18: Deployment to Cloud Run**
-    *   [Theory](./module18-deployment-cloud-run/theory.md) | [Lab](./module18-deployment-cloud-run/lab.md)
-*   **Module 19: Deployment to Google Kubernetes Engine (GKE)**
-    *   [Theory](./module19-deployment-gke/theory.md) | [Lab](./module19-deployment-gke/lab.md)
-*   **Module 20: Observability: Logging and Cloud Trace**
-    *   [Theory](./module20-observability/theory.md) | [Lab](./module20-observability/lab.md)
-*   **Module 21: Programmatic Execution**
-    *   [Theory](./module21-programmatic-execution/theory.md) | [Lab](./module21-programmatic-execution/lab.md)
-*   **Module 22: Intercepting Execution with Callbacks**
-    *   [Theory](./module22-callbacks/theory.md) | [Lab](./module22-callbacks/lab.md)
-
-### Part 6: Advanced Tooling with MCP (Modules 23-24)
-
-This part covers the Model Context Protocol, an open standard for creating complex, stateful, and multi-turn tools.
-
-*   **Module 23: Introduction to MCP & Stateful Tools**
-    *   [Theory](./module23-intro-to-mcp/theory.md) | [Lab](./module23-intro-to-mcp/lab.md)
-*   **Module 24: Building a Custom MCP Tool**
-    *   [Theory](./module24-building-mcp-tools/theory.md) | [Lab](./module24-building-mcp-tools/lab.md)
-*   **Module 25: Deploying an MCP Server to Cloud Run**
-    *   [Theory](./module25-deploying-mcp-server-cloud-run/theory.md) | [Lab](./module25-deploying-mcp-server-cloud-run/lab.md)
+*   **Module 33: Advanced Personalized Shopping Agent**
+*   **Module 36: Best Practices**
 
 ---
 

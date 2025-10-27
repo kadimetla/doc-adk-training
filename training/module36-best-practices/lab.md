@@ -4,7 +4,7 @@
 
 ### Goal
 
-In this lab, you will build a **Best Practices Agent** that demonstrates several production-ready patterns, including input validation, error handling with retries, and caching. This will provide a tangible example of how to apply the concepts from the theory section.
+In this lab, you will build a **Best Practices Agent** that demonstrates several production-ready patterns, including input validation, error handling with retries, and caching.
 
 ### Step 1: Create the Agent Project
 
@@ -21,54 +21,98 @@ In this lab, you will build a **Best Practices Agent** that demonstrates several
 
 ### Step 2: Implement the Production-Ready Tools
 
-**Exercise:** Open `agent.py` and replace its contents with the full solution from the `lab-solution.md`.
+**Exercise:** Open `agent.py`. Skeletons for three tools are provided. Your task is to apply the best practices of validation, resilience, and caching using the `# TODO` comments as a guide.
 
-Your task is to study this code and identify the best practices that have been implemented in its tools:
+```python
+# In agent.py (Starter Code)
+import time
+import random
+import functools
+from pydantic import BaseModel, Field, constr
+from retry import retry
 
-1.  **`validate_input_tool`:**
-    *   **Input Validation:** Notice how it uses a `Pydantic` model (`ValidatedInput`) to automatically validate the `user_id` (with a regex) and `query` (with a max length). This prevents invalid data from ever reaching your core logic.
+from google.adk.agents import Agent
+from google.adk.tools import FunctionTool
 
-2.  **`retry_with_backoff_tool`:**
-    *   **Resilience:** This tool simulates calling an external API that might fail. It is decorated with a `@retry` decorator that will automatically retry the function with exponential backoff (waiting 1s, then 2s, then 4s) if it fails.
+# --- 1. Input Validation with Pydantic ---
 
-3.  **`cache_operation_tool`:**
-    *   **Performance:** This tool simulates a slow database query. It is decorated with `@functools.lru_cache(maxsize=128)`. This tells Python to automatically cache the results. If you call the tool with the same `item_id` again, the result will be returned instantly from the cache instead of running the slow query again.
+class ValidatedInput(BaseModel):
+    """A Pydantic model to validate inputs for a tool."""
+    user_id: constr(regex=r'^[a-zA-Z0-9_-]{3,50}$')
+    query: str = Field(..., max_length=1000)
+
+# TODO: 1. Implement this tool. Inside a try/except block, attempt to
+# instantiate the `ValidatedInput` model with the provided `user_id` and `query`.
+# Return a success dictionary if it validates, or an error dictionary if it fails.
+def validate_input_tool(user_id: str, query: str) -> dict:
+    """Validates user_id and query using a Pydantic model."""
+    pass
+
+# --- 2. Resilience with Retries and Exponential Backoff ---
+
+# TODO: 2. Apply the `@retry` decorator to this function. Configure it to
+# try 4 times with a delay that doubles, starting at 1 second.
+def _flaky_api_call():
+    """Simulates an API call that might fail."""
+    print("Attempting to call the flaky API...")
+    if random.random() > 0.33: # 67% chance of failure
+        print("API call failed! Retrying...")
+        raise ConnectionError("The external API is temporarily unavailable.")
+    print("API call succeeded!")
+    return {"status": "success", "data": "Successfully retrieved data."}
+
+def retry_with_backoff_tool() -> dict:
+    """Calls an external service that might fail intermittently."""
+    try:
+        return _flaky_api_call()
+    except ConnectionError as e:
+        return {"status": "error", "message": f"The API call failed after multiple retries: {e}"}
+
+# --- 3. Performance with Caching ---
+
+# TODO: 3. Apply the `@functools.lru_cache` decorator to this function
+# to cache its results. Set a maxsize of 128.
+def _slow_database_query(item_id: str) -> str:
+    """Simulates a slow database query that takes 2 seconds."""
+    print(f"Performing slow query for item: {item_id}...")
+    time.sleep(2)
+    print("Query complete.")
+    return f"Data for {item_id}"
+
+def cache_operation_tool(item_id: str) -> dict:
+    """Fetches data from a slow database with caching."""
+    result = _slow_database_query(item_id)
+    return {"status": "success", "data": result}
+
+# --- Agent Definition ---
+
+# TODO: 4. Define the `root_agent`. Give it an instruction to use the
+# appropriate tool based on the user's request and register your three
+# new tools with it.
+root_agent = None
+```
 
 ### Step 3: Run and Test the Agent
 
 1.  **Install dependencies:**
-    This agent requires `pydantic` for validation and `retry` for the backoff mechanism.
     ```shell
     pip install pydantic retry
     ```
-
-2.  **Set up your `.env` file** with your API key or Vertex AI project.
-
-3.  **Run the agent with the Dev UI:**
-    ```shell
-    adk web
-    ```
-
-4.  **Interact with the Agent and Observe the Patterns:**
-    *   Open the Dev UI (`http://localhost:8080`).
+2.  **Set up your `.env` file** and start the Dev UI: `adk web`
+3.  **Interact with the Agent and Observe the Patterns:**
     *   **Test Caching:**
-        *   **User:** "Fetch item `item-123`"
-        *   **Observe:** The first time, there will be a 2-second delay (simulating the slow query).
-        *   **User:** "Fetch item `item-123` again"
-        *   **Observe:** The second time, the response will be instantaneous because it was served from the cache.
+        *   "Fetch item `item-123`" (will be slow)
+        *   "Fetch item `item-123` again" (will be instant)
     *   **Test Validation:**
-        *   **User:** "Validate user `user_!@#$` with query `test`"
-        *   **Observe:** The agent will return an error because the `user_id` contains invalid characters, as defined by the Pydantic model's regex.
+        *   "Validate user `user_!@#$` with query `test`" (will fail)
     *   **Test Retries:**
-        *   **User:** "Attempt a flaky operation"
-        *   **Observe the console where `adk web` is running.** You will see the log messages showing the tool failing, waiting, and then retrying until it finally succeeds.
+        *   "Attempt a flaky operation" (observe the console for retry logs)
+
+### Having Trouble?
+If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
 ### Lab Summary
-
-You have successfully built an agent with tools that incorporate production-grade best practices.
-
-You have learned to:
-*   Use `Pydantic` for robust input validation in your tools.
-*   Implement automatic retries with exponential backoff to make your tools more resilient to transient failures.
-*   Use caching with `lru_cache` to dramatically improve the performance of frequently called, slow operations.
-*   Understand how these patterns contribute to building more reliable and efficient agents.
+You have successfully built an agent with tools that incorporate production-grade best practices. You have learned to:
+*   Use `Pydantic` for robust input validation.
+*   Implement automatic retries with `retry`.
+*   Use caching with `lru_cache` to improve performance.
