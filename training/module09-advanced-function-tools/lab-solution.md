@@ -173,7 +173,7 @@ def calculate_monthly_savings(
 # Define the agent with all tools
 root_agent = Agent(
     name="finance_assistant",
-    model="gemini-2.5-flash",
+    model="gemini-1.5-flash",
     description="A financial calculation assistant for investments, loans, and savings goals.",
     instruction=(
         "You are a helpful personal finance assistant. You can help users with:\n"
