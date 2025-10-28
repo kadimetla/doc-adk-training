@@ -6,6 +6,10 @@ Welcome! This repository contains a comprehensive, multi-module training course 
 
 This course was born from a specific need: to create a complete learning path that takes a developer from the foundational concepts of AI agents to building complex, production-ready systems. The goal is to transform you from "Zero" to "Hero" in the world of AI Agent development with the Google ADK, providing not just the theory, but the hands-on practice required to become confident and proficient.
 
+## ✍️ About the Author
+
+This course was created and is maintained by **Maurizio Ipsale**, a Google Authorized Trainer and Google Developer Expert (GDE) in AI and Cloud. This project stems from a passion for empowering developers with the skills needed to build the next generation of AI agents.
+
 ## 📚 Course Structure
 
 The course is divided into several parts, each containing a set of modules. Each module includes:
