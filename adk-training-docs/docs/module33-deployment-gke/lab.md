@@ -17,20 +17,20 @@ In this lab, you will learn the fundamental process of deploying an ADK agent to
 
 1.  **Copy the Echo Agent:**
     Make a fresh copy of the `echo-agent` from Module 3.
-    ```shell
+    ```
     cp -r echo-agent/ gke-echo-agent/
     cd gke-echo-agent/
     ```
 
 2.  **Set Environment Variables:**
     In your terminal, set these variables. **Replace `YOUR_PROJECT_ID` with your actual GCP Project ID.**
-    ```shell
+    ```
     export GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID
     export GOOGLE_CLOUD_LOCATION=us-central1
     ```
 
 3.  **Enable APIs:**
-    ```shell
+    ```
     gcloud services enable \
         container.googleapis.com \
         artifactregistry.googleapis.com \
@@ -40,13 +40,13 @@ In this lab, you will learn the fundamental process of deploying an ADK agent to
 ### Step 2: Containerize the Agent
 
 1.  **Create `requirements.txt`:**
-    ```shell
+    ```
     echo "google-adk" > requirements.txt
     ```
 
 2.  **Create the `Dockerfile`:**
     Create a file named `Dockerfile` and add the following:
-    ```dockerfile
+    ```
     FROM python:3.11-slim
     WORKDIR /app
     COPY requirements.txt .
@@ -59,98 +59,18 @@ In this lab, you will learn the fundamental process of deploying an ADK agent to
 ### Step 3: Build and Push the Container Image
 
 1.  **Create an Artifact Registry Repository:**
-    ```shell
+    ```
     gcloud artifacts repositories create adk-images \
         --repository-format=docker \
         --location=\$GOOGLE_CLOUD_LOCATION
     ```
 
 2.  **Build and Push with Cloud Build:**
-    ```shell
+    ```
     gcloud builds submit \
         --tag \${GOOGLE_CLOUD_LOCATION}-docker.pkg.dev/\${GOOGLE_CLOUD_PROJECT}/adk-images/echo-agent:v1
     ```
 
 ### Step 4: Create and Deploy to a GKE Cluster
 
-1.  **Create a GKE Autopilot Cluster:** (This may take 5-10 minutes)
-    ```shell
-    gcloud container clusters create-auto adk-cluster \
-        --location=\$GOOGLE_CLOUD_LOCATION
-    ```
-
-2.  **Get Cluster Credentials:**
-    ```shell
-    gcloud container clusters get-credentials adk-cluster \
-        --location=\$GOOGLE_CLOUD_LOCATION
-    ```
-
-3.  **Create the Kubernetes Manifest (`deployment.yaml`):**
-    Create a file named `deployment.yaml`. **Note the use of shell variables (`GOOGLE_CLOUD_LOCATION`, `GOOGLE_CLOUD_PROJECT`)**, which we will substitute in the next step.
-    ```yaml
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: echo-agent-deployment
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: echo-agent
-  template:
-    metadata:
-      labels:
-        app: echo-agent
-spec:
-  containers:
-  - name: echo-agent
-    image: \${GOOGLE_CLOUD_LOCATION}-docker.pkg.dev/\${GOOGLE_CLOUD_PROJECT}/adk-images/echo-agent:v1
-    ports:
-    - containerPort: 8080
-    env:
-      - name: GOOGLE_GENAI_USE_VERTEXAI
-        value: "1"
-      - name: GOOGLE_CLOUD_PROJECT
-        value: "\${GOOGLE_CLOUD_PROJECT}"
-      - name: GOOGLE_CLOUD_LOCATION
-        value: "\${GOOGLE_CLOUD_LOCATION}"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: echo-agent-service
-spec:
-  type: LoadBalancer
-  selector:
-    app: echo-agent
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
-    ```
-
-4.  **Deploy the application:**
-    This command substitutes the variables in your manifest and applies it to your cluster.
-    ```shell
-    envsubst < deployment.yaml | kubectl apply -f -
-    ```
-
-### Step 5: Test Your Deployed Agent
-
-1.  **Get the External IP Address:**
-    Run this command and wait until an "EXTERNAL-IP" is displayed. This can take a few minutes.
-    ```shell
-    kubectl get service echo-agent-service --watch
-    ```
-    Once you see an IP, press `Ctrl+C` to exit.
-
-2.  **Access the Agent:**
-    Copy the external IP address and paste it into your web browser. You should see the ADK Dev UI running on GKE.
-
-### Lab Summary
-You have successfully deployed an agent to GKE. You learned to:
-*   Write a `Dockerfile` to containerize an ADK agent.
-*   Build and push a container image using Cloud Build.
-*   Create a GKE cluster.
-*   Write Kubernetes `Deployment` and `Service` manifests.
-*   Use `envsubst` and `kubectl` to deploy your application.
+1.  **Create a GKE Autopilot Cluster:**
