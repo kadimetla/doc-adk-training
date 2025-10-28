@@ -1,0 +1,24 @@
+{
+  "id": "module-07-multimodal-and-images/lab",
+  "title": "Module 7: Multimodal and Image Processing",
+  "description": "Lab 39: Building a Visual Product Catalog Analyzer",
+  "source": "@site/docs/module-07-multimodal-and-images/lab.md",
+  "sourceDirName": "module-07-multimodal-and-images",
+  "slug": "/module-07-multimodal-and-images/lab",
+  "permalink": "/adk_from_zero_to_hero/docs/module-07-multimodal-and-images/lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-07-multimodal-and-images/lab.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-07-multimodal-and-images/overview"
+  },
+  "next": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-07-multimodal-and-images/lab-solution"
+  }
+}

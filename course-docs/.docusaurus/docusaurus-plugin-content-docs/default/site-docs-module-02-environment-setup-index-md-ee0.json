@@ -1,0 +1,24 @@
+{
+  "id": "module-02-environment-setup/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-02-environment-setup/index.md",
+  "sourceDirName": "module-02-environment-setup",
+  "slug": "/module-02-environment-setup/",
+  "permalink": "/docs/module-02-environment-setup/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-02-environment-setup/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 2: Environment Setup",
+    "permalink": "/docs/category/module-2-environment-setup"
+  },
+  "next": {
+    "title": "Module 2: Setting Up Your Development Environment",
+    "permalink": "/docs/module-02-environment-setup/lab-solution"
+  }
+}

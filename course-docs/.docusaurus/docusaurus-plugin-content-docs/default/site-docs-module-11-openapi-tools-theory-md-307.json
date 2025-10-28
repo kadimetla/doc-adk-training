@@ -1,0 +1,24 @@
+{
+  "id": "module-11-openapi-tools/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-11-openapi-tools/theory.md",
+  "sourceDirName": "module-11-openapi-tools",
+  "slug": "/module-11-openapi-tools/theory",
+  "permalink": "/docs/module-11-openapi-tools/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-11-openapi-tools/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-10-advanced-function-tools/lab-solution"
+  },
+  "next": {
+    "title": "Module 10: OpenAPI Tools",
+    "permalink": "/docs/module-11-openapi-tools/lab"
+  }
+}

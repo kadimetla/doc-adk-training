@@ -1,0 +1,24 @@
+{
+  "id": "module-07-multimodal-and-images/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-07-multimodal-and-images/theory.md",
+  "sourceDirName": "module-07-multimodal-and-images",
+  "slug": "/module-07-multimodal-and-images/theory",
+  "permalink": "/docs/module-07-multimodal-and-images/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-07-multimodal-and-images/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-06-programmatic-execution/lab-solution"
+  },
+  "next": {
+    "title": "Module 7: Multimodal and Image Processing",
+    "permalink": "/docs/module-07-multimodal-and-images/lab"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "module-01-intro-to-ai-agents/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-01-intro-to-ai-agents/index.md",
+  "sourceDirName": "module-01-intro-to-ai-agents",
+  "slug": "/module-01-intro-to-ai-agents/",
+  "permalink": "/docs/module-01-intro-to-ai-agents/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-01-intro-to-ai-agents/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 1: Introduction to AI Agents",
+    "permalink": "/docs/category/module-1-introduction-to-ai-agents"
+  },
+  "next": {
+    "title": "Module 1: Introduction to AI Agents & Google ADK",
+    "permalink": "/docs/module-01-intro-to-ai-agents/lab-solution"
+  }
+}

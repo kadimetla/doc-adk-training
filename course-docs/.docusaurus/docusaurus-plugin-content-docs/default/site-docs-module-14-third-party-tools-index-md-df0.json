@@ -1,0 +1,24 @@
+{
+  "id": "module-14-third-party-tools/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-14-third-party-tools/index.md",
+  "sourceDirName": "module-14-third-party-tools",
+  "slug": "/module-14-third-party-tools/",
+  "permalink": "/docs/module-14-third-party-tools/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-14-third-party-tools/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 14: Third-Party Tools",
+    "permalink": "/docs/category/module-14-third-party-tools"
+  },
+  "next": {
+    "title": "Module 13: Integrating Third-Party Tools",
+    "permalink": "/docs/module-14-third-party-tools/lab-solution"
+  }
+}

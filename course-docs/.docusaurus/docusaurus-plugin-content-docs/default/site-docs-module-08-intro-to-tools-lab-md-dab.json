@@ -1,0 +1,24 @@
+{
+  "id": "module-08-intro-to-tools/lab",
+  "title": "Module 6: Introduction to Tools",
+  "description": "Lab 6: Creating a \"Researcher\" Agent with Google Search",
+  "source": "@site/docs/module-08-intro-to-tools/lab.md",
+  "sourceDirName": "module-08-intro-to-tools",
+  "slug": "/module-08-intro-to-tools/lab",
+  "permalink": "/adk_from_zero_to_hero/docs/module-08-intro-to-tools/lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-08-intro-to-tools/lab.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-08-intro-to-tools/overview"
+  },
+  "next": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-08-intro-to-tools/lab-solution"
+  }
+}

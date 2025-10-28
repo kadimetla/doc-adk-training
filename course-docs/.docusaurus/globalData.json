@@ -1,0 +1,603 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/adk_from_zero_to_hero/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/adk_from_zero_to_hero/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "intro",
+              "path": "/adk_from_zero_to_hero/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-01-intro-to-ai-agents/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-01-intro-to-ai-agents/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-01-intro-to-ai-agents/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-01-intro-to-ai-agents/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-01-intro-to-ai-agents/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-01-intro-to-ai-agents/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-02-environment-setup/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-02-environment-setup/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-02-environment-setup/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-02-environment-setup/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-02-environment-setup/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-02-environment-setup/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-03-first-agent-echo/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-03-first-agent-echo/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-03-first-agent-echo/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-03-first-agent-echo/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-03-first-agent-echo/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-03-first-agent-echo/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-04-llmagent-deep-dive/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-04-llmagent-deep-dive/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-04-llmagent-deep-dive/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-04-llmagent-deep-dive/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-04-llmagent-deep-dive/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-04-llmagent-deep-dive/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-05-running-agents/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-05-running-agents/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-05-running-agents/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-05-running-agents/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-05-running-agents/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-05-running-agents/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-06-programmatic-execution/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-06-programmatic-execution/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-06-programmatic-execution/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-06-programmatic-execution/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-06-programmatic-execution/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-06-programmatic-execution/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-07-multimodal-and-images/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-07-multimodal-and-images/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-07-multimodal-and-images/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-07-multimodal-and-images/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-07-multimodal-and-images/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-07-multimodal-and-images/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-08-intro-to-tools/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-08-intro-to-tools/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-08-intro-to-tools/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-08-intro-to-tools/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-08-intro-to-tools/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-08-intro-to-tools/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-09-intro-custom-function-tools/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-09-intro-custom-function-tools/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-09-intro-custom-function-tools/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-09-intro-custom-function-tools/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-09-intro-custom-function-tools/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-09-intro-custom-function-tools/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-10-advanced-function-tools/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-10-advanced-function-tools/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-10-advanced-function-tools/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-10-advanced-function-tools/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-10-advanced-function-tools/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-10-advanced-function-tools/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-11-openapi-tools/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-11-openapi-tools/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-11-openapi-tools/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-11-openapi-tools/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-11-openapi-tools/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-11-openapi-tools/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-12-built-in-tools-grounding/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-12-built-in-tools-grounding/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-12-built-in-tools-grounding/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-12-built-in-tools-grounding/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-12-built-in-tools-grounding/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-12-built-in-tools-grounding/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-13-tool-context/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-13-tool-context/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-13-tool-context/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-13-tool-context/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-13-tool-context/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-13-tool-context/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-14-third-party-tools/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-14-third-party-tools/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-14-third-party-tools/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-14-third-party-tools/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-14-third-party-tools/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-14-third-party-tools/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-15-intro-to-multi-agent-systems/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-15-intro-to-multi-agent-systems/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-15-intro-to-multi-agent-systems/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-15-intro-to-multi-agent-systems/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-15-intro-to-multi-agent-systems/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-15-intro-to-multi-agent-systems/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-16-coordinator-agent/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-16-coordinator-agent/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-16-coordinator-agent/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-16-coordinator-agent/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-16-coordinator-agent/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-16-coordinator-agent/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-17-sequential-workflow-agents/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-17-sequential-workflow-agents/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-17-sequential-workflow-agents/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-17-sequential-workflow-agents/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-17-sequential-workflow-agents/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-17-sequential-workflow-agents/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-18-parallel-workflow-agents/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-18-parallel-workflow-agents/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-18-parallel-workflow-agents/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-18-parallel-workflow-agents/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-18-parallel-workflow-agents/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-18-parallel-workflow-agents/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-19-advanced-multi-agent-architectures/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-19-advanced-multi-agent-architectures/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-19-advanced-multi-agent-architectures/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-19-advanced-multi-agent-architectures/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-19-advanced-multi-agent-architectures/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-19-advanced-multi-agent-architectures/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-20-loop-agents/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-20-loop-agents/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-20-loop-agents/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-20-loop-agents/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-20-loop-agents/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-20-loop-agents/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-21-agent-to-agent/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-21-agent-to-agent/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-21-agent-to-agent/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-21-agent-to-agent/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-21-agent-to-agent/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-21-agent-to-agent/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-22-state-and-memory/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-22-state-and-memory/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-22-state-and-memory/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-22-state-and-memory/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-22-state-and-memory/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-22-state-and-memory/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-23-artifacts/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-23-artifacts/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-23-artifacts/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-23-artifacts/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-23-artifacts/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-23-artifacts/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-24-evaluation/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-24-evaluation/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-24-evaluation/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-24-evaluation/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-24-evaluation/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-24-evaluation/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-25-observability/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-25-observability/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-25-observability/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-25-observability/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-25-observability/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-25-observability/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-26-callbacks/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-26-callbacks/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-26-callbacks/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-26-callbacks/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-26-callbacks/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-26-callbacks/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-27-intro-to-mcp/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-27-intro-to-mcp/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-27-intro-to-mcp/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-27-intro-to-mcp/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-27-intro-to-mcp/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-27-intro-to-mcp/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-28-building-mcp-tools/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-28-building-mcp-tools/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-28-building-mcp-tools/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-28-building-mcp-tools/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-28-building-mcp-tools/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-28-building-mcp-tools/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-29-ui-integration-intro/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-29-ui-integration-intro/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-29-ui-integration-intro/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-29-ui-integration-intro/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-29-ui-integration-intro/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-29-ui-integration-intro/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-30-custom-streaming-client/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-30-custom-streaming-client/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-30-custom-streaming-client/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-30-custom-streaming-client/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-30-custom-streaming-client/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-30-custom-streaming-client/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-31-production-deployment-strategies/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-31-production-deployment-strategies/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-31-production-deployment-strategies/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-31-production-deployment-strategies/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-31-production-deployment-strategies/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-31-production-deployment-strategies/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-32-deployment-cloud-run/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-32-deployment-cloud-run/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-32-deployment-cloud-run/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-32-deployment-cloud-run/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-32-deployment-cloud-run/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-32-deployment-cloud-run/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-33-deployment-gke/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-33-deployment-gke/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-33-deployment-gke/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-33-deployment-gke/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-33-deployment-gke/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-33-deployment-gke/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-34-deploying-mcp-server-cloud-run/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-34-deploying-mcp-server-cloud-run/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-34-deploying-mcp-server-cloud-run/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-34-deploying-mcp-server-cloud-run/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-34-deploying-mcp-server-cloud-run/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-34-deploying-mcp-server-cloud-run/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-35-deployment-agent-engine/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-35-deployment-agent-engine/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-35-deployment-agent-engine/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-35-deployment-agent-engine/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-35-deployment-agent-engine/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-35-deployment-agent-engine/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-36-gemini-enterprise/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-36-gemini-enterprise/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-36-gemini-enterprise/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-36-gemini-enterprise/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-36-gemini-enterprise/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-36-gemini-enterprise/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-37-advanced-personalized-shopping-agent/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-37-advanced-personalized-shopping-agent/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-37-advanced-personalized-shopping-agent/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-37-advanced-personalized-shopping-agent/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-37-advanced-personalized-shopping-agent/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-37-advanced-personalized-shopping-agent/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-38-best-practices/lab",
+              "path": "/adk_from_zero_to_hero/docs/module-38-best-practices/lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-38-best-practices/lab-solution",
+              "path": "/adk_from_zero_to_hero/docs/module-38-best-practices/lab-solution",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module-38-best-practices/overview",
+              "path": "/adk_from_zero_to_hero/docs/module-38-best-practices/overview",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/adk_from_zero_to_hero/docs/intro",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

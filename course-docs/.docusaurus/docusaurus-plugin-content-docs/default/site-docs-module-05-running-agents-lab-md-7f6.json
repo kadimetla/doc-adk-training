@@ -1,0 +1,24 @@
+{
+  "id": "module-05-running-agents/lab",
+  "title": "Lab 5: Exploring Different Execution Modes Challenge",
+  "description": "Goal",
+  "source": "@site/docs/module-05-running-agents/lab.md",
+  "sourceDirName": "module-05-running-agents",
+  "slug": "/module-05-running-agents/lab",
+  "permalink": "/adk_from_zero_to_hero/docs/module-05-running-agents/lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-05-running-agents/lab.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-05-running-agents/overview"
+  },
+  "next": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-05-running-agents/lab-solution"
+  }
+}

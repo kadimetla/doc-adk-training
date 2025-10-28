@@ -1,0 +1,24 @@
+{
+  "id": "module-17-sequential-workflow-agents/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-17-sequential-workflow-agents/index.md",
+  "sourceDirName": "module-17-sequential-workflow-agents",
+  "slug": "/module-17-sequential-workflow-agents/",
+  "permalink": "/docs/module-17-sequential-workflow-agents/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-17-sequential-workflow-agents/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 17: Sequential Workflows",
+    "permalink": "/docs/category/module-17-sequential-workflows"
+  },
+  "next": {
+    "title": "Module 16: Building Agent Pipelines with SequentialAgent",
+    "permalink": "/docs/module-17-sequential-workflow-agents/lab-solution"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "module-34-deploying-mcp-server-cloud-run/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-34-deploying-mcp-server-cloud-run/theory.md",
+  "sourceDirName": "module-34-deploying-mcp-server-cloud-run",
+  "slug": "/module-34-deploying-mcp-server-cloud-run/theory",
+  "permalink": "/docs/module-34-deploying-mcp-server-cloud-run/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-34-deploying-mcp-server-cloud-run/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-33-deployment-gke/lab-solution"
+  },
+  "next": {
+    "title": "Module 31: Deploying an MCP Server to Cloud Run",
+    "permalink": "/docs/module-34-deploying-mcp-server-cloud-run/lab"
+  }
+}

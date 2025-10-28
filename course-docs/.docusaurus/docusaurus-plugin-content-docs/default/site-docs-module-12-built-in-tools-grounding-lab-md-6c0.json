@@ -1,0 +1,24 @@
+{
+  "id": "module-12-built-in-tools-grounding/lab",
+  "title": "Module 11: Built-in Tools and Grounding",
+  "description": "Lab 11: Building a Research Assistant with Web Search",
+  "source": "@site/docs/module-12-built-in-tools-grounding/lab.md",
+  "sourceDirName": "module-12-built-in-tools-grounding",
+  "slug": "/module-12-built-in-tools-grounding/lab",
+  "permalink": "/adk_from_zero_to_hero/docs/module-12-built-in-tools-grounding/lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-12-built-in-tools-grounding/lab.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-12-built-in-tools-grounding/overview"
+  },
+  "next": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-12-built-in-tools-grounding/lab-solution"
+  }
+}

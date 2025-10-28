@@ -1,0 +1,24 @@
+{
+  "id": "module-23-artifacts/lab",
+  "title": "Module 21: Handling Files with Artifacts",
+  "description": "Lab 21: Building a Document Processing Pipeline",
+  "source": "@site/docs/module-23-artifacts/lab.md",
+  "sourceDirName": "module-23-artifacts",
+  "slug": "/module-23-artifacts/lab",
+  "permalink": "/adk_from_zero_to_hero/docs/module-23-artifacts/lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-23-artifacts/lab.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-23-artifacts/overview"
+  },
+  "next": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-23-artifacts/lab-solution"
+  }
+}

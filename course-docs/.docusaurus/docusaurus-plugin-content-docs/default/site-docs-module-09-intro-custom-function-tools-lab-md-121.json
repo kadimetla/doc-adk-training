@@ -1,0 +1,24 @@
+{
+  "id": "module-09-intro-custom-function-tools/lab",
+  "title": "Module 8: Creating Custom Function Tools",
+  "description": "Lab 8: Building a \"Calculator\" Agent",
+  "source": "@site/docs/module-09-intro-custom-function-tools/lab.md",
+  "sourceDirName": "module-09-intro-custom-function-tools",
+  "slug": "/module-09-intro-custom-function-tools/lab",
+  "permalink": "/adk_from_zero_to_hero/docs/module-09-intro-custom-function-tools/lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-09-intro-custom-function-tools/lab.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-09-intro-custom-function-tools/overview"
+  },
+  "next": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-09-intro-custom-function-tools/lab-solution"
+  }
+}

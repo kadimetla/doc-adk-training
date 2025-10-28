@@ -1,0 +1,24 @@
+{
+  "id": "module-07-multimodal-and-images/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-07-multimodal-and-images/index.md",
+  "sourceDirName": "module-07-multimodal-and-images",
+  "slug": "/module-07-multimodal-and-images/",
+  "permalink": "/docs/module-07-multimodal-and-images/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-07-multimodal-and-images/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 7: Multimodal and Images",
+    "permalink": "/docs/category/module-7-multimodal-and-images"
+  },
+  "next": {
+    "title": "Module 7: Multimodal and Image Processing",
+    "permalink": "/docs/module-07-multimodal-and-images/lab-solution"
+  }
+}

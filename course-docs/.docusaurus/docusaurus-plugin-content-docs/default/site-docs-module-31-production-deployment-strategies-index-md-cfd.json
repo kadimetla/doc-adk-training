@@ -1,0 +1,24 @@
+{
+  "id": "module-31-production-deployment-strategies/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-31-production-deployment-strategies/index.md",
+  "sourceDirName": "module-31-production-deployment-strategies",
+  "slug": "/module-31-production-deployment-strategies/",
+  "permalink": "/docs/module-31-production-deployment-strategies/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-31-production-deployment-strategies/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 31: Deployment Strategies",
+    "permalink": "/docs/category/module-31-deployment-strategies"
+  },
+  "next": {
+    "title": "Module 24: Production Deployment Strategies",
+    "permalink": "/docs/module-31-production-deployment-strategies/lab-solution"
+  }
+}

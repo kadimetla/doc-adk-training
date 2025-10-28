@@ -1,0 +1,9 @@
+
+{
+  "label": "Module 18: Parallel Workflows",
+  "position": 18,
+  "link": {
+    "type": "generated-index",
+    "description": "Improve performance with concurrent execution using ParallelAgent."
+  }
+}

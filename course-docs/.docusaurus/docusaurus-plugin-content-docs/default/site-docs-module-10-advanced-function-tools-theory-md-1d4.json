@@ -1,0 +1,24 @@
+{
+  "id": "module-10-advanced-function-tools/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-10-advanced-function-tools/theory.md",
+  "sourceDirName": "module-10-advanced-function-tools",
+  "slug": "/module-10-advanced-function-tools/theory",
+  "permalink": "/docs/module-10-advanced-function-tools/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-10-advanced-function-tools/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-09-intro-custom-function-tools/lab-solution"
+  },
+  "next": {
+    "title": "Module 9: Advanced Function Tools",
+    "permalink": "/docs/module-10-advanced-function-tools/lab"
+  }
+}

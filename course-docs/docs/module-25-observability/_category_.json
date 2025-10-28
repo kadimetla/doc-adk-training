@@ -1,0 +1,9 @@
+
+{
+  "label": "Module 25: Observability",
+  "position": 25,
+  "link": {
+    "type": "generated-index",
+    "description": "Gain deep visibility into your agent's behavior with plugins."
+  }
+}

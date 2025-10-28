@@ -1,0 +1,24 @@
+{
+  "id": "module-29-ui-integration-intro/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-29-ui-integration-intro/index.md",
+  "sourceDirName": "module-29-ui-integration-intro",
+  "slug": "/module-29-ui-integration-intro/",
+  "permalink": "/docs/module-29-ui-integration-intro/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-29-ui-integration-intro/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 29: UI Integration",
+    "permalink": "/docs/category/module-29-ui-integration"
+  },
+  "next": {
+    "title": "Module 38: Introduction to UI Integration",
+    "permalink": "/docs/module-29-ui-integration-intro/lab-solution"
+  }
+}

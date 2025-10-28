@@ -1,0 +1,24 @@
+{
+  "id": "module-22-state-and-memory/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-22-state-and-memory/theory.md",
+  "sourceDirName": "module-22-state-and-memory",
+  "slug": "/module-22-state-and-memory/theory",
+  "permalink": "/docs/module-22-state-and-memory/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-22-state-and-memory/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-21-agent-to-agent/lab-solution"
+  },
+  "next": {
+    "title": "Module 20: State and Memory - Building a Personal Tutor Agent",
+    "permalink": "/docs/module-22-state-and-memory/lab"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "module-15-intro-to-multi-agent-systems/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-15-intro-to-multi-agent-systems/theory.md",
+  "sourceDirName": "module-15-intro-to-multi-agent-systems",
+  "slug": "/module-15-intro-to-multi-agent-systems/theory",
+  "permalink": "/docs/module-15-intro-to-multi-agent-systems/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-15-intro-to-multi-agent-systems/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-14-third-party-tools/lab-solution"
+  },
+  "next": {
+    "title": "Module 14: Introduction to Multi-Agent Systems",
+    "permalink": "/docs/module-15-intro-to-multi-agent-systems/lab"
+  }
+}

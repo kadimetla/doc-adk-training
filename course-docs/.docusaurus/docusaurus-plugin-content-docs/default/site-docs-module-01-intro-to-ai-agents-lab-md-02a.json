@@ -1,0 +1,24 @@
+{
+  "id": "module-01-intro-to-ai-agents/lab",
+  "title": "Module 1: Introduction to AI Agents & Google ADK",
+  "description": "Lab 1: Exploring the ADK Ecosystem",
+  "source": "@site/docs/module-01-intro-to-ai-agents/lab.md",
+  "sourceDirName": "module-01-intro-to-ai-agents",
+  "slug": "/module-01-intro-to-ai-agents/lab",
+  "permalink": "/adk_from_zero_to_hero/docs/module-01-intro-to-ai-agents/lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-01-intro-to-ai-agents/lab.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-01-intro-to-ai-agents/overview"
+  },
+  "next": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-01-intro-to-ai-agents/lab-solution"
+  }
+}

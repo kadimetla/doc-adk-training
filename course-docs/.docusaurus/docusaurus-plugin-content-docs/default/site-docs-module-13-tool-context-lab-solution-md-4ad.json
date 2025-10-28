@@ -1,0 +1,24 @@
+{
+  "id": "module-13-tool-context/lab-solution",
+  "title": "Lab Solution",
+  "description": "View the solution on GitHub",
+  "source": "@site/docs/module-13-tool-context/lab-solution.md",
+  "sourceDirName": "module-13-tool-context",
+  "slug": "/module-13-tool-context/lab-solution",
+  "permalink": "/adk_from_zero_to_hero/docs/module-13-tool-context/lab-solution",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-13-tool-context/lab-solution.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 12: Advanced Tool Concepts: Tool Context",
+    "permalink": "/adk_from_zero_to_hero/docs/module-13-tool-context/lab"
+  },
+  "next": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-14-third-party-tools/overview"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "module-08-intro-to-tools/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-08-intro-to-tools/theory.md",
+  "sourceDirName": "module-08-intro-to-tools",
+  "slug": "/module-08-intro-to-tools/theory",
+  "permalink": "/docs/module-08-intro-to-tools/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-08-intro-to-tools/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-07-multimodal-and-images/lab-solution"
+  },
+  "next": {
+    "title": "Module 6: Introduction to Tools",
+    "permalink": "/docs/module-08-intro-to-tools/lab"
+  }
+}

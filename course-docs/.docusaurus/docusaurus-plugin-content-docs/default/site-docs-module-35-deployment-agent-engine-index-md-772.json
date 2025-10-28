@@ -1,0 +1,24 @@
+{
+  "id": "module-35-deployment-agent-engine/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-35-deployment-agent-engine/index.md",
+  "sourceDirName": "module-35-deployment-agent-engine",
+  "slug": "/module-35-deployment-agent-engine/",
+  "permalink": "/docs/module-35-deployment-agent-engine/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-35-deployment-agent-engine/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 35: Deployment to Agent Engine",
+    "permalink": "/docs/category/module-35-deployment-to-agent-engine"
+  },
+  "next": {
+    "title": "Module 34: Deploying to Agent Engine",
+    "permalink": "/docs/module-35-deployment-agent-engine/lab-solution"
+  }
+}

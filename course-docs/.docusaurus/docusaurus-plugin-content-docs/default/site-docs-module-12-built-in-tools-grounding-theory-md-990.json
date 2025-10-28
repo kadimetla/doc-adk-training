@@ -1,0 +1,24 @@
+{
+  "id": "module-12-built-in-tools-grounding/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-12-built-in-tools-grounding/theory.md",
+  "sourceDirName": "module-12-built-in-tools-grounding",
+  "slug": "/module-12-built-in-tools-grounding/theory",
+  "permalink": "/docs/module-12-built-in-tools-grounding/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-12-built-in-tools-grounding/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-11-openapi-tools/lab-solution"
+  },
+  "next": {
+    "title": "Module 11: Built-in Tools and Grounding",
+    "permalink": "/docs/module-12-built-in-tools-grounding/lab"
+  }
+}

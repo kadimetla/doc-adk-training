@@ -1,0 +1,24 @@
+{
+  "id": "module-33-deployment-gke/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-33-deployment-gke/theory.md",
+  "sourceDirName": "module-33-deployment-gke",
+  "slug": "/module-33-deployment-gke/theory",
+  "permalink": "/docs/module-33-deployment-gke/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-33-deployment-gke/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-32-deployment-cloud-run/lab-solution"
+  },
+  "next": {
+    "title": "Module 26: Deployment to Google Kubernetes Engine (GKE)",
+    "permalink": "/docs/module-33-deployment-gke/lab"
+  }
+}

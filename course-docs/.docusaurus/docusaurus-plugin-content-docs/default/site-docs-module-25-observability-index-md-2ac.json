@@ -1,0 +1,24 @@
+{
+  "id": "module-25-observability/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-25-observability/index.md",
+  "sourceDirName": "module-25-observability",
+  "slug": "/module-25-observability/",
+  "permalink": "/docs/module-25-observability/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-25-observability/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 25: Observability",
+    "permalink": "/docs/category/module-25-observability"
+  },
+  "next": {
+    "title": "Module 27: Advanced Observability with Plugins",
+    "permalink": "/docs/module-25-observability/lab-solution"
+  }
+}

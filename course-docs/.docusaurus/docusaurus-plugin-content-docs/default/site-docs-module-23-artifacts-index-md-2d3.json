@@ -1,0 +1,24 @@
+{
+  "id": "module-23-artifacts/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-23-artifacts/index.md",
+  "sourceDirName": "module-23-artifacts",
+  "slug": "/module-23-artifacts/",
+  "permalink": "/docs/module-23-artifacts/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-23-artifacts/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 23: Artifacts",
+    "permalink": "/docs/category/module-23-artifacts"
+  },
+  "next": {
+    "title": "Module 21: Handling Files with Artifacts",
+    "permalink": "/docs/module-23-artifacts/lab-solution"
+  }
+}
