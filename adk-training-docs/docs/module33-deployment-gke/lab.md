@@ -62,7 +62,7 @@ In this lab, you will learn the fundamental process of deploying an ADK agent to
     ```shell
     gcloud artifacts repositories create adk-images \
         --repository-format=docker \
-        --location=$GOOGLE_CLOUD_LOCATION
+        --location=\$GOOGLE_CLOUD_LOCATION
     ```
 
 2.  **Build and Push with Cloud Build:**
@@ -76,13 +76,13 @@ In this lab, you will learn the fundamental process of deploying an ADK agent to
 1.  **Create a GKE Autopilot Cluster:** (This may take 5-10 minutes)
     ```shell
     gcloud container clusters create-auto adk-cluster \
-        --location=$GOOGLE_CLOUD_LOCATION
+        --location=\$GOOGLE_CLOUD_LOCATION
     ```
 
 2.  **Get Cluster Credentials:**
     ```shell
     gcloud container clusters get-credentials adk-cluster \
-        --location=$GOOGLE_CLOUD_LOCATION
+        --location=\$GOOGLE_CLOUD_LOCATION
     ```
 
 3.  **Create the Kubernetes Manifest (`deployment.yaml`):**
@@ -104,7 +104,7 @@ spec:
 spec:
   containers:
   - name: echo-agent
-    image: ${GOOGLE_CLOUD_LOCATION}-docker.pkg.dev/${GOOGLE_CLOUD_PROJECT}/adk-images/echo-agent:v1
+    image: \${GOOGLE_CLOUD_LOCATION}-docker.pkg.dev/\${GOOGLE_CLOUD_PROJECT}/adk-images/echo-agent:v1
     ports:
     - containerPort: 8080
     env:
