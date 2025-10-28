@@ -1,83 +1,31 @@
-# How to contribute
+# How to Contribute
 
-Thank you for your interest in contributing! We appreciate your willingness to
-share your patches and improvements with the project.
+Thank you for your interest in contributing to the ADK Developer Training Course! We welcome improvements, corrections, and new content from the community.
 
 ## Getting Started
 
-Before you contribute, please take a moment to review the following:
-
-### 1. Sign our Contributor License Agreement
-
-Contributions to this project must be accompanied by a
-[Contributor License Agreement](https://cla.developers.google.com/about) (CLA).
-You (or your employer) retain the copyright to your contribution; this simply
-gives us permission to use and redistribute your contributions as part of the
-project.
-
-If you or your current employer have already signed the Google CLA (even if it
-was for a different project), you probably don't need to do it again.
-
-Visit <https://cla.developers.google.com/> to see your current agreements or to
-sign a new one.
-
-### 2. Review Community Guidelines
-
-We adhere to [Google's Open Source Community Guidelines](https://opensource.google/conduct/).
-Please familiarize yourself with these guidelines to ensure a positive and
-collaborative environment for everyone.
+Before you contribute, please take a moment to review our [Code of Conduct](#code-of-conduct). We expect all contributors to adhere to it to ensure a positive and collaborative environment.
 
 ## Contribution Workflow
 
-### Finding Something to Work On
+We use GitHub for all contributions. The general workflow is:
 
-Check the [GitHub Issues](https://github.com/google/adk-docs/issues) for bug
-reports or feature requests. Feel free to pick up an existing issue or open
-a new one if you have an idea or find a bug.
+1.  **Find Something to Work On:** Check the [GitHub Issues](https://github.com/mauripsale/doc-adk-training/issues) for bug reports, content errors, or feature requests. Feel free to open a new issue if you find a problem or have an idea.
 
-### Development Setup
+2.  **Fork the Repository:** Create your own copy of the repository to work on.
 
-1.  **Clone the repository:**
+3.  **Make Your Changes:**
+    *   Create a new branch for your changes.
+    *   Edit the Markdown files or code examples. Please try to follow the existing style and structure.
 
-    ```shell
-    git clone git@github.com:google/adk-docs.git
-    cd adk-docs
-    ```
+4.  **Submit a Pull Request:**
+    *   Once you are happy with your changes, submit a Pull Request (PR) from your fork to the main repository.
+    *   In the PR description, please explain the changes you made and why. If it's related to an existing issue, please link to it.
 
-2.  **Create and activate a virtual environment:**
+## Code of Conduct
 
-    ```shell
-    python -m venv venv
-    source venv/bin/activate
-    ```
+This project and everyone participating in it is governed by the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/). By participating, you are expected to uphold this code. Please report unacceptable behavior.
 
-3.  **Install dependencies:**
+## Licensing
 
-    ```shell
-    pip install -r requirements.txt
-    ```
-
-4.  **Run the local development server:**
-
-    ```shell
-    mkdocs serve
-    ```
-
-    This command starts a local server, typically at `http://127.0.0.1:8000/`.
-
-    The site will automatically reload when you save changes to the documentation files.
-    For more details on the site configuration, see the mkdocs.yml file.
-
-### Code Reviews
-
-All contributions, including those from project members, undergo a review process.
-
-1.  **Create a Pull Request:** We use GitHub Pull Requests (PRs) for code review.
-    Please refer to GitHub Help if you're unfamiliar with PRs.
-2.  **Review Process:** Project maintainers will review your PR, providing feedback
-    or requesting changes if necessary.
-3.  **Merging:** Once the PR is approved and passes any required checks, it will be
-    merged into the main branch.
-
-Consult [GitHub Help](https://help.github.com/articles/about-pull-requests/) for
-more information on using pull requests. We look forward to your contributions!
+By contributing, you agree that your contributions will be licensed under the terms of the Apache License 2.0 for code and the Creative Commons Attribution 4.0 International License for documentation, as described in our `LICENSE` files.

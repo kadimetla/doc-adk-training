@@ -1,1 +1,0 @@
-# Tests for Tutorial 03: Chuck Norris OpenAPI Tools Agent

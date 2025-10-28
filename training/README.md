@@ -79,3 +79,15 @@ Apply everything you've learned in a final capstone project and review the essen
 ## Getting Started
 
 To get started with the course, begin with Module 1 and proceed through the modules in order. Each lab builds upon the concepts and code from the previous one.
+
+---
+
+## Licensing
+
+The documentation and textual content of this training course are licensed under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
+
+Software components, such as the code in the `sample-agents` directory, are licensed under the **Apache License, Version 2.0**. Please see the `LICENSE` file within those directories for full details.
+
+## Acknowledgements
+
+This training course was inspired by the structure and content of the original ADK Training Hub created by Raphael Mansuy. While all content has been originally rewritten and adapted, we gratefully acknowledge his foundational work.
