@@ -111,9 +111,9 @@ spec:
       - name: GOOGLE_GENAI_USE_VERTEXAI
         value: "1"
       - name: GOOGLE_CLOUD_PROJECT
-        value: "${GOOGLE_CLOUD_PROJECT}"
+        value: "\${GOOGLE_CLOUD_PROJECT}"
       - name: GOOGLE_CLOUD_LOCATION
-        value: "${GOOGLE_CLOUD_LOCATION}"
+        value: "\${GOOGLE_CLOUD_LOCATION}"
 ---
 apiVersion: v1
 kind: Service
