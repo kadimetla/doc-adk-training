@@ -10,6 +10,14 @@ This course was born from a specific need: to create a complete learning path th
 
 This course was created and is maintained by **Maurizio Ipsale**, a Google Authorized Trainer and Google Developer Expert (GDE) in AI and Cloud. This project stems from a passion for empowering developers with the skills needed to build the next generation of AI agents.
 
+## 🚧 Project Status 🚧
+
+**Current Version:** `v0.1.0`
+
+Please be aware that this training course is in its early stages of development. As a "version zero" project, the content is subject to significant changes, additions, and refactoring.
+
+We are working hard to refine and expand the material, but you may encounter typos, errors, or incomplete sections. Your feedback and contributions are highly encouraged! If you find an issue or have a suggestion, please [open an issue on GitHub](https://github.com/mauripsale/doc-adk-training/issues).
+
 ## 📚 Course Structure
 
 The course is divided into several parts, each containing a set of modules. Each module includes:
