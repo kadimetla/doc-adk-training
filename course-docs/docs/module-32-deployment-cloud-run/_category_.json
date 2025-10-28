@@ -1,9 +1,0 @@
-
-{
-  "label": "Module 32: Deployment to Cloud Run",
-  "position": 32,
-  "link": {
-    "type": "generated-index",
-    "description": "Deploy your agent to a scalable, serverless environment."
-  }
-}
