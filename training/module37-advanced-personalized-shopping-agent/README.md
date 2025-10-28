@@ -8,9 +8,11 @@ In this advanced module, we'll build a sophisticated AI agent capable of navigat
 
 ### Agent Architecture
 
-The personalized shopping agent is a single `LlmAgent` that uses a set of tools to interact with a web environment. The agent's behavior is guided by a detailed prompt that outlines the entire interaction flow, from searching for a product to confirming the purchase.
+The personalized shopping agent is a **distributed multi-agent system** composed of three specialized agents communicating via the Agent-to-Agent (A2A) protocol:
 
-![Personalized Shopping Agent Architecture](../../sample-agents/personalized-shopping/ps_architecture.png)
+1.  **Orchestrator Agent:** The main, user-facing agent. It manages the conversation, understands user intent (including multimodal image input), and delegates tasks to the appropriate specialist.
+2.  **Personalization Agent:** A remote agent responsible for managing user preferences. It uses the ADK's state management features to remember information like preferred sizes, colors, and brands across sessions.
+3.  **Web Agent:** A remote agent that acts as an interface to the e-commerce website. It exposes a set of OpenAPI tools for searching products and clicking buttons, abstracting the web environment from the main orchestrator.
 
 ### Core Components
 
