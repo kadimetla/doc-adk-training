@@ -8,8 +8,8 @@ The course is divided into several parts, each containing a set of modules. Each
 
 ---
 
-### Part 1: Foundations (Modules 1-6)
-This part covers the absolute basics of AI agents and the ADK, getting your environment set up and guiding you through building and running your first agents.
+### Part 1: Foundations (Modules 1-7)
+This part covers the absolute basics of AI agents and the ADK, getting your environment set up and guiding you through building and running your first agents, including multimodal capabilities.
 
 *   **Module 1: Introduction to AI Agents & Google ADK**
 *   **Module 2: Setting Up Your Development Environment**
@@ -17,62 +17,62 @@ This part covers the absolute basics of AI agents and the ADK, getting your envi
 *   **Module 4: Core Agent Concepts: `LlmAgent` Deep Dive**
 *   **Module 5: Running and Interacting with Agents**
 *   **Module 6: Running an Agent Programmatically**
+*   **Module 7: Multimodal and Images**
 
-### Part 2: Tools & Capabilities (Modules 7-13 & 39)
-This part focuses on giving your agents "superpowers" by connecting them to tools and enabling advanced capabilities like vision.
+### Part 2: Tools & Capabilities (Modules 8-14)
+This part focuses on giving your agents "superpowers" by connecting them to tools, from built-in capabilities to custom functions and third-party libraries.
 
-*   **Module 7: Introduction to Tools**
-*   **Module 8: Intro to Custom Function Tools**
-*   **Module 9: Advanced Function Tools**
-*   **Module 10: OpenAPI Tools**
-*   **Module 11: Built-in Tools and Grounding**
-*   **Module 12: Tool Context**
-*   **Module 13: Third-Party Tools**
-*   **Module 39: Multimodal and Images**
+*   **Module 8: Introduction to Tools**
+*   **Module 9: Intro to Custom Function Tools**
+*   **Module 10: Advanced Function Tools**
+*   **Module 11: OpenAPI Tools**
+*   **Module 12: Built-in Tools and Grounding**
+*   **Module 13: Tool Context**
+*   **Module 14: Third-Party Tools**
 
-### Part 3: Multi-Agent Systems (Modules 14-19 & 35)
+### Part 3: Multi-Agent Systems (Modules 15-21)
 Learn how to go beyond single agents and build complex systems where multiple agents collaborate to solve complex problems, both locally and in a distributed fashion.
 
-*   **Module 14: Introduction to Multi-Agent Systems**
-*   **Module 15: Coordinator Agent**
-*   **Module 16: Sequential Workflow Agents**
-*   **Module 17: Parallel Workflow Agents**
-*   **Module 18: Advanced Multi-Agent Architectures**
-*   **Module 19: Loop Agents**
-*   **Module 35: Agent-to-Agent Communication**
+*   **Module 15: Introduction to Multi-Agent Systems**
+*   **Module 16: Coordinator Agent**
+*   **Module 17: Sequential Workflow Agents**
+*   **Module 18: Parallel Workflow Agents**
+*   **Module 19: Advanced Multi-Agent Architectures**
+*   **Module 20: Loop Agents**
+*   **Module 21: Agent-to-Agent Communication**
 
-### Part 4: Production Readiness (Modules 20, 21, 23, 27, 28)
+### Part 4: Production Readiness (Modules 22-26)
 This part covers the essential features for making your agents robust, observable, and reliable in a production environment.
 
-*   **Module 20: State and Memory**
-*   **Module 21: Artifacts**
-*   **Module 23: Evaluation**
-*   **Module 27: Observability**
-*   **Module 28: Callbacks**
+*   **Module 22: State and Memory**
+*   **Module 23: Artifacts**
+*   **Module 24: Evaluation**
+*   **Module 25: Observability**
+*   **Module 26: Callbacks**
 
-### Part 5: Advanced Integrations & UI (Modules 29, 30, 32, 38)
+### Part 5: Advanced Integrations & UI (Modules 27-30)
 This section covers advanced tooling with the Model Context Protocol (MCP) and strategies for integrating your agents with user interfaces.
 
-*   **Module 29: Introduction to MCP**
-*   **Module 30: Building MCP Tools**
-*   **Module 38: UI Integration Intro**
-*   **Module 32: Custom Streaming Client**
+*   **Module 27: Introduction to MCP**
+*   **Module 28: Building MCP Tools**
+*   **Module 29: UI Integration Intro**
+*   **Module 30: Custom Streaming Client**
 
-### Part 6: Deployment & Enterprise (Modules 24, 25, 26, 31, 34, 37)
+### Part 6: Deployment & Enterprise (Modules 31-36)
 Learn how to deploy your agents and their components to various scalable cloud environments, including enterprise-grade platforms.
 
-*   **Module 24: Production Deployment Strategies**
-*   **Module 25: Deployment to Cloud Run**
-*   **Module 26: Deployment to GKE**
-*   **Module 31: Deploying an MCP Server to Cloud Run**
-*   **Module 34: Deployment to Agent Engine**
-*   **Module 37: Gemini Enterprise**
+*   **Module 31: Production Deployment Strategies**
+*   **Module 32: Deployment to Cloud Run**
+*   **Module 33: Deployment to GKE**
+*   **Module 34: Deploying an MCP Server to Cloud Run**
+*   **Module 35: Deployment to Agent Engine**
+*   **Module 36: Gemini Enterprise**
 
-### Part 7: Capstone Project & Best Practices (Modules 33, 36)
+### Part 7: Capstone Project & Best Practices (Modules 37-38)
 Apply everything you've learned in a final capstone project and review the essential best practices for building production-ready agents.
 
-*   **Module 33: Advanced Personalized Shopping Agent**
-*   **Module 36: Best Practices**
+*   **Module 37: Advanced Personalized Shopping Agent**
+*   **Module 38: Best Practices**
 
 ---
 
