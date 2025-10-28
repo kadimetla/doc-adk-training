@@ -86,7 +86,7 @@ In this lab, you will learn the fundamental process of deploying an ADK agent to
     ```
 
 3.  **Create the Kubernetes Manifest (`deployment.yaml`):**
-    Create a file named `deployment.yaml`. **Note the use of shell variables (`$GOOGLE_CLOUD_LOCATION`, `$GOOGLE_CLOUD_PROJECT`)**, which we will substitute in the next step.
+    Create a file named `deployment.yaml`. **Note the use of shell variables (`GOOGLE_CLOUD_LOCATION`, `GOOGLE_CLOUD_PROJECT`)**, which we will substitute in the next step.
     ```yaml
     apiVersion: apps/v1
     kind: Deployment
