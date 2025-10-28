@@ -1,6 +1,10 @@
-# 🎓 Google ADK Developer Training Course 🤖
+# 🎓 Google ADK Training: From Zero to Hero 🚀
 
 Welcome! This repository contains a comprehensive, multi-module training course for the **Google Agent Development Kit (ADK)**. Through a series of hands-on modules, you will learn the core and advanced concepts of the ADK to build, test, deploy, and observe your own AI agents.
+
+## 🎯 Our Philosophy: From Zero to Hero
+
+This course was born from a specific need: to create a complete learning path that takes a developer from the foundational concepts of AI agents to building complex, production-ready systems. The goal is to transform you from "Zero" to "Hero" in the world of AI Agent development with the Google ADK, providing not just the theory, but the hands-on practice required to become confident and proficient.
 
 ## 📚 Course Structure
 
