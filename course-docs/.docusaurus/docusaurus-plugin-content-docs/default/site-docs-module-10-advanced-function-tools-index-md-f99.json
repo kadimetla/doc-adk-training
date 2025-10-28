@@ -1,0 +1,24 @@
+{
+  "id": "module-10-advanced-function-tools/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-10-advanced-function-tools/index.md",
+  "sourceDirName": "module-10-advanced-function-tools",
+  "slug": "/module-10-advanced-function-tools/",
+  "permalink": "/docs/module-10-advanced-function-tools/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-10-advanced-function-tools/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 10: Advanced Function Tools",
+    "permalink": "/docs/category/module-10-advanced-function-tools"
+  },
+  "next": {
+    "title": "Module 9: Advanced Function Tools",
+    "permalink": "/docs/module-10-advanced-function-tools/lab-solution"
+  }
+}

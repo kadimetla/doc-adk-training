@@ -1,0 +1,24 @@
+{
+  "id": "module-33-deployment-gke/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-33-deployment-gke/index.md",
+  "sourceDirName": "module-33-deployment-gke",
+  "slug": "/module-33-deployment-gke/",
+  "permalink": "/docs/module-33-deployment-gke/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-33-deployment-gke/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 33: Deployment to GKE",
+    "permalink": "/docs/category/module-33-deployment-to-gke"
+  },
+  "next": {
+    "title": "Module 26: Deployment to Google Kubernetes Engine (GKE)",
+    "permalink": "/docs/module-33-deployment-gke/lab-solution"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "module-31-production-deployment-strategies/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-31-production-deployment-strategies/theory.md",
+  "sourceDirName": "module-31-production-deployment-strategies",
+  "slug": "/module-31-production-deployment-strategies/theory",
+  "permalink": "/docs/module-31-production-deployment-strategies/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-31-production-deployment-strategies/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-30-custom-streaming-client/lab-solution"
+  },
+  "next": {
+    "title": "Module 24: Production Deployment Strategies",
+    "permalink": "/docs/module-31-production-deployment-strategies/lab"
+  }
+}

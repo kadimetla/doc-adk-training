@@ -1,0 +1,24 @@
+{
+  "id": "module-28-building-mcp-tools/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-28-building-mcp-tools/theory.md",
+  "sourceDirName": "module-28-building-mcp-tools",
+  "slug": "/module-28-building-mcp-tools/theory",
+  "permalink": "/docs/module-28-building-mcp-tools/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-28-building-mcp-tools/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-27-intro-to-mcp/lab-solution"
+  },
+  "next": {
+    "title": "Module 30: Building a Custom MCP Tool",
+    "permalink": "/docs/module-28-building-mcp-tools/lab"
+  }
+}

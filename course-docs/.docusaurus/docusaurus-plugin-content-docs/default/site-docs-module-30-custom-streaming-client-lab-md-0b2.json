@@ -1,0 +1,24 @@
+{
+  "id": "module-30-custom-streaming-client/lab",
+  "title": "Module 32: Building a Custom Streaming Client",
+  "description": "Lab 32: Interacting with a Custom Voice Client",
+  "source": "@site/docs/module-30-custom-streaming-client/lab.md",
+  "sourceDirName": "module-30-custom-streaming-client",
+  "slug": "/module-30-custom-streaming-client/lab",
+  "permalink": "/adk_from_zero_to_hero/docs/module-30-custom-streaming-client/lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-30-custom-streaming-client/lab.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-30-custom-streaming-client/overview"
+  },
+  "next": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-30-custom-streaming-client/lab-solution"
+  }
+}

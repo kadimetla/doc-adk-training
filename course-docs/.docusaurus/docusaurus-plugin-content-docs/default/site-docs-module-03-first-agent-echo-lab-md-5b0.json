@@ -1,0 +1,24 @@
+{
+  "id": "module-03-first-agent-echo/lab",
+  "title": "Lab 3: Build and Run the \"Echo\" Agent Challenge",
+  "description": "Goal",
+  "source": "@site/docs/module-03-first-agent-echo/lab.md",
+  "sourceDirName": "module-03-first-agent-echo",
+  "slug": "/module-03-first-agent-echo/lab",
+  "permalink": "/adk_from_zero_to_hero/docs/module-03-first-agent-echo/lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-03-first-agent-echo/lab.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-03-first-agent-echo/overview"
+  },
+  "next": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-03-first-agent-echo/lab-solution"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "module-32-deployment-cloud-run/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-32-deployment-cloud-run/index.md",
+  "sourceDirName": "module-32-deployment-cloud-run",
+  "slug": "/module-32-deployment-cloud-run/",
+  "permalink": "/docs/module-32-deployment-cloud-run/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-32-deployment-cloud-run/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 32: Deployment to Cloud Run",
+    "permalink": "/docs/category/module-32-deployment-to-cloud-run"
+  },
+  "next": {
+    "title": "Module 25: Deployment to Cloud Run",
+    "permalink": "/docs/module-32-deployment-cloud-run/lab-solution"
+  }
+}

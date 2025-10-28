@@ -1,0 +1,24 @@
+{
+  "id": "module-37-advanced-personalized-shopping-agent/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-37-advanced-personalized-shopping-agent/theory.md",
+  "sourceDirName": "module-37-advanced-personalized-shopping-agent",
+  "slug": "/module-37-advanced-personalized-shopping-agent/theory",
+  "permalink": "/docs/module-37-advanced-personalized-shopping-agent/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-37-advanced-personalized-shopping-agent/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-36-gemini-enterprise/lab-solution"
+  },
+  "next": {
+    "title": "Module 37: Advanced - Building a Personalized Shopping Agent",
+    "permalink": "/docs/module-37-advanced-personalized-shopping-agent/lab"
+  }
+}

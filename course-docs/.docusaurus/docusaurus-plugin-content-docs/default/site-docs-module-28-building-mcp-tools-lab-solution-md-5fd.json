@@ -1,0 +1,24 @@
+{
+  "id": "module-28-building-mcp-tools/lab-solution",
+  "title": "Lab Solution",
+  "description": "View the solution on GitHub",
+  "source": "@site/docs/module-28-building-mcp-tools/lab-solution.md",
+  "sourceDirName": "module-28-building-mcp-tools",
+  "slug": "/module-28-building-mcp-tools/lab-solution",
+  "permalink": "/adk_from_zero_to_hero/docs/module-28-building-mcp-tools/lab-solution",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-28-building-mcp-tools/lab-solution.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 30: Building a Custom MCP Tool",
+    "permalink": "/adk_from_zero_to_hero/docs/module-28-building-mcp-tools/lab"
+  },
+  "next": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-29-ui-integration-intro/overview"
+  }
+}

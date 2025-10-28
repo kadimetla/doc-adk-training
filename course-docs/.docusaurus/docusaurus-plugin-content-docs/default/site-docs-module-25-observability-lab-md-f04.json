@@ -1,0 +1,24 @@
+{
+  "id": "module-25-observability/lab",
+  "title": "Module 27: Advanced Observability with Plugins",
+  "description": "Lab 27: Building an Observability System with Plugins",
+  "source": "@site/docs/module-25-observability/lab.md",
+  "sourceDirName": "module-25-observability",
+  "slug": "/module-25-observability/lab",
+  "permalink": "/adk_from_zero_to_hero/docs/module-25-observability/lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-25-observability/lab.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-25-observability/overview"
+  },
+  "next": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-25-observability/lab-solution"
+  }
+}

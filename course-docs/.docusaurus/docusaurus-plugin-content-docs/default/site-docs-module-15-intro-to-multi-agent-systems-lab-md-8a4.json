@@ -1,0 +1,24 @@
+{
+  "id": "module-15-intro-to-multi-agent-systems/lab",
+  "title": "Module 14: Introduction to Multi-Agent Systems",
+  "description": "Lab 14: Designing a Multi-Agent System",
+  "source": "@site/docs/module-15-intro-to-multi-agent-systems/lab.md",
+  "sourceDirName": "module-15-intro-to-multi-agent-systems",
+  "slug": "/module-15-intro-to-multi-agent-systems/lab",
+  "permalink": "/adk_from_zero_to_hero/docs/module-15-intro-to-multi-agent-systems/lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-15-intro-to-multi-agent-systems/lab.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-15-intro-to-multi-agent-systems/overview"
+  },
+  "next": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-15-intro-to-multi-agent-systems/lab-solution"
+  }
+}

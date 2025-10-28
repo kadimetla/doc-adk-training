@@ -1,0 +1,24 @@
+{
+  "id": "module-05-running-agents/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-05-running-agents/index.md",
+  "sourceDirName": "module-05-running-agents",
+  "slug": "/module-05-running-agents/",
+  "permalink": "/docs/module-05-running-agents/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-05-running-agents/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 5: Running Agents",
+    "permalink": "/docs/category/module-5-running-agents"
+  },
+  "next": {
+    "title": "Module 5: Running and Interacting with Agents",
+    "permalink": "/docs/module-05-running-agents/lab-solution"
+  }
+}

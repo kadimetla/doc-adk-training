@@ -1,0 +1,9 @@
+
+{
+  "label": "Module 11: OpenAPI Tools",
+  "position": 11,
+  "link": {
+    "type": "generated-index",
+    "description": "Connect your agent to any REST API with an OpenAPI specification."
+  }
+}

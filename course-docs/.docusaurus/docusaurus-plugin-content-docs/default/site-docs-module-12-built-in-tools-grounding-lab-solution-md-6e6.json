@@ -1,0 +1,24 @@
+{
+  "id": "module-12-built-in-tools-grounding/lab-solution",
+  "title": "Lab Solution",
+  "description": "View the solution on GitHub",
+  "source": "@site/docs/module-12-built-in-tools-grounding/lab-solution.md",
+  "sourceDirName": "module-12-built-in-tools-grounding",
+  "slug": "/module-12-built-in-tools-grounding/lab-solution",
+  "permalink": "/adk_from_zero_to_hero/docs/module-12-built-in-tools-grounding/lab-solution",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-12-built-in-tools-grounding/lab-solution.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 11: Built-in Tools and Grounding",
+    "permalink": "/adk_from_zero_to_hero/docs/module-12-built-in-tools-grounding/lab"
+  },
+  "next": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-13-tool-context/overview"
+  }
+}

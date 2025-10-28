@@ -1,0 +1,24 @@
+{
+  "id": "module-24-evaluation/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-24-evaluation/index.md",
+  "sourceDirName": "module-24-evaluation",
+  "slug": "/module-24-evaluation/",
+  "permalink": "/docs/module-24-evaluation/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-24-evaluation/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 24: Evaluation",
+    "permalink": "/docs/category/module-24-evaluation"
+  },
+  "next": {
+    "title": "Module 23: Evaluating Agent Performance",
+    "permalink": "/docs/module-24-evaluation/lab-solution"
+  }
+}

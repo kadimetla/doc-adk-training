@@ -1,0 +1,24 @@
+{
+  "id": "module-06-programmatic-execution/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-06-programmatic-execution/index.md",
+  "sourceDirName": "module-06-programmatic-execution",
+  "slug": "/module-06-programmatic-execution/",
+  "permalink": "/docs/module-06-programmatic-execution/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-06-programmatic-execution/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 6: Programmatic Execution",
+    "permalink": "/docs/category/module-6-programmatic-execution"
+  },
+  "next": {
+    "title": "Module 6: Running an Agent Programmatically",
+    "permalink": "/docs/module-06-programmatic-execution/lab-solution"
+  }
+}

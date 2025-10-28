@@ -1,0 +1,24 @@
+{
+  "id": "module-12-built-in-tools-grounding/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-12-built-in-tools-grounding/index.md",
+  "sourceDirName": "module-12-built-in-tools-grounding",
+  "slug": "/module-12-built-in-tools-grounding/",
+  "permalink": "/docs/module-12-built-in-tools-grounding/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-12-built-in-tools-grounding/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 12: Built-in Tools & Grounding",
+    "permalink": "/docs/category/module-12-built-in-tools--grounding"
+  },
+  "next": {
+    "title": "Module 11: Built-in Tools and Grounding",
+    "permalink": "/docs/module-12-built-in-tools-grounding/lab-solution"
+  }
+}

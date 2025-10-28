@@ -1,0 +1,24 @@
+{
+  "id": "module-38-best-practices/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-38-best-practices/index.md",
+  "sourceDirName": "module-38-best-practices",
+  "slug": "/module-38-best-practices/",
+  "permalink": "/docs/module-38-best-practices/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-38-best-practices/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 38: Best Practices",
+    "permalink": "/docs/category/module-38-best-practices"
+  },
+  "next": {
+    "title": "Module 36: Best Practices & Production Patterns",
+    "permalink": "/docs/module-38-best-practices/lab-solution"
+  }
+}

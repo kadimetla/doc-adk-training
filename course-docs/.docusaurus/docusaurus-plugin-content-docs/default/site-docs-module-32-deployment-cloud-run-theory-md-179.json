@@ -1,0 +1,24 @@
+{
+  "id": "module-32-deployment-cloud-run/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-32-deployment-cloud-run/theory.md",
+  "sourceDirName": "module-32-deployment-cloud-run",
+  "slug": "/module-32-deployment-cloud-run/theory",
+  "permalink": "/docs/module-32-deployment-cloud-run/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-32-deployment-cloud-run/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-31-production-deployment-strategies/lab-solution"
+  },
+  "next": {
+    "title": "Module 25: Deployment to Cloud Run",
+    "permalink": "/docs/module-32-deployment-cloud-run/lab"
+  }
+}

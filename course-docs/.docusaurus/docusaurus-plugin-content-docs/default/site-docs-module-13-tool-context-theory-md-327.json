@@ -1,0 +1,24 @@
+{
+  "id": "module-13-tool-context/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-13-tool-context/theory.md",
+  "sourceDirName": "module-13-tool-context",
+  "slug": "/module-13-tool-context/theory",
+  "permalink": "/docs/module-13-tool-context/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-13-tool-context/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-12-built-in-tools-grounding/lab-solution"
+  },
+  "next": {
+    "title": "Module 12: Advanced Tool Concepts: Tool Context",
+    "permalink": "/docs/module-13-tool-context/lab"
+  }
+}

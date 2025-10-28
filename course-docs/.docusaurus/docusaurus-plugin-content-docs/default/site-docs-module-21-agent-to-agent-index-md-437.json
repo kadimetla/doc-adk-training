@@ -1,0 +1,24 @@
+{
+  "id": "module-21-agent-to-agent/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-21-agent-to-agent/index.md",
+  "sourceDirName": "module-21-agent-to-agent",
+  "slug": "/module-21-agent-to-agent/",
+  "permalink": "/docs/module-21-agent-to-agent/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-21-agent-to-agent/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 21: Agent-to-Agent Communication",
+    "permalink": "/docs/category/module-21-agent-to-agent-communication"
+  },
+  "next": {
+    "title": "Module 35: Agent-to-Agent Communication",
+    "permalink": "/docs/module-21-agent-to-agent/lab-solution"
+  }
+}

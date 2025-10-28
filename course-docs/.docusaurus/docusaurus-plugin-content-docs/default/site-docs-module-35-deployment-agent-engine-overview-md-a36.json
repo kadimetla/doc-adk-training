@@ -1,0 +1,24 @@
+{
+  "id": "module-35-deployment-agent-engine/overview",
+  "title": "overview",
+  "description": "---",
+  "source": "@site/docs/module-35-deployment-agent-engine/overview.md",
+  "sourceDirName": "module-35-deployment-agent-engine",
+  "slug": "/module-35-deployment-agent-engine/overview",
+  "permalink": "/adk_from_zero_to_hero/docs/module-35-deployment-agent-engine/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-35-deployment-agent-engine/overview.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-34-deploying-mcp-server-cloud-run/lab-solution"
+  },
+  "next": {
+    "title": "Module 34: Deploying to Agent Engine",
+    "permalink": "/adk_from_zero_to_hero/docs/module-35-deployment-agent-engine/lab"
+  }
+}

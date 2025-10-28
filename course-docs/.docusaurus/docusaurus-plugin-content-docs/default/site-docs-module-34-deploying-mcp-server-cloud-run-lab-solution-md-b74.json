@@ -1,0 +1,24 @@
+{
+  "id": "module-34-deploying-mcp-server-cloud-run/lab-solution",
+  "title": "Lab Solution",
+  "description": "View the solution on GitHub",
+  "source": "@site/docs/module-34-deploying-mcp-server-cloud-run/lab-solution.md",
+  "sourceDirName": "module-34-deploying-mcp-server-cloud-run",
+  "slug": "/module-34-deploying-mcp-server-cloud-run/lab-solution",
+  "permalink": "/adk_from_zero_to_hero/docs/module-34-deploying-mcp-server-cloud-run/lab-solution",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-34-deploying-mcp-server-cloud-run/lab-solution.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 31: Deploying an MCP Server to Cloud Run",
+    "permalink": "/adk_from_zero_to_hero/docs/module-34-deploying-mcp-server-cloud-run/lab"
+  },
+  "next": {
+    "title": "overview",
+    "permalink": "/adk_from_zero_to_hero/docs/module-35-deployment-agent-engine/overview"
+  }
+}

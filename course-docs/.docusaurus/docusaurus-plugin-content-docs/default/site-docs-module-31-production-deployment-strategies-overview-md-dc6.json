@@ -1,0 +1,24 @@
+{
+  "id": "module-31-production-deployment-strategies/overview",
+  "title": "overview",
+  "description": "---",
+  "source": "@site/docs/module-31-production-deployment-strategies/overview.md",
+  "sourceDirName": "module-31-production-deployment-strategies",
+  "slug": "/module-31-production-deployment-strategies/overview",
+  "permalink": "/adk_from_zero_to_hero/docs/module-31-production-deployment-strategies/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-31-production-deployment-strategies/overview.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-30-custom-streaming-client/lab-solution"
+  },
+  "next": {
+    "title": "Module 24: Production Deployment Strategies",
+    "permalink": "/adk_from_zero_to_hero/docs/module-31-production-deployment-strategies/lab"
+  }
+}

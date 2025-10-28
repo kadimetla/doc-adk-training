@@ -1,0 +1,24 @@
+{
+  "id": "module-27-intro-to-mcp/theory",
+  "title": "theory",
+  "description": "---",
+  "source": "@site/docs/module-27-intro-to-mcp/theory.md",
+  "sourceDirName": "module-27-intro-to-mcp",
+  "slug": "/module-27-intro-to-mcp/theory",
+  "permalink": "/docs/module-27-intro-to-mcp/theory",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-27-intro-to-mcp/theory.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/docs/module-26-callbacks/lab-solution"
+  },
+  "next": {
+    "title": "Module 29: Introduction to MCP & Stateful Tools",
+    "permalink": "/docs/module-27-intro-to-mcp/lab"
+  }
+}

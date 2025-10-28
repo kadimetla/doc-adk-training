@@ -1,0 +1,24 @@
+{
+  "id": "module-04-llmagent-deep-dive/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-04-llmagent-deep-dive/index.md",
+  "sourceDirName": "module-04-llmagent-deep-dive",
+  "slug": "/module-04-llmagent-deep-dive/",
+  "permalink": "/docs/module-04-llmagent-deep-dive/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-04-llmagent-deep-dive/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 4: LlmAgent Deep Dive",
+    "permalink": "/docs/category/module-4-llmagent-deep-dive"
+  },
+  "next": {
+    "title": "Module 4: Core Agent Concepts: LlmAgent Deep Dive",
+    "permalink": "/docs/module-04-llmagent-deep-dive/lab-solution"
+  }
+}

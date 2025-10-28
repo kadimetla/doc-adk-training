@@ -1,0 +1,24 @@
+{
+  "id": "module-18-parallel-workflow-agents/overview",
+  "title": "overview",
+  "description": "---",
+  "source": "@site/docs/module-18-parallel-workflow-agents/overview.md",
+  "sourceDirName": "module-18-parallel-workflow-agents",
+  "slug": "/module-18-parallel-workflow-agents/overview",
+  "permalink": "/adk_from_zero_to_hero/docs/module-18-parallel-workflow-agents/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-18-parallel-workflow-agents/overview.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Lab Solution",
+    "permalink": "/adk_from_zero_to_hero/docs/module-17-sequential-workflow-agents/lab-solution"
+  },
+  "next": {
+    "title": "Module 17: Parallel Processing with ParallelAgent",
+    "permalink": "/adk_from_zero_to_hero/docs/module-18-parallel-workflow-agents/lab"
+  }
+}

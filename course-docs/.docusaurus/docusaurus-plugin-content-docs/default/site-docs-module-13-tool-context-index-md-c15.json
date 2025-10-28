@@ -1,0 +1,24 @@
+{
+  "id": "module-13-tool-context/index",
+  "title": "index",
+  "description": "---",
+  "source": "@site/docs/module-13-tool-context/index.md",
+  "sourceDirName": "module-13-tool-context",
+  "slug": "/module-13-tool-context/",
+  "permalink": "/docs/module-13-tool-context/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/mauripsale/doc-adk-training/tree/main/docs/module-13-tool-context/index.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 13: Tool Context",
+    "permalink": "/docs/category/module-13-tool-context"
+  },
+  "next": {
+    "title": "Module 12: Advanced Tool Concepts: Tool Context",
+    "permalink": "/docs/module-13-tool-context/lab-solution"
+  }
+}
