@@ -68,7 +68,7 @@ In this lab, you will learn the fundamental process of deploying an ADK agent to
 2.  **Build and Push with Cloud Build:**
     ```shell
     gcloud builds submit \
-        --tag ${GOOGLE_CLOUD_LOCATION}-docker.pkg.dev/${GOOGLE_CLOUD_PROJECT}/adk-images/echo-agent:v1
+        --tag \${GOOGLE_CLOUD_LOCATION}-docker.pkg.dev/\${GOOGLE_CLOUD_PROJECT}/adk-images/echo-agent:v1
     ```
 
 ### Step 4: Create and Deploy to a GKE Cluster
