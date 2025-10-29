@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 10: OpenAPI Tools
 
-## Lab 10: Building a Chuck Norris Fact Assistant
+## Lab 11: Exercise
 
 ### Goal
 

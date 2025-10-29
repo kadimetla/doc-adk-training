@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 29: Introduction to MCP & Stateful Tools
 
-## Lab 29: Using a Stateful File System Tool
+## Lab 27: Exercise
 
 ### Goal
 

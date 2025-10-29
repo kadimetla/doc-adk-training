@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 11: Built-in Tools and Grounding
 
-## Lab 11: Building a Research Assistant with Web Search
+## Lab 12: Exercise
 
 ### Goal
 

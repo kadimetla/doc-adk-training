@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 18: Advanced Multi-Agent Architectures
 
-## Lab 18: Building a Content Publishing System
+## Lab 19: Exercise
 
 ### Goal
 

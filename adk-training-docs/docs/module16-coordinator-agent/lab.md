@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 15: Building a Coordinator/Dispatcher Agent
 
-## Lab 15: Implementing the "Greeting Router"
+## Lab 16: Exercise
 
 ### Goal
 

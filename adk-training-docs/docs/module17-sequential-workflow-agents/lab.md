@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 16: Building Agent Pipelines with SequentialAgent
 
-## Lab 16: Building a Blog Post Generator Pipeline
+## Lab 17: Exercise
 
 ### Goal
 

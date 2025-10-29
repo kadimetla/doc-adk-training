@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # Module 13: Integrating Third-Party Tools
 
-## Lab 13: Solution
+## Lab 14: Solution
 
 This file contains the complete code for the `agent.py` file in the Fact-finder Agent lab.
 

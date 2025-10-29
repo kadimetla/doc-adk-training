@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 6: Running an Agent Programmatically
 
-## Lab 6: Executing Your Agent in a Python Script
+## Lab 6: Exercise
 
 ### Goal
 

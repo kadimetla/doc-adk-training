@@ -5,7 +5,7 @@ sidebar_position: 3
 
 ## Lab 31: Solution
 
-## Lab 24: Solution
+## Lab 31: Solution
 
 This file contains the recommended solutions and reasoning for the scenario-based exercise in the lab.
 

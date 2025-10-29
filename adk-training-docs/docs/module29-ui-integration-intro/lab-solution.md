@@ -5,7 +5,7 @@ sidebar_position: 3
 
 ## Lab 29: Solution
 
-## Lab 38: Solution
+## Lab 29: Solution
 
 This file contains the complete code for the `index.html` custom chat client.
 

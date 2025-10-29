@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # Module 19: Iterative Refinement with Loop Agents
 
-## Lab 19: Solution
+## Lab 20: Solution
 
 This file contains the complete code for the `agent.py` script in the Essay Refinement System lab.
 

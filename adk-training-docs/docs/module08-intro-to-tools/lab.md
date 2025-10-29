@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 6: Introduction to Tools
 
-## Lab 6: Creating a "Researcher" Agent with Google Search
+## Lab 8: Exercise
 
 ### Goal
 

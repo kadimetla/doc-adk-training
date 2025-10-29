@@ -5,7 +5,7 @@ sidebar_position: 3
 
 ## Lab 35: Solution
 
-## Lab 34: Solution
+## Lab 35: Solution
 
 This lab is a procedural tutorial. The solution for both parts is a successfully deployed Agent Engine instance.
 

@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 12: Advanced Tool Concepts: Tool Context
 
-## Lab 12: Creating a "Memory" Agent with Tool Context
+## Lab 13: Exercise
 
 ### Goal
 

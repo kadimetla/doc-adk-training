@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # Module 7: Introduction to Tools
 
-## Lab 7: Solution
+## Lab 8: Solution
 
 This file contains the complete, step-by-step guide to creating the "Researcher" agent.
 

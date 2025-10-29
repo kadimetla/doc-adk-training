@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 9: Advanced Function Tools
 
-## Lab 9: Building a Personal Finance Assistant
+## Lab 10: Exercise
 
 ### Goal
 

@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 20: State and Memory - Building a Personal Tutor Agent
 
-## Lab 20: Building a Personal Learning Tutor
+## Lab 22: Exercise
 
 ### Goal
 

@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # Module 2: Setting Up Your Development Environment
 
-## Lab 2: Installation and Configuration
+## Lab 2: Exercise
 
 ### Goal
 

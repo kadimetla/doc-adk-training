@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 35: Agent-to-Agent Communication
 
-## Lab 35: Building a Distributed Research System
+## Lab 21: Exercise
 
 ### Goal
 
