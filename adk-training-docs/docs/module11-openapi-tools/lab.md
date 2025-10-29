@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 10: OpenAPI Tools
 
-## Lab 10: Building a Chuck Norris Fact Assistant
+# Lab 11: Exercise
 
 ### Goal
 
@@ -105,7 +104,7 @@ root_agent = None
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully integrated a live REST API into your agent without writing a single manual tool function. You have learned:
 *   How to read API documentation to create an OpenAPI specification.

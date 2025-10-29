@@ -1,9 +1,9 @@
 ---
-sidebar_position: 3
----
-# Module 25: Deployment to Cloud Run
+## Module 32: Deployment to Cloud Run
 
-## Lab 25: Solution
+# Lab 32: Solution
+
+# Lab 32: Solution
 
 This lab is a procedural tutorial. The primary "solution" is a successfully deployed agent and a public URL.
 

@@ -1,9 +1,9 @@
 ---
-sidebar_position: 3
----
-# Module 36: Best Practices & Production Patterns
+## Module 38: Best Practices # Module 36: Best Practices & Production Patterns Production Patterns
 
-## Lab 36: Solution
+# Lab 38: Solution
+
+# Lab 38: Solution
 
 This file contains the complete code for the `agent.py` script in the Best Practices Agent lab.
 

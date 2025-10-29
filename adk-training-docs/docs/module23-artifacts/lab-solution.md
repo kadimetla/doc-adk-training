@@ -1,9 +1,7 @@
 ---
-sidebar_position: 3
----
 # Module 21: Handling Files with Artifacts
 
-## Lab 21: Solution
+# Lab 23: Solution
 
 This file contains the complete, simplified code for the `agent.py` script in the Document Processing Pipeline lab.
 

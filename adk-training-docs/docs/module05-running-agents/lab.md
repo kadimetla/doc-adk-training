@@ -1,4 +1,3 @@
----
 sidebar_position: 2
 ---
 # Lab 5: Exploring Different Execution Modes Challenge

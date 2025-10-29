@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 6: Introduction to Tools
 
-## Lab 6: Creating a "Researcher" Agent with Google Search
+# Lab 8: Exercise
 
 ### Goal
 
@@ -95,7 +94,7 @@ To use the `google_search` tool, you need to enable the **Vertex AI API** in you
         *   "What is the weather like in London today?"
     *   **Examine the Trace View:** Click on the "Trace" tab. You will now see a new step in the execution flow: `execute_tool`. Expand it to see that the `google_search` tool was called. You can see the search query the agent decided to use and the search results that were returned to the agent. This confirms the agent is using its new tool correctly.
 
-### Lab Summary
+## Lab Summary
 
 Congratulations! You have successfully given an agent a powerful new capability. You have learned how to:
 

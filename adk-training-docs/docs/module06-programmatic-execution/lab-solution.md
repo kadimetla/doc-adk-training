@@ -1,9 +1,7 @@
 ---
-sidebar_position: 3
----
 # Module 6: Running an Agent Programmatically
 
-## Lab 6: Solution
+# Lab 6: Solution
 
 This file contains the complete code for the `agent.py` script used in the lab.
 

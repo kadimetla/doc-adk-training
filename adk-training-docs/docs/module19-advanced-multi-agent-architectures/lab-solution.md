@@ -1,9 +1,7 @@
 ---
-sidebar_position: 3
----
 # Module 17: Multi-Agent Systems - Complex Orchestration
 
-## Lab 17: Solution
+# Lab 19: Solution
 
 This file contains the complete code for the `agent.py` script in the Content Publishing System lab.
 

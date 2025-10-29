@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 31: Deploying an MCP Server to Cloud Run
 
-## Lab 31: Deploying the "Shopping Cart" Server
+# Lab 34: Exercise
 
 ### Goal
 
@@ -188,7 +187,7 @@ Now, create an ADK agent that connects to your newly deployed server.
     *   Have the same conversation as in the previous lab: add 'apples', then add 'bread', then view the cart.
     *   It should work exactly the same! But this time, the state is being managed by your serverless application running on Cloud Run.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully deployed a stateful service to a stateless platform by externalizing the state, and connected your ADK agent to it.
 

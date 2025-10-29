@@ -1,9 +1,7 @@
 ---
-sidebar_position: 3
----
 # Module 7: Introduction to Tools
 
-## Lab 7: Solution
+# Lab 8: Solution
 
 This file contains the complete, step-by-step guide to creating the "Researcher" agent.
 
@@ -92,7 +90,7 @@ To use the `google_search` tool, you need to enable the **Vertex AI API** in you
         *   "What are the latest headlines about space exploration?"
     *   **Examine the Trace View:** Click on the "Trace" tab. You will see a new step in the execution flow: `execute_tool`. Expand it to see that the `google_search` tool was called, confirming the agent is using its new tool correctly.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully given an agent a powerful new capability. You have learned how to:
 

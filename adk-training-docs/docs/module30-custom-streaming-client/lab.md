@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 32: Building a Custom Streaming Client
 
-## Lab 32: Interacting with a Custom Voice Client
+# Lab 30: Exercise
 
 ### Goal
 
@@ -123,7 +122,7 @@ We will use the same streaming agent configuration from Module 22.
 ### Having Trouble?
 If you get stuck, you can find the complete, working `index.html` code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 You have successfully built a custom client for a streaming ADK agent. You have learned:
 *   How to run an ADK agent as a backend service using `adk api_server`.
 *   The basic structure of an HTML/JavaScript client for streaming.

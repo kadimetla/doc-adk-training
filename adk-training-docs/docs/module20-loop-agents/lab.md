@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 19: Iterative Refinement with Loop Agents
 
-## Lab 19: Building an Essay Refinement System
+# Lab 20: Exercise
 
 ### Goal
 
@@ -91,7 +90,7 @@ root_agent = None
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully built a self-correcting system using a `LoopAgent`. You have learned:
 *   How to implement the "Critic -> Refiner" pattern.

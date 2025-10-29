@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 11: Built-in Tools and Grounding
 
-## Lab 11: Building a Research Assistant with Web Search
+# Lab 12: Exercise
 
 ### Goal
 
@@ -96,7 +95,7 @@ root_agent = Agent(
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully built an agent that can access real-world, current information from the internet and process it using custom logic. You have learned:
 *   How to use the `GoogleSearchAgentTool` wrapper to combine built-in search with custom `FunctionTool`s.

@@ -1,9 +1,7 @@
 ---
-sidebar_position: 3
----
 # Module 3: Your First Agent: The "Echo" Agent
 
-## Lab 3: Build and Run the "Echo" Agent
+# Lab 3: Exercise
 
 ### Overview
 
@@ -149,7 +147,7 @@ When you send a message:
 *   **Problem**: If using `agent.py`, "root_agent not found".
     *   **Solution**: Ensure your agent variable is named exactly `root_agent`.
 
-### Lab Summary
+## Lab Summary
 
 Fantastic! You have successfully built and interacted with your first AI agent. You have learned the core development loop: Create, Configure, and Run.
 

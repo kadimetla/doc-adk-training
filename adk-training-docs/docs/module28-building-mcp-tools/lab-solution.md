@@ -1,9 +1,9 @@
 ---
-sidebar_position: 3
----
-# Module 30: Building a Custom MCP Tool
+## Module 28: Building a Custom MCP Tool
 
-## Lab 30: Solution
+# Lab 28: Solution
+
+# Lab 28: Solution
 
 This file contains the complete code for both the `cart_server.py` and the `agent.py` client script for the Shopping Cart MCP lab.
 

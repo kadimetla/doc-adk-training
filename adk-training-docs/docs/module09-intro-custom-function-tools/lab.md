@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 8: Creating Custom Function Tools
 
-## Lab 8: Building a "Calculator" Agent
+# Lab 9: Exercise
 
 ### Goal
 
@@ -113,7 +112,7 @@ tools:
 
 If you get stuck, you can find the complete, working code and configuration in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully built an agent with custom capabilities! You have learned to:
 *   Organize tool code into a separate Python module.

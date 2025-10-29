@@ -1,9 +1,9 @@
 ---
-sidebar_position: 3
----
-# Module 34: Deploying to Agent Engine
+## Module 35: Deploying to Agent Engine
 
-## Lab 34: Solution
+# Lab 35: Solution
+
+# Lab 35: Solution
 
 This lab is a procedural tutorial. The solution for both parts is a successfully deployed Agent Engine instance.
 

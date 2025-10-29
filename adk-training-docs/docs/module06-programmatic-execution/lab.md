@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 6: Running an Agent Programmatically
 
-## Lab 6: Executing Your Agent in a Python Script
+# Lab 6: Exercise
 
 ### Goal
 
@@ -86,7 +85,7 @@ If your script is correct, you will see the output printed directly to your cons
 
 If you get stuck, you can find the complete code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully run an agent programmatically. This is the foundation for integrating your agent into any larger Python application.
 

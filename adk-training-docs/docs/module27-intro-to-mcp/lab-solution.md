@@ -1,9 +1,7 @@
 ---
-sidebar_position: 3
----
 # Module 29: Introduction to MCP & Stateful Tools
 
-## Lab 29: Solution
+# Lab 27: Solution
 
 This file contains the complete code for the `agent.py` script in the Stateful File System Tool lab.
 

@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 24: Evaluating Agent Performance
 
-## Lab 17: Creating an Evaluation Case for the Calculator Agent
+# Lab 24: Exercise
 
 ### Goal
 
@@ -178,7 +177,7 @@ While the Dev UI is great for creating and running evaluations interactively, yo
     ```
     This provides a fast, automated way to confirm your agent is still behaving as expected after you make changes.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully created and run your first agent evaluation! This is a critical skill for building reliable, production-ready agents.
 

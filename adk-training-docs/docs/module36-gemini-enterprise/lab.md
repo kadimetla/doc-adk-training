@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 37: Gemini Enterprise
 
-## Lab 37: Designing an Enterprise Agent Strategy
+# Lab 36: Exercise
 
 ### Goal
 
@@ -61,7 +60,7 @@ Finally, think about how you will monitor the system.
 
 ---
 
-### Lab Summary
+## Lab Summary
 
 You have successfully created a high-level strategic plan for deploying and managing an enterprise-wide agent ecosystem.
 

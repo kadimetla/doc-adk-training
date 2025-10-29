@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 16: Building Agent Pipelines with SequentialAgent
 
-## Lab 16: Building a Blog Post Generator Pipeline
+# Lab 17: Exercise
 
 ### Goal
 
@@ -87,7 +86,7 @@ root_agent = None
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully built a deterministic, multi-agent pipeline. You have learned to:
 *   Configure a `SequentialAgent` to orchestrate multiple sub-agents.

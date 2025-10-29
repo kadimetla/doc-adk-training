@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 24: Production Deployment Strategies
 
-## Lab 24: Choosing the Right Deployment Strategy
+# Lab 31: Exercise
 
 ### Goal
 
@@ -69,7 +68,7 @@ Be prepared to justify your choice based on the key requirements of each scenari
 
 ---
 
-### Lab Summary
+## Lab Summary
 
 You have now practiced applying a strategic framework to real-world deployment decisions. You have learned to:
 *   Analyze business and technical requirements to choose a deployment platform.

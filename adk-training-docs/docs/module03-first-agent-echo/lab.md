@@ -1,4 +1,3 @@
----
 sidebar_position: 2
 ---
 # Lab 3: Build and Run the "Echo" Agent Challenge
