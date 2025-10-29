@@ -1,4 +1,3 @@
-sidebar_position: 3
 ---
 ## Module 38: Best Practices # Module 36: Best Practices & Production Patterns Production Patterns
 

@@ -1,4 +1,3 @@
-sidebar_position: 3
 ---
 # Module 20: State and Memory - Building a Personal Tutor Agent
 

@@ -1,4 +1,3 @@
-sidebar_position: 3
 ---
 # Module 35: Agent-to-Agent Communication
 

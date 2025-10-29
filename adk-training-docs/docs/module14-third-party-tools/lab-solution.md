@@ -1,4 +1,3 @@
-sidebar_position: 3
 ---
 # Module 13: Integrating Third-Party Tools
 

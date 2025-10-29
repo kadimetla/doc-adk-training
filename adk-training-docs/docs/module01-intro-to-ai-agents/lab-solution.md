@@ -1,4 +1,3 @@
-sidebar_position: 3
 ---
 # Module 1: Introduction to AI Agents & Google ADK
 

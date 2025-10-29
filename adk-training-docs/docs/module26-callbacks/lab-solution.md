@@ -1,4 +1,3 @@
-sidebar_position: 3
 ---
 # Module 26: Callbacks and Guardrails - Building a Content Moderator
 

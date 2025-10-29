@@ -1,4 +1,3 @@
-sidebar_position: 3
 ---
 # Module 4: Core Agent Concepts: `LlmAgent` Deep Dive
 

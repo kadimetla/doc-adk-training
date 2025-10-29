@@ -1,4 +1,3 @@
-sidebar_position: 3
 ---
 # Module 21: Handling Files with Artifacts
 

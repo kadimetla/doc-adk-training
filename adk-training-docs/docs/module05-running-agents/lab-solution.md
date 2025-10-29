@@ -1,4 +1,3 @@
-sidebar_position: 3
 ---
 # Module 5: Running and Interacting with Agents
 

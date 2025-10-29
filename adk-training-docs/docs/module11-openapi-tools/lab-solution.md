@@ -1,4 +1,3 @@
-sidebar_position: 3
 ---
 # Module 10: OpenAPI Tools
 

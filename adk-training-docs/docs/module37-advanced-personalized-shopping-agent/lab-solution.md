@@ -1,4 +1,3 @@
-sidebar_position: 3
 ---
 # Module 37: Advanced - Building a Personalized Shopping Agent
 
