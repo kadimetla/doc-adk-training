@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 24: Production Deployment Strategies
 
 ## Lab 24: Solution

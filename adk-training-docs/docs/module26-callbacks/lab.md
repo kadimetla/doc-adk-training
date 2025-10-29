@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 28: Callbacks and Guardrails - Building a Content Moderator
 
 ## Lab 28: Building a Content Moderation Assistant

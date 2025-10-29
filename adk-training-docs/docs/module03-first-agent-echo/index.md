@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 3: Your First Agent: The "Echo" Agent
 
 ## Theory

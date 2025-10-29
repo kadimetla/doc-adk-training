@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 31: Deploying an MCP Server to Cloud Run
 
 ## Lab 31: Solution

@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 13: Advanced Tool Concepts: Tool Context
 
 ## Theory

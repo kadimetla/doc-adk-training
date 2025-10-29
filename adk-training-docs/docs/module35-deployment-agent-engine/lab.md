@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 34: Deploying to Agent Engine
 
 ## Lab 34: Deploying the Calculator Agent

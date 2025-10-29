@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 11: Built-in Tools and Grounding
 
 ## Lab 11: Solution

@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 21: Handling Files with Artifacts
 
 ## Lab 21: Building a Document Processing Pipeline

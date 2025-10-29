@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 37: Advanced - Building a Personalized Shopping Agent
 
 ## Challenging Lab: Building a Distributed Multi-Agent System

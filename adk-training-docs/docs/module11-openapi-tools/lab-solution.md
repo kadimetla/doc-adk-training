@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 10: OpenAPI Tools
 
 ## Lab 10: Solution

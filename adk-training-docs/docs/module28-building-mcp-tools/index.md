@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 28: Building a Custom MCP Tool
 
 ## Theory

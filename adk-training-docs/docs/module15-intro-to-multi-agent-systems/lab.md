@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 14: Introduction to Multi-Agent Systems
 
 ## Lab 14: Designing a Multi-Agent System

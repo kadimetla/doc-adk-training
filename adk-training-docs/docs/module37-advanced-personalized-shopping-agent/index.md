@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 37: Advanced - Building a Personalized Shopping Agent
 
 ## Theory

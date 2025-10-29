@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 18: Parallel Processing with ParallelAgent
 
 ## Theory

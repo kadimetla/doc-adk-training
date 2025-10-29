@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 20: State and Memory - Persistent Agent Context
 
 ## Theory

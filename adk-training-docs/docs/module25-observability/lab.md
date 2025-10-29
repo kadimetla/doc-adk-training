@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 27: Advanced Observability with Plugins
 
 ## Lab 27: Building an Observability System with Plugins
