@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 35: Agent-to-Agent Communication
 
-## Lab 21: Exercise
+# Lab 21: Exercise
 
 ### Goal
 
@@ -83,7 +82,7 @@ This requires two separate terminals.
 ### Having Trouble?
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 You have successfully built a distributed multi-agent system. You have learned to:
 *   Expose an ADK agent as a network service using `to_a2a()`.
 *   Connect to a remote agent using the `RemoteA2aAgent` class.

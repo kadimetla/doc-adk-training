@@ -1,9 +1,8 @@
----
 sidebar_position: 3
 ---
 # Module 16: Building Agent Pipelines with SequentialAgent
 
-## Lab 17: Solution
+# Lab 17: Solution
 
 This file contains the complete code for the `agent.py` script in the Blog Post Generator Pipeline lab.
 

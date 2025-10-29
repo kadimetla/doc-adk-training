@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 17: Parallel Processing with ParallelAgent
 
-## Lab 18: Exercise
+# Lab 18: Exercise
 
 ### Goal
 
@@ -77,7 +76,7 @@ root_agent = None
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully built a high-performance, multi-agent system using the fan-out/gather pattern. You have learned:
 *   How to configure and use a `ParallelAgent` to run agents concurrently.

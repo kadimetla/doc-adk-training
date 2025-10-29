@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 27: Advanced Observability with Plugins
 
-## Lab 25: Exercise
+# Lab 25: Exercise
 
 ### Goal
 
@@ -128,7 +127,7 @@ if __name__ == "__main__":
 ### Having Trouble?
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 You have successfully built a modular observability system using the ADK's Plugin System. You have learned to:
 *   Create custom plugins by inheriting from `BasePlugin`.
 *   Implement the `on_event_callback` method to intercept and process agent events.

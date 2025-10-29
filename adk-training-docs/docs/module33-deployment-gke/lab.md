@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 26: Deployment to Google Kubernetes Engine (GKE)
 
-## Lab 33: Exercise
+# Lab 33: Exercise
 
 ### Goal
 

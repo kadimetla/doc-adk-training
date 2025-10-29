@@ -1,9 +1,8 @@
----
 sidebar_position: 3
 ---
 # Module 7: Multimodal and Image Processing
 
-## Lab 7: Solution
+# Lab 7: Solution
 
 This file contains the complete code for the `agent.py` script in the Visual Product Catalog Analyzer lab.
 

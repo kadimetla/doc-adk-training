@@ -1,9 +1,8 @@
----
 sidebar_position: 3
 ---
 # Module 27: Advanced Observability with Plugins
 
-## Lab 25: Solution
+# Lab 25: Solution
 
 This file contains the complete code for the `agent.py` script in the Observability System with Plugins lab.
 

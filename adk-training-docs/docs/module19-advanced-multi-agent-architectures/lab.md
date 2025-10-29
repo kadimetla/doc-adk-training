@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 18: Advanced Multi-Agent Architectures
 
-## Lab 19: Exercise
+# Lab 19: Exercise
 
 ### Goal
 
@@ -90,7 +89,7 @@ root_agent = None
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully built and orchestrated a complex, production-quality multi-agent system. You have learned:
 *   How to nest `SequentialAgent` workflows inside a `ParallelAgent`.

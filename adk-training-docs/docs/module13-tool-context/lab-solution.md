@@ -1,9 +1,8 @@
----
 sidebar_position: 3
 ---
 # Module 12: Advanced Tool Concepts: Tool Context
 
-## Lab 13: Solution
+# Lab 13: Solution
 
 This file contains the complete code for the `memory.py` and `root_agent.yaml` files in the Memory Agent lab.
 

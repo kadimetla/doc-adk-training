@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 14: Introduction to Multi-Agent Systems
 
-## Lab 15: Exercise
+# Lab 15: Exercise
 
 ### Goal
 
@@ -95,7 +94,7 @@ instruction: |
   You are a friendly assistant who only speaks Spanish...
 ```
 
-### Lab Summary
+## Lab Summary
 
 You have successfully designed a multi-agent system on paper! This conceptual work is a vital skill for building complex, maintainable agentic applications.
 

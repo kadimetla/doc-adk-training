@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 36: Best Practices & Production Patterns
 
-## Lab 38: Exercise
+# Lab 38: Exercise
 
 ### Goal
 
@@ -114,7 +113,7 @@ root_agent = None
 ### Having Trouble?
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 You have successfully built an agent with tools that incorporate production-grade best practices. You have learned to:
 *   Use `Pydantic` for robust input validation.
 *   Implement automatic retries with `retry`.

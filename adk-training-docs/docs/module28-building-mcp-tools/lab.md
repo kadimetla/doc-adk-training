@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 30: Building a Custom MCP Tool
 
-## Lab 28: Exercise
+# Lab 28: Exercise
 
 ### Goal
 
@@ -128,7 +127,7 @@ Also create an empty `__init__.py` and a `.env` file.
 ### Having Trouble?
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 You have successfully built and consumed your own stateful MCP tool. You have learned to:
 *   Implement the `@app.list_tools()` handler to define a server's tool schema.
 *   Implement the `@app.call_tool()` handler to provide tool logic.

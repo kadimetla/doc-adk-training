@@ -1,11 +1,10 @@
----
 sidebar_position: 3
 ---
 ## Module 36: Gemini Enterprise
 
-## Lab 36: Solution
+# Lab 36: Solution
 
-## Lab 36: Solution
+# Lab 36: Solution
 
 This file contains example answers and thought processes for the conceptual lab exercise on designing an enterprise agent strategy.
 

@@ -1,11 +1,10 @@
----
 sidebar_position: 3
 ---
 ## Module 31: Production Deployment Strategies
 
-## Lab 31: Solution
+# Lab 31: Solution
 
-## Lab 31: Solution
+# Lab 31: Solution
 
 This file contains the recommended solutions and reasoning for the scenario-based exercise in the lab.
 

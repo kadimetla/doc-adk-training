@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 12: Advanced Tool Concepts: Tool Context
 
-## Lab 13: Exercise
+# Lab 13: Exercise
 
 ### Goal
 
@@ -93,7 +92,7 @@ tools:
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have now created a tool with "memory"! You have learned to:
 *   Access the `ToolContext` by adding it to a tool function's signature.

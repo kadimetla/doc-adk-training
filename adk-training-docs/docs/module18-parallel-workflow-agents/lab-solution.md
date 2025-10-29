@@ -1,9 +1,8 @@
----
 sidebar_position: 3
 ---
 # Module 17: Parallel Processing with ParallelAgent
 
-## Lab 18: Solution
+# Lab 18: Solution
 
 This file contains the complete code for the `agent.py` script in the Smart Travel Planner lab.
 

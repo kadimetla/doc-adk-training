@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 21: Handling Files with Artifacts
 
-## Lab 23: Exercise
+# Lab 23: Exercise
 
 ### Goal
 
@@ -103,7 +102,7 @@ root_agent = None
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully built a multi-step document processing agent that uses artifacts for state management and auditability. You have learned to:
 *   Write `async` tools that can save and load artifacts.

@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 28: Callbacks and Guardrails - Building a Content Moderator
 
-## Lab 26: Exercise
+# Lab 26: Exercise
 
 ### Goal
 
@@ -121,7 +120,7 @@ root_agent = Agent(
 ### Having Trouble?
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 You have built an agent with a suite of safety guardrails. You have learned to:
 *   Implement an input guardrail with `before_model_callback`.
 *   Validate tool arguments with `before_tool_callback`.

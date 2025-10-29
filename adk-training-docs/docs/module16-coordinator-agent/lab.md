@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 15: Building a Coordinator/Dispatcher Agent
 
-## Lab 16: Exercise
+# Lab 16: Exercise
 
 ### Goal
 
@@ -47,7 +46,7 @@ In this lab, you will implement the multi-agent "Greeting Router" system. You wi
 
 If you get stuck, you can find the complete, working YAML configurations in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully built your first multi-agent system! You have learned to:
 *   Create separate YAML configuration files for different agents.

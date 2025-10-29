@@ -1,11 +1,10 @@
----
 sidebar_position: 3
 ---
 ## Module 30: Building a Custom Streaming Client
 
-## Lab 30: Solution
+# Lab 30: Solution
 
-## Lab 30: Solution
+# Lab 30: Solution
 
 This file contains the complete, working code for the `index.html` custom client.
 

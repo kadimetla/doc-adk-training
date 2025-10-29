@@ -1,11 +1,10 @@
----
 sidebar_position: 3
 ---
 ## Module 33: Deployment to Google Kubernetes Engine (GKE)
 
-## Lab 33: Solution
+# Lab 33: Solution
 
-## Lab 33: Solution
+# Lab 33: Solution
 
 This lab is a procedural tutorial. The primary "solution" is a successfully deployed agent running on a GKE cluster, accessible via a public IP address.
 

@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 9: Advanced Function Tools
 
-## Lab 10: Exercise
+# Lab 10: Exercise
 
 ### Goal
 
@@ -112,7 +111,7 @@ Now, see the agent's advanced capabilities in action. Send a single prompt that 
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully built an advanced agent with multiple, complex function tools. You have learned:
 *   How to implement robust tools with input validation and structured error handling.

@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 20: State and Memory - Building a Personal Tutor Agent
 
-## Lab 22: Exercise
+# Lab 22: Exercise
 
 ### Goal
 
@@ -116,7 +115,7 @@ def calculate_quiz_grade(
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully built a sophisticated agent that leverages all four state scopes to provide a continuous, personalized experience. You have learned:
 *   How to use `user:` state for persistent user preferences.

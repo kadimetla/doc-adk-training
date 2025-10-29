@@ -1,9 +1,8 @@
----
 sidebar_position: 3
 ---
 # Module 20: State and Memory - Building a Personal Tutor Agent
 
-## Lab 22: Solution
+# Lab 22: Solution
 
 This file contains the complete code for the `agent.py` script in the Personal Learning Tutor lab.
 

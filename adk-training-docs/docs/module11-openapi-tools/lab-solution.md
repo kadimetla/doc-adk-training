@@ -1,9 +1,8 @@
----
 sidebar_position: 3
 ---
 # Module 10: OpenAPI Tools
 
-## Lab 11: Solution
+# Lab 11: Solution
 
 This file contains the complete code for the `agent.py` script in the Chuck Norris Fact Assistant lab.
 

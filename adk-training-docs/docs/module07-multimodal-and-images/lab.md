@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 7: Multimodal and Image Processing
 
-## Lab 7: Exercise
+# Lab 7: Exercise
 
 ### Goal
 
@@ -101,7 +100,7 @@ class ProductCatalogAnalyzer:
 ### Having Trouble?
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 You have successfully built a multi-agent system that can see and understand images! You have learned to:
 *   Create multimodal prompts by combining text and image `types.Part` objects.
 *   Build a pipeline where one agent's visual analysis becomes the input for another agent's text generation task.

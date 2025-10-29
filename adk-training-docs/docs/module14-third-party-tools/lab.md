@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 13: Integrating Third-Party Tools
 
-## Lab 14: Exercise
+# Lab 14: Exercise
 
 ### Goal
 
@@ -77,7 +76,7 @@ root_agent = None
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully integrated a tool from an external library into your ADK agent. You have learned to:
 *   Install third-party library dependencies.

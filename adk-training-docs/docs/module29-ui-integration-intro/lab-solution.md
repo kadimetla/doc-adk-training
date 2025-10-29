@@ -1,11 +1,10 @@
----
 sidebar_position: 3
 ---
 ## Module 29: Introduction to UI Integration
 
-## Lab 29: Solution
+# Lab 29: Solution
 
-## Lab 29: Solution
+# Lab 29: Solution
 
 This file contains the complete code for the `index.html` custom chat client.
 

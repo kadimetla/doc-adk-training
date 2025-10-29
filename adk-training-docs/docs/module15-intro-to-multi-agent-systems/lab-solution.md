@@ -1,9 +1,8 @@
----
 sidebar_position: 3
 ---
 # Module 14: Introduction to Multi-Agent Systems
 
-## Lab 15: Solution
+# Lab 15: Solution
 
 This lab was a conceptual design exercise. There is no single "correct" solution, but this file provides a more detailed example of the design planned in the lab.
 

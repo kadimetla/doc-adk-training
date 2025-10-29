@@ -1,9 +1,8 @@
----
 sidebar_position: 3
 ---
 # Module 1: Introduction to AI Agents & Google ADK
 
-## Lab 1: Solution
+# Lab 1: Solution
 
 This solution provides a summary of the key resources you should have explored during the lab.
 

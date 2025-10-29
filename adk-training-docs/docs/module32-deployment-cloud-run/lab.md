@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 25: Deployment to Cloud Run
 
-## Lab 32: Exercise
+# Lab 32: Exercise
 
 ### Goal
 
@@ -129,7 +128,7 @@ The deployment process will take several minutes as it builds and uploads the co
 
     Your multi-agent system is now live on the internet.
 
-### Lab Summary
+## Lab Summary
 
 Congratulations! You have successfully deployed a multi-agent system to a scalable, serverless environment. This is the final step in taking an agent from a local prototype to a real-world application.
 

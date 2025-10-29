@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 29: Introduction to MCP & Stateful Tools
 
-## Lab 27: Exercise
+# Lab 27: Exercise
 
 ### Goal
 
@@ -139,7 +138,7 @@ The filesystem MCP server automatically provides a rich set of tools to your age
     *   Expand them. You will see that the agent is calling tools like `list_directory` and `read_file`.
     *   These tools were not defined by you! They were **dynamically discovered** by the `MCPToolset` from the external server and made available to your agent.
 
-### Lab Summary
+## Lab Summary
 
 You have successfully connected your ADK agent to a stateful, external tool using the Model Context Protocol.
 

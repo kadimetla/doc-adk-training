@@ -1,9 +1,8 @@
----
 sidebar_position: 3
 ---
 # Module 37: Advanced - Building a Personalized Shopping Agent
 
-## Lab 37: Solution
+# Lab 37: Solution
 
 ### Goal
 This solution provides the complete code for the distributed, multi-agent personalized shopping assistant, integrating concepts from across the entire course.

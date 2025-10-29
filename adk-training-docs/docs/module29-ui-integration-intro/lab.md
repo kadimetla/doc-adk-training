@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 38: Introduction to UI Integration
 
-## Lab 29: Exercise
+# Lab 29: Exercise
 
 ### Goal
 
@@ -127,7 +126,7 @@ In this lab, you will build a simple, standalone HTML file with JavaScript that 
 ### Having Trouble?
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
 
-### Lab Summary
+## Lab Summary
 You have successfully built a full-stack agent application with a custom front-end. You have learned:
 *   How to run an ADK agent as a backend service using `adk api_server`.
 *   How to connect a custom JavaScript client to the ADK's native `/run_sse` streaming endpoint.

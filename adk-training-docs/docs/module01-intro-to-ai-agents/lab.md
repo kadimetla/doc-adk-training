@@ -1,9 +1,8 @@
----
 sidebar_position: 2
 ---
 # Module 1: Introduction to AI Agents & Google ADK
 
-## Lab 1: Exercise
+# Lab 1: Exercise
 
 ### Goal
 
@@ -39,7 +38,7 @@ The ADK is an open-source project with repositories on GitHub. These repositorie
 1.  **Issues Tab:** On the GitHub repository, click on the "Issues" tab. This is where developers report bugs and request new features. Browsing through the issues can give you insight into the current state of the project and common problems users face.
 2.  **Discussions Tab:** If available, the "Discussions" tab is a place for community conversations, questions, and sharing ideas.
 
-### Lab Summary
+## Lab Summary
 
 Congratulations, you've completed your first lab! You now know:
 
