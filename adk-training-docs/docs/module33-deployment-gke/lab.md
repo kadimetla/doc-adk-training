@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 26: Deployment to Google Kubernetes Engine (GKE)
 
-## Lab 26: Manually Deploying an Agent to GKE
+## Lab 33: Exercise
 
 ### Goal
 

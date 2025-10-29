@@ -1,7 +1,9 @@
 ---
 sidebar_position: 3
 ---
-# Module 30: Building a Custom MCP Tool
+## Module 28: Building a Custom MCP Tool
+
+## Lab 28: Solution
 
 ## Lab 30: Solution
 

@@ -1,7 +1,9 @@
 ---
 sidebar_position: 3
 ---
-# Module 37: Gemini Enterprise
+## Module 36: Gemini Enterprise
+
+## Lab 36: Solution
 
 ## Lab 37: Solution
 

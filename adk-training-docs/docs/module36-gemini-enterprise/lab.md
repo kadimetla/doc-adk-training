@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 37: Gemini Enterprise
 
-## Lab 37: Designing an Enterprise Agent Strategy
+## Lab 36: Exercise
 
 ### Goal
 

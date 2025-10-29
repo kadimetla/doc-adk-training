@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 24: Production Deployment Strategies
 
-## Lab 24: Choosing the Right Deployment Strategy
+## Lab 31: Exercise
 
 ### Goal
 

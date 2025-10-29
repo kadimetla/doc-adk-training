@@ -1,7 +1,9 @@
 ---
 sidebar_position: 3
 ---
-# Module 25: Deployment to Cloud Run
+## Module 32: Deployment to Cloud Run
+
+## Lab 32: Solution
 
 ## Lab 25: Solution
 

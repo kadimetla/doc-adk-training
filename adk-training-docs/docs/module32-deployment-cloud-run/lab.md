@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 25: Deployment to Cloud Run
 
-## Lab 25: Deploying the Customer Support Agent
+## Lab 32: Exercise
 
 ### Goal
 

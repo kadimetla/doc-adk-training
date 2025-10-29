@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 37: Advanced - Building a Personalized Shopping Agent
 
-## Challenging Lab: Building a Distributed Multi-Agent System
+## Lab 37: Exercise
 
 ### Goal
 In this capstone lab, you will synthesize concepts from the entire course to build a distributed, multi-agent personalized shopping assistant. You will create three separate agents that collaborate using Agent-to-Agent (A2A) communication to provide a stateful, multimodal, and observable shopping experience.

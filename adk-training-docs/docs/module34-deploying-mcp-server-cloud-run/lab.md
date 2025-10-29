@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 # Module 31: Deploying an MCP Server to Cloud Run
 
-## Lab 31: Deploying the "Shopping Cart" Server
+## Lab 34: Exercise
 
 ### Goal
 

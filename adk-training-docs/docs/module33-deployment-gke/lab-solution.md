@@ -1,7 +1,9 @@
 ---
 sidebar_position: 3
 ---
-# Module 26: Deployment to Google Kubernetes Engine (GKE)
+## Module 33: Deployment to Google Kubernetes Engine (GKE)
+
+## Lab 33: Solution
 
 ## Lab 26: Solution
 
