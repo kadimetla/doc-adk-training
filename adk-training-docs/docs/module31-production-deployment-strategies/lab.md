@@ -1,79 +1,37 @@
 ---
-sidebar_position: 2
 ---
-# Module 24: Production Deployment Strategies
+## Module 31: Production Deployment Strategies
 
-# Lab 31: Exercise
+# Lab 31: Solution
 
-### Goal
+# Lab 31: Solution
 
-In this lab, you will apply the decision framework from the theory section to a series of real-world scenarios. This is a conceptual exercise to help you develop the strategic thinking needed to choose the right deployment path for your agents. There is no coding in this lab.
-
-### The Scenarios
-
-For each of the following scenarios, read the description and decide which deployment platform is the best fit: **Cloud Run**, **Agent Engine**, **GKE**, or **Custom Server on Cloud Run**.
-
-Be prepared to justify your choice based on the key requirements of each scenario.
+This file contains the recommended solutions and reasoning for the scenario-based exercise in the lab.
 
 ---
 
 #### **Scenario 1: The Startup MVP**
 
-*   **Company:** A small, venture-backed startup.
-*   **Product:** A new AI-powered customer service chatbot for e-commerce sites.
-*   **Key Requirements:**
-    *   Get a working version deployed for a pilot customer by the end of the week.
-    *   Keep infrastructure costs as low as possible.
-    *   The development team has minimal DevOps experience.
-    *   Standard security (HTTPS, basic protection) is sufficient for now.
-
-**Your Task:** Which platform should they choose and why?
+*   **Recommendation:** ✅ **Cloud Run**
+*   **Justification:** This scenario is the primary use case for Cloud Run. The key drivers are **speed** and **low cost**. The `adk deploy cloud_run` command allows the team to deploy in minutes without any DevOps expertise. The serverless, pay-per-use model is perfect for a startup managing its burn rate, and the platform's automatic security (HTTPS, DDoS, IAM) is more than sufficient for an MVP.
 
 ---
 
 #### **Scenario 2: The Government Contractor**
 
-*   **Company:** A large defense and technology contractor.
-*   **Product:** An internal agent that helps employees search through sensitive but unclassified government compliance documents.
-*   **Key Requirements:**
-    *   The system **must** be FedRAMP compliant.
-    *   All access must be strictly controlled and auditable.
-    *   The infrastructure must be fully managed to reduce the internal operational burden.
-
-**Your Task:** Which platform is the only viable choice here, and why?
+*   **Recommendation:** ✅✅ **Agent Engine**
+*   **Justification:** The non-negotiable requirement is **FedRAMP compliance**. Agent Engine is the only platform listed that provides this out of the box as a managed service. This eliminates a massive amount of complex and expensive compliance work the contractor would otherwise have to do themselves. The automatic audit logging and sandboxed execution are also critical features for this use case.
 
 ---
 
 #### **Scenario 3: The FinTech Enterprise**
 
-*   **Company:** A large financial services company with a mature IT department.
-*   **Product:** A complex system of microservice agents for financial analysis that need to communicate with each other over a private network.
-*   **Key Requirements:**
-    *   The entire system must be deployed within the company's existing Kubernetes ecosystem.
-    *   The security team requires fine-grained network policies to control traffic between agent services.
-    *   Some analysis agents require access to GPU nodes for performance.
-
-**Your Task:** Which platform should they use, and what are the trade-offs?
+*   **Recommendation:** ✅ **GKE (Google Kubernetes Engine)**
+*   **Justification:** The company already has a significant investment in Kubernetes. The requirements for **full control over the network** (via NetworkPolicies) and **custom hardware** (GPUs) are classic drivers for choosing Kubernetes over a more abstracted serverless platform. While GKE has a higher operational cost and complexity, it provides the flexibility and control this enterprise requires for its complex, high-performance computing environment.
 
 ---
 
 #### **Scenario 4: The University Integration**
 
-*   **Company:** A university's IT department.
-*   **Product:** An agent that allows students to ask questions about course availability.
-*   **Key Requirements:**
-    *   The agent must authenticate users against the university's central **LDAP** directory.
-    *   The platform should still be serverless and cost-effective.
-
-**Your Task:** Which hybrid approach is necessary here, and why?
-
----
-
-## Lab Summary
-
-You have now practiced applying a strategic framework to real-world deployment decisions. You have learned to:
-*   Analyze business and technical requirements to choose a deployment platform.
-*   Prioritize factors like speed, cost, compliance, and control.
-*   Understand the specific use cases for Cloud Run, Agent Engine, GKE, and custom server deployments.
-
-Check the `lab-solution.md` to see the recommended answers for each scenario.
+*   **Recommendation:** ⚙️ **Custom Server on Cloud Run**
+*   **Justification:** The key requirement is **custom authentication (LDAP)**, which is not natively supported by Cloud Run's IAM or Agent Engine's OAuth. This forces the team to build a custom FastAPI server where they can implement their own LDAP authentication middleware. However, they still want a serverless, cost-effective platform. The best solution is to deploy this custom server to **Cloud Run**. This gives them the platform benefits of serverless scaling and management while allowing for the specific application-level authentication logic they need.

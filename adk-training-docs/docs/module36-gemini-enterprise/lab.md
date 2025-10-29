@@ -1,74 +1,58 @@
 ---
-sidebar_position: 2
 ---
-# Module 37: Gemini Enterprise
+## Module 36: Gemini Enterprise
 
-# Lab 36: Exercise
+# Lab 36: Solution
 
-### Goal
+# Lab 36: Solution
 
-In this lab, you will design a strategy for a fictional company to adopt and govern a fleet of AI agents using Gemini Enterprise. This is a conceptual exercise to help you think about the challenges of managing agents at scale.
-
-### The Scenario
-
-You are the lead AI architect at a large retail company. The company wants to leverage AI agents across several departments: Sales, Marketing, and HR. Your task is to create a high-level plan for how you would use Gemini Enterprise to build, deploy, and govern these agents.
+This file contains example answers and thought processes for the conceptual lab exercise on designing an enterprise agent strategy.
 
 ---
 
-### Step 1: Identify the Agents
-
-First, brainstorm the types of agents each department might need. Think about which ones you could build with the ADK, and which ones might be available as pre-built Google agents.
+### Step 1: Identify the Agents (Example Ideas)
 
 *   **Sales Team:**
-    *   *Example Idea:* An ADK-built "Lead Qualifier Agent" that connects to Salesforce via a data connector to score new leads.
+    *   **Lead Qualifier Agent (ADK-built):** Connects to Salesforce to score new leads based on company size, industry, and budget.
+    *   **Proposal Writer Agent (Agent Designer):** A no-code agent for the sales team to quickly generate standard sales proposals by filling in a few fields.
+
 *   **Marketing Team:**
-    *   *Example Idea:* Use the pre-built "Idea Generation Agent" for brainstorming new campaigns.
+    *   **Idea Generation Agent (Pre-built):** Used for brainstorming new campaign slogans and themes.
+    *   **Social Media Scheduler (ADK-built):** An agent that can draft and schedule social media posts, possibly connecting to a service like HubSpot.
+
 *   **HR Team:**
-    *   *Example Idea:* An ADK-built "Policy Assistant Agent" that connects to the company's SharePoint to answer employee questions about HR policies.
-
-**Your Task:** Come up with at least one more agent idea for each department.
-
----
-
-### Step 2: Plan the Data Connectors
-
-For your agents to be useful, they need access to the company's data.
-
-**Your Task:** Based on the agents you identified above, list the Gemini Enterprise data connectors you would need to configure. For each connector, specify which agent would use it.
-*   *Example:* **Salesforce Connector** for the `Lead Qualifier Agent`.
+    *   **Policy Assistant Agent (ADK-built):** Connects to the company's SharePoint to answer employee questions about HR policies.
+    *   **Resume Screener (ADK-built):** An agent that can review resumes (PDF artifacts) and check them against a job description to provide a shortlist.
 
 ---
 
-### Step 3: Design the Governance and Access Control
+### Step 2: Plan the Data Connectors (Example Plan)
 
-Not everyone should have access to every agent or every piece of data.
-
-**Your Task:** Define a simple Role-Based Access Control (RBAC) policy.
-*   Who should be able to **use** the `Lead Qualifier Agent`?
-*   Who should be able to **edit or manage** the `Policy Assistant Agent`?
-*   Should the `Marketing Team` be able to see data from the `Salesforce Connector`?
+*   **Salesforce Connector:** Used by the `Lead Qualifier Agent` to access lead and account data.
+*   **SharePoint Connector:** Used by the `Policy Assistant Agent` to access HR policy documents.
+*   **Google Drive Connector:** Used by the `Resume Screener` to access resumes stored in a specific folder.
+*   **HubSpot Connector:** Used by the `Social Media Scheduler` to post content.
 
 ---
 
-### Step 4: Plan for Monitoring and Cost Management
+### Step 3: Design the Governance and Access Control (Example Policy)
 
-Finally, think about how you will monitor the system.
-
-**Your Task:**
-*   What is one key metric you would want to track for the `Lead Qualifier Agent`? (e.g., number of leads qualified per day).
-*   What kind of alert would you set up for the `Policy Assistant Agent`? (e.g., alert if the agent fails to answer a question more than 10% of the time).
-*   How would you set a budget for the Marketing team's usage of the "Idea Generation Agent"?
+*   **`Lead Qualifier Agent`:**
+    *   **Users:** `sales-team@company.com` group.
+    *   **Managers:** `sales-managers@company.com` group (can view metrics and edit the agent).
+*   **`Policy Assistant Agent`:**
+    *   **Users:** All employees (`all-employees@company.com`).
+    *   **Managers:** `hr-team@company.com`.
+*   **Data Access:**
+    *   The `Marketing Team` should **not** have direct access to the `Salesforce Connector`. If they need sales data, they should ask the `Lead Qualifier Agent`, which can provide summarized, non-sensitive information. This enforces a layer of abstraction and security.
 
 ---
 
-## Lab Summary
+### Step 4: Plan for Monitoring and Cost Management (Example Plan)
 
-You have successfully created a high-level strategic plan for deploying and managing an enterprise-wide agent ecosystem.
-
-You have learned to think about:
-*   Identifying opportunities for specialized agents across a business.
-*   The importance of data connectors for grounding agents in enterprise reality.
-*   Designing governance and access control policies to ensure security.
-*   Planning for monitoring, alerting, and cost management in a production environment.
-
-Check the `lab-solution.md` to see example answers for this exercise.
+*   **`Lead Qualifier Agent` Metric:**
+    *   **Key Metric:** "Lead Conversion Rate from Agent-Qualified Leads". This business-level metric measures the actual impact of the agent, not just its activity.
+*   **`Policy Assistant Agent` Alert:**
+    *   **Alert:** Set up an alert in Cloud Monitoring that triggers if the agent's "failure rate" (the percentage of queries where it couldn't find an answer) exceeds 15% over a 1-hour period. This could indicate a problem with the SharePoint connector or that the knowledge base is missing critical documents.
+*   **Marketing Team Budget:**
+    *   In Gemini Enterprise's cost management dashboard, create a budget for the "Marketing" cost center. Set a monthly limit of $500. Configure an alert to notify the `marketing-manager@company.com` when usage reaches 80% of the budget.

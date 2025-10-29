@@ -1,39 +1,18 @@
 ---
-sidebar_position: 2
 ---
 # Module 21: Handling Files with Artifacts
 
-# Lab 23: Exercise
+# Lab 23: Solution
 
-### Goal
+This file contains the complete, simplified code for the `agent.py` script in the Document Processing Pipeline lab.
 
-In this lab, you will build a **Document Processor** agent that uses a multi-step pipeline to process a file, saving the output of each step as a versioned artifact. This will teach you how to build complex, auditable file management workflows.
-
-### The Pipeline
-
-1.  **Extract Text:** Takes a source document name and saves its cleaned text as an artifact.
-2.  **Summarize:** Reads the extracted text artifact and saves a summary as a new artifact.
-3.  **Report:** Reads all previously generated artifacts and compiles them into a final report artifact.
-
-### Step 1: Create the Agent Project
-
-1.  **Create the agent project:**
-    ```shell
-    adk create doc-processor
-    ```
-    When prompted, choose the **Programmatic (Python script)** option.
-
-2.  **Navigate into the new directory:**
-    ```shell
-    cd doc-processor
-    ```
-
-### Step 2: Implement the Artifact Pipeline
-
-**Exercise:** Open `agent.py`. A skeleton with the tool function signatures is provided. Your task is to implement the logic for each tool using the `tool_context` to save and load artifacts. Remember that all artifact operations are `async` and must be `await`ed.
+### `doc-processor/agent.py`
 
 ```python
-# In agent.py (Starter Code)
+"""
+Document Processor with Artifact Management
+Processes documents through multiple stages with versioning and audit trails.
+"""
 
 from google.adk.agents import Agent
 from google.adk.tools import FunctionTool
@@ -46,67 +25,76 @@ from google.genai import types
 
 async def extract_text(document_name: str, tool_context: ToolContext) -> str:
     """Extracts and cleans text from a document, saving it as an artifact."""
+    print(f"Extracting text from '{document_name}'...")
+    # In a real scenario, this would involve file reading and cleaning.
     extracted_content = f"EXTRACTED AND CLEANED TEXT FROM DOCUMENT: {document_name}"
     
-    # TODO: 1. Create a types.Part from the `extracted_content`.
-    # TODO: 2. Save the part as an artifact named f"{document_name}_extracted.txt".
-    # TODO: 3. Return a confirmation message including the new version number.
-    return "Extraction complete."
+    part = types.Part.from_text(extracted_content)
+    version = await tool_context.save_artifact(
+        filename=f"{document_name}_extracted.txt", artifact=part
+    )
+    return f"Text extracted from '{document_name}' and saved as version {version}."
 
 async def summarize_document(document_name: str, tool_context: ToolContext) -> str:
     """Generates a summary of a document from its extracted text artifact."""
-    # TODO: 1. Load the latest version of the f"{document_name}_extracted.txt" artifact.
-    # TODO: 2. If the artifact is not found, return a helpful error message.
-    
+    print(f"Summarizing '{document_name}'...")
+    # Load the artifact from the previous step.
+    source_artifact = await tool_context.load_artifact(f"{document_name}_extracted.txt")
+    if not source_artifact:
+        return "Error: Could not find the extracted text. Please run the 'extract_text' step first."
+
+    # In a real scenario, this would involve an LLM call for summarization.
     summary_content = f"This is a concise summary of the document '{document_name}'."
     
-    # TODO: 3. Create a types.Part from the `summary_content`.
-    # TODO: 4. Save the summary as a new artifact named f"{document_name}_summary.txt".
-    # TODO: 5. Return a confirmation message.
-    return "Summarization complete."
+    part = types.Part.from_text(summary_content)
+    version = await tool_context.save_artifact(
+        filename=f"{document_name}_summary.txt", artifact=part
+    )
+    return f"Summary for '{document_name}' created and saved as version {version}."
 
 async def create_report(document_name: str, tool_context: ToolContext) -> str:
     """Creates a final report by compiling all artifacts for a document."""
-    # TODO: 1. List all available artifacts using the tool_context.
-    # TODO: 2. Filter the list to get only the names of artifacts for the current document.
+    print(f"Creating final report for '{document_name}'...")
+    all_artifacts = await tool_context.list_artifacts()
+    
+    # Filter for artifacts related to the specific document.
+    doc_artifacts_names = [name for name in all_artifacts if name.startswith(document_name)]
     
     report = f"# Final Report for: {document_name}\n\n"
-    # TODO: 3. Loop through your filtered list of artifact names. In the loop,
-    # load each artifact and append its name and content to the `report` string.
-    
-    # TODO: 4. Save the final `report` string as an artifact named
-    # f"{document_name}_FINAL_REPORT.md".
-    # TODO: 5. Return a confirmation message.
-    return "Report complete."
+    for name in doc_artifacts_names:
+        artifact = await tool_context.load_artifact(name)
+        if artifact and artifact.text:
+            report += f"## Artifact: {name}\n\n```text\n{artifact.text[:500]}...\n```\n\n"
+            
+    part = types.Part.from_text(report)
+    version = await tool_context.save_artifact(
+        filename=f"{document_name}_FINAL_REPORT.md", artifact=part
+    )
+    return f"Final report for '{document_name}' created and saved as version {version}."
 
 # ============================================================================ 
 # AGENT DEFINITION
 # ============================================================================ 
 
-# TODO: Define the `root_agent`. Give it an instruction that tells it to run the
-# pipeline in the correct order (extract -> summarize -> report) and register
-# the three async tools.
-root_agent = None
+root_agent = Agent(
+    model='gemini-1.5-flash',
+    name='document_processor',
+    instruction="""
+You are a document processing pipeline agent. Your job is to take a document name
+and process it through a series of steps by calling the appropriate tools in the
+correct order.
+
+Workflow:
+1.  When the user wants to process a document, first call `extract_text`.
+2.  After extraction, call `summarize_document`.
+3.  Finally, call `create_report` to compile all the results.
+    """,
+    tools=[
+        FunctionTool(extract_text),
+        FunctionTool(summarize_document),
+        FunctionTool(create_report),
+    ]
+)
 ```
 
-### Step 3: Run and Test the Pipeline
-
-1.  **Set up your `.env` file** with your API key or Vertex AI project.
-2.  **Start the Dev UI:** `adk web`
-3.  **Interact with the agent:**
-    *   Select "document_processor" and send a prompt like: "Process the document named 'Annual_Report_2025'."
-4.  **Analyze the Trace and Artifacts:**
-    *   In the **Trace** view, observe the chain of tool calls.
-    *   In the **Chat** view, click the blue "Artifacts" button to see the list of files your agent created. Click on each one to view its content.
-
-### Having Trouble?
-
-If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
-
-## Lab Summary
-
-You have successfully built a multi-step document processing agent that uses artifacts for state management and auditability. You have learned to:
-*   Write `async` tools that can save and load artifacts.
-*   Use `await tool_context.save_artifact()` to create versioned files.
-*   Use `await tool_context.load_artifact()` to read previously created files.
-*   Chain tools together to create a pipeline where the output of one step is the input to the next.
+```

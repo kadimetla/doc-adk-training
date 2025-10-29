@@ -1,98 +1,274 @@
 ---
-sidebar_position: 2
 ---
-# Module 18: Advanced Multi-Agent Architectures
+# Module 17: Multi-Agent Systems - Complex Orchestration
 
-# Lab 19: Exercise
+# Lab 19: Solution
 
-### Goal
+This file contains the complete code for the `agent.py` script in the Content Publishing System lab.
 
-In this lab, you will build a sophisticated **Content Publishing System** that demonstrates a complex multi-agent architecture. You will combine sequential and parallel patterns to create a system that researches a topic from multiple angles concurrently and then synthesizes the findings into a final article. This is a capstone exercise for the multi-agent section of the course.
-
-### The Architecture
-
-1.  **Phase 1: Parallel Research (Fan-Out)**
-    Three independent, sequential pipelines will run concurrently:
-    *   **News Pipeline:** Fetches current events, then summarizes the key points.
-    *   **Social Pipeline:** Gathers trending topics, then analyzes the insights.
-    *   **Expert Pipeline:** Finds expert opinions, then extracts key quotes.
-
-2.  **Phase 2: Sequential Content Creation (Gather)**
-    A final sequential pipeline will run after all research is complete:
-    *   **Writer Agent:** Combines the summaries from all three research pipelines into a draft article.
-    *   **Editor Agent:** Reviews and improves the draft.
-    *   **Formatter Agent:** Formats the final article for publication.
-
-### Step 1: Create the Project Structure
-
-1.  **Create the agent project:**
-    ```shell
-    adk create content-publisher
-    ```
-    When prompted, choose the **Programmatic (Python script)** option.
-
-2.  **Navigate into the new directory:**
-    ```shell
-    cd content-publisher
-    ```
-
-### Step 2: Assemble the Multi-Agent System
-
-**Exercise:** Open `agent.py`. All eight of the individual specialist agents (e.g., `news_fetcher`, `news_summarizer`, `article_writer`, etc.) have been provided for you. Your task is to assemble them into the complete, multi-level architecture described above.
+### `content-publisher/agent.py`
 
 ```python
-# In agent.py (Starter Code)
-
 from __future__ import annotations
+
 from google.adk.agents import Agent, ParallelAgent, SequentialAgent
 from google.adk.tools import google_search
 
-# ===== All 8 Specialist Agent Definitions Are Provided Here... =====
-# (news_fetcher, news_summarizer, social_monitor, sentiment_analyzer, 
-#  expert_finder, quote_extractor, article_writer, article_editor, 
-#  article_formatter)
+# =====================================================
+# PARALLEL BRANCH 1: News Research Pipeline
+# =====================================================
+news_fetcher = Agent(
+    name="news_fetcher",
+    model="gemini-2.5-flash",
+    description="Fetches current news articles using Google Search",
+    instruction=(
+        "You are a news researcher. Based on the user's topic, search for "
+        "current news articles and recent developments.\n"
+        "\n"
+        "Use the google_search tool to find 3-4 current news articles.\n"
+        "Focus on recent, credible news sources from the past 6 months.\n"
+        "\n"
+        "Output a bulleted list with:\n"
+        "• Source + Headline + Brief summary\n"
+        "• Include publication dates when available\n"
+        "\n"
+        "Search query should be: '[topic] news recent developments site:reputable-news-sites'"
+    ),
+    tools=[google_search],
+    output_key="raw_news"
+)
+
+news_summarizer = Agent(
+    name="news_summarizer",
+    model="gemini-2.5-flash",
+    description="Summarizes key news points",
+    instruction=(
+        "Summarize the news articles into 2-3 key takeaways.\n"
+        "\n"
+        "**Raw News:**\n"
+        "{raw_news}\n"
+        "\n"
+        "Output format:\n"
+        "KEY TAKEAWAYS:\n"
+        "1. First key point\n"
+        "2. Second key point\n"
+        "3. Third key point"
+    ),
+    output_key="news_summary"
+)
+
+# Sequential pipeline for news research
+news_pipeline = SequentialAgent(
+    name="NewsPipeline",
+    sub_agents=[news_fetcher, news_summarizer],
+    description="Fetches and summarizes news"
+)
 
 # =====================================================
-# ASSEMBLE THE MULTI-AGENT SYSTEM
+# PARALLEL BRANCH 2: Social Media Research Pipeline
 # =====================================================
+social_monitor = Agent(
+    name="social_monitor",
+    model="gemini-2.5-flash",
+    description="Monitors social media trends using Google Search",
+    instruction=(
+        "You are a social media analyst. Based on the user's topic, search for "
+        "trending discussions, popular hashtags, and public sentiment.\n"
+        "\n"
+        "Use the google_search tool to find:\n"
+        "• Trending hashtags and topics on social platforms\n"
+        "• Recent social media discussions and viral content\n"
+        "• Public opinion and sentiment analysis\n"
+        "\n"
+        "Search for: '[topic] social media trends reddit twitter discussion'\n"
+        "\n"
+        "Output:\n"
+        "• 3-4 trending hashtags or topics\n"
+        "• Popular discussion themes\n"
+        "• General sentiment (positive/negative/mixed) with evidence"
+    ),
+    tools=[google_search],
+    output_key="raw_social"
+)
 
-# TODO: 1. Create the three sequential research pipelines.
-# - `news_pipeline` should contain `news_fetcher` then `news_summarizer`.
-# - `social_pipeline` should contain `social_monitor` then `sentiment_analyzer`.
-# - `expert_pipeline` should contain `expert_finder` then `quote_extractor`.
-news_pipeline = SequentialAgent(...)
-social_pipeline = SequentialAgent(...)
-expert_pipeline = SequentialAgent(...)
+sentiment_analyzer = Agent(
+    name="sentiment_analyzer",
+    model="gemini-2.5-flash",
+    description="Analyzes social sentiment",
+    instruction=(
+        "Analyze the social media data and extract key insights.\n"
+        "\n"
+        "**Social Media Data:**\n"
+        "{raw_social}\n"
+        "\n"
+        "Output format:\n"
+        "SOCIAL INSIGHTS:\n"
+        "• Trending: [hashtags/topics]\n"
+        "• Sentiment: [overall mood]\n"
+        "• Key Themes: [main discussion points]"
+    ),
+    output_key="social_insights"
+)
 
-# TODO: 2. Create the parallel research phase. This `ParallelAgent` should
-# contain the three sequential pipelines you just defined.
-parallel_research = ParallelAgent(...)
+# Sequential pipeline for social research
+social_pipeline = SequentialAgent(
+    name="SocialPipeline",
+    sub_agents=[social_monitor, sentiment_analyzer],
+    description="Monitors and analyzes social media"
+)
 
-# TODO: 3. Create the final `SequentialAgent` for the entire system.
-# It should run the `parallel_research` phase first, followed by the
-# `article_writer`, `article_editor`, and `article_formatter` in order.
-content_publishing_system = SequentialAgent(...)
+# =====================================================
+# PARALLEL BRANCH 3: Expert Opinion Pipeline
+# =====================================================
+expert_finder = Agent(
+    name="expert_finder",
+    model="gemini-2.5-flash",
+    description="Finds expert opinions using Google Search",
+    instruction=(
+        "You are an expert opinion researcher. Based on the user's topic, search for "
+        "what industry experts, academics, or thought leaders are saying.\n"
+        "\n"
+        "Use the google_search tool to find:\n"
+        "• Industry experts and their credentials\n"
+        "• Academic researchers and their affiliations\n"
+        "• Thought leaders and their recent statements\n"
+        "\n"
+        "Search for: '[topic] expert opinion academic research thought leader'\n"
+        "\n"
+        "Output:\n"
+        "• 2-3 expert names and their credentials\n"
+        "• Their key statements or positions\n"
+        "• Source (where they said it) with links when available"
+    ),
+    tools=[google_search],
+    output_key="raw_experts"
+)
 
-# TODO: 4. Set the `root_agent` to be your final `content_publishing_system`.
-root_agent = None
+quote_extractor = Agent(
+    name="quote_extractor",
+    model="gemini-2.5-flash",
+    description="Extracts quotable insights",
+    instruction=(
+        "Extract the most impactful quotes and insights from expert opinions.\n"
+        "\n"
+        "**Expert Opinions:**\n"
+        "{raw_experts}\n"
+        "\n"
+        "Output format:\n"
+        "EXPERT INSIGHTS:\n"
+        "• Quote 1: \"...\" - [Expert Name], [Credentials]\n"
+        "• Quote 2: \"...\" - [Expert Name], [Credentials]"
+    ),
+    output_key="expert_quotes"
+)
+
+# Sequential pipeline for expert research
+expert_pipeline = SequentialAgent(
+    name="ExpertPipeline",
+    sub_agents=[expert_finder, quote_extractor],
+    description="Finds and extracts expert opinions"
+)
+
+# =====================================================
+# PHASE 1: PARALLEL RESEARCH (3 pipelines run together!)
+# =====================================================
+parallel_research = ParallelAgent(
+    name="ParallelResearch",
+    sub_agents=[
+        news_pipeline,    # Sequential: fetch → summarize
+        social_pipeline,  # Sequential: monitor → analyze
+        expert_pipeline   # Sequential: find → extract
+    ],
+    description="Runs all research pipelines concurrently"
+)
+
+# =====================================================
+# PHASE 2: CONTENT CREATION (Sequential synthesis)
+# =====================================================
+article_writer = Agent(
+    name="article_writer",
+    model="gemini-2.5-flash",
+    description="Writes article draft from all research",
+    instruction=(
+        "You are a professional writer. Write an engaging article using ALL "
+        "the research below.\n"
+        "\n"
+        "**News Summary:**\n"
+        "{news_summary}\n"
+        "\n"
+        "**Social Insights:**\n"
+        "{social_insights}\n"
+        "\n"
+        "**Expert Quotes:**\n"
+        "{expert_quotes}\n"
+        "\n"
+        "Write a 4-5 paragraph article that:\n"
+        "- Opens with a compelling hook\n"
+        "- Incorporates news, social trends, and expert opinions naturally\n"
+        "- Uses expert quotes effectively\n"
+        "- Has a strong conclusion\n"
+        "\n"
+        "Output ONLY the article text."
+    ),
+    output_key="draft_article"
+)
+
+article_editor = Agent(
+    name="article_editor",
+    model="gemini-2.5-flash",
+    description="Edits article for clarity and impact",
+    instruction=(
+        "You are an editor. Review and improve the article below.\n"
+        "\n"
+        "**Draft Article:**\n"
+        "{draft_article}\n"
+        "\n"
+        "Edit for:\n"
+        "- Clarity and flow\n"
+        "- Impact and engagement\n"
+        "- Grammar and style\n"
+        "\n"
+        "Output the improved article."
+    ),
+    output_key="edited_article"
+)
+
+article_formatter = Agent(
+    name="article_formatter",
+    model="gemini-2.5-flash",
+    description="Formats article for publication",
+    instruction=(
+        "Format the article for publication with proper markdown.\n"
+        "\n"
+        "**Article:**\n"
+        "{edited_article}\n"
+        "\n"
+        "Add:\n"
+        "- Compelling title (# heading)\n"
+        "- Byline (By: AI Content Team)\n"
+        "- Section headings where appropriate (## subheadings)\n"
+        "- Proper formatting (bold, italic, quotes)\n"
+        "- Publication date placeholder\n"
+        "\n"
+        "Output the final formatted article."
+    ),
+    output_key="published_article"
+)
+
+# =====================================================
+# COMPLETE MULTI-AGENT SYSTEM
+# =====================================================
+content_publishing_system = SequentialAgent(
+    name="ContentPublishingSystem",
+    sub_agents=[
+        parallel_research,  # Phase 1: Research (3 parallel pipelines!)
+        article_writer,     # Phase 2: Draft
+        article_editor,     # Phase 3: Edit
+        article_formatter   # Phase 4: Format
+    ],
+    description="Complete content publishing system with parallel research and sequential creation"
+)
+
+# MUST be named root_agent for ADK discovery
+root_agent = content_publishing_system
 ```
-*(Note: The full agent definitions are in the `lab-solution.md` if you need to inspect them.)*
-
-### Step 3: Run and Test the System
-
-1.  **Set up your `.env` file** and start the Dev UI: `adk web`
-2.  **Interact with the system:**
-    *   Select "content_publisher" and give it a topic, like: "The future of electric vehicles".
-3.  **Analyze the Trace:**
-    *   This is the most important step. Expand the trace to see the nested structure. Verify that the three research pipelines run in parallel, and that the content creation agents run sequentially after the parallel phase is complete.
-
-### Having Trouble?
-
-If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
-
-## Lab Summary
-
-You have successfully built and orchestrated a complex, production-quality multi-agent system. You have learned:
-*   How to nest `SequentialAgent` workflows inside a `ParallelAgent`.
-*   How to combine parallel and sequential patterns to create a fan-out/gather architecture.
-*   How to analyze the execution of a complex, nested trace in the Dev UI.

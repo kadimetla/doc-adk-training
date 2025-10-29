@@ -1,95 +1,135 @@
 ---
-sidebar_position: 2
 ---
 # Module 16: Building Agent Pipelines with SequentialAgent
 
-# Lab 17: Exercise
+# Lab 17: Solution
 
-### Goal
+This file contains the complete code for the `agent.py` script in the Blog Post Generator Pipeline lab.
 
-In this lab, you will build a multi-step content creation pipeline using a `SequentialAgent`. This will demonstrate how to chain multiple specialist agents together, passing data from one to the next.
-
-### The Pipeline Stages
-1.  **Research Agent:** Gathers key facts about a topic.
-2.  **Writer Agent:** Creates a draft blog post from the research.
-3.  **Editor Agent:** Reviews the draft and suggests improvements.
-4.  **Formatter Agent:** Applies the edits and formats the final post in Markdown.
-
-### Step 1: Create the Project Structure
-
-1.  **Create a new project:**
-    ```shell
-    adk create blog-pipeline
-    ```
-    When prompted, choose the **Programmatic (Python script)** option.
-
-2.  **Navigate into the new directory:**
-    ```shell
-    cd blog-pipeline
-    ```
-
-### Step 2: Assemble the Pipeline
-
-**Exercise:** Open `agent.py`. The four specialist agents (`research_agent`, `writer_agent`, etc.) have been provided for you. Your task is to assemble them into a functioning pipeline.
+### `blog-pipeline/agent.py`
 
 ```python
-# In agent.py (Starter Code)
-
 from __future__ import annotations
+
 from google.adk.agents import Agent, SequentialAgent
 
-# ===== Specialist Agents (Provided for you) =====
-
+# ===== Agent 1: Research Agent =====
+# Gathers key facts about the topic
 research_agent = Agent(
-    name="researcher", model="gemini-1.5-flash",
-    instruction="...", # Gathers facts
-    output_key="research_findings"
+    name="researcher",
+    model="gemini-1.5-flash",
+    description="Researches a topic and gathers key information",
+    instruction=(
+        "You are a research assistant. Your task is to gather key facts and information "
+        "about the topic requested by the user.\n"
+        "\n"
+        "Output a bulleted list of 5-7 key facts or insights about the topic. "
+        "Focus on interesting, specific information that would make a blog post engaging.\n"
+        "\n"
+        "Format:\n"
+        "• Fact 1\n"
+        "• Fact 2\n"
+        "• etc.\n"
+        "\n"
+        "Output ONLY the bulleted list, nothing else."
+    ),
+    output_key="research_findings"  # Saves to state['research_findings']
 )
+
+# ===== Agent 2: Writer Agent =====
+# Writes blog post draft from research
 writer_agent = Agent(
-    name="writer", model="gemini-1.5-flash",
-    instruction="...writes a draft based on {research_findings}...",
-    output_key="draft_post"
+    name="writer",
+    model="gemini-1.5-flash",
+    description="Writes a blog post draft based on research findings",
+    instruction=(
+        "You are a creative blog writer. Write an engaging blog post based on "
+        "the research findings below.\n"
+        "\n"
+        "**Research Findings:**\n"
+        "{research_findings}\n"  # Reads from state!
+        "\n"
+        "Write a 3-4 paragraph blog post that:\n"
+        "- Has an engaging introduction\n"
+        "- Incorporates the key facts naturally\n"
+        "- Has a conclusion that wraps up the topic\n"
+        "- Uses a friendly, conversational tone\n"
+        "\n"
+        "Output ONLY the blog post text, no meta-commentary."
+    ),
+    output_key="draft_post"  # Saves to state['draft_post']
 )
+
+# ===== Agent 3: Editor Agent =====
+# Reviews the draft and suggests improvements
 editor_agent = Agent(
-    name="editor", model="gemini-1.5-flash",
-    instruction="...reviews the {draft_post}...",
-    output_key="editorial_feedback"
+    name="editor",
+    model="gemini-1.5-flash",
+    description="Reviews blog post draft and provides editorial feedback",
+    instruction=(
+        "You are an experienced editor. Review the blog post draft below and provide "
+        "constructive feedback.\n"
+        "\n"
+        "**Draft Blog Post:**\n"
+        "{draft_post}\n"  # Reads from state!
+        "\n"
+        "Analyze the post for:\n"
+        "1. Clarity and flow\n"
+        "2. Grammar and style\n"
+        "3. Engagement and reader interest\n"
+        "4. Structure and organization\n"
+        "\n"
+        "Provide your feedback as a short list of specific improvements. "
+        "If the post is excellent, simply say: 'No revisions needed - post is ready.'\n"
+        "\n"
+        "Output ONLY the feedback, nothing else."
+    ),
+    output_key="editorial_feedback"  # Saves to state['editorial_feedback']
 )
+
+# ===== Agent 4: Formatter Agent =====
+# Applies edits and formats as markdown
 formatter_agent = Agent(
-    name="formatter", model="gemini-1.5-flash",
-    instruction="...applies {editorial_feedback} to the {draft_post}...",
-    output_key="final_post"
+    name="formatter",
+    model="gemini-1.5-flash",
+    description="Applies editorial feedback and formats the final blog post",
+    instruction=(
+        "You are a formatter. Create the final version of the blog post by applying "
+        "the editorial feedback to improve the draft.\n"
+        "\n"
+        "**Original Draft:**\n"
+        "{draft_post}\n"  # Reads from state!
+        "\n"
+        "**Editorial Feedback:**\n"
+        "{editorial_feedback}\n"  # Reads from state!
+        "\n"
+        "Create the final blog post by:\n"
+        "1. Applying the suggested improvements\n"
+        "2. Formatting as proper markdown with:\n"
+        "   - A compelling title (# heading)\n"
+        "   - Section headings if appropriate (## subheadings)\n"
+        "   - Proper paragraph breaks\n"
+        "   - Bold/italic for emphasis where appropriate\n"
+        "\n"
+        "If feedback said 'No revisions needed', just format the original draft nicely.\n"
+        "\n"
+        "Output ONLY the final formatted blog post in markdown."
+    ),
+    output_key="final_post"  # Saves to state['final_post']
 )
 
 # ===== Create the Sequential Pipeline =====
+blog_creation_pipeline = SequentialAgent(
+    name="BlogCreationPipeline",
+    sub_agents=[
+        research_agent,
+        writer_agent,
+        editor_agent,
+        formatter_agent
+    ],  # Executes in this EXACT order!
+    description="Complete blog post creation pipeline from research to publication"
+)
 
-# TODO: 1. Create a `SequentialAgent` named `blog_creation_pipeline`.
-# TODO: 2. In the `sub_agents` list, add the four specialist agents
-# in the correct logical order: research -> write -> edit -> format.
-blog_creation_pipeline = None
-
-# TODO: 3. The ADK requires a `root_agent` to be defined.
-# Set the `root_agent` to be your `blog_creation_pipeline`.
-root_agent = None
+# MUST be named root_agent for ADK
+root_agent = blog_creation_pipeline
 ```
-*(Note: The full agent instructions are in the `lab-solution.md` if you need to inspect them, but you don't need to change them for this exercise.)*
-
-### Step 3: Run and Test the Pipeline
-
-1.  **Set up your `.env` file** and start the Dev UI: `adk web`
-2.  **Interact with the pipeline:**
-    *   Select "blog_pipeline" and send a topic to write about, like: "the history of the internet".
-3.  **Examine the Trace and State Tabs:**
-    *   **Trace View:** Expand the trace to see the `SequentialAgent` running its four sub-agents in order.
-    *   **State View:** After the run, inspect the state to see the output of each step (`research_findings`, `draft_post`, etc.).
-
-### Having Trouble?
-
-If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
-
-## Lab Summary
-
-You have successfully built a deterministic, multi-agent pipeline. You have learned to:
-*   Configure a `SequentialAgent` to orchestrate multiple sub-agents.
-*   Understand how `output_key` and state variables (`{key}`) are used to pass data between agents in a sequence.
-*   Analyze the execution of a pipeline using the Trace and State views.

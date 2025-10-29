@@ -1,31 +1,20 @@
 ---
-sidebar_position: 2
 ---
 # Module 10: OpenAPI Tools
 
-# Lab 11: Exercise
+# Lab 11: Solution
 
-### Goal
+This file contains the complete code for the `agent.py` script in the Chuck Norris Fact Assistant lab.
 
-In this lab, you will build an agent that can retrieve Chuck Norris jokes from a public REST API. You will learn how to use the `OpenAPIToolset` to automatically generate the necessary tools from an OpenAPI specification.
-
-### Step 1: Create the Agent Project
-
-1.  **Create the agent project:**
-    Choose the **Programmatic (Python script)** option when prompted.
-    ```shell
-    adk create chuck-norris-agent
-    cd chuck-norris-agent
-    ```
-
-2.  **Set up your API key** in the `.env` file. (The Chuck Norris API is free, but the agent needs credentials for the Gemini model).
-
-### Step 2: Define the OpenAPI Specification
-
-**Exercise:** Open `agent.py`. A skeleton for the OpenAPI specification is provided. Your first task is to complete the spec for the `/random` endpoint. You can find the necessary information from the API documentation at [https://api.chucknorris.io/](https://api.chucknorris.io/).
+### `chuck-norris-agent/agent.py`
 
 ```python
-# In agent.py (Starter Code)
+"""
+Chuck Norris Fact Assistant - OpenAPI Tools Demonstration
+
+This agent demonstrates how to use OpenAPIToolset to automatically
+generate tools from an API specification without writing tool functions.
+"""
 
 from google.adk.agents import Agent
 from google.adk.tools.openapi_tool import OpenAPIToolset
@@ -34,10 +23,8 @@ from google.adk.tools.openapi_tool import OpenAPIToolset
 # OPENAPI SPECIFICATION
 # ============================================================================
 
-# TODO: Complete the OpenAPI spec for the "/random" endpoint's GET operation.
-# - The operationId should be "get_random_joke".
-# - The summary should be "Get a random Chuck Norris joke".
-# - It should have one optional query parameter named "category".
+# Chuck Norris API OpenAPI Specification
+# Based on: https://api.chucknorris.io/
 CHUCK_NORRIS_SPEC = {
     "openapi": "3.0.0",
     "info": {
@@ -45,30 +32,114 @@ CHUCK_NORRIS_SPEC = {
         "description": "Free JSON API for hand curated Chuck Norris facts",
         "version": "1.0.0"
     },
-    "servers": [{"url": "https://api.chucknorris.io/jokes"}],
+    "servers": [
+        {
+            "url": "https://api.chucknorris.io/jokes"
+        }
+    ],
     "paths": {
         "/random": {
             "get": {
-                # Fill in this section based on the TODO above
+                "operationId": "get_random_joke",
+                "summary": "Get a random Chuck Norris joke",
+                "description": "Retrieve a random joke from the database. Can optionally filter by category.",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "Filter jokes by category (optional)",
+                        "required": False,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "icon_url": {"type": "string"},
+                                        "id": {"type": "string"},
+                                        "url": {"type": "string"},
+                                        "value": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
-        # (The other paths are provided for you below)
         "/search": {
             "get": {
                 "operationId": "search_jokes",
                 "summary": "Search for jokes",
-                "parameters": [{
-                    "name": "query", "in": "query", "required": True,
-                    "schema": {"type": "string", "minLength": 3}
-                }],
-                "responses": {"200": {"description": "Successful response"}}
+                "description": "Free text search for jokes containing the query term.",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "Search query (3+ characters required)",
+                        "required": True,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 3
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "total": {"type": "integer"},
+                                        "result": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "icon_url": {"type": "string"},
+                                                    "id": {"type": "string"},
+                                                    "url": {"type": "string"},
+                                                    "value": {"type": "string"}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/categories": {
             "get": {
                 "operationId": "get_categories",
                 "summary": "Get all joke categories",
-                "responses": {"200": {"description": "Successful response"}}
+                "description": "Retrieve list of available joke categories.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -78,36 +149,35 @@ CHUCK_NORRIS_SPEC = {
 # OPENAPI TOOLSET
 # ============================================================================
 
-# TODO: Create an OpenAPIToolset instance from the spec dictionary you just completed.
-chuck_norris_toolset = None
+# Create OpenAPIToolset from specification
+chuck_norris_toolset = OpenAPIToolset(spec_dict=CHUCK_NORRIS_SPEC)
 
 # ============================================================================
 # AGENT DEFINITION
 # ============================================================================
 
-# TODO: Define the root_agent. Give it an instruction to be a fun Chuck Norris
-# fact assistant and register the `chuck_norris_toolset` in its `tools` list.
-root_agent = None
+root_agent = Agent(
+    name="chuck_norris_agent",
+    model="gemini-2.5-flash",
+    description="A Chuck Norris fact assistant that can retrieve jokes/facts from the Chuck Norris API.",
+    instruction="""
+    You are a fun Chuck Norris fact assistant!
+
+    CAPABILITIES:
+    - Get random Chuck Norris jokes (optionally filtered by category)
+    - Search for jokes containing specific keywords
+    - List all available joke categories
+
+    WORKFLOW:
+    - For random requests -> use get_random_joke
+    - For specific topics -> use search_jokes with query
+    - To see categories -> use get_categories
+    - For category-specific random -> use get_random_joke with category parameter
+
+    IMPORTANT:
+    - Always extract the 'value' field from the API response (that's the actual joke).
+    - If a search finds 0 results, suggest trying a different keyword.
+    """,
+    tools=[chuck_norris_toolset]
+)
 ```
-
-### Step 3: Run and Test Your Agent
-
-1.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI: `adk web`
-2.  **Interact with the agent:**
-    *   Select "chuck_norris_agent" and test its capabilities:
-        *   "Tell me a random Chuck Norris joke"
-        *   "Find jokes about computers"
-        *   "What joke categories exist?"
-        *   "Give me a random movie joke"
-    *   Inspect the **Events** tab to see the `FunctionCall` for your auto-generated tools.
-
-### Having Trouble?
-
-If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
-
-## Lab Summary
-
-You have successfully integrated a live REST API into your agent without writing a single manual tool function. You have learned:
-*   How to read API documentation to create an OpenAPI specification.
-*   How to use `OpenAPIToolset` to automatically generate tools from a spec.
-*   How to instruct your agent to use the new, auto-generated tools.
