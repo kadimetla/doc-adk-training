@@ -9,14 +9,14 @@ This solution provides a summary of the key resources you should have explored d
 The primary source for all information related to the Google Agent Development Kit.
 
 *   **Get Started Section:**
-    *   [About the ADK](/adk-docs/get-started/about)
-    *   [Installation Guide](/adk-docs/get-started/installation)
-    *   [Quickstart Tutorial](/adk-docs/get-started/quickstart)
+    *   [About the ADK](../intro)
+    *   [Installation Guide](../module02-environment-setup/lab)
+    *   [Quickstart Tutorial](../module03-first-agent-echo/lab)
 *   **Agents Section:**
-    *   [LlmAgent](/adk-docs/agents/llm-agent)
+    *   [LlmAgent](../module04-llmagent-deep-dive/)
 *   **Tools Section:**
-    *   [Built-in Tools](/adk-docs/tools/built-in-tools)
-    *   [Function Tools](/adk-docs/tools/function-tools)
+    *   [Built-in Tools](../module08-intro-to-tools/)
+    *   [Function Tools](../module09-intro-custom-function-tools/)
 
 *(Note: The placeholder URLs have been updated to point to the correct documentation pages.)*
 
