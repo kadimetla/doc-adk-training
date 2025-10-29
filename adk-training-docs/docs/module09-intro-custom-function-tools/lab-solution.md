@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # Module 8: Creating Custom Function Tools
 
-## Lab 8: Solution
+## Lab 9: Solution
 
 This file contains the complete, step-by-step guide to creating the "Calculator" agent.
 

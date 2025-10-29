@@ -5,7 +5,7 @@ sidebar_position: 3
 
 ## Lab 28: Solution
 
-## Lab 30: Solution
+## Lab 28: Solution
 
 This file contains the complete code for both the `cart_server.py` and the `agent.py` client script for the Shopping Cart MCP lab.
 
