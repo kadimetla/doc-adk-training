@@ -1,3 +1,4 @@
+---
 sidebar_position: 2
 ---
 # Module 38: Introduction to UI Integration

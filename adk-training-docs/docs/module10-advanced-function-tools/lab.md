@@ -1,3 +1,4 @@
+---
 sidebar_position: 2
 ---
 # Module 9: Advanced Function Tools

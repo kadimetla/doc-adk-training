@@ -1,3 +1,4 @@
+---
 sidebar_position: 2
 ---
 # Lab 4: Transforming the "Echo" Agent Challenge
