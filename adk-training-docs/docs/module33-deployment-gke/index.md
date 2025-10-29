@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 33: Deployment to Google Kubernetes Engine (GKE)
 
 ## Theory

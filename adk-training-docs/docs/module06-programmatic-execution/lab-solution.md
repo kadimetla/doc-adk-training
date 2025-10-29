@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 6: Running an Agent Programmatically
 
 ## Lab 6: Solution

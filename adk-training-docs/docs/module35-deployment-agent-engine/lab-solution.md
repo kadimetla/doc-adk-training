@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 34: Deploying to Agent Engine
 
 ## Lab 34: Solution

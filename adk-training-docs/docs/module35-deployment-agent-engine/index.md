@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 35: Deploying to Agent Engine
 
 ## Theory

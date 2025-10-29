@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 32: Deployment to Cloud Run
 
 ## Theory

@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 38: Introduction to UI Integration
 
 ## Lab 38: Building a Simple Custom Chat UI

@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 36: Best Practices & Production Patterns
 
 ## Lab 36: Building a Production-Ready Agent

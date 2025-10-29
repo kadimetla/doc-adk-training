@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 7: Multimodal and Image Processing
 
 ## Theory

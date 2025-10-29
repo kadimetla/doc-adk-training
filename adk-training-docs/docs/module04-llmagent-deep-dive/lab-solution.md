@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 4: Core Agent Concepts: `LlmAgent` Deep Dive
 
 ## Lab 4: Transforming the "Echo" Agent with Instructions

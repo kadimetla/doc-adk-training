@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 24: Evaluating Agent Performance
 
 ## Theory

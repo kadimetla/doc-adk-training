@@ -1,5 +1,7 @@
+---
+sidebar_position: 1
+---
 # Module 1: Introduction to AI Agents
-
 ![Introduction to AI Agents](../../../nanobanana-output/a_futuristic_illustration_of_an_.png)
 
 # Module 1: Introduction to AI Agents & Google ADK

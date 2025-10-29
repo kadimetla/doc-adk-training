@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 7: Multimodal and Image Processing
 
 ## Lab 39: Building a Visual Product Catalog Analyzer

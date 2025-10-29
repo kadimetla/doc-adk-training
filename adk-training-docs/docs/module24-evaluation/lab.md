@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 24: Evaluating Agent Performance
 
 ## Lab 17: Creating an Evaluation Case for the Calculator Agent

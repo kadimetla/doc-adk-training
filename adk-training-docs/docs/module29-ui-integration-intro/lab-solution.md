@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 38: Introduction to UI Integration
 
 ## Lab 38: Solution

@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 14: Integrating Third-Party Tools
 
 ## Theory

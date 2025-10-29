@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Module 10: Advanced Function Tools
 
 ## Theory

@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 26: Deployment to Google Kubernetes Engine (GKE)
 
 ## Lab 26: Solution

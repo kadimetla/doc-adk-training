@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 30: Building a Custom MCP Tool
 
 ## Lab 30: Solution

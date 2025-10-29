@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 17: Parallel Processing with ParallelAgent
 
 ## Lab 17: Building a Smart Travel Planner

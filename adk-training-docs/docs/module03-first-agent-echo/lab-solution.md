@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 3: Your First Agent: The "Echo" Agent
 
 ## Lab 3: Build and Run the "Echo" Agent

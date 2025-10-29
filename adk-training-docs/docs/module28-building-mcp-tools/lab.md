@@ -1,3 +1,6 @@
+---
+sidebar_position: 2
+---
 # Module 30: Building a Custom MCP Tool
 
 ## Lab 30: Building a "Shopping Cart" MCP Server

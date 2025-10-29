@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 15: Building a Coordinator/Dispatcher Agent
 
 ## Lab 15: Solution
