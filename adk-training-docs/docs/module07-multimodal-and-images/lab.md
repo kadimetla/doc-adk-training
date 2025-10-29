@@ -1,3 +1,4 @@
+---
 sidebar_position: 2
 ---
 # Module 7: Multimodal and Image Processing

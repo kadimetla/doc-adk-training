@@ -1,4 +1,5 @@
 ---
+---
 # Module 26: Callbacks and Guardrails - Building a Content Moderator
 
 # Lab 26: Solution
