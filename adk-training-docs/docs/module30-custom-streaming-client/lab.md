@@ -1,130 +1,139 @@
 ---
-sidebar_position: 2
 ---
-# Module 32: Building a Custom Streaming Client
+## Module 30: Building a Custom Streaming Client
 
-# Lab 30: Exercise
+# Lab 30: Solution
 
-### Goal
+# Lab 30: Solution
 
-In this lab, you will run an ADK agent as a backend API server and interact with it using a custom, standalone HTML/JavaScript client. This will demonstrate how to build your own user-facing applications on top of the ADK's streaming capabilities.
+This file contains the complete, working code for the `index.html` custom client.
 
-### Step 1: Prepare the Streaming Agent
-
-We will use the same streaming agent configuration from Module 22.
-
-1.  **Create the project directory and agent:**
-    ```shell
-    mkdir custom-streaming-app
-    cd custom-streaming-app
-    adk create --type=config streaming_agent
-    ```
-
-2.  **Configure the agent:**
-    *   Navigate into `streaming_agent`.
-    *   Configure the `.env` file for **Vertex AI**.
-    *   Replace the contents of `root_agent.yaml` with:
-        ```yaml
-        name: streaming_conversational_agent
-        model: gemini-1.5-flash
-        instruction: |
-          You are a friendly and talkative assistant. Keep your answers concise.
-        streaming: True
-        ```
-
-### Step 2: Create the Custom HTML/JavaScript Client
-
-**Exercise:** Navigate back to the `custom-streaming-app` directory. Create an `index.html` file. A skeleton is provided below. Your task is to complete the JavaScript logic for the `startStreaming` function based on the `# TODO` comments.
+### `custom-streaming-app/index.html`
 
 ```html
-<!-- In index.html (Starter Code) -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>ADK Custom Streaming Client</title>
     <style>
         body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
-        #transcript { width: 500px; height: 300px; border: 1px solid #ccc; padding: 10px; overflow-y: scroll; }
-        button { margin: 10px; padding: 10px; font-size: 16px; }
+        #status { margin: 10px; padding: 10px; border: 1px solid #ccc; }
+        #transcript { width: 500px; height: 300px; border: 1px solid #ccc; padding: 10px; overflow-y: scroll; background-color: #f9f9f9; }
+        p { margin: 5px 0; }
+        button { margin: 10px; padding: 10px; font-size: 16px; cursor: pointer; }
     </style>
 </head>
 <body>
     <h1>ADK Custom Streaming Client</h1>
     <button id="streamButton">Start Streaming</button>
+    <div id="status">Status: Disconnected</div>
     <div id="transcript"></div>
 
     <script>
         const streamButton = document.getElementById('streamButton');
+        const statusDiv = document.getElementById('status');
         const transcriptDiv = document.getElementById('transcript');
+
         let websocket;
+        let audioContext;
+        let mediaStream;
         let mediaRecorder;
         let isStreaming = false;
 
-        // (Helper functions log() and stopStreaming() are in the solution)
+        streamButton.onclick = () => {
+            if (!isStreaming) {
+                startStreaming();
+            } else {
+                stopStreaming();
+            }
+        };
+
+        function log(message) {
+            const p = document.createElement('p');
+            p.textContent = message;
+            transcriptDiv.appendChild(p);
+            transcriptDiv.scrollTop = transcriptDiv.scrollHeight;
+        }
 
         async function startStreaming() {
             try {
-                // TODO: 1. Get microphone access using `navigator.mediaDevices.getUserMedia({ audio: true })`.
-                const mediaStream = null; // Replace null
+                // 1. Get microphone access
+                mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 
-                // TODO: 2. Create a WebSocket connection to the ADK server.
-                // The URL should be `ws://localhost:8000/live/<session_id>?is_audio=true`.
-                // Generate a random session_id.
-                websocket = null; // Replace null
+                // 2. Establish WebSocket connection
+                const sessionId = Math.random().toString(36).substring(7);
+                const wsUrl = `ws://localhost:8000/live/${sessionId}?is_audio=true`;
+                websocket = new WebSocket(wsUrl);
 
                 websocket.onopen = () => {
-                    // TODO: 3. Start the MediaRecorder.
-                    // - Create a new MediaRecorder with the mediaStream.
-                    // - In the `ondataavailable` event, send the `event.data` over the websocket.
-                    // - Call `mediaRecorder.start(100)` to send audio every 100ms.
+                    isStreaming = true;
+                    streamButton.textContent = 'Stop Streaming';
+                    statusDiv.textContent = 'Status: Connected';
+                    log('[CLIENT]: WebSocket connection opened.');
+
+                    // 3. Start recording and sending audio
+                    mediaRecorder = new MediaRecorder(mediaStream, { mimeType: 'audio/webm;codecs=opus' });
+                    mediaRecorder.ondataavailable = (event) => {
+                        if (event.data.size > 0 && websocket.readyState === WebSocket.OPEN) {
+                            websocket.send(event.data);
+                        }
+                    };
+                    mediaRecorder.start(100); // Send data every 100ms
                 };
 
                 websocket.onmessage = (event) => {
-                    // TODO: 4. Handle incoming messages from the server.
-                    // - Parse the JSON data from `event.data`.
-                    // - If the `mime_type` is 'text/plain', log the `data.data` to the transcript.
+                    // 4. Handle incoming messages (agent's response)
+                    const data = JSON.parse(event.data);
+                    if (data.mime_type === 'text/plain') {
+                        log(`[AGENT]: ${data.data}`);
+                    }
+                    // A production client would also handle 'audio/mp3' mime_type for playback.
                 };
 
-                // (onclose and onerror handlers are in the solution)
+                websocket.onclose = () => {
+                    log('[CLIENT]: WebSocket connection closed.');
+                    stopStreaming();
+                };
+
+                websocket.onerror = (error) => {
+                    log(`[CLIENT]: WebSocket Error: ${JSON.stringify(error)}`);
+                    stopStreaming();
+                };
 
             } catch (error) {
-                console.error("Error starting stream:", error);
+                log(`[CLIENT]: Error starting stream: ${error}`);
             }
+        }
+
+        function stopStreaming() {
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                mediaRecorder.stop();
+            }
+            if (mediaStream) {
+                mediaStream.getTracks().forEach(track => track.stop());
+            }
+            if (websocket && websocket.readyState === WebSocket.OPEN) {
+                websocket.close();
+            }
+            isStreaming = false;
+            streamButton.textContent = 'Start Streaming';
+            statusDiv.textContent = 'Status: Disconnected';
         }
     </script>
 </body>
 </html>
 ```
 
-### Step 3: Run the Server and the Client
+### Troubleshooting
 
-1.  **Terminal 1 (ADK Server):**
-    *   Navigate to the `streaming_agent` directory.
-    *   Run `adk api_server`.
-    ```shell
-    cd /path/to/custom-streaming-app/streaming_agent
-    adk api_server
-    ```
+*   **"WebSocket connection to 'ws://localhost:8000/...' failed":**
+    *   **Cause:** The ADK `api_server` is not running or is running on a different port.
+    *   **Solution:** Make sure you have a terminal window running `adk api_server` in your `streaming_agent` directory.
 
-2.  **Terminal 2 (Client Web Server):**
-    *   Navigate to the `custom-streaming-app` directory (where `index.html` is).
-    *   Start a simple Python web server.
-    ```shell
-    cd /path/to/custom-streaming-app
-    python3 -m http.server 8081
-    ```
+*   **"NotAllowedError: Permission denied" in browser console:**
+    *   **Cause:** You denied the browser's request to access your microphone.
+    *   **Solution:** Go into your browser's site settings for `localhost:8081` and change the Microphone permission to "Allow".
 
-### Step 4: Test Your Custom Application
-
-1.  **Open the Client:** In your browser, navigate to `http://localhost:8081`.
-2.  **Start Streaming:** Click the "Start Streaming" button and allow microphone access.
-3.  **Talk to the Agent:** Speak into your microphone and watch the transcript area for the agent's real-time text response.
-
-### Having Trouble?
-If you get stuck, you can find the complete, working `index.html` code in the `lab-solution.md` file.
-
-## Lab Summary
-You have successfully built a custom client for a streaming ADK agent. You have learned:
-*   How to run an ADK agent as a backend service using `adk api_server`.
-*   The basic structure of an HTML/JavaScript client for streaming.
-*   How to use the `WebSocket` and Web Audio APIs to create a real-time voice application.
+*   **Connection opens but agent doesn't respond:**
+    *   **Cause:** The agent server may have encountered an error. This is often because the `.env` file is not configured for Vertex AI.
+    *   **Solution:** Check the terminal window running `adk api_server` for any error messages. Ensure your `streaming_agent/.env` file is correctly configured with your Vertex AI project details.

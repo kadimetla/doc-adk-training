@@ -1,35 +1,18 @@
 ---
-sidebar_position: 2
 ---
 # Module 9: Advanced Function Tools
 
-# Lab 10: Exercise
+# Lab 10: Solution
 
-### Goal
+This file contains the complete code for the `agent.py` script in the Personal Finance Assistant lab.
 
-In this lab, you will build a **Personal Finance Assistant** with multiple, complex function tools. This will teach you how to implement robust tools and see the ADK's parallel execution feature in action.
-
-### Step 1: Create the Agent Project
-
-1.  **Create the agent project:**
-    Choose the **Programmatic (Python script)** option when prompted.
-    ```shell
-    adk create finance-assistant
-    cd finance-assistant
-    ```
-
-2.  **Set up your API key** in the `.env` file.
-
-### Step 2: Implement the Financial Tools
-
-**Exercise:** Open `agent.py`. A skeleton with three financial tool functions is provided. Your task is to implement the logic for each function based on the `# TODO` comments. You will need to perform calculations, validate inputs, and return a structured dictionary.
+### `finance-assistant/agent.py`
 
 ```python
-# In agent.py (Starter Code)
-
 from __future__ import annotations
 from google.adk.agents import Agent
 
+# Tool 1: Calculate compound interest
 def calculate_compound_interest(
     principal: float,
     annual_rate: float,
@@ -38,83 +21,179 @@ def calculate_compound_interest(
 ) -> dict:
     """
     Calculate compound interest for savings or investments.
-    Formula: A = P(1 + r/n)^(nt)
-    ...
+
+    This function computes how much an initial investment will grow to
+    over time with compound interest. It uses the standard compound interest
+    formula: A = P(1 + r/n)^(nt)
+
+    Args:
+        principal: Initial investment amount (e.g., 10000 for $10,000)
+        annual_rate: Annual interest rate as decimal (e.g., 0.06 for 6%)
+        years: Number of years to compound
+        compounds_per_year: How often interest compounds per year (default: 1 for annual)
+
+    Returns:
+        Dict with calculation results and formatted report
     """
-    # TODO: 1. Validate that principal, annual_rate, and years are positive.
-    # If not, return an error dictionary: {'status': 'error', 'report': '...'}
-    
-    # TODO: 2. Calculate the final amount and interest earned.
-    
-    # TODO: 3. Create a human-readable report string.
-    
-    # TODO: 4. Return a success dictionary with the report.
-    return {'status': 'pending', 'report': 'Implementation needed.'}
+    try:
+        # Validate inputs
+        if principal <= 0:
+            return {
+                'status': 'error',
+                'report': 'Error: Investment principal must be greater than zero.'
+            }
+        if annual_rate < 0 or annual_rate > 1:
+            return {
+                'status': 'error',
+                'report': 'Error: Annual interest rate must be between 0 and 1 (e.g., 0.06 for 6%).'
+            }
+        if years <= 0:
+            return {
+                'status': 'error',
+                'report': 'Error: Investment period must be positive.'
+            }
 
+        # Calculate compound interest
+        rate_per_period = annual_rate / compounds_per_year
+        total_periods = years * compounds_per_year
+        final_amount = principal * (1 + rate_per_period) ** total_periods
+        interest_earned = final_amount - principal
 
+        # Format human-readable report
+        report = (
+            f"After {years} years at {annual_rate*100:.1f}% annual interest "
+            f"(compounded {compounds_per_year} times per year), "
+            f"your ${principal:,.0f} investment will grow to "
+            f"${final_amount:,.2f}. That's ${interest_earned:,.2f} in interest!"
+        )
+        return {
+            'status': 'success',
+            'report': report
+        }
+    except Exception as e:
+        return {
+            'status': 'error',
+            'report': f'Error calculating compound interest: {str(e)}'
+        }
+
+# Tool 2: Calculate loan payments
 def calculate_loan_payment(
     loan_amount: float,
     annual_rate: float,
     years: int
 ) -> dict:
-    """
-    Calculate monthly loan payments using the standard amortization formula.
-    ...
-    """
-    # TODO: 1. Validate inputs.
-    # TODO: 2. Calculate the monthly payment.
-    # TODO: 3. Create a human-readable report.
-    # TODO: 4. Return a success dictionary.
-    return {'status': 'pending', 'report': 'Implementation needed.'}
+    """Calculate monthly loan payments using the standard amortization formula.
 
+    Args:
+        loan_amount: Total loan amount (e.g., 300000 for $300,000)
+        annual_rate: Annual interest rate as decimal (e.g., 0.045 for 4.5%)
+        years: Loan term in years
 
+    Returns:
+        Dict with payment calculation results and formatted report
+    """
+    try:
+        # Validate inputs
+        if loan_amount <= 0:
+            return {'status': 'error', 'report': 'Error: Loan amount must be positive.'}
+        if annual_rate < 0 or annual_rate > 1:
+            return {'status': 'error', 'report': 'Error: Annual interest rate must be between 0 and 1.'}
+        if years <= 0:
+            return {'status': 'error', 'report': 'Error: Loan term must be positive.'}
+
+        # Convert to monthly calculations
+        monthly_rate = annual_rate / 12
+        total_months = years * 12
+
+        if monthly_rate == 0:
+            monthly_payment = loan_amount / total_months
+        else:
+            monthly_payment = loan_amount * (monthly_rate * (1 + monthly_rate) ** total_months) / ((1 + monthly_rate) ** total_months - 1)
+
+        total_paid = monthly_payment * total_months
+        total_interest = total_paid - loan_amount
+
+        report = (
+            f"For a ${loan_amount:,.0f} loan at {annual_rate*100:.1f}% interest "
+            f"over {years} years, your monthly payment will be "
+            f"${monthly_payment:,.2f}. Over the life of the loan, you'll pay "
+            f"${total_paid:,.2f} total, with ${total_interest:,.2f} being interest."
+        )
+        return {
+            'status': 'success',
+            'report': report
+        }
+    except Exception as e:
+        return {'status': 'error', 'report': f'Error calculating loan payment: {str(e)}'}
+
+# Tool 3: Calculate savings needed
 def calculate_monthly_savings(
     target_amount: float,
     years: int,
     annual_return: float = 0.05
 ) -> dict:
-    """
-    Calculate monthly savings needed to reach a financial goal.
-    ...
-    """
-    # TODO: 1. Validate inputs.
-    # TODO: 2. Calculate the required monthly savings.
-    # TODO: 3. Create a human-readable report.
-    # TODO: 4. Return a success dictionary.
-    return {'status': 'pending', 'report': 'Implementation needed.'}
+    """Calculate monthly savings needed to reach a financial goal.
 
+    Args:
+        target_amount: Target savings amount (e.g., 50000 for $50,000)
+        years: Number of years to save
+        annual_return: Expected annual return as decimal (default: 0.05 for 5%)
 
-# TODO: Define the root_agent. Give it an appropriate instruction and
-# register the three tool functions you just implemented.
-root_agent = None
+    Returns:
+        Dict with savings calculation results and formatted report
+    """
+    try:
+        # Validate inputs
+        if target_amount <= 0:
+            return {'status': 'error', 'report': 'Error: Savings target must be positive.'}
+        if years <= 0:
+            return {'status': 'error', 'report': 'Error: Savings period must be positive.'}
+        if annual_return < 0:
+            return {'status': 'error', 'report': 'Error: Annual return rate cannot be negative.'}
+
+        monthly_return = annual_return / 12
+        total_months = years * 12
+
+        if monthly_return == 0:
+            monthly_savings = target_amount / total_months
+        else:
+            monthly_savings = target_amount * (monthly_return / ((1 + monthly_return) ** total_months - 1))
+
+        total_contributed = monthly_savings * total_months
+        report = (
+            f"To reach ${target_amount:,.0f} in {years} years with a "
+            f"{annual_return*100:.1f}% annual return, you need to save "
+            f"${monthly_savings:,.2f} per month."
+        )
+        return {
+            'status': 'success',
+            'report': report
+        }
+    except Exception as e:
+        return {'status': 'error', 'report': f'Error calculating monthly savings: {str(e)}'}
+
+# Define the agent with all tools
+root_agent = Agent(
+    name="finance_assistant",
+    model="gemini-1.5-flash",
+    description="A financial calculation assistant for investments, loans, and savings goals.",
+    instruction=(
+        "You are a helpful personal finance assistant. You can help users with:\n"
+        "- Calculating compound interest for savings and investments\n"
+        "- Computing monthly payments for loans (mortgages, car loans, etc.)\n"
+        "- Determining how much to save monthly to reach financial goals\n"
+        "\n"
+        "When users ask financial questions:\n"
+        "1. Use the appropriate calculation tool.\n"
+        "2. Explain the results in simple terms.\n"
+        "3. Be encouraging and positive about their financial planning!\n"
+        "\n"
+        "You are NOT a licensed financial advisor - remind users to consult professionals for major decisions."
+    ),
+    tools=[
+        calculate_compound_interest, 
+        calculate_loan_payment, 
+        calculate_monthly_savings
+    ]
+)
 ```
-
-### Step 3: Run and Test Your Assistant
-
-1.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI: `adk web`
-2.  **Interact with the agent:**
-    *   Test each of your tools with prompts like:
-        *   "If I invest $10,000 at 6% for 5 years, how much will I have?"
-        *   "What's the monthly payment on a $300,000 house over 30 years at 4.5%?"
-        *   "How much do I need to save each month to get $50,000 in 3 years?"
-    *   Check the **Events** tab to see the `FunctionCall` and `FunctionResponse`.
-
-### Step 4: Test Parallel Tool Execution
-
-Now, see the agent's advanced capabilities in action. Send a single prompt that requires two separate calculations.
-
-**Try this prompt:**
-> "I want to know the monthly payment for a $25,000 car loan over 5 years at 7% interest. Also, tell me how much my $5,000 investment will be worth in 10 years at 8% annual return."
-
-**Observe the Events Tab:** Expand the events for the last turn. You should see that the agent made two `FunctionCall`s—one for `calculate_loan_payment` and one for `calculate_compound_interest`—**in the same turn**. This is parallel execution!
-
-### Having Trouble?
-
-If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
-
-## Lab Summary
-
-You have successfully built an advanced agent with multiple, complex function tools. You have learned:
-*   How to implement robust tools with input validation and structured error handling.
-*   How to write tools that produce user-friendly reports.
-*   How to trigger and verify parallel tool execution for more efficient agent responses.

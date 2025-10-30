@@ -1,96 +1,107 @@
 ---
-sidebar_position: 2
 ---
-# Module 34: Deploying to Agent Engine
+## Module 35: Deploying to Agent Engine
 
-# Lab 35: Exercise
+# Lab 35: Solution
 
-### Goal
-In this lab, you will deploy the `calculator-agent` to Google Cloud's Agent Engine using both the recommended Accelerated method and the manual Standard method.
+# Lab 35: Solution
 
-### Prerequisites
-*   A Google Cloud Project with billing enabled and the Vertex AI API enabled.
-*   `gcloud` CLI installed and authenticated (`gcloud auth application-default login`).
-*   A GCS bucket for staging files (`gsutil mb -p YOUR_PROJECT_ID -l us-central1 gs://YOUR_UNIQUE_BUCKET_NAME`).
+This lab is a procedural tutorial. The solution for both parts is a successfully deployed Agent Engine instance.
 
 ---
 
-## Part 1: Accelerated Deployment (Recommended)
+### Part 1: Accelerated Deployment Solution
 
-This method uses the official [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack) to deploy your agent with a production-ready CI/CD pipeline using Terraform and Cloud Build.
+After running `gcloud builds submit --config=cloudbuild.yaml`, a successful Cloud Build run is the primary indicator of success.
 
-### Step 1: Setup
-1.  **Use the Template:** Go to the [Agent Starter Pack repository](https://github.com/GoogleCloudPlatform/agent-starter-pack) and click **"Use this template"** to create a new repository in your own GitHub account.
-2.  **Clone Your New Repository:** Clone the repository you just created to your local machine.
-3.  **Connect to Google Cloud:** In your terminal, run the interactive setup script. This will guide you through connecting your GitHub repository to Google Cloud Build.
-    ```shell
-    ./setup.sh
-    ```
-4.  **Add Your Agent Code:** Copy the `calculator-agent` project from `module08-intro-custom-function-tools` into the `src/` directory of your starter pack repository.
-
-### Step 2: Provision Infrastructure
-This step uses Terraform and Cloud Build to create the necessary cloud infrastructure (like Artifact Registry, Cloud Run services, and IAM permissions).
-
-1.  **Configure Terraform:**
-    *   Rename `terraform/terraform.tfvars.example` to `terraform/terraform.tfvars`.
-    *   Edit `terraform/terraform.tfvars` and fill in your `project_id`, `region`, and a unique `app_name` (e.g., "calculator-agent").
-2.  **Run the Provisioning Build:**
-    ```shell
-    gcloud builds submit --config=cloudbuild-terraform.yaml
-    ```
-    This command executes the Terraform plan, which may take several minutes.
-
-### Step 3: Deploy the Agent
-Once the infrastructure is provisioned, you can deploy your agent by simply pushing your code to the `main` branch. The Cloud Build trigger you configured in the setup step will automatically build and deploy your agent.
-
-1.  **Commit and Push Your Code:**
-    ```shell
-    git add .
-    git commit -m "Add calculator agent"
-    git push origin main
-    ```
-2.  **Monitor the Build:** Go to the Cloud Build section in your Google Cloud Console to watch the deployment pipeline run.
-3.  **Find Your Agent:** Once the build is complete, navigate to **Vertex AI -> Agent Engine** in the Cloud Console to find your deployed agent and its ID.
+**Expected Outcome:**
+*   The Cloud Build pipeline in your Google Cloud project completes without errors.
+*   A new agent named "calculator-agent" (or the `app_name` you configured) appears in the **Vertex AI -> Agent Engine** section of the Google Cloud Console.
+*   You can copy the **Agent Engine ID** from the console to use with a client application.
 
 ---
 
-## Part 2: Standard Deployment (Manual)
+### Part 2: Standard Deployment Solution
 
-This method involves writing a custom Python script to deploy the agent, which is useful for understanding the underlying mechanics.
+This section contains the complete code for the `deploy.py` and `interact.py` scripts used in the manual deployment part of the lab.
 
-### Step 1: Prepare the Agent Project
-1.  Copy the `calculator-agent` project from `module08-intro-custom-function-tools` to a new directory named `deploy-calculator`.
-2.  Update the `pyproject.toml` in the new directory to include the necessary deployment dependencies:
-    ```toml
-    [project]
-    dependencies = [
-        "google-adk>=1.0.0",
-        "google-cloud-aiplatform[adk,agent-engines]>=1.111.0"
-    ]
-    ```
-3.  Sync your environment: `uv sync`
+#### `deployment/deploy.py`
 
-### Step 2: Create the Deployment Script
-1.  Create a `deployment/deploy.py` file.
-2.  **Action:** Add the code from the `lab-solution.md` and configure it with your `PROJECT_ID`, `LOCATION`, and `STAGING_BUCKET`.
+```python
+import vertexai
+from vertexai import agent_engines
+from calculator.agent import root_agent
 
-### Step 3: Deploy the Agent
-Run the deployment script. This will take several minutes.
-```shell
-uv run python deployment/deploy.py
+# --- CONFIGURATION ---
+# Note: Replace these with your actual Google Cloud project details.
+PROJECT_ID = "your-gcp-project-id"
+LOCATION = "us-central1"
+STAGING_BUCKET = "gs://your-unique-bucket-name"
+AGENT_DISPLAY_NAME = "my-calculator-agent"
+
+def main():
+    # Initialize Vertex AI SDK
+    vertexai.init(project=PROJECT_ID, location=LOCATION, staging_bucket=STAGING_BUCKET)
+
+    # Prepare the agent for deployment by wrapping it in an AdkApp
+    print("Wrapping agent in AdkApp...")
+    app = agent_engines.AdkApp(
+        agent=root_agent,
+        enable_tracing=True
+    )
+
+    # Deploy to Agent Engine
+    print(f"Deploying '{AGENT_DISPLAY_NAME}' to Agent Engine...")
+    remote_app = agent_engines.create(
+        agent_engine=app,
+        display_name=AGENT_DISPLAY_NAME,
+        requirements=["google-adk>=1.0.0"],
+    )
+
+    print(f"Deployment complete. Resource Name: {remote_app.resource_name}")
+    print(f"Agent Engine ID: {remote_app.resource_name.split('/')[-1]}")
+
+if __name__ == "__main__":
+    main()
 ```
 
-### Step 4: Interact with the Deployed Agent
-1.  Create an `interact.py` script (code available in `lab-solution.md`).
-2.  **Action:** Configure the script with your `PROJECT_ID`, `LOCATION`, and the `AGENT_ENGINE_ID` from the deployment output.
-3.  Run the script to test your deployed agent:
-    ```shell
-    uv run python interact.py
-    ```
-    You should see the agent respond with the correct answer.
+#### `interact.py`
 
-## Lab Summary
-You have successfully deployed an agent to Agent Engine using both the recommended automated method and the manual method. You have learned:
-*   How to use the Agent Starter Pack for accelerated, best-practice deployments.
-*   How to write a custom deployment script using the Vertex AI SDK.
-*   How to interact with a deployed agent programmatically.
+```python
+import asyncio
+import vertexai
+from vertexai import agent_engines
+
+# --- CONFIGURATION ---
+# Note: Replace these with your actual Google Cloud project details.
+PROJECT_ID = "your-gcp-project-id"
+LOCATION = "us-central1"
+# Note: Replace this with the ID output by the deploy.py script.
+AGENT_ENGINE_ID = "YOUR_AGENT_ENGINE_ID" 
+
+async def main():
+    vertexai.init(project=PROJECT_ID, location=LOCATION)
+
+    # Get a reference to the deployed agent
+    remote_app = agent_engines.get(AGENT_ENGINE_ID)
+
+    # Create a new session
+    print("Creating new session...")
+    remote_session = await remote_app.async_create_session(user_id="test-user-123")
+
+    # Send a query and stream the response
+    query = "What is 42 * 10?"
+    print(f"\nUser: {query}")
+    print("Agent: ", end="")
+    
+    async for event in remote_app.async_stream_query(
+        session_id=remote_session["id"],
+        message=query,
+    ):
+        for part in event["content"]["parts"]:
+            print(part["text"], end="")
+    print()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```

@@ -1,39 +1,24 @@
 ---
-sidebar_position: 2
 ---
 # Module 11: Built-in Tools and Grounding
 
-# Lab 12: Exercise
+# Lab 12: Solution
 
-### Goal
+This file contains the complete code for the `agent.py` script in the Research Assistant lab.
 
-In this lab, you will build a **Research Assistant** that can access up-to-date information from the internet. You will learn how to use the `GoogleSearchAgentTool` wrapper to combine web search with your own custom tools.
-
-### Step 1: Create the Project Structure
-
-1.  **Create the agent project:**
-    ```shell
-    adk create research-assistant
-    ```
-    When prompted, choose the **Programmatic (Python script)** option.
-
-2.  **Navigate into the new directory:**
-    ```shell
-    cd research-assistant
-    ```
-
-### Step 2: Define the Agent and Tools
-
-**Exercise:** Open `agent.py`. The custom tools have been provided for you. Your task is to complete the agent definition by instantiating the search tool and writing the agent's instructions.
+### `research-assistant/agent.py`
 
 ```python
-# In agent.py (Starter Code)
+"""
+Research Assistant with Web Grounding
+Searches web, extracts key information, provides citations.
+"""
 
 from datetime import datetime
 from google.adk.agents import Agent
 from google.adk.tools import FunctionTool, GoogleSearchAgentTool
 
-# --- Custom Tools (Provided for you) ---
+# --- Custom Tools ---
 
 def format_research_notes(topic: str, findings: str) -> dict:
     """Formats research findings into a document."""
@@ -50,54 +35,35 @@ Generated: {timestamp}
 def extract_key_facts(text: str, num_facts: int = 5) -> list[str]:
     """Extract key facts from text (simplified)."""
     sentences = text.split('.')
+    # Filter out empty strings that may result from splitting
     return [s.strip() for s in sentences if s.strip()][:num_facts]
 
 # --- Agent Definition ---
 
-# TODO: 1. Create an instance of the GoogleSearchAgentTool.
-search_tool = None
+# Create search tool (using workaround for mixing with custom tools)
+search_tool = GoogleSearchAgentTool()
 
-# TODO: 2. Define the `root_agent`.
-# TODO: 3. Add the `search_tool` and the two custom tools (`extract_key_facts`,
-# `format_research_notes`) to the agent's `tools` list.
-# TODO: 4. Write an instruction that tells the agent to perform the research
-# workflow in the correct order: search -> extract -> format.
+# Create research assistant
 root_agent = Agent(
     model='gemini-1.5-flash',
     name='research_assistant',
     description='Conducts web research and compiles findings',
     instruction="""
-    # Your instruction here...
-    """,
+You are an expert research assistant with access to:
+1. Web search via search_tool
+2. Fact extraction via extract_key_facts
+3. Note formatting via format_research_notes
+
+When given a research topic:
+1. Use search_tool to find current information.
+2. Extract key facts using extract_key_facts.
+3. Format the research using format_research_notes.
+4. Present the final, formatted document to the user as your answer.
+    """.strip(),
     tools=[
-        # Your tools here...
+        search_tool,
+        FunctionTool(extract_key_facts),
+        FunctionTool(format_research_notes)
     ]
 )
 ```
-
-### Step 3: Run and Test the Research Assistant
-
-1.  **Set up your `.env` file for Vertex AI.** The `google_search` tool requires a Vertex AI configuration.
-
-2.  **Start the Dev UI:**
-    ```shell
-    cd ..
-    adk web
-    ```
-
-3.  **Interact with the agent:**
-    *   Open `http://localhost:8080` and select "research_assistant".
-    *   Give the agent a research topic, like "What are the latest developments in AI in 2025?"
-
-4.  **Analyze the Trace View:**
-    *   Expand the trace for your query. You should see a sequence of tool calls: `GoogleSearchAgentTool`, then `extract_key_facts`, then `format_research_notes`.
-
-### Having Trouble?
-
-If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
-
-## Lab Summary
-
-You have successfully built an agent that can access real-world, current information from the internet and process it using custom logic. You have learned:
-*   How to use the `GoogleSearchAgentTool` wrapper to combine built-in search with custom `FunctionTool`s.
-*   How to write an instruction that orchestrates a sequence of different tool types.

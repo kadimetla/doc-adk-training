@@ -1,13 +1,14 @@
 ---
-sidebar_position: 2
 ---
-# Module 6: Introduction to Tools
+# Module 7: Introduction to Tools
 
-# Lab 8: Exercise
+# Lab 8: Solution
+
+This file contains the complete, step-by-step guide to creating the "Researcher" agent.
 
 ### Goal
 
-In this lab, you will build a new agent that can answer questions about current events and topics beyond the LLM's training data. You will achieve this by giving the agent its first "superpower": the ability to search the web using the built-in `google_search` tool.
+You will build a new agent that can answer questions about current events and topics beyond the LLM's training data by giving it the ability to search the web using the built-in `google_search` tool.
 
 ### Step 1: Create the Researcher Agent Project
 
@@ -73,10 +74,6 @@ To use the `google_search` tool, you need to enable the **Vertex AI API** in you
       - name: google_search
     ```
 
-    **Analysis of the Configuration:**
-    *   **`instruction`:** We've explicitly told the agent *when* and *why* it should use the `google_search` tool. This is a crucial step. Just giving an agent a tool is not enough; you must guide it on how to use it.
-    *   **`tools`:** We've added a `tools` section. The line `- name: google_search` tells the ADK to attach the powerful, pre-built Google Search capability to our agent.
-
 ### Step 3: Test Your New Agent
 
 1.  **Start the web server:**
@@ -92,16 +89,13 @@ To use the `google_search` tool, you need to enable the **Vertex AI API** in you
     *   Ask a question that the LLM wouldn't know from its training data:
         *   "Who won the last Super Bowl?"
         *   "What are the latest headlines about space exploration?"
-        *   "What is the weather like in London today?"
-    *   **Examine the Trace View:** Click on the "Trace" tab. You will now see a new step in the execution flow: `execute_tool`. Expand it to see that the `google_search` tool was called. You can see the search query the agent decided to use and the search results that were returned to the agent. This confirms the agent is using its new tool correctly.
+    *   **Examine the Trace View:** Click on the "Trace" tab. You will see a new step in the execution flow: `execute_tool`. Expand it to see that the `google_search` tool was called, confirming the agent is using its new tool correctly.
 
 ## Lab Summary
 
-Congratulations! You have successfully given an agent a powerful new capability. You have learned how to:
+You have successfully given an agent a powerful new capability. You have learned how to:
 
 *   Enable the necessary Google Cloud APIs for advanced features.
 *   Configure an agent to use a built-in tool like `google_search`.
 *   Write instructions that guide the agent on when to use its tools.
 *   Verify that a tool was used by inspecting the Trace View in the Dev UI.
-
-In the next module, you will move beyond built-in tools and learn how to create your own custom tools from scratch.

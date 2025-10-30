@@ -1,85 +1,144 @@
 ---
-sidebar_position: 2
 ---
 # Module 17: Parallel Processing with ParallelAgent
 
-# Lab 18: Exercise
+# Lab 18: Solution
 
-### Goal
+This file contains the complete code for the `agent.py` script in the Smart Travel Planner lab.
 
-In this lab, you will build a **Smart Travel Planner** that uses the **fan-out/gather** pattern. You will use a `ParallelAgent` to concurrently search for flights, hotels, and activities, and then use a final agent to synthesize the results into a complete travel itinerary.
-
-### Step 1: Create the Project Structure
-
-1.  **Create a new project:**
-    ```shell
-    adk create travel-planner
-    ```
-    When prompted, choose the **Programmatic (Python script)** option.
-
-2.  **Navigate into the new directory:**
-    ```shell
-    cd travel-planner
-    ```
-
-### Step 2: Assemble the Fan-Out/Gather Pipeline
-
-**Exercise:** Open `agent.py`. The specialist agents (`flight_finder`, `hotel_finder`, `activity_finder`, and `itinerary_builder`) have been provided for you. Your task is to assemble them into a functioning fan-out/gather pipeline.
+### `travel-planner/agent.py`
 
 ```python
-# In agent.py (Starter Code)
-
 from __future__ import annotations
+
 from google.adk.agents import Agent, ParallelAgent, SequentialAgent
 
-# ===== Specialist Agents (Provided for you) =====
+# ============================================================================
+# PARALLEL SEARCH AGENTS
+# ============================================================================
 
-flight_finder = Agent(name="flight_finder", ..., output_key="flight_options")
-hotel_finder = Agent(name="hotel_finder", ..., output_key="hotel_options")
-activity_finder = Agent(name="activity_finder", ..., output_key="activity_options")
-itinerary_builder = Agent(name="itinerary_builder", ..., instruction="...{flight_options}...{hotel_options}...{activity_options}...")
+# ===== Parallel Branch 1: Flight Finder =====
+flight_finder = Agent(
+    name="flight_finder",
+    model="gemini-1.5-flash",
+    description="Searches for available flights",
+    instruction=(
+        "You are a flight search specialist. Based on the user's travel request, "
+        "search for available flights.\n"
+        "\n"
+        "Provide 2-3 flight options with:\n"
+        "- Airline name\n"
+        "- Departure and arrival times\n"
+        "- Price range\n"
+        "- Flight duration\n"
+        "\n"
+        "Format as a bulleted list. Be specific and realistic."
+    ),
+    output_key="flight_options"  # Saves to state
+)
+
+# ===== Parallel Branch 2: Hotel Finder =====
+hotel_finder = Agent(
+    name="hotel_finder",
+    model="gemini-1.5-flash",
+    description="Searches for available hotels",
+    instruction=(
+        "You are a hotel search specialist. Based on the user's travel request, "
+        "find suitable hotels.\n"
+        "\n"
+        "Provide 2-3 hotel options with:\n"
+        "- Hotel name and rating\n"
+        "- Location (district/area)\n"
+        "- Price per night\n"
+        "- Key amenities\n"
+        "\n"
+        "Format as a bulleted list. Be specific and realistic."
+    ),
+    output_key="hotel_options"  # Saves to state
+)
+
+# ===== Parallel Branch 3: Activity Finder =====
+activity_finder = Agent(
+    name="activity_finder",
+    model="gemini-1.5-flash",
+    description="Finds activities and attractions",
+    instruction=(
+        "You are a local activities expert. Based on the user's travel request, "
+        "recommend activities and attractions.\n"
+        "\n"
+        "Provide 4-5 activity suggestions with:\n"
+        "- Activity name\n"
+        "- Description (1 sentence)\n"
+        "- Estimated duration\n"
+        "- Estimated cost\n"
+        "\n"
+        "Format as a bulleted list. Include mix of paid/free activities."
+    ),
+    output_key="activity_options"  # Saves to state
+)
 
 # ============================================================================
 # FAN-OUT: PARALLEL DATA GATHERING
 # ============================================================================
 
-# TODO: 1. Create a `ParallelAgent` named `parallel_search`.
-# TODO: 2. Add the three "finder" agents to its `sub_agents` list so they
-# run concurrently.
-parallel_search = None
+# Create the ParallelAgent for concurrent search
+parallel_search = ParallelAgent(
+    name="ParallelSearch",
+    sub_agents=[
+        flight_finder,
+        hotel_finder,
+        activity_finder
+    ],
+    description="Searches flights, hotels, and activities concurrently"
+)
+
+# ============================================================================
+# GATHER: SEQUENTIAL RESULT MERGING
+# ============================================================================
+
+# ===== Gather: Merge Results into Itinerary =====
+itinerary_builder = Agent(
+    name="itinerary_builder",
+    model="gemini-1.5-flash",
+    description="Combines all search results into a complete travel itinerary",
+    instruction=(
+        "You are a travel planner. Create a complete, well-organized itinerary "
+        "by combining the search results below.\n"
+        "\n"
+        "**Available Flights:**\n"
+        "{flight_options}\n"  # Reads from state!
+        "\n"
+        "**Available Hotels:**\n"
+        "{hotel_options}\n"  # Reads from state!
+        "\n"
+        "**Recommended Activities:**\n"
+        "{activity_options}\n"  # Reads from state!
+        "\n"
+        "Create a formatted itinerary that:\n"
+        "1. Recommends the BEST option from each category (flights, hotel)\n"
+        "2. Organizes activities into a day-by-day plan\n"
+        "3. Includes estimated total cost\n"
+        "4. Adds helpful travel tips\n"
+        "\n"
+        "Format beautifully with clear sections and markdown."
+    ),
+    output_key="final_itinerary"
+)
 
 # ============================================================================
 # COMPLETE FAN-OUT/GATHER PIPELINE
 # ============================================================================
 
-# TODO: 3. Create a `SequentialAgent` named `travel_planning_system`.
-# This will be the main entry point for the entire workflow.
-# TODO: 4. Add the `parallel_search` agent as the first step and the
-# `itinerary_builder` agent as the second step.
-travel_planning_system = None
+# Combine parallel search with sequential merge
+travel_planning_system = SequentialAgent(
+    name="TravelPlanningSystem",
+    sub_agents=[
+        parallel_search,
+        itinerary_builder
+    ],
+    description="Complete travel planning system with parallel search and itinerary building"
+)
 
-# TODO: 5. Set the `root_agent` to be your `travel_planning_system`.
-root_agent = None
+# MUST be named root_agent for ADK discovery
+root_agent = travel_planning_system
 ```
-*(Note: The full agent definitions are in the `lab-solution.md` if you need to inspect them, but you don't need to change them for this exercise.)*
-
-### Step 3: Run and Test the Pipeline
-
-1.  **Set up your `.env` file** and start the Dev UI: `adk web`
-2.  **Interact with the pipeline:**
-    *   Select "travel_planner" and send a travel request, like: "Plan a 7-day vacation to Honolulu".
-3.  **Examine the Trace View:**
-    *   Expand the trace to see the `SequentialAgent` run.
-    *   Inside, expand the `ParallelAgent` to see the three finder agents running concurrently.
-    *   Observe the `itinerary_builder` running *after* the parallel step is complete.
-
-### Having Trouble?
-
-If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
-
-## Lab Summary
-
-You have successfully built a high-performance, multi-agent system using the fan-out/gather pattern. You have learned:
-*   How to configure and use a `ParallelAgent` to run agents concurrently.
-*   How to combine `ParallelAgent` and `SequentialAgent` to create efficient data-gathering and synthesis pipelines.
-*   How to verify parallel execution in the Trace View.

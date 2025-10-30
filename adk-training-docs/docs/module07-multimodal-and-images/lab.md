@@ -1,44 +1,45 @@
 ---
-sidebar_position: 2
 ---
 # Module 7: Multimodal and Image Processing
 
-# Lab 7: Exercise
+# Lab 7: Solution
 
-### Goal
+This file contains the complete code for the `agent.py` script in the Visual Product Catalog Analyzer lab.
 
-In this lab, you will build a multi-agent system that can analyze a product image and generate a marketing description. This will teach you how to handle image inputs and orchestrate a workflow between a vision-capable agent and a text-generation agent.
-
-### The Architecture
-
-1.  **Vision Analyzer Agent:** An `LlmAgent` that takes an image and a text prompt, and outputs a structured analysis of the image.
-2.  **Catalog Generator Agent:** A second `LlmAgent` that takes the structured analysis from the first agent and uses it to generate a polished product description.
-
-### Step 1: Create the Agent Project
-
-1.  **Create the agent project:**
-    ```shell
-    adk create visual-catalog
-    ```
-    When prompted, choose the **Programmatic (Python script)** option.
-
-2.  **Navigate into the new directory:**
-    ```shell
-    cd visual-catalog
-    ```
-
-### Step 2: Implement the Multimodal Agents
-
-**Exercise:** Open `agent.py`. A skeleton of the `ProductCatalogAnalyzer` class is provided. Your task is to complete the logic inside the `analyze_product` method to orchestrate the two agents.
+### `visual-catalog/agent.py`
 
 ```python
-# In agent.py (Starter Code)
-import asyncio
-from typing import List, Dict
-from google.adk.agents import Agent, Runner
-from google.genai import types
+"""
+Visual Product Catalog Analyzer
+Analyzes product images, extracts information, and generates descriptions.
+"""
 
-# (Helper function load_image_from_file is in the solution)
+import asyncio
+import os
+from typing import List, Dict
+from google.adk.agents import Agent, Runner, Session
+from google.adk.tools import FunctionTool
+from google.adk.tools.tool_context import ToolContext
+from google.genai import types
+from PIL import Image
+import io
+
+# Helper function to load an image from a local file path
+def load_image_from_file(path: str) -> types.Part:
+    """Load image from file and return a types.Part object."""
+    with open(path, 'rb') as f:
+        image_bytes = f.read()
+    
+    if path.lower().endswith('.png'):
+        mime_type = 'image/png'
+    elif path.lower().endswith(('.jpg', '.jpeg')):
+        mime_type = 'image/jpeg'
+    else:
+        mime_type = 'image/jpeg' # Default
+
+    return types.Part(
+        inline_data=types.Blob(data=image_bytes, mime_type=mime_type)
+    )
 
 class ProductCatalogAnalyzer:
     """Analyze product images and create catalog entries."""
@@ -46,62 +47,95 @@ class ProductCatalogAnalyzer:
     def __init__(self):
         """Initialize product catalog analyzer."""
         self.catalog: List[Dict] = []
+
+        # Agent 1: Vision specialist
         self.vision_agent = Agent(
-            model='gemini-1.5-flash', name='vision_analyzer',
-            instruction="You are a product vision analyst. Describe key visual features."
+            model='gemini-1.5-flash',
+            name='vision_analyzer',
+            instruction="""
+You are a product vision analyst. When analyzing product images, identify the product type, describe key visual features (color, material, design), and note any visible text. Provide a structured, detailed analysis.
+            """.strip(),
         )
+
+        # Agent 2: Content specialist
         self.catalog_agent = Agent(
-            model='gemini-1.5-flash', name='catalog_generator',
-            instruction="You are a product catalog writer. Generate marketing descriptions from a visual analysis."
+            model='gemini-1.5-flash',
+            name='catalog_generator',
+            instruction="""
+You are a product catalog content creator. Generate professional, marketing-ready product descriptions based on a visual analysis provided to you. Focus on compelling descriptions and key features.
+            """.strip(),
         )
+
         self.runner = Runner()
 
     async def analyze_product(self, product_id: str, image_path: str):
         """Analyze a product image and create a catalog entry."""
         print(f"\n--- Analyzing Product: {product_id} ---")
 
-        # TODO: 1. Call the `load_image_from_file` helper (from the solution)
-        # to get the `image_part`.
-        image_part = None # Replace this
-
-        # TODO: 2. Create the `analysis_query`, which must be a list containing
-        # a text part (e.g., "Analyze this image") and the `image_part`.
-        analysis_query = [] # Replace this
-
-        # TODO: 3. Call the `vision_agent` by using `self.runner.run_async`.
-        # Pass the `analysis_query` as the `new_message`.
-        analysis_result = await self.runner.run_async(...)
+        # Step 1: Visual analysis with the vision_agent
+        print("📸 Step 1: Performing visual analysis...")
+        image_part = load_image_from_file(image_path)
+        analysis_query = [
+            types.Part.from_text(f"Analyze this product image for {product_id}:"),
+            image_part
+        ]
+        analysis_result = await self.runner.run_async(
+            new_message=analysis_query,
+            agent=self.vision_agent
+        )
         analysis_text = analysis_result.content.parts[0].text
         print(f"🔍 Visual Analysis Complete:\n{analysis_text}\n")
 
-        # TODO: 4. Create the `catalog_query` string for the next agent.
-        # It should contain the `analysis_text` from the previous step.
-        catalog_query = "" # Replace this
-
-        # TODO: 5. Call the `catalog_agent` using `self.runner.run_async`
-        # to generate the final description.
-        catalog_result = await self.runner.run_async(...)
+        # Step 2: Generate catalog entry with the catalog_agent
+        print("📝 Step 2: Generating catalog entry...")
+        catalog_query = f"Based on this visual analysis, create a professional catalog entry for {product_id}:\n\n{analysis_text}"
+        catalog_result = await self.runner.run_async(
+            new_message=types.Content(role="user", parts=[types.Part(text=catalog_query)]),
+            agent=self.catalog_agent
+        )
         catalog_text = catalog_result.content.parts[0].text
         print(f"✅ Catalog Entry Generated:\n{catalog_text}\n")
 
-        self.catalog.append({'product_id': product_id, 'catalog_entry': catalog_text})
+        self.catalog.append({'product_id': product_id, 'analysis': analysis_text, 'catalog_entry': catalog_text})
 
-# (The main function to run the demo is in the solution file)
+async def main():
+    """Main entry point to run a demo."""
+    # Load environment variables
+    from dotenv import load_dotenv
+    load_dotenv()
+
+    analyzer = ProductCatalogAnalyzer()
+
+    # Create dummy images for the demo
+    os.makedirs('images', exist_ok=True)
+    products = [
+        ('PROD-001', 'images/laptop.jpg'),
+        ('PROD-002', 'images/headphones.jpg'),
+    ]
+    for _, image_path in products:
+        img = Image.new('RGB', (200, 200), color = 'red')
+        img.save(image_path)
+
+    # Batch analyze the products
+    for product_id, image_path in products:
+        await analyzer.analyze_product(product_id, image_path)
+        await asyncio.sleep(1)
+
+if __name__ == '__main__':
+    asyncio.run(main())
+
+# Define root_agent for the ADK CLI
+# In this case, we can expose the orchestrating class logic through a simple agent
+async def run_full_analysis(product_id: str, image_path: str) -> str:
+    """Analyzes a product image and returns the final catalog entry."""
+    analyzer = ProductCatalogAnalyzer()
+    await analyzer.analyze_product(product_id, image_path)
+    return analyzer.catalog[0]['catalog_entry']
+
+root_agent = Agent(
+    model='gemini-1.5-flash',
+    name='visual_catalog_orchestrator',
+    instruction="You are an orchestrator for a visual cataloging system.",
+    tools=[FunctionTool(run_full_analysis)]
+)
 ```
-
-### Step 3: Run and Test the Vision Agent
-
-1.  **Set up your `.env` file for Vertex AI.** Vision models require a Vertex AI configuration.
-2.  **Run the agent script directly** after completing the `TODO`s and adding the `main` block from the solution file.
-    ```shell
-    uv run python agent.py
-    ```
-3.  **Analyze the Output:** You should see the visual analysis from the first agent, followed by the final marketing copy from the second agent.
-
-### Having Trouble?
-If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
-
-## Lab Summary
-You have successfully built a multi-agent system that can see and understand images! You have learned to:
-*   Create multimodal prompts by combining text and image `types.Part` objects.
-*   Build a pipeline where one agent's visual analysis becomes the input for another agent's text generation task.

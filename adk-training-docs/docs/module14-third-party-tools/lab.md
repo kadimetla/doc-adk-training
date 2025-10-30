@@ -1,86 +1,40 @@
 ---
-sidebar_position: 2
 ---
 # Module 13: Integrating Third-Party Tools
 
-# Lab 14: Exercise
+# Lab 14: Solution
 
-### Goal
+This file contains the complete code for the `agent.py` file in the Fact-finder Agent lab.
 
-In this lab, you will learn how to integrate a tool from a popular third-party library, LangChain, into your ADK agent. You will build a "Fact-finder" agent that can look up information on Wikipedia.
-
-### Step 1: Create the Agent Project and Install Dependencies
-
-1.  **Create the agent project:**
-    ```shell
-    adk create --type=config fact-finder-agent
-    cd fact-finder-agent
-    ```
-
-2.  **Install LangChain dependencies:**
-    ```shell
-    pip install langchain_community wikipedia
-    ```
-
-### Step 2: Write the Agent Code
-
-Because we are importing Python objects, we need to define our agent in a Python file.
-
-**Exercise:** Create a new file named `agent.py`. Inside this file, complete the `# TODO` items to build the agent. You will need to instantiate the LangChain tool, wrap it, and then define your agent to use the wrapped tool.
+### `fact-finder-agent/agent.py`
 
 ```python
-# In agent.py (Starter Code)
-
 from google.adk.agents import LlmAgent
 from google.adk.tools.langchain_tool import LangchainTool
 from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper
 
-# TODO: 1. Instantiate the LangChain tool.
-# - Create a WikipediaAPIWrapper.
-# - Create a WikipediaQueryRun instance using the wrapper.
-# (Refer to LangChain documentation if needed).
-langchain_tool_instance = None
+# 1. According to LangChain documentation, instantiate the tool.
+# This sets up the connection to the Wikipedia API.
+api_wrapper = WikipediaAPIWrapper(top_k_results=1, doc_content_chars_max=2000)
+langchain_tool_instance = WikipediaQueryRun(api_wrapper=api_wrapper)
 
-# TODO: 2. Wrap the LangChain tool instance with the ADK's `LangchainTool` wrapper.
-wikipedia_tool = None
+# 2. Wrap the LangChain tool instance with the ADK's LangchainTool wrapper.
+# The wrapper automatically inspects the tool and creates the schema for the LLM.
+wikipedia_tool = LangchainTool(tool=langchain_tool_instance)
 
-# TODO: 3. Define the `root_agent` as an `LlmAgent`.
-# - Give it an instruction to use the Wikipedia tool for factual questions.
-# - Add your wrapped `wikipedia_tool` to its `tools` list.
-root_agent = None
+# 3. Define the ADK agent and include the wrapped tool in its tools list.
+root_agent = LlmAgent(
+    name="fact_finder_agent",
+    model="gemini-1.5-flash",
+    description="An agent that can look up information on Wikipedia.",
+    instruction="""You are a helpful fact-finding assistant.
+If the user asks a question about a specific topic, person, or event, you MUST use the Wikipedia tool to find an accurate answer.
+Summarize the information you find in a clear and concise way.""",
+    tools=[wikipedia_tool]
+)
 ```
 
-### Step 3: Configure and Run the Agent
+### Running the Agent
 
-1.  **Delete the placeholder `root_agent.yaml` file**, as your agent is now defined in `agent.py`.
-    ```shell
-    rm root_agent.yaml
-    ```
-
-2.  **Set up your `.env` file** with your API key.
-
-3.  **Run the agent:**
-    ```shell
-    adk web
-    ```
-    The ADK will automatically find the `root_agent` object in your `agent.py` file.
-
-### Step 4: Test the Fact-Finder Agent
-
-1.  **Interact with the agent** in the Dev UI. Ask it questions that require an encyclopedia:
-    *   "Who was Marie Curie?"
-    *   "What is the theory of relativity?"
-2.  **Examine the Trace View** to confirm that the `WikipediaQueryRun` tool was called.
-
-### Having Trouble?
-
-If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
-
-## Lab Summary
-
-You have successfully integrated a tool from an external library into your ADK agent. You have learned to:
-*   Install third-party library dependencies.
-*   Instantiate a tool from a library like LangChain.
-*   Use an ADK wrapper (`LangchainTool`) to make the third-party tool compatible with your agent.
-*   Define an agent in a Python file (`agent.py`) to handle the tool setup.
+Because this agent is defined in a Python file, you must delete the placeholder `root_agent.yaml` file from the project directory before running `adk web`.

@@ -1,74 +1,205 @@
 ---
-sidebar_position: 2
 ---
 # Module 37: Advanced - Building a Personalized Shopping Agent
 
-# Lab 37: Exercise
+# Lab 37: Solution
 
 ### Goal
-In this capstone lab, you will synthesize concepts from the entire course to build a distributed, multi-agent personalized shopping assistant. You will create three separate agents that collaborate using Agent-to-Agent (A2A) communication to provide a stateful, multimodal, and observable shopping experience.
+This solution provides the complete code for the distributed, multi-agent personalized shopping assistant, integrating concepts from across the entire course.
 
-### Setup
-1.  Create a main project directory for this lab (e.g., `capstone-shopping-system`).
-2.  Inside it, you will create three separate ADK agent projects: `orchestrator-agent`, `personalization-agent`, and `web-agent`.
-3.  Copy the `shared_libraries` and data from the original `personalized-shopping` sample into a shared location accessible by all three agents.
-
----
-
-### Exercise 1: Build and Expose the Web Agent
-This agent will be the interface to the e-commerce website.
-
-1.  **Create the `web-agent` project** (programmatic).
-2.  **Implement the `search` and `click` tools** as custom Python functions that interact with the `web_agent_site` environment.
-3.  **Challenge: Create an OpenAPI Specification** for your `search` and `click` tools. Define their parameters and responses in an OpenAPI v3 spec dictionary.
-4.  **Define the `root_agent`**. Instead of `FunctionTool`, use the `OpenAPIToolset` to expose your tools.
-5.  **Expose the agent as an A2A service** using the `to_a2a()` utility on port `8001`.
+### Project Structure
+```
+capstone-shopping-system/
+├── orchestrator-agent/
+│   └── agent.py
+├── personalization-agent/
+│   └── agent.py
+├── web-agent/
+│   ├── Dockerfile
+│   └── agent.py
+└── deployment_plan.md
+```
 
 ---
 
-### Exercise 2: Build and Expose the Personalization Agent
-This agent will be responsible for remembering user preferences.
+### 1. `web-agent/agent.py`
+This agent exposes the webshop tools via an OpenAPI spec and an A2A server.
 
-1.  **Create the `personalization-agent` project** (programmatic).
-2.  **Implement two tools:**
-    *   `save_preference(key: str, value: str, tool_context: ToolContext)`
-    *   `get_preferences(tool_context: ToolContext)`
-3.  **Challenge: Implement State Management.** Inside your tools, use `tool_context.state['user:<key>'] = value` and `tool_context.state.get('user:<key>')` to ensure preferences are persisted across sessions for the user.
-4.  **Define the `root_agent`** with an instruction to manage user preferences.
-5.  **Expose this agent as an A2A service** on port `8002`.
+```python
+from google.adk.agents import Agent
+from google.adk.a2a.utils.agent_to_a2a import to_a2a
+from google.adk.tools import OpenAPIToolset
+from shared_libraries.init_env import get_webshop_env # Assumes shared lib
+
+# --- OpenAPI Specification for Web Tools ---
+WEBSHOP_API_SPEC = {
+    "openapi": "3.0.0",
+    "info": {"title": "Webshop API", "version": "1.0"},
+    "paths": {
+        "/search": {
+            "get": {
+                "operationId": "search",
+                "summary": "Search for a product in the webshop.",
+                "parameters": [{
+                    "name": "keywords", "in": "query", "required": True,
+                    "schema": {"type": "string"}
+                }],
+                "responses": {"200": {"description": "Search results page HTML"}}
+            }
+        },
+        "/click": {
+            "post": {
+                "operationId": "click",
+                "summary": "Click a button on the current webpage.",
+                "requestBody": {
+                    "required": True,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {"button_name": {"type": "string"}},
+                                "required": ["button_name"]
+                            }
+                        }
+                    }
+                },
+                "responses": {"200": {"description": "New webpage HTML after click"}}
+            }
+        }
+    }
+}
+
+# --- Agent Definition ---
+root_agent = Agent(
+    model="gemini-1.5-flash",
+    name="web_agent",
+    instruction="You are a web interaction agent. Your job is to execute search and click commands on the e-commerce site.",
+    tools=[OpenAPIToolset(spec_dict=WEBSHOP_API_SPEC)]
+)
+
+# --- A2A Server ---
+a2a_app = to_a2a(root_agent, port=8001)
+```
 
 ---
 
-### Exercise 3: Build the Orchestrator Agent
-This is the main, user-facing agent that will coordinate the others.
+### 2. `personalization-agent/agent.py`
+This agent manages user preferences using persistent state.
 
-1.  **Create the `orchestrator-agent` project** (programmatic).
-2.  **Challenge: Connect to Remote Agents.** In `agent.py`, define two `RemoteA2aAgent` instances, one for the `web-agent` and one for the `personalization-agent`, pointing to their respective agent card URLs.
-3.  **Define the `root_agent`**. Its `sub_agents` list should contain your two remote agent definitions.
-4.  **Write the Orchestrator's `instruction` prompt.** This prompt must guide the agent on how to delegate tasks (e.g., "To search for a product, delegate to the `web-agent`," "To save a user's favorite color, delegate to the `personalization-agent`").
-5.  **Challenge: Implement Observability.** Create a `before_tool_callback` function that logs every time the orchestrator attempts to delegate a task to a sub-agent (i.e., when it calls `transfer_to_agent`). Register this callback with your orchestrator agent.
+```python
+from google.adk.agents import Agent
+from google.adk.a2a.utils.agent_to_a2a import to_a2a
+from google.adk.tools import ToolContext
+
+# --- Stateful Tools ---
+def save_preference(key: str, value: str, tool_context: ToolContext) -> dict:
+    """Saves a user's preference (e.g., color, size)."""
+    state_key = f"user:{key}"
+    tool_context.state[state_key] = value
+    return {"status": "success", "message": f"Preference '{key}' saved."}
+
+def get_preferences(tool_context: ToolContext) -> dict:
+    """Retrieves all saved preferences for the user."""
+    user_prefs = {
+        k.split(':')[1]: v
+        for k, v in tool_context.state.items()
+        if k.startswith("user:")
+    }
+    return {"status": "success", "preferences": user_prefs}
+
+# --- Agent Definition ---
+root_agent = Agent(
+    model="gemini-1.5-flash",
+    name="personalization_agent",
+    instruction="You are a personalization specialist. You save and retrieve user preferences.",
+    tools=[save_preference, get_preferences]
+)
+
+# --- A2A Server ---
+a2a_app = to_a2a(root_agent, port=8002)
+```
 
 ---
 
-### Exercise 4: Add Multimodal Vision
-Enhance the Orchestrator to handle image-based searches.
+### 3. `orchestrator-agent/agent.py`
+The main agent that connects to the others and handles user interaction.
 
-1.  **Challenge: Update the Orchestrator's `instruction` prompt.** Add logic to handle image uploads. If a user provides an image, instruct the agent to:
-    a.  First, describe the item in the image.
-    b.  Then, use that text description to perform a search by delegating to the `web-agent`.
+```python
+import logging
+from google.adk.agents import Agent, CallbackContext, RemoteA2aAgent, AGENT_CARD_WELL_KNOWN_PATH
+
+# --- Observability Callback ---
+def before_tool_callback(callback_context: CallbackContext, tool_name: str, args: dict) -> None:
+    """Logs every delegation attempt."""
+    if tool_name == "transfer_to_agent":
+        logging.info(
+            f"[OBSERVABILITY] Delegating to remote agent '{args.get('agent_name')}' "
+            f"with query: {args.get('query')}"
+        )
+    return None
+
+# --- Remote Agent Definitions ---
+remote_web_agent = RemoteA2aAgent(
+    name="web_agent",
+    description="A remote specialist for searching and clicking on the e-commerce website.",
+    agent_card=f"http://localhost:8001/a2a/web_agent{AGENT_CARD_WELL_KNOWN_PATH}"
+)
+
+remote_personalization_agent = RemoteA2aAgent(
+    name="personalization_agent",
+    description="A remote specialist for saving and retrieving user preferences.",
+    agent_card=f"http://localhost:8002/a2a/personalization_agent{AGENT_CARD_WELL_KNOWN_PATH}"
+)
+
+# --- Main Orchestrator Agent ---
+root_agent = Agent(
+    model="gemini-1.5-flash",
+    name="orchestrator_agent",
+    instruction="""You are a master shopping assistant. Your job is to coordinate with specialist agents to help the user.
+
+    **Workflow:**
+    1.  **Understand Intent:** Greet the user and understand what they want to do. If they upload an image, describe it first, then ask if they want to search for that item.
+    2.  **Delegate Tasks:**
+        - To search or click on the website, you MUST delegate to the `web_agent`.
+        - To save or get user preferences, you MUST delegate to the `personalization_agent`.
+    3.  **Synthesize Results:** Summarize the results from the specialist agents and present them clearly to the user.
+    """,
+    sub_agents=[remote_web_agent, remote_personalization_agent],
+    before_tool_callback=before_tool_callback
+)
+```
 
 ---
 
-### Exercise 5: Create a Deployment Plan
-Plan how you would deploy this distributed system.
+### 4. `deployment_plan.md`
 
-1.  **Challenge: Create a `Dockerfile`** for the `web-agent`. This file should define the steps to build a container image for your remote agent.
-2.  **Create a `deployment_plan.md` file.** In this file, briefly explain the steps you would take to deploy the `orchestrator-agent`, `web-agent`, and `personalization-agent` as separate services on Google Cloud Run.
+#### Deployment Strategy
+This system consists of three independent services that must be deployed. We will use Google Cloud Run for its serverless nature, scalability, and ease of use.
 
-### Running the System
-To test your full system, you will need to run all three agents in separate terminals:
-*   **Terminal 1 (`web-agent`):** `uvicorn agent:a2a_app --host localhost --port 8001`
-*   **Terminal 2 (`personalization-agent`):** `uvicorn agent:a2a_app --host localhost --port 8002`
-*   **Terminal 3 (`orchestrator-agent`):** `adk web`
+1.  **`web-agent` Service:** Deployed to Cloud Run.
+2.  **`personalization-agent` Service:** Deployed to Cloud Run.
+3.  **`orchestrator-agent` Service:** Deployed to Cloud Run as the main, user-facing endpoint.
 
-Interact with the Orchestrator in the Dev UI and use the Trace view to observe the A2A communication and delegation.
+The orchestrator will need the URLs of the other two services, which can be passed as environment variables during deployment.
+
+#### Example `Dockerfile` for `web-agent`
+```dockerfile
+# Use the official Python image.
+FROM python:3.11-slim
+
+# Set the working directory.
+WORKDIR /app
+
+# Copy and install requirements.
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the agent code and shared libraries.
+COPY agent.py .
+COPY shared_libraries/ ./shared_libraries
+
+# Set the command to run the A2A server.
+# Cloud Run provides the PORT environment variable.
+CMD ["uvicorn", "agent:a2a_app", "--host", "0.0.0.0", "--port", "$PORT"]
+```
+*(A similar Dockerfile would be created for the `personalization-agent`)*
