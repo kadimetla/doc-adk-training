@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 ## Module 38: Best Practices # Module 36: Best Practices & Production Patterns Production Patterns
 
 # Lab 38: Solution
@@ -21,7 +23,8 @@ from retry import retry
 from google.adk.agents import Agent
 from google.adk.tools import FunctionTool
 
-# --- 1. Input Validation with Pydantic ---
+# ---
+sidebar_label: Lab Solution 1. Input Validation with Pydantic ---
 
 class ValidatedInput(BaseModel):
     """A Pydantic model to validate inputs for a tool."""
@@ -39,7 +42,8 @@ def validate_input_tool(user_id: str, query: str) -> dict:
     except ValueError as e:
         return {"status": "error", "message": f"Invalid input: {e}"}
 
-# --- 2. Resilience with Retries and Exponential Backoff ---
+# ---
+sidebar_label: Lab Solution 2. Resilience with Retries and Exponential Backoff ---
 
 # This is a decorator that will retry the function if it raises an exception.
 # It will wait 1s, then 2s, then 4s between retries.
@@ -63,7 +67,8 @@ def retry_with_backoff_tool() -> dict:
     except ConnectionError as e:
         return {"status": "error", "message": f"The API call failed after multiple retries: {e}"}
 
-# --- 3. Performance with Caching ---
+# ---
+sidebar_label: Lab Solution 3. Performance with Caching ---
 
 @functools.lru_cache(maxsize=128)
 def _slow_database_query(item_id: str) -> str:
@@ -81,7 +86,8 @@ def cache_operation_tool(item_id: str) -> dict:
     result = _slow_database_query(item_id)
     return {"status": "success", "data": result}
 
-# --- Agent Definition ---
+# ---
+sidebar_label: Lab Solution Agent Definition ---
 
 root_agent = Agent(
     model='gemini-1.5-flash',

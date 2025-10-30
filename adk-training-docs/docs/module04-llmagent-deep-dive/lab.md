@@ -1,7 +1,10 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
+sidebar_label: Lab Challenge
 # Module 4: Core Agent Concepts: `LlmAgent` Deep Dive
 
 # Lab 4: Exercise

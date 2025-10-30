@@ -1,7 +1,10 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
+sidebar_label: Lab Challenge
 # Module 27: Advanced Observability with Plugins
 
 # Lab 25: Solution
@@ -22,7 +25,8 @@ from google.adk.plugins import BasePlugin
 from google.adk.events import Event
 from google.genai import types
 
-# --- Data Classes for Metrics ---
+# ---
+sidebar_label: Lab Challenge Data Classes for Metrics ---
 
 @dataclass
 class RequestMetrics:
@@ -53,7 +57,8 @@ class AggregateMetrics:
         if self.total_requests == 0: return 0.0
         return self.total_latency / self.total_requests
 
-# --- Custom Observability Plugins ---
+# ---
+sidebar_label: Lab Challenge Custom Observability Plugins ---
 
 class MetricsCollectorPlugin(BasePlugin):
     """A plugin to collect request/response metrics."""
@@ -121,7 +126,8 @@ class PerformanceProfilerPlugin(BasePlugin):
                     print(f"⏱️ [PROFILER] Tool call '{self.current_profile['tool']}' finished in {duration:.3f}s.")
                     self.current_profile = None
 
-# --- Agent Definition ---
+# ---
+sidebar_label: Lab Challenge Agent Definition ---
 
 root_agent = Agent(
     model='gemini-1.5-flash',
@@ -129,7 +135,8 @@ root_agent = Agent(
     instruction="You are a helpful assistant. Your responses are being monitored for quality and performance.",
 )
 
-# --- Main Execution Block (for `adk web`) ---
+# ---
+sidebar_label: Lab Challenge Main Execution Block (for `adk web`) ---
 
 # In a real application, you would likely run this in a separate script.
 # For this lab, we include it to show how plugins are registered.

@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 # Module 1: Introduction to AI Agents & Google ADK
 
 # Lab 1: Solution

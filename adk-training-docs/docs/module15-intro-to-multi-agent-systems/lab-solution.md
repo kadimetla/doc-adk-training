@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 # Module 14: Introduction to Multi-Agent Systems
 
 # Lab 15: Solution

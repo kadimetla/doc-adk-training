@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 ## Module 35: Deploying to Agent Engine
 
 # Lab 35: Solution
@@ -10,6 +12,7 @@ sidebar_position: 3
 This lab is a procedural tutorial. The solution for both parts is a successfully deployed Agent Engine instance.
 
 ---
+sidebar_label: Lab Solution
 
 ### Part 1: Accelerated Deployment Solution
 
@@ -21,6 +24,7 @@ After running `gcloud builds submit --config=cloudbuild.yaml`, a successful Clou
 *   You can copy the **Agent Engine ID** from the console to use with a client application.
 
 ---
+sidebar_label: Lab Solution
 
 ### Part 2: Standard Deployment Solution
 
@@ -33,7 +37,8 @@ import vertexai
 from vertexai import agent_engines
 from calculator.agent import root_agent
 
-# --- CONFIGURATION ---
+# ---
+sidebar_label: Lab Solution CONFIGURATION ---
 # Note: Replace these with your actual Google Cloud project details.
 PROJECT_ID = "your-gcp-project-id"
 LOCATION = "us-central1"
@@ -73,7 +78,8 @@ import asyncio
 import vertexai
 from vertexai import agent_engines
 
-# --- CONFIGURATION ---
+# ---
+sidebar_label: Lab Solution CONFIGURATION ---
 # Note: Replace these with your actual Google Cloud project details.
 PROJECT_ID = "your-gcp-project-id"
 LOCATION = "us-central1"

@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 # Module 17: Multi-Agent Systems - Complex Orchestration
 
 # Lab 19: Solution
