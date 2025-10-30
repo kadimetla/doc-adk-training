@@ -1,5 +1,21 @@
 ---
+id: module04-overview
+title: "Module 4: LlmAgent Deep Dive"
+description: "A deep dive into the LlmAgent, focusing on the art of crafting effective instructions (prompt engineering)."
+sidebar_label: "04: Overview"
 sidebar_position: 1
+keywords: ["ADK", "LlmAgent", "prompt engineering", "instructions", "persona"]
+image: /img/docusaurus-social-card.jpg
+---
+sidebar_position: 1
+---
+id: module04-overview
+title: "Module 4: LlmAgent Deep Dive"
+description: "A deep dive into the LlmAgent, focusing on the art of crafting effective instructions (prompt engineering)."
+sidebar_label: "04: Overview"
+sidebar_position: 1
+keywords: ["ADK", "LlmAgent", "prompt engineering", "instructions", "persona"]
+image: /img/docusaurus-social-card.jpg
 ---
 # Module 4: Core Agent Concepts: `LlmAgent` Deep Dive
 

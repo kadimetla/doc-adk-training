@@ -1,10 +1,22 @@
-# Module 17: Parallel Processing with ParallelAgent
+# Module 18: Parallel Processing with ParallelAgent
 
-## Lab 17: Building a Smart Travel Planner
+## Lab 18: Building a Smart Travel Planner
 
 ### Goal
 
 In this lab, you will build a **Smart Travel Planner** that uses the **fan-out/gather** pattern. You will use a `ParallelAgent` to concurrently search for flights, hotels, and activities, and then use a final agent to synthesize the results into a complete travel itinerary.
+
+### The Fan-Out/Gather Pattern
+
+This lab implements a powerful and efficient architectural pattern.
+
+```
+        ┌──── Agent 1 (flights) ────┐
+User ───┼──── Agent 2 (hotels) ─────┼──→ Merger Agent → Final Result
+        └──── Agent 3 (activities) ─┘
+
+      ParallelAgent (fast!)       SequentialAgent (combine)
+```
 
 ### Step 1: Create the Project Structure
 
@@ -31,10 +43,10 @@ from google.adk.agents import Agent, ParallelAgent, SequentialAgent
 
 # ===== Specialist Agents (Provided for you) =====
 
-flight_finder = Agent(name="flight_finder", ..., output_key="flight_options")
-hotel_finder = Agent(name="hotel_finder", ..., output_key="hotel_options")
-activity_finder = Agent(name="activity_finder", ..., output_key="activity_options")
-itinerary_builder = Agent(name="itinerary_builder", ..., instruction="...{flight_options}...{hotel_options}...{activity_options}...")
+flight_finder = Agent(name="flight_finder", model="gemini-2.5-flash", ..., output_key="flight_options")
+hotel_finder = Agent(name="hotel_finder", model="gemini-2.5-flash", ..., output_key="hotel_options")
+activity_finder = Agent(name="activity_finder", model="gemini-2.5-flash", ..., output_key="activity_options")
+itinerary_builder = Agent(name="itinerary_builder", model="gemini-2.5-flash", ..., instruction="...{flight_options}...{hotel_options}...{activity_options}...")
 
 # ============================================================================
 # FAN-OUT: PARALLEL DATA GATHERING
@@ -62,13 +74,18 @@ root_agent = None
 
 ### Step 3: Run and Test the Pipeline
 
-1.  **Set up your `.env` file** and start the Dev UI: `adk web`
-2.  **Interact with the pipeline:**
-    *   Select "travel_planner" and send a travel request, like: "Plan a 7-day vacation to Honolulu".
-3.  **Examine the Trace View:**
+1.  **Set up your `.env` file.**
+2.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI:
+    ```shell
+    adk web travel-planner
+    ```
+3.  **Interact with the pipeline:**
+    *   Send a travel request, like: "Plan a 7-day vacation to Honolulu".
+4.  **Examine the Trace View:**
     *   Expand the trace to see the `SequentialAgent` run.
     *   Inside, expand the `ParallelAgent` to see the three finder agents running concurrently.
     *   Observe the `itinerary_builder` running *after* the parallel step is complete.
+    *   **Note:** Notice in the trace that the three finder agents start at roughly the same time. The total time for this step is determined by the slowest of the three, not the sum of all three, which is much more efficient!
 
 ### Having Trouble?
 

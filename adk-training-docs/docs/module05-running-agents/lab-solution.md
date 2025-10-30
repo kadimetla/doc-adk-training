@@ -1,6 +1,22 @@
 ---
+id: module05-lab-solution
+title: "Module 5: Lab Solution - Exploring Different Execution Modes"
+description: "Provides a summary of the expected outcomes for the Module 5 lab exercise."
+sidebar_label: "05: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "execution modes"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Solution
 sidebar_position: 3
+---
+id: module05-lab-solution
+title: "Module 5: Lab Solution - Exploring Different Execution Modes"
+description: "Provides a summary of the expected outcomes for the Module 5 lab exercise."
+sidebar_label: "05: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "execution modes"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Solution
 

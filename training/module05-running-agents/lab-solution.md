@@ -16,16 +16,16 @@ In this lab, you will learn how to run and interact with your "Pirate Translator
 
 This is the mode you've used so far. Let's explore its features more deeply.
 
-1.  **Navigate to your agent directory:**
-
+1.  **Navigate to your project directory:**
+    Make sure you are in your main `adk-training` directory.
     ```shell
-    cd /path/to/your/adk-training/echo-agent
+    cd /path/to/your/adk-training
     ```
 
 2.  **Start the web UI:**
-
+    Run the command from the parent directory, specifying which agent you want to run.
     ```shell
-    adk web
+    adk web echo-agent
     ```
 
 3.  **Explore the Dev UI:**
@@ -42,9 +42,9 @@ Now, let's chat with the agent directly in the terminal.
     Go back to your terminal where `adk web` is running and press `Ctrl+C` to stop it.
 
 2.  **Start the command-line runner:**
-
+    Again, run this from the parent `adk-training` directory.
     ```shell
-    adk run
+    adk run echo-agent
     ```
 
 3.  **Chat with the agent:**
@@ -59,15 +59,15 @@ Now, let's chat with the agent directly in the terminal.
 Finally, let's run the agent as a background service that other applications could talk to.
 
 1.  **Start the API server:**
-
+    From the `adk-training` directory, run:
     ```shell
-    adk api_server
+    adk api_server echo-agent
     ```
     The server will start and listen for HTTP requests, similar to `adk web`, but without the UI.
 
 2.  **Interact with the API:**
-    *   Open a **new, separate terminal window**. Your virtual environment does not need to be active in this new terminal.
-    *   We will use the `curl` command to send an HTTP request to our agent. `curl` is a standard tool for making web requests from the command line.
+    *   Open a **new, separate terminal window**. You need a new window because the API server is currently running in and occupying your first one.
+    *   We will use the `curl` command to send an HTTP request to our agent.
 
     *   Copy and paste the following command into the **new** terminal and press Enter:
 
@@ -86,6 +86,12 @@ Finally, let's run the agent as a background service that other applications cou
                    }
                  }'
         ```
+    
+    **Understanding the `curl` command:**
+    *   `curl`: A command-line tool to transfer data with URLs.
+    *   `-X POST`: Specifies that we are sending data to the server (a POST request).
+    *   `-H "Content-Type: application/json"`: A "header" that tells the server we are sending data in JSON format.
+    *   `-d '{...}'`: The actual JSON data payload we are sending. It includes the `app_name` to run, unique IDs for the user and session, and the user's message.
 
 3.  **Analyze the Output:**
     You will see a stream of JSON objects as the response. This is the raw event data that the Dev UI uses to render the chat and trace views. Look through the output, and you will find the agent's final response, "Arr, me hearty! The server be sunk to Davy Jones' locker!"
@@ -97,8 +103,8 @@ Finally, let's run the agent as a background service that other applications cou
 
 You have now mastered the three ways to run an ADK agent:
 
-*   `adk web`: For interactive development and deep debugging with the Trace View.
-*   `adk run`: For quick tests and automated scripting in the terminal.
-*   `adk api_server`: For running your agent as a service to be integrated with other applications.
+*   `adk web <agent_name>`: For interactive development and deep debugging with the Trace View.
+*   `adk run <agent_name>`: For quick tests and automated scripting in the terminal.
+*   `adk api_server <agent_name>`: For running your agent as a service to be integrated with other applications.
 
 This completes the foundational part of the course. You are now ready to start extending your agent's capabilities with tools.

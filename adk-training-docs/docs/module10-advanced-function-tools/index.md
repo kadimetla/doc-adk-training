@@ -1,5 +1,21 @@
 ---
+id: module10-overview
+title: "Module 10: Advanced Function Tools"
+description: "Learn advanced techniques for building robust and efficient custom tools, including parallel tool execution."
+sidebar_label: "10: Overview"
 sidebar_position: 1
+keywords: ["ADK", "advanced tools", "parallel execution", "input validation"]
+image: /img/docusaurus-social-card.jpg
+---
+sidebar_position: 1
+---
+id: module10-overview
+title: "Module 10: Advanced Function Tools"
+description: "Learn advanced techniques for building robust and efficient custom tools, including parallel tool execution."
+sidebar_label: "10: Overview"
+sidebar_position: 1
+keywords: ["ADK", "advanced tools", "parallel execution", "input validation"]
+image: /img/docusaurus-social-card.jpg
 ---
 # Module 10: Advanced Function Tools
 

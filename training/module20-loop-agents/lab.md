@@ -1,6 +1,6 @@
-# Module 19: Iterative Refinement with Loop Agents
+# Module 20: Iterative Refinement with Loop Agents
 
-## Lab 19: Building an Essay Refinement System
+## Lab 20: Building an Essay Refinement System
 
 ### Goal
 
@@ -42,11 +42,12 @@ from google.adk.tools.tool_context import ToolContext
 def exit_loop(tool_context: ToolContext):
     """Signals that the essay refinement is complete."""
     tool_context.actions.end_of_agent = True
+    # Return a minimal valid content part so the backend always produces a valid LlmResponse.
     return {"text": "Loop exited successfully."}
 
-initial_writer = Agent(name="InitialWriter", ..., output_key="current_essay")
-critic = Agent(name="Critic", ..., output_key="critique")
-refiner = Agent(name="Refiner", ..., tools=[exit_loop], output_key="current_essay")
+initial_writer = Agent(name="InitialWriter", model="gemini-2.5-flash", ..., output_key="current_essay")
+critic = Agent(name="Critic", model="gemini-2.5-flash", ..., output_key="critique")
+refiner = Agent(name="Refiner", model="gemini-2.5-flash", ..., tools=[exit_loop], output_key="current_essay")
 
 # =====================================================
 # ASSEMBLE THE AGENT SYSTEM
@@ -57,7 +58,8 @@ refiner = Agent(name="Refiner", ..., tools=[exit_loop], output_key="current_essa
 # TODO: 1. Create a `LoopAgent` named `refinement_loop`.
 # TODO: 2. Add the `critic` and `refiner` agents to its `sub_agents` list
 # in the correct order.
-# TODO: 3. Set the `max_iterations` to a safe number, like 5.
+# TODO: 3. Set the `max_iterations` to a safe number, like 5, to prevent
+# infinite loops.
 refinement_loop = None
 
 # ===== COMPLETE SYSTEM: Initial Draft + Refinement Loop =====
@@ -74,10 +76,14 @@ root_agent = None
 
 ### Step 3: Run and Test the System
 
-1.  **Set up your `.env` file** and start the Dev UI: `adk web`
-2.  **Interact with the system:**
-    *   Select "essay_refiner" and give it a topic, like: "The impact of artificial intelligence on society".
-3.  **Analyze the Trace View:**
+1.  **Set up your `.env` file.**
+2.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI:
+    ```shell
+    adk web essay-refiner
+    ```
+3.  **Interact with the system:**
+    *   Give it a topic, like: "The impact of artificial intelligence on society".
+4.  **Analyze the Trace View:**
     *   Expand the trace to see the `InitialWriter` run once.
     *   Expand the `RefinementLoop` to see the multiple "Iterations".
     *   Inside each iteration, observe the `Critic` and `Refiner` at work.

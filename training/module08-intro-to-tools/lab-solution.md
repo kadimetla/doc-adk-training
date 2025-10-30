@@ -1,12 +1,15 @@
-# Module 7: Introduction to Tools
+# Module 8: Introduction to Tools
 
-## Lab 7: Solution
+## Lab 8: Solution
 
 This file contains the complete, step-by-step guide to creating the "Researcher" agent.
 
 ### Goal
 
 You will build a new agent that can answer questions about current events and topics beyond the LLM's training data by giving it the ability to search the web using the built-in `google_search` tool.
+
+### Prerequisites
+*   **Note on Costs:** Enabling the Vertex AI API and using the `google_search` tool may incur small costs on your Google Cloud bill. Please be aware of the pricing for these services.
 
 ### Step 1: Create the Researcher Agent Project
 
@@ -26,12 +29,6 @@ You will build a new agent that can answer questions about current events and to
     adk create --type=config researcher-agent
     ```
 
-3.  **Navigate into the new directory:**
-
-    ```shell
-    cd researcher-agent
-    ```
-
 ### Step 2: Configure the Agent to Use Google Search
 
 To use the `google_search` tool, you need to enable the **Vertex AI API** in your Google Cloud project, as this is the service that provides the grounding functionality.
@@ -44,7 +41,7 @@ To use the `google_search` tool, you need to enable the **Vertex AI API** in you
 
 2.  **Set up your environment variables:**
 
-    Open the `.env` file. For the search tool to work, you **must** configure your agent to use Vertex AI.
+    Navigate into the `researcher-agent` directory and open the `.env` file. For the search tool to work, you **must** configure your agent to use Vertex AI.
 
     Update the `.env` file to look like this, filling in your project ID and desired location:
     ```
@@ -61,7 +58,7 @@ To use the `google_search` tool, you need to enable the **Vertex AI API** in you
     ```yaml
     # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
     name: researcher_agent
-    model: gemini-1.5-flash
+    model: gemini-2.5-flash
     description: An agent that can research current events using Google Search.
     instruction: |
       You are a helpful research assistant.
@@ -74,15 +71,20 @@ To use the `google_search` tool, you need to enable the **Vertex AI API** in you
 
 ### Step 3: Test Your New Agent
 
-1.  **Start the web server:**
-
-    From inside the `researcher-agent` directory, run `adk web`.
-
+1.  **Navigate back to the parent directory:**
     ```shell
-    adk web
+    cd ..
     ```
 
-2.  **Interact with the Researcher Agent:**
+2.  **Start the web server:**
+
+    From the `adk-training` directory, run `adk web` with the agent name.
+
+    ```shell
+    adk web researcher-agent
+    ```
+
+3.  **Interact with the Researcher Agent:**
     *   Open the Dev UI in your browser.
     *   Ask a question that the LLM wouldn't know from its training data:
         *   "Who won the last Super Bowl?"

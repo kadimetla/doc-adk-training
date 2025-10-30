@@ -1,8 +1,32 @@
 ---
+id: module06-lab-challenge
+title: "Module 6: Lab Challenge - Executing Your Agent in a Python Script"
+description: "A hands-on exercise to run an ADK agent programmatically from a Python script."
+sidebar_label: "06: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "Python", "asyncio", "InMemoryRunner"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+id: module06-lab-challenge
+title: "Module 6: Lab Challenge - Executing Your Agent in a Python Script"
+description: "A hands-on exercise to run an ADK agent programmatically from a Python script."
+sidebar_label: "06: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "Python", "asyncio", "InMemoryRunner"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
+---
+id: module06-lab-challenge
+title: "Module 6: Lab Challenge - Executing Your Agent in a Python Script"
+description: "A hands-on exercise to run an ADK agent programmatically from a Python script."
+sidebar_label: "06: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "Python", "asyncio", "InMemoryRunner"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Challenge
 # Module 6: Running an Agent Programmatically

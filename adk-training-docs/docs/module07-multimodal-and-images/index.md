@@ -1,5 +1,21 @@
 ---
+id: module07-overview
+title: "Module 7: Multimodal and Image Processing"
+description: "Learn how to build vision-enabled agents that can understand and generate images."
+sidebar_label: "07: Overview"
 sidebar_position: 1
+keywords: ["ADK", "multimodal", "vision", "image processing", "Gemini"]
+image: /img/docusaurus-social-card.jpg
+---
+sidebar_position: 1
+---
+id: module07-overview
+title: "Module 7: Multimodal and Image Processing"
+description: "Learn how to build vision-enabled agents that can understand and generate images."
+sidebar_label: "07: Overview"
+sidebar_position: 1
+keywords: ["ADK", "multimodal", "vision", "image processing", "Gemini"]
+image: /img/docusaurus-social-card.jpg
 ---
 # Module 7: Multimodal and Image Processing
 

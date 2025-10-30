@@ -1,6 +1,6 @@
-# Module 16: Building Agent Pipelines with SequentialAgent
+# Module 17: Building Agent Pipelines with SequentialAgent
 
-## Lab 16: Building a Blog Post Generator Pipeline
+## Lab 17: Building a Blog Post Generator Pipeline
 
 ### Goal
 
@@ -38,22 +38,22 @@ from google.adk.agents import Agent, SequentialAgent
 # ===== Specialist Agents (Provided for you) =====
 
 research_agent = Agent(
-    name="researcher", model="gemini-1.5-flash",
+    name="researcher", model="gemini-2.5-flash",
     instruction="...", # Gathers facts
     output_key="research_findings"
 )
 writer_agent = Agent(
-    name="writer", model="gemini-1.5-flash",
+    name="writer", model="gemini-2.5-flash",
     instruction="...writes a draft based on {research_findings}...",
     output_key="draft_post"
 )
 editor_agent = Agent(
-    name="editor", model="gemini-1.5-flash",
+    name="editor", model="gemini-2.5-flash",
     instruction="...reviews the {draft_post}...",
     output_key="editorial_feedback"
 )
 formatter_agent = Agent(
-    name="formatter", model="gemini-1.5-flash",
+    name="formatter", model="gemini-2.5-flash",
     instruction="...applies {editorial_feedback} to the {draft_post}...",
     output_key="final_post"
 )
@@ -73,10 +73,14 @@ root_agent = None
 
 ### Step 3: Run and Test the Pipeline
 
-1.  **Set up your `.env` file** and start the Dev UI: `adk web`
-2.  **Interact with the pipeline:**
-    *   Select "blog_pipeline" and send a topic to write about, like: "the history of the internet".
-3.  **Examine the Trace and State Tabs:**
+1.  **Set up your `.env` file.**
+2.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI:
+    ```shell
+    adk web blog-pipeline
+    ```
+3.  **Interact with the pipeline:**
+    *   Send a topic to write about, like: "the history of the internet".
+4.  **Examine the Trace and State Tabs:**
     *   **Trace View:** Expand the trace to see the `SequentialAgent` running its four sub-agents in order.
     *   **State View:** After the run, inspect the state to see the output of each step (`research_findings`, `draft_post`, etc.).
 

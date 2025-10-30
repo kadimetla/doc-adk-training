@@ -1,48 +1,91 @@
 ---
+id: module01-overview
+title: 'Module 1: Introduction to AI Agents & Google ADK'
+description: 'Understand the foundational concepts of AI agents, the Google Agent Development Kit (ADK), and the core mental models for building intelligent systems.'
+sidebar_label: '01: Overview'
 sidebar_position: 1
+keywords:
+  [
+    'AI Agents',
+    'Google ADK',
+    'Agent Development Kit',
+    'Generative AI',
+    'LLM',
+    'Mental Models',
+  ]
+image: /img/docusaurus-social-card.jpg
 ---
-# Module 1: Introduction to AI Agents
-![Introduction to AI Agents](../../../nanobanana-output/a_futuristic_illustration_of_an_.png)
 
-# Module 1: Introduction to AI Agents & Google ADK
+**🎯 Purpose**: To establish a foundational mental model of what an AI agent is and to introduce the core components of the Google Agent Development Kit (ADK).
 
-## Theory
+---
 
-### The Rise of AI Agents
+## [BRAIN] Core Mental Model: The Agent as a Digital Worker
 
-In the rapidly evolving landscape of artificial intelligence, we are moving beyond simple chatbots and predictive models. The next frontier is **AI Agents**: autonomous systems that can understand goals, make plans, and use tools to interact with their environment to accomplish complex tasks.
+Think of an AI agent not just as a chatbot, but as a digital worker you can hire to perform complex tasks.
 
-Unlike traditional programs that follow a rigid set of instructions, an agent can reason, adapt, and act on its own. This paradigm shift is powered by the sophisticated reasoning capabilities of Large Language Models (LLMs) like Google's Gemini.
+```text
+┌───────────────────────────────────────────────────────────────┐
+│                        AI AGENT (Digital Worker)              │
+│                                                               │
+│  [BRAIN] LLM (Gemini)         [MEM] MEMORY (State)            │
+│  - Understands goals         - Remembers conversation history │
+│  - Reasons and plans                                          │
+│                                                               │
+│  [TOOLS] CAPABILITIES       [INSTR] INSTRUCTIONS (Job Manual) │
+│  - Search the web            - Defines persona and rules      │
+│  - Access databases          - Guides the task                │
+│  - Run code                                                   │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
+```
+
+**Key Insight**: An agent is a system that combines a **brain** (the LLM) with **tools** (its capabilities) and follows **instructions** (your prompt) to achieve a goal.
+
+---
+
+## 🏗️ Foundational Concepts
 
 ### What is an AI Agent?
 
 An AI Agent is a system that can:
 
-1.  **Perceive its environment:** It takes in information, such as a user's request in natural language.
-2.  **Reason and Plan:** It uses an LLM as its "brain" to break down a high-level goal into a sequence of smaller, actionable steps.
-3.  **Act using Tools:** It executes those steps by interacting with its environment. This could mean calling an API, searching a database, running a piece of code, or even using another agent.
-4.  **Observe the Outcome:** It analyzes the results of its actions and adjusts its plan accordingly until the goal is achieved.
+1.  **Perceive:** Understand a user's request in natural language.
+2.  **Reason & Plan:** Use an LLM to break down a goal into actionable steps.
+3.  **Act:** Use tools (e.g., call an API, run code) to execute those steps.
+4.  **Observe:** Analyze the results and adjust its plan until the goal is met.
 
-Think of an agent as an autonomous worker that you can delegate complex tasks to, moving from just "chatting" with an AI to collaborating with it.
+### What is the Google Agent Development Kit (ADK)?
 
-### Introducing the Google Agent Development Kit (ADK)
+The ADK is a framework that provides all the necessary components to build, manage, and deploy these digital workers in a structured and scalable way.
 
-Building robust, production-ready AI agents is a complex task. It involves much more than just prompting an LLM. You need to manage conversation history, handle tool integrations, orchestrate complex workflows, evaluate performance, and deploy the agent to a scalable infrastructure.
+#### Core Components of the ADK:
 
-The **Google Agent Development Kit (ADK)** is a comprehensive framework designed to solve these challenges. It provides developers with the tools and structure needed to build, manage, evaluate, and deploy sophisticated AI-powered agents seamlessly.
+*   **Agent:** The worker itself (`LlmAgent`, `SequentialAgent`, etc.).
+*   **Tool:** A specific skill or capability you give to the agent.
+*   **Session & State:** The agent's short-term memory for a single conversation.
+*   **Memory:** The agent's long-term memory across multiple conversations.
+*   **Runner:** The engine that orchestrates the entire workflow.
+*   **Evaluation:** A system for testing your agent's performance.
+*   **Deployment:** Tools to deploy your agent to the cloud.
 
-#### The ADK Philosophy
+---
 
-The ADK is built on a philosophy of **modularity, flexibility, and scalability**. It provides a set of core primitives that you can compose like building blocks to create everything from simple, single-purpose agents to complex, multi-agent systems.
+## 🎯 Lab 1: Challenge
 
-#### Core Concepts of the ADK
+The goal of this first lab is to familiarize yourself with the ADK ecosystem.
 
-*   **Agent:** The fundamental worker unit. An agent can be powered by an LLM for reasoning (`LlmAgent`) or be a deterministic controller for a workflow (`SequentialAgent`, `ParallelAgent`, `LoopAgent`).
-*   **Tool:** An interface that gives an agent a specific capability, such as searching the web, accessing a database, or calling a custom function.
-*   **Session & State:** Manages the short-term memory and context of a single conversation, ensuring the agent can handle multi-turn dialogues effectively.
-*   **Memory:** Enables an agent to recall information about a user across multiple conversations, providing the long-term context needed for personalized interactions.
-*   **Runner:** The engine that orchestrates the entire execution flow, managing the interaction between the user, the agent, and its tools. This simplifies development by abstracting away the complexities of the agent's execution lifecycle.
-*   **Evaluation:** A built-in framework for systematically testing and measuring your agent's performance to ensure quality and reliability before deployment.
-*   **Deployment:** Tools to easily package and deploy your agent to scalable environments like Google Cloud Run and GKE, bridging the gap from development to production.
+1.  **Navigate the Official Documentation:** Explore the "Get Started," "Agents," and "Tools" sections of this site.
+2.  **Discover the Code Repositories:** Find the official "Google ADK Python" repository on GitHub and explore the `examples` directory.
+3.  **Understand Community Channels:** Locate the "Issues" and "Discussions" tabs on the GitHub repository.
 
-In this course, you will learn how to master these concepts to build powerful and intelligent AI agents.
+---
+
+## 🎓 Lab 1: Solution
+
+This lab is a conceptual exercise. A successful completion means you have:
+
+*   Navigated the main sections of this documentation site.
+*   Located the official ADK Python repository on GitHub: [https://github.com/google/adk-python](https://github.com/google/adk-python)
+*   Found the code examples within the repository.
+*   Understood where to find community support and report issues.

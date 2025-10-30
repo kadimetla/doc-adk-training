@@ -1,8 +1,32 @@
 ---
+id: module09-lab-challenge
+title: "Module 9: Lab Challenge - Building a Calculator Agent"
+description: "A hands-on exercise to build a calculator agent with custom arithmetic function tools."
+sidebar_label: "09: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "custom tools", "calculator", "Python"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+id: module09-lab-challenge
+title: "Module 9: Lab Challenge - Building a Calculator Agent"
+description: "A hands-on exercise to build a calculator agent with custom arithmetic function tools."
+sidebar_label: "09: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "custom tools", "calculator", "Python"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
+---
+id: module09-lab-challenge
+title: "Module 9: Lab Challenge - Building a Calculator Agent"
+description: "A hands-on exercise to build a calculator agent with custom arithmetic function tools."
+sidebar_label: "09: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "custom tools", "calculator", "Python"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Challenge
 # Module 8: Creating Custom Function Tools

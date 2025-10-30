@@ -1,8 +1,32 @@
 ---
+id: module05-lab-challenge
+title: "Module 5: Lab Challenge - Exploring Different Execution Modes"
+description: "A hands-on exercise to run the Pirate Translator agent using adk web, adk run, and adk api_server."
+sidebar_label: "05: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "adk web", "adk run", "adk api_server", "curl"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+id: module05-lab-challenge
+title: "Module 5: Lab Challenge - Exploring Different Execution Modes"
+description: "A hands-on exercise to run the Pirate Translator agent using adk web, adk run, and adk api_server."
+sidebar_label: "05: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "adk web", "adk run", "adk api_server", "curl"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
+---
+id: module05-lab-challenge
+title: "Module 5: Lab Challenge - Exploring Different Execution Modes"
+description: "A hands-on exercise to run the Pirate Translator agent using adk web, adk run, and adk api_server."
+sidebar_label: "05: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "adk web", "adk run", "adk api_server", "curl"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Challenge
 

@@ -1,6 +1,6 @@
-# Module 15: Building a Coordinator/Dispatcher Agent
+# Module 16: Building a Coordinator/Dispatcher Agent
 
-## Lab 15: Solution
+## Lab 16: Solution
 
 This file contains the complete YAML configurations for the "Greeting Router" multi-agent system.
 
@@ -9,7 +9,7 @@ This file contains the complete YAML configurations for the "Greeting Router" mu
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
 name: spanish_greeter_agent
-model: gemini-1.5-flash
+model: gemini-2.5-flash
 description: "An expert at providing friendly greetings in Spanish."
 instruction: |
   You are a friendly assistant who only speaks Spanish.
@@ -22,7 +22,7 @@ instruction: |
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
 name: router_agent
-model: gemini-1.5-flash
+model: gemini-2.5-flash
 description: The main greeter agent that routes to language specialists.
 instruction: |
   You are a language router. Your job is to understand which language the user wants to be greeted in and delegate to the appropriate specialist agent.

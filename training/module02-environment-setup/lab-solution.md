@@ -10,6 +10,10 @@ This lab is a guided walkthrough of the essential steps for setting up a clean, 
 
 *   **Python 3.8 or higher:** To check your Python version, open your terminal and run `python3 --version`. If that command doesn't work, try `python --version`. If neither works, or the version is too old, download Python from the [official website](https://www.python.org/downloads/).
 *   **Google Cloud Account:** You will need a Google Cloud account to access the Gemini API. If you don't have one, you can sign up for a free trial.
+*   **Configured Google Cloud Project:** Ensure you have a Google Cloud project created with billing enabled. You must also have the **Vertex AI API** enabled. Before running the authentication steps, it's a good practice to set your active project:
+    ```shell
+    gcloud config set project YOUR_PROJECT_ID
+    ```
 
 ### Step 1: Create a Project Directory
 

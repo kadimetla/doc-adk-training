@@ -1,6 +1,6 @@
-# Module 14: Introduction to Multi-Agent Systems
+# Module 15: Introduction to Multi-Agent Systems
 
-## Lab 14: Designing a Multi-Agent System
+## Lab 15: Designing a Multi-Agent System
 
 ### Goal
 
@@ -49,6 +49,8 @@ First, let's define what each agent in our system will do.
 
 Now, let's trace the path of a user's request through our designed system.
 
+#### Flow 1: Supported Language (Spanish)
+
 1.  **User Input:** The user starts a conversation with the `router_agent` and says: `"Can you greet me in Spanish?"`
 2.  **Router Receives:** The ADK's runner passes this input to the `router_agent`.
 3.  **Router Reasons:** The `router_agent`'s LLM receives the user input, its own instruction, and the list of available sub-agents along with their descriptions.
@@ -56,6 +58,14 @@ Now, let's trace the path of a user's request through our designed system.
 5.  **Framework Transfers Control:** The ADK framework intercepts this decision and transfers control of the conversation to the `spanish_greeter_agent`.
 6.  **Specialist Executes:** The `spanish_greeter_agent` now takes over. It executes its own instruction ("greet the user warmly in Spanish").
 7.  **Specialist Responds:** The `spanish_greeter_agent` generates the final response to the user, such as `"¡Hola, mucho gusto!"`
+
+#### Flow 2: Unsupported Language
+
+1.  **User Input:** The user asks: `"Can you greet me in French?"`
+2.  **Router Receives:** The input is passed to the `router_agent`.
+3.  **Router Reasons:** The `router_agent`'s LLM analyzes the request. It sees that the user wants "French," but it looks at its list of sub-agents and sees no specialist with a description matching "French."
+4.  **Router Responds Directly:** Following its instructions for unsupported languages, the `router_agent` does *not* delegate. Instead, it formulates its own response to the user.
+5.  **Router's Final Response:** The `router_agent` replies: `"I'm sorry, I don't have a specialist for that language yet."`
 
 ---
 
@@ -74,8 +84,7 @@ adk-training/
 **`root_agent.yaml` (The Router):**
 We know this file will need a `sub_agents` section to link to our specialist.
 ```yaml
-name: router_agent
-model: gemini-1.5-flash
+model: gemini-2.5-flash
 instruction: |
   You are a language router...
 sub_agents:

@@ -1,8 +1,32 @@
 ---
+id: module04-lab-challenge
+title: "Module 4: Lab Challenge - Transforming the Echo Agent"
+description: "A hands-on exercise to transform the Echo agent into a Pirate Translator by modifying its instruction."
+sidebar_label: "04: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "LlmAgent", "prompt engineering", "few-shot prompting"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+id: module04-lab-challenge
+title: "Module 4: Lab Challenge - Transforming the Echo Agent"
+description: "A hands-on exercise to transform the Echo agent into a Pirate Translator by modifying its instruction."
+sidebar_label: "04: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "LlmAgent", "prompt engineering", "few-shot prompting"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
+---
+id: module04-lab-challenge
+title: "Module 4: Lab Challenge - Transforming the Echo Agent"
+description: "A hands-on exercise to transform the Echo agent into a Pirate Translator by modifying its instruction."
+sidebar_label: "04: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "LlmAgent", "prompt engineering", "few-shot prompting"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Challenge
 # Module 4: Core Agent Concepts: `LlmAgent` Deep Dive

@@ -50,15 +50,11 @@ You can also create an agent using an interactive wizard.
 
 Now, let's tell the agent how to behave and provide it with the necessary credentials.
 
-1.  **Navigate into the agent directory:**
-    ```shell
-    cd echo-agent
-    ```
-
-2.  **Set up your API key:**
+1.  **Set up your API key:**
     Open the `.env` file. This file stores secret information like API keys.
 
     *   **For Google AI Studio API Key:**
+        You can get a free API key from the [Google AI Studio](https://aistudio.google.com/app/apikey).
         ```
         GOOGLE_GENAI_USE_VERTEXAI=0
         GOOGLE_API_KEY=<your-google-gemini-api-key>
@@ -74,6 +70,8 @@ Now, let's tell the agent how to behave and provide it with the necessary creden
     Open `root_agent.yaml` and replace its contents with this:
 
     ```yaml
+    # The first line is an optional schema definition that provides
+    # auto-completion and validation in compatible code editors.
     # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
     name: echo_agent
     model: gemini-2.5-flash
@@ -91,6 +89,8 @@ Instead of YAML, you can define your agent directly in a Python script. This is 
     ```python
     from google.adk.agents import LlmAgent
 
+    # IMPORTANT: The ADK requires this main agent variable
+    # to be named exactly `root_agent`.
     root_agent = LlmAgent(
         name="echo_agent",
         model="gemini-2.5-flash",
@@ -98,7 +98,6 @@ Instead of YAML, you can define your agent directly in a Python script. This is 
         instruction="You are an echo agent. Your only job is to repeat the user's input back to them exactly as they wrote it. Do not add any extra words or explanations."
     )
     ```
-    This Python code defines the exact same agent. The ADK requires the variable to be named `root_agent`.
 
 3.  **Delete the `root_agent.yaml` file.** The `adk` command will automatically find the `root_agent` object in `agent.py`.
     ```shell
@@ -140,11 +139,11 @@ When you send a message:
 ### Common Issues & Solutions
 
 *   **Problem**: "Agent not found" or errors on startup.
-    *   **Solution**: Make sure you are running `adk web` from *inside* the `echo-agent` directory.
+    *   **Solution**: Make sure you are running `adk web` from the *parent directory* of `echo-agent`.
 *   **Problem**: "Authentication error".
     *   **Solution**: Double-check that your `.env` file is correctly configured with your API key or GCP project.
 *   **Problem**: If using `agent.py`, "root_agent not found".
-    *   **Solution**: Ensure your agent variable is named exactly `root_agent`.
+    *   **Solution**: Ensure your agent variable is named **exactly** `root_agent`.
 
 ### Lab Summary
 

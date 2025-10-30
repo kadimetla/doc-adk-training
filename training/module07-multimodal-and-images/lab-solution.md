@@ -1,6 +1,6 @@
 # Module 7: Multimodal and Image Processing
 
-## Lab 39: Solution
+## Lab 7: Solution
 
 This file contains the complete code for the `agent.py` script in the Visual Product Catalog Analyzer lab.
 
@@ -15,9 +15,7 @@ Analyzes product images, extracts information, and generates descriptions.
 import asyncio
 import os
 from typing import List, Dict
-from google.adk.agents import Agent, Runner, Session
-from google.adk.tools import FunctionTool
-from google.adk.tools.tool_context import ToolContext
+from google.adk.agents import Agent, Runner
 from google.genai import types
 from PIL import Image
 import io
@@ -77,6 +75,8 @@ You are a product catalog content creator. Generate professional, marketing-read
             types.Part.from_text(f"Analyze this product image for {product_id}:"),
             image_part
         ]
+        # Note: When calling the runner programmatically for a multimodal agent,
+        # you must pass the agent object directly.
         analysis_result = await self.runner.run_async(
             new_message=analysis_query,
             agent=self.vision_agent
@@ -104,36 +104,17 @@ async def main():
 
     analyzer = ProductCatalogAnalyzer()
 
-    # Create dummy images for the demo
-    os.makedirs('images', exist_ok=True)
+    # Use local images directly
     products = [
-        ('PROD-001', 'images/laptop.jpg'),
-        ('PROD-002', 'images/headphones.jpg'),
+        ('PROD-001', '../../headphones.jpg'),
+        ('PROD-002', '../../laptop.jpg'),
     ]
-    for _, image_path in products:
-        img = Image.new('RGB', (200, 200), color = 'red')
-        img.save(image_path)
 
     # Batch analyze the products
     for product_id, image_path in products:
         await analyzer.analyze_product(product_id, image_path)
-        await asyncio.sleep(1)
+        await asyncio.sleep(1) # To avoid hitting rate limits
 
 if __name__ == '__main__':
     asyncio.run(main())
-
-# Define root_agent for the ADK CLI
-# In this case, we can expose the orchestrating class logic through a simple agent
-async def run_full_analysis(product_id: str, image_path: str) -> str:
-    """Analyzes a product image and returns the final catalog entry."""
-    analyzer = ProductCatalogAnalyzer()
-    await analyzer.analyze_product(product_id, image_path)
-    return analyzer.catalog[0]['catalog_entry']
-
-root_agent = Agent(
-    model='gemini-1.5-flash',
-    name='visual_catalog_orchestrator',
-    instruction="You are an orchestrator for a visual cataloging system.",
-    tools=[FunctionTool(run_full_analysis)]
-)
 ```

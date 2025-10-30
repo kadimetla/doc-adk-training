@@ -1,5 +1,21 @@
 ---
+id: module08-overview
+title: "Module 8: Introduction to Tools"
+description: "Learn how to give your agent superpowers by connecting it to external systems with tools."
+sidebar_label: "08: Overview"
 sidebar_position: 1
+keywords: ["ADK", "tools", "function calling", "google_search"]
+image: /img/docusaurus-social-card.jpg
+---
+sidebar_position: 1
+---
+id: module08-overview
+title: "Module 8: Introduction to Tools"
+description: "Learn how to give your agent superpowers by connecting it to external systems with tools."
+sidebar_label: "08: Overview"
+sidebar_position: 1
+keywords: ["ADK", "tools", "function calling", "google_search"]
+image: /img/docusaurus-social-card.jpg
 ---
 # Module 8: Introduction to Tools
 

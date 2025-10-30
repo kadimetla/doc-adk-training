@@ -1,6 +1,6 @@
-# Module 13: Integrating Third-Party Tools
+# Module 14: Integrating Third-Party Tools
 
-## Lab 13: Integrating a LangChain Wikipedia Tool
+## Lab 14: Integrating a LangChain Wikipedia Tool
 
 ### Goal
 
@@ -43,9 +43,18 @@ langchain_tool_instance = None
 wikipedia_tool = None
 
 # TODO: 3. Define the `root_agent` as an `LlmAgent`.
-# - Give it an instruction to use the Wikipedia tool for factual questions.
+# - Give it a name, model (`gemini-2.5-flash`), and description.
+# - Write an instruction to use the Wikipedia tool for factual questions.
 # - Add your wrapped `wikipedia_tool` to its `tools` list.
-root_agent = None
+root_agent = LlmAgent(
+    name="fact_finder_agent",
+    model="gemini-2.5-flash",
+    description="An agent that can look up information on Wikipedia.",
+    instruction="""# Your instruction here...""",
+    tools=[
+        # Your tools here...
+    ]
+)
 ```
 
 ### Step 3: Configure and Run the Agent
@@ -59,7 +68,7 @@ root_agent = None
 
 3.  **Run the agent:**
     ```shell
-    adk web
+    adk web fact-finder-agent
     ```
     The ADK will automatically find the `root_agent` object in your `agent.py` file.
 

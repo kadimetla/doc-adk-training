@@ -1,8 +1,32 @@
 ---
+id: module07-lab-challenge
+title: "Module 7: Lab Challenge - Building a Visual Product Catalog Analyzer"
+description: "A hands-on exercise to build a multi-agent system that analyzes product images."
+sidebar_label: "07: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "multimodal", "vision", "multi-agent"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+id: module07-lab-challenge
+title: "Module 7: Lab Challenge - Building a Visual Product Catalog Analyzer"
+description: "A hands-on exercise to build a multi-agent system that analyzes product images."
+sidebar_label: "07: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "multimodal", "vision", "multi-agent"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
+---
+id: module07-lab-challenge
+title: "Module 7: Lab Challenge - Building a Visual Product Catalog Analyzer"
+description: "A hands-on exercise to build a multi-agent system that analyzes product images."
+sidebar_label: "07: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "multimodal", "vision", "multi-agent"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Challenge
 # Module 7: Multimodal and Image Processing
@@ -76,7 +100,23 @@ You are a product catalog content creator. Generate professional, marketing-read
     async def analyze_product(self, product_id: str, image_path: str):
         """Analyze a product image and create a catalog entry."""
         print(f"\n---
-sidebar_label: Lab Challenge Analyzing Product: {product_id} ---")
+id: module07-lab-challenge
+title: "Module 7: Lab Challenge - Building a Visual Product Catalog Analyzer"
+description: "A hands-on exercise to build a multi-agent system that analyzes product images."
+sidebar_label: "07: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "multimodal", "vision", "multi-agent"]
+image: /img/docusaurus-social-card.jpg
+---
+sidebar_label: Lab Challenge Analyzing Product: {product_id} ---
+id: module07-lab-challenge
+title: "Module 7: Lab Challenge - Building a Visual Product Catalog Analyzer"
+description: "A hands-on exercise to build a multi-agent system that analyzes product images."
+sidebar_label: "07: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "multimodal", "vision", "multi-agent"]
+image: /img/docusaurus-social-card.jpg
+---")
 
         # Step 1: Visual analysis with the vision_agent
         print("📸 Step 1: Performing visual analysis...")

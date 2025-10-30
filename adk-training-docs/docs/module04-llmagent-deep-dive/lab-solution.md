@@ -1,6 +1,22 @@
 ---
+id: module04-lab-solution
+title: "Module 4: Lab Solution - Transforming the Echo Agent"
+description: "Provides the final YAML configuration for the Pirate Translator agent."
+sidebar_label: "04: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "LlmAgent", "solution", "YAML", "pirate"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Solution
 sidebar_position: 3
+---
+id: module04-lab-solution
+title: "Module 4: Lab Solution - Transforming the Echo Agent"
+description: "Provides the final YAML configuration for the Pirate Translator agent."
+sidebar_label: "04: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "LlmAgent", "solution", "YAML", "pirate"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Solution
 # Module 4: Core Agent Concepts: `LlmAgent` Deep Dive

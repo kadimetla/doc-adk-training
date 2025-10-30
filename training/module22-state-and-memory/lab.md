@@ -1,6 +1,6 @@
-# Module 20: State and Memory - Building a Personal Tutor Agent
+# Module 22: State and Memory - Building a Personal Tutor Agent
 
-## Lab 20: Building a Personal Learning Tutor
+## Lab 22: Building a Personal Learning Tutor
 
 ### Goal
 
@@ -49,13 +49,78 @@ def set_user_preferences(
     tool_context: ToolContext
 ) -> Dict[str, Any]:
     """
-    Set user learning preferences that should be stored persistently
-    across all sessions for the current user.
+    Set user learning preferences (stored persistently).
+
+    Args:
+        language: Preferred language (en, es, fr, etc.)
+        difficulty_level: beginner, intermediate, or advanced
     """
     # TODO: Store the language and difficulty_level in the tool_context.state.
     # Use the correct prefix for data that should persist for the user.
-    print(f"TODO: Set user preferences: {language}, {difficulty_level}")
-    return {'status': 'success', 'message': 'Preferences saved!'}
+    tool_context.state['user:language'] = language
+    tool_context.state['user:difficulty_level'] = difficulty_level
+
+    return {
+        'status': 'success',
+        'message': f'Preferences saved: {language}, {difficulty_level} level'
+    }
+
+
+def record_topic_completion(
+    topic: str,
+    quiz_score: int,
+    tool_context: ToolContext
+) -> Dict[str, Any]:
+    """
+    Record that user completed a topic (stored persistently).
+
+    Args:
+        topic: Topic name (e.g., "Python Basics", "Data Structures")
+        quiz_score: Score out of 100
+    """
+    # TODO: Get existing lists or create new ones for topics and scores.
+    # TODO: Update persistent user state with the new topic and score.
+    topics = tool_context.state.get('user:topics_covered', [])
+    scores = tool_context.state.get('user:quiz_scores', {})
+
+    if topic not in topics:
+        topics.append(topic)
+    scores[topic] = quiz_score
+
+    tool_context.state['user:topics_covered'] = topics
+    tool_context.state['user:quiz_scores'] = scores
+
+    return {
+        'status': 'success',
+        'topics_count': len(topics),
+        'message': f'Recorded: {topic} with score {quiz_score}/100'
+    }
+
+
+def get_user_progress(tool_context: ToolContext) -> Dict[str, Any]:
+    """
+    Get user's learning progress summary.
+
+    Returns persistent user data across all sessions.
+    """
+    # TODO: Read persistent user state for language, difficulty, topics, and scores.
+    # TODO: Calculate average score.
+    language = tool_context.state.get('user:language', 'en')
+    difficulty = tool_context.state.get('user:difficulty_level', 'beginner')
+    topics = tool_context.state.get('user:topics_covered', [])
+    scores = tool_context.state.get('user:quiz_scores', {})
+
+    avg_score = sum(scores.values()) / len(scores) if scores else 0
+
+    return {
+        'status': 'success',
+        'language': language,
+        'difficulty_level': difficulty,
+        'topics_completed': len(topics),
+        'topics': topics,
+        'average_quiz_score': round(avg_score, 1),
+        'all_scores': scores
+    }
 
 
 def start_learning_session(
@@ -63,13 +128,23 @@ def start_learning_session(
     tool_context: ToolContext
 ) -> Dict[str, Any]:
     """
-    Start a new learning session. The current topic should only be
-    remembered for the duration of the current conversation session.
+    Start a new learning session for a topic.
+
+    Uses session state (no prefix) to track current topic.
     """
-    # TODO: Store the topic in the tool_context.state.
-    # Use the correct prefix for data that should only last for one session.
-    print(f"TODO: Start session on topic: {topic}")
-    return {'status': 'success', 'message': f'Started learning session: {topic}'}
+    # TODO: Store the topic and a simplified start time in session-level state.
+    # TODO: Get user's difficulty level for personalization.
+    tool_context.state['current_topic'] = topic
+    tool_context.state['session_start_time'] = 'now'
+
+    difficulty = tool_context.state.get('user:difficulty_level', 'beginner')
+
+    return {
+        'status': 'success',
+        'topic': topic,
+        'difficulty_level': difficulty,
+        'message': f'Started learning session: {topic} at {difficulty} level'
+    }
 
 
 def calculate_quiz_grade(
@@ -78,35 +153,117 @@ def calculate_quiz_grade(
     tool_context: ToolContext
 ) -> Dict[str, Any]:
     """
-    Calculate a quiz grade. The raw percentage should be stored, but only
-    for the current turn. It should be discarded immediately after this
-    tool finishes.
+    Calculate quiz grade using temporary state.
+
+    Demonstrates temp: prefix for invocation-scoped data.
     """
     percentage = (correct_answers / total_questions) * 100
-    # TODO: Store the 'percentage' in the tool_context.state.
-    # Use the correct prefix for data that is temporary for one turn.
-    print(f"TODO: Calculate quiz grade. Percentage: {percentage}")
-    return {'status': 'success', 'percentage': round(percentage, 1)}
+    # TODO: Store the 'percentage' and 'raw_score' in temp state.
+    tool_context.state['temp:raw_score'] = correct_answers
+    tool_context.state['temp:quiz_percentage'] = percentage
+
+    # TODO: Determine grade letter based on percentage.
+    if percentage >= 90:
+        grade = 'A'
+    elif percentage >= 80:
+        grade = 'B'
+    elif percentage >= 70:
+        grade = 'C'
+    elif percentage >= 60:
+        grade = 'D'
+    else:
+        grade = 'F'
+
+    return {
+        'status': 'success',
+        'score': f'{correct_answers}/{total_questions}',
+        'percentage': round(percentage, 1),
+        'grade': grade,
+        'message': f'Quiz grade: {grade} ({percentage:.1f}%)'
+    }
 
 
-# (Other tools like record_topic_completion, get_user_progress, etc. would also be completed here)
+def search_past_lessons(
+    query: str,
+    tool_context: ToolContext
+) -> Dict[str, Any]:
+    """
+    Search memory for relevant past learning sessions.
+
+    This demonstrates memory service integration.
+    In production, this would use MemoryService.search_memory().
+    """
+    # TODO: Simulate searching past lessons based on topics covered in user state.
+    topics = tool_context.state.get('user:topics_covered', [])
+    relevant = [t for t in topics if query.lower() in t.lower()]
+
+    if relevant:
+        return {
+            'status': 'success',
+            'found': True,
+            'relevant_topics': relevant,
+            'message': f'Found {len(relevant)} past sessions related to "{query}"'
+        }
+    else:
+        return {
+            'status': 'success',
+            'found': False,
+            'message': f'No past sessions found for "{query}"'
+        }
+
 
 # ============================================================================
 # AGENT DEFINITION
 # ============================================================================
 
-# TODO: Define the root_agent, including the tools you have just implemented.
-# Make sure the agent's instruction can read an `app:course_version` from the state.
+# TODO: Define the root_agent. Give it an appropriate instruction and
+# register all six tool functions you just implemented.
+root_agent = Agent(
+    name="personal_tutor",
+    model="gemini-2.5-flash",
+    description="Personal learning tutor that tracks your progress, preferences, and learning history.",
+    instruction="""
+    You are a personalized learning tutor (Course Version {app:course_version?}) with memory of the user's progress.
 
+    CAPABILITIES:
+    - Set and remember user preferences (language, difficulty level)
+    - Track completed topics and quiz scores across sessions
+    - Start new learning sessions on specific topics
+    - Calculate quiz grades and store results
+    - Search past learning sessions for context
+    - Adapt teaching based on user's level and history
+
+    WORKFLOW:
+    1. If new user, ask about preferences (language, difficulty).
+    2. For learning requests, start a session with start_learning_session and teach the topic.
+    3. After teaching, record completion with the user's quiz score.
+    4. When asked, search past lessons to provide context.
+
+    Always be encouraging and adapt to the user's learning pace!
+    """,
+    tools=[
+        set_user_preferences,
+        record_topic_completion,
+        get_user_progress,
+        start_learning_session,
+        calculate_quiz_grade,
+        search_past_lessons
+    ],
+    output_key="last_tutor_response"
+)
 ```
 
 ### Step 3: Run and Test the State Scopes
 
 1.  **Set up your API key** in the `.env` file.
-2.  **Start the Dev UI:** `adk web`
+2.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI:
+    ```shell
+    adk web personal-tutor
+    ```
 3.  **Interact with the agent:**
-    *   Go to the **State** tab. Set the global app state by entering `{"app:course_version": "2.1"}` and clicking "Set State".
+    *   Go to the **State** tab in the Dev UI. Set the global app state by entering `{"app:course_version": "2.1"}` and clicking "Set State".
     *   Go back to the **Chat** tab and test your agent. Ask it to set your preferences, start a lesson, and check your progress.
+    *   **Note on Persistence:** The default `InMemorySessionService` used in development will lose `user:` and `app:` state if the `adk web` server is restarted. For true persistence, a database-backed `SessionService` would be required.
     *   Start a new session (refresh the page) and verify that your preferences were remembered but the current lesson topic was forgotten.
 
 ### Having Trouble?

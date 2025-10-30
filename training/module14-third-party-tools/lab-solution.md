@@ -1,6 +1,6 @@
-# Module 13: Integrating Third-Party Tools
+# Module 14: Integrating Third-Party Tools
 
-## Lab 13: Solution
+## Lab 14: Solution
 
 This file contains the complete code for the `agent.py` file in the Fact-finder Agent lab.
 
@@ -24,7 +24,7 @@ wikipedia_tool = LangchainTool(tool=langchain_tool_instance)
 # 3. Define the ADK agent and include the wrapped tool in its tools list.
 root_agent = LlmAgent(
     name="fact_finder_agent",
-    model="gemini-1.5-flash",
+    model="gemini-2.5-flash",
     description="An agent that can look up information on Wikipedia.",
     instruction="""You are a helpful fact-finding assistant.
 If the user asks a question about a specific topic, person, or event, you MUST use the Wikipedia tool to find an accurate answer.

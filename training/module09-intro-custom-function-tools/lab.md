@@ -1,6 +1,6 @@
-# Module 8: Creating Custom Function Tools
+# Module 9: Creating Custom Function Tools
 
-## Lab 8: Building a "Calculator" Agent
+## Lab 9: Building a "Calculator" Agent
 
 ### Goal
 
@@ -15,7 +15,7 @@ In this lab, you will build an agent that can perform basic arithmetic. You will
     ```
 
 2.  **Create the tools module:**
-    It's good practice to organize your tool code in a separate module.
+    It's good practice to organize your tool code in a separate module. The empty `__init__.py` file tells Python to treat the `tools` directory as a package, which allows us to import functions from it.
     ```shell
     mkdir tools
     touch tools/__init__.py
@@ -87,7 +87,7 @@ def divide(a: int, b: int) -> dict:
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
 name: calculator_agent
-model: gemini-1.5-flash
+model: gemini-2.5-flash
 description: An agent that can perform basic arithmetic calculations.
 instruction: |
   # TODO: Write an instruction that tells the agent it is a calculator.

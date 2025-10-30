@@ -13,7 +13,13 @@ In this lab, you will learn how to run an ADK agent programmatically from within
     cd training/module06-programmatic-execution
     ```
 
-2.  **Inspect the files:**
+2.  **Create the Environment File:**
+    Inside this directory, create a new file named `.env` and add the following line to it. This file will provide the model name to your script.
+    ```
+    MODEL="gemini-2.5-flash"
+    ```
+
+3.  **Inspect the files:**
     You will find an `agent.py` file. This is where you will write your code.
 
 ### Step 2: Complete the `agent.py` Script
@@ -62,20 +68,19 @@ if __name__ == "__main__":
 
 Once you have completed the script, you can execute it directly from your terminal.
 
-1.  **Ensure your environment is set up:**
-    *   Make sure your virtual environment is active.
-    *   Make sure you have a `.env` file in the `adk-docs` root with your `MODEL` defined.
+1.  **Ensure your virtual environment is active.**
 
 2.  **Run the script:**
     ```shell
-    uv run python agent.py
+    python agent.py
     ```
 
 ### Step 4: Observe the Output
 
-If your script is correct, you will see the output printed directly to your console, showing the agent's response:
+If your script is correct, you will see output printed directly to your console, showing both the user's query and the agent's response:
 
 ```
+** User says: {'role': 'user', 'parts': [{'text': 'What is the capital of France?'}]}
 ** trivia_agent: The capital of France is Paris.
 ```
 

@@ -1,5 +1,21 @@
 ---
+id: module09-overview
+title: "Module 9: Creating Custom Function Tools"
+description: "Learn how to create your own custom tools from Python functions to give your agent unlimited capabilities."
+sidebar_label: "09: Overview"
 sidebar_position: 1
+keywords: ["ADK", "custom tools", "FunctionTool", "Python", "docstring"]
+image: /img/docusaurus-social-card.jpg
+---
+sidebar_position: 1
+---
+id: module09-overview
+title: "Module 9: Creating Custom Function Tools"
+description: "Learn how to create your own custom tools from Python functions to give your agent unlimited capabilities."
+sidebar_label: "09: Overview"
+sidebar_position: 1
+keywords: ["ADK", "custom tools", "FunctionTool", "Python", "docstring"]
+image: /img/docusaurus-social-card.jpg
 ---
 # Module 9: Creating Custom Function Tools
 

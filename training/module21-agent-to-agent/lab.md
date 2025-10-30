@@ -1,6 +1,6 @@
-# Module 35: Agent-to-Agent Communication
+# Module 21: Agent-to-Agent Communication
 
-## Lab 35: Building a Distributed Research System
+## Lab 21: Building a Distributed Research System
 
 ### Goal
 
@@ -8,12 +8,20 @@ In this lab, you will build a distributed multi-agent system. You will create a 
 
 ### Step 1: Create the Project Structure
 
-Create two separate agent projects that will run independently.
-```shell
-adk create a2a-orchestrator
-adk create research-specialist
-```
-Choose the **Programmatic (Python script)** option for both.
+1.  **Create two separate agent projects** that will run independently.
+    ```shell
+    adk create a2a-orchestrator
+    adk create research-specialist
+    ```
+    Choose the **Programmatic (Python script)** option for both.
+
+2.  **Install Server Dependencies:**
+    Navigate into the `research-specialist` directory and install `uvicorn`, which is needed to run the agent as a web server.
+    ```shell
+    cd research-specialist
+    pip install uvicorn
+    cd ..
+    ```
 
 ### Step 2: Build the Research Specialist (The Server)
 
@@ -23,19 +31,33 @@ Choose the **Programmatic (Python script)** option for both.
 # In research-specialist/agent.py (Starter Code)
 from google.adk.agents import Agent
 from google.adk.a2a.utils.agent_to_a2a import to_a2a
-from google.adk.tools import google_search
+from google.adk.tools import GoogleSearchAgentTool
 
-# TODO: 1. Define the `root_agent`. It should be an `Agent` that:
+# TODO: 1. Create an instance of the GoogleSearchAgentTool.
+search_tool = ...
+
+# TODO: 2. Define the `root_agent`. It should be an `Agent` that:
 # - Is named "research_specialist".
-# - Has an instruction to act as a research specialist using the `google_search` tool.
-# - Includes the `google_search` tool in its `tools` list.
-root_agent = None
+# - Has an instruction to act as a research specialist using the search tool.
+# - **Crucially**, includes the A2A Context Handling instruction to ignore
+#   orchestrator tool calls like `transfer_to_agent`.
+# - Includes the `search_tool` in its `tools` list.
+root_agent = Agent(
+    model="gemini-2.5-flash",
+    name="research_specialist",
+    description="A specialist agent that conducts web research and fact-checking.",
+    instruction="""
+# Your instruction here...
+# Remember to add the A2A Context Handling section!
+""",
+    tools=[...]
+)
 
-# TODO: 2. Use the `to_a2a()` function to wrap your `root_agent`.
+# TODO: 3. Use the `to_a2a()` function to wrap your `root_agent`.
 # This exposes it as a web application on port 8001.
-a2a_app = to_a2a(root_agent, port=8001)
+a2a_app = to_a2a(...)
 ```
-Remember to configure your `.env` file for **Vertex AI** for the `google_search` tool to work.
+**Action:** Create a `.env` file in this directory and configure it for **Vertex AI**, as the search tool requires it.
 
 ### Step 3: Build the Orchestrator (The Client)
 
@@ -48,17 +70,26 @@ from google.adk.agents.remote_a2a_agent import RemoteA2aAgent, AGENT_CARD_WELL_K
 
 # TODO: 1. Create a `RemoteA2aAgent` instance named `remote_researcher`.
 # - Give it a name and a description.
-# - Point its `agent_card` URL to the specialist server you will be running at
-#   `http://localhost:8001/a2a/research_specialist/.well-known/agent-card.json`.
+# - Point its `agent_card` URL to the specialist server you will be running.
 #   (Using the `AGENT_CARD_WELL_KNOWN_PATH` constant is recommended).
-remote_researcher = None
+remote_researcher = RemoteA2aAgent(
+    name="remote_researcher",
+    description="A remote specialist that can conduct web research and fact-checking.",
+    agent_card=f"..."
+)
 
 # TODO: 2. Define the `root_agent` as an orchestrator.
 # - Its instruction should tell it to delegate research tasks to the `remote_researcher`.
 # - Add the `remote_researcher` to its `sub_agents` list.
-root_agent = None
+root_agent = Agent(
+    model="gemini-2.5-flash",
+    name="orchestrator_agent",
+    description="A coordinator agent that delegates tasks to remote specialists.",
+    instruction="""...""",
+    sub_agents=[...]
+)
 ```
-Remember to configure your `.env` file.
+**Action:** Create a `.env` file in this directory for the orchestrator's Gemini model.
 
 ### Step 4: Run and Test the Distributed System
 
@@ -69,8 +100,8 @@ This requires two separate terminals.
     *   Run `uvicorn agent:a2a_app --host localhost --port 8001`.
 
 2.  **Terminal 2 (Orchestrator Client):**
-    *   Navigate to the `a2a-orchestrator` directory.
-    *   Run `adk web`.
+    *   Navigate to the parent `adk-training` directory.
+    *   Run `adk web a2a-orchestrator`.
 
 3.  **Interact with the System:**
     *   Open the Dev UI for the orchestrator (`http://localhost:8080`).

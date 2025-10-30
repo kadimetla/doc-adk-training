@@ -1,6 +1,22 @@
 ---
+id: module10-lab-solution
+title: "Module 10: Lab Solution - Building a Personal Finance Assistant"
+description: "Provides the complete code for the Personal Finance Assistant agent."
+sidebar_label: "10: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "advanced tools", "finance"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Solution
 sidebar_position: 3
+---
+id: module10-lab-solution
+title: "Module 10: Lab Solution - Building a Personal Finance Assistant"
+description: "Provides the complete code for the Personal Finance Assistant agent."
+sidebar_label: "10: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "advanced tools", "finance"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Solution
 # Module 9: Advanced Function Tools

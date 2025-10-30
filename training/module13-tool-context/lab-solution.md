@@ -1,6 +1,6 @@
-# Module 12: Advanced Tool Concepts: Tool Context
+# Module 13: Advanced Tool Concepts: Tool Context
 
-## Lab 12: Solution
+## Lab 13: Solution
 
 This file contains the complete code for the `memory.py` and `root_agent.yaml` files in the Memory Agent lab.
 
@@ -51,7 +51,7 @@ def recall_name(tool_context: ToolContext) -> dict:
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
 name: memory_agent
-model: gemini-1.5-flash
+model: gemini-2.5-flash
 description: An agent that can remember and recall the user's name.
 instruction: |
   You are a friendly assistant with a memory.

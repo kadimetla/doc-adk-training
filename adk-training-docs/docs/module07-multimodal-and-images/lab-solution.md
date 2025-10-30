@@ -1,6 +1,22 @@
 ---
+id: module07-lab-solution
+title: "Module 7: Lab Solution - Building a Visual Product Catalog Analyzer"
+description: "Provides the complete code for the Visual Product Catalog Analyzer."
+sidebar_label: "07: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "multimodal", "vision"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Solution
 sidebar_position: 3
+---
+id: module07-lab-solution
+title: "Module 7: Lab Solution - Building a Visual Product Catalog Analyzer"
+description: "Provides the complete code for the Visual Product Catalog Analyzer."
+sidebar_label: "07: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "multimodal", "vision"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Solution
 # Module 7: Multimodal and Image Processing
@@ -74,7 +90,23 @@ You are a product catalog content creator. Generate professional, marketing-read
     async def analyze_product(self, product_id: str, image_path: str):
         """Analyze a product image and create a catalog entry."""
         print(f"\n---
-sidebar_label: Lab Solution Analyzing Product: {product_id} ---")
+id: module07-lab-solution
+title: "Module 7: Lab Solution - Building a Visual Product Catalog Analyzer"
+description: "Provides the complete code for the Visual Product Catalog Analyzer."
+sidebar_label: "07: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "multimodal", "vision"]
+image: /img/docusaurus-social-card.jpg
+---
+sidebar_label: Lab Solution Analyzing Product: {product_id} ---
+id: module07-lab-solution
+title: "Module 7: Lab Solution - Building a Visual Product Catalog Analyzer"
+description: "Provides the complete code for the Visual Product Catalog Analyzer."
+sidebar_label: "07: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "multimodal", "vision"]
+image: /img/docusaurus-social-card.jpg
+---")
 
         # Step 1: Visual analysis with the vision_agent
         print("📸 Step 1: Performing visual analysis...")

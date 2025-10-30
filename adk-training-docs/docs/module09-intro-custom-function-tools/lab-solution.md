@@ -1,6 +1,22 @@
 ---
+id: module09-lab-solution
+title: "Module 9: Lab Solution - Building a Calculator Agent"
+description: "Provides the final code for the Calculator agent and its tools."
+sidebar_label: "09: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "custom tools", "calculator"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Solution
 sidebar_position: 3
+---
+id: module09-lab-solution
+title: "Module 9: Lab Solution - Building a Calculator Agent"
+description: "Provides the final code for the Calculator agent and its tools."
+sidebar_label: "09: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "custom tools", "calculator"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Solution
 # Module 8: Creating Custom Function Tools
