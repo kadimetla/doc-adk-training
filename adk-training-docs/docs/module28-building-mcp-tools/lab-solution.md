@@ -1,5 +1,4 @@
 ---
----
 ## Module 28: Building a Custom MCP Tool
 
 # Lab 28: Solution

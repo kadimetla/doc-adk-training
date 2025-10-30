@@ -1,5 +1,4 @@
 ---
----
 # Module 15: Building a Coordinator/Dispatcher Agent
 
 # Lab 16: Solution

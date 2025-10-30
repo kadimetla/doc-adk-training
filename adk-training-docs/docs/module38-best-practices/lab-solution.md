@@ -1,5 +1,4 @@
 ---
----
 ## Module 38: Best Practices # Module 36: Best Practices & Production Patterns Production Patterns
 
 # Lab 38: Solution

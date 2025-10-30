@@ -1,5 +1,4 @@
 ---
----
 # Module 19: Iterative Refinement with Loop Agents
 
 # Lab 20: Solution

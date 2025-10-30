@@ -1,5 +1,4 @@
 ---
----
 ## Module 33: Deployment to Google Kubernetes Engine (GKE)
 
 # Lab 33: Solution

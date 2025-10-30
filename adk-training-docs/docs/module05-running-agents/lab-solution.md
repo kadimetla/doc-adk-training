@@ -1,5 +1,4 @@
 ---
----
 # Module 5: Running and Interacting with Agents
 
 # Lab 5: Exploring Different Execution Modes

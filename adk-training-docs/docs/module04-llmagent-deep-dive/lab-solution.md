@@ -1,5 +1,4 @@
 ---
----
 # Module 4: Core Agent Concepts: `LlmAgent` Deep Dive
 
 # Lab 4: Exercise

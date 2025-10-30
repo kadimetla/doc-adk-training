@@ -1,5 +1,4 @@
 ---
----
 # Module 7: Multimodal and Image Processing
 
 # Lab 7: Solution

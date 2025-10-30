@@ -1,5 +1,4 @@
 ---
----
 ## Module 31: Production Deployment Strategies
 
 # Lab 31: Solution

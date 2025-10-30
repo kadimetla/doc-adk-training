@@ -1,5 +1,4 @@
 ---
----
 # Module 20: State and Memory - Building a Personal Tutor Agent
 
 # Lab 22: Solution

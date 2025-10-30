@@ -1,5 +1,4 @@
 ---
----
 # Module 2: Setting Up Your Development Environment
 
 # Lab 2: Exercise
