@@ -1,5 +1,4 @@
 ---
----
 # Module 4: Core Agent Concepts: `LlmAgent` Deep Dive
 
 # Lab 4: Exercise
@@ -92,7 +91,7 @@ This is where the magic happens. We will change the agent from a simple repeater
         *   "Can you help me with my homework?" (Notice how it follows the constraint to only translate, not help).
         *   "That's a cool trick."
 
-## Lab Summary
+# Lab Summary
 
 In this lab, you witnessed the power of the `instruction` parameter. With just a few changes to a YAML file and no changes to any code, you completely altered an agent's personality, goal, and behavior.
 

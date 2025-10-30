@@ -1,5 +1,4 @@
 ---
----
 # Module 14: Introduction to Multi-Agent Systems
 
 # Lab 15: Solution

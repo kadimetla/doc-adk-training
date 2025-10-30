@@ -1,5 +1,4 @@
 ---
----
 ## Module 35: Deploying to Agent Engine
 
 # Lab 35: Solution

@@ -1,4 +1,3 @@
----
 # Module 2: Setting Up Your Development Environment
 
 # Lab 2: Exercise
@@ -133,7 +132,7 @@ If you encountered issues, here are some common solutions:
 *   **`pip freeze > requirements.txt` creates an empty file**:
     *   Ensure your virtual environment is active. If it is, run `pip install google-adk` again to ensure the package is installed in the correct environment.
 
-## Lab Summary
+# Lab Summary
 
 Congratulations! You have successfully:
 

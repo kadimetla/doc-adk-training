@@ -1,5 +1,4 @@
 ---
----
 ## Module 30: Building a Custom Streaming Client
 
 # Lab 30: Solution

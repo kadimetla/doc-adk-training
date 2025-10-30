@@ -1,5 +1,4 @@
 ---
----
 # Module 16: Building Agent Pipelines with SequentialAgent
 
 # Lab 17: Solution

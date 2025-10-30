@@ -1,4 +1,3 @@
----
 ## Module 34: Deploying an MCP Server to Cloud Run
 
 # Lab 34: Solution

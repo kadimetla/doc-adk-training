@@ -1,5 +1,4 @@
 ---
----
 # Module 12: Advanced Tool Concepts: Tool Context
 
 # Lab 13: Solution

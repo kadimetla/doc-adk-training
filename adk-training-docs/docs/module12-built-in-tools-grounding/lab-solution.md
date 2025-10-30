@@ -1,4 +1,3 @@
----
 # Module 11: Built-in Tools and Grounding
 
 # Lab 12: Solution

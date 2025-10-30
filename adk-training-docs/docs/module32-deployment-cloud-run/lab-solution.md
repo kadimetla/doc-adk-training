@@ -1,4 +1,3 @@
----
 ## Module 32: Deployment to Cloud Run
 
 # Lab 32: Solution

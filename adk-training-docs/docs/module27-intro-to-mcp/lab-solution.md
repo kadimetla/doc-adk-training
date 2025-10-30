@@ -1,4 +1,3 @@
----
 # Module 29: Introduction to MCP & Stateful Tools
 
 # Lab 27: Solution

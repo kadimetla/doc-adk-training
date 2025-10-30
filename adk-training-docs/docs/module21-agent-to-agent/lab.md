@@ -1,5 +1,4 @@
 ---
----
 # Module 35: Agent-to-Agent Communication
 
 # Lab 21: Solution
