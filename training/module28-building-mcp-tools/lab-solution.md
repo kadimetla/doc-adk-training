@@ -1,6 +1,6 @@
-# Module 30: Building a Custom MCP Tool
+# Module 28: Building a Custom MCP Tool
 
-## Lab 30: Solution
+## Lab 28: Solution
 
 This file contains the complete code for both the `cart_server.py` and the `agent.py` client script for the Shopping Cart MCP lab.
 
@@ -111,7 +111,7 @@ from mcp import StdioServerParameters
 PATH_TO_SERVER = os.path.abspath("./cart_server.py")
 
 root_agent = LlmAgent(
-    model='gemini-1.5-flash',
+    model='gemini-2.5-flash',
     name='shopping_agent',
     instruction='You are a shopping assistant. Help the user by adding items to their cart and showing them their cart contents.',
     tools=[

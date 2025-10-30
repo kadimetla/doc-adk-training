@@ -1,10 +1,10 @@
 # Module 24: Evaluating Agent Performance
 
-## Lab 17: Creating an Evaluation Case for the Calculator Agent
+## Lab 24: Creating an Evaluation Case for the Calculator Agent
 
 ### Goal
 
-In this lab, you will learn the fundamental workflow of the ADK's evaluation feature. You will use the ADK Developer UI to have a "golden path" conversation with the Calculator agent you built in Module 7. Then, you will save that conversation as an evaluation case and re-run it to validate the agent's behavior.
+In this lab, you will learn the fundamental workflow of the ADK's evaluation feature. You will use the ADK Developer UI to have a "golden path" conversation with the Calculator agent you built in Module 9. Then, you will save that conversation as an evaluation case and re-run it to validate the agent's behavior.
 
 ### Step 1: Prepare the Agent
 
@@ -14,12 +14,12 @@ In this lab, you will learn the fundamental workflow of the ADK's evaluation fea
     cd /path/to/your/adk-training/calculator-agent
     ```
 
-2.  **Ensure your virtual environment is active** and your `.env` file is configured.
+2.  **Ensure your virtual environment is active** and your `.env` file is configured with your API key.
 
 3.  **Start the web server:**
 
     ```shell
-    adk web
+    adk web calculator-agent
     ```
 
 ### Step 2: Record the "Golden Path" Conversation
@@ -52,7 +52,7 @@ Now, let's save this conversation as a reusable test.
 4.  **Inspect the Saved Case:**
     *   You will now see `addition_test` in the list of evaluation cases.
     *   Click on it. The UI will show you the recorded conversation, including the user message, the expected tool calls, and the expected final response. This is the "golden path" that future test runs will be compared against.
-    *   Behind the scenes, the Dev UI has created a file in your agent directory at `eval_results/calculator_tests.evalset.json` containing this test case data.
+    *   Behind the scenes, the Dev UI has created a file in your agent directory at `eval_results/calculator_tests.evalset.json` containing this test case data. The `eval_results` directory is automatically created by the ADK.
 
 ### Step 4: Run the Evaluation
 
@@ -160,7 +160,7 @@ While the Dev UI is great for creating and running evaluations interactively, yo
     adk eval . eval_results/calculator_tests.evalset.json
     ```
     *   **`adk eval`**: The main command.
-    *   **`.`**: The path to the agent to be tested (the current directory).
+    *   **`.`**: The path to the agent to be tested (the current directory, `calculator-agent`).
     *   **`eval_results/calculator_tests.evalset.json`**: The path to the evaluation file to run.
 
 3.  **Analyze the Output:**

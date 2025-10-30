@@ -1,6 +1,6 @@
-# Module 29: Introduction to MCP & Stateful Tools
+# Module 27: Introduction to MCP & Stateful Tools
 
-## Lab 29: Using a Stateful File System Tool
+## Lab 27: Using a Stateful File System Tool
 
 ### Goal
 
@@ -58,16 +58,17 @@ Because the `MCPToolset` requires Python code to configure the connection, we mu
     from google.adk.agents import LlmAgent
     from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset
     from google.adk.tools.mcp_tool.mcp_session_manager import StdioConnectionParams
-    from mcp import StdioServerParameters
+    from mcp import StdioServerParameters # This package provides convenient parameters for MCP servers.
 
     # -- Configuration --
     # Get the absolute path to the 'test_files' directory we created.
-    # The MCP server needs an absolute path to know where to look.
+    # The MCP server needs an absolute path to know where to look. For security,
+    # it will only have access to this directory and its subdirectories.
     TARGET_FOLDER_PATH = os.path.abspath("./test_files")
 
     # -- Agent Definition --
     root_agent = LlmAgent(
-        model='gemini-1.5-flash',
+        model='gemini-2.5-flash',
         name='filesystem_agent',
         instruction='You are a helpful assistant that can interact with a user\'s local file system. You can list files and read their content.',
         tools=[
@@ -90,7 +91,7 @@ Because the `MCPToolset` requires Python code to configure the connection, we mu
     )
     ```
 
-3.  **Delete the placeholder `root_agent.yaml`** file, as our agent is now defined in Python.
+3.  **Delete the placeholder `root_agent.yaml`** file, as our agent is now defined programmatically in `agent.py`.
 
 4.  **Set up your `.env` file** with your API key or Vertex AI project.
 
@@ -118,9 +119,9 @@ The filesystem MCP server automatically provides a rich set of tools to your age
 1.  **Start the web server:**
 
     ```shell
-    adk web
+    adk web mcp-agent
     ```
-    When the server starts, you will see some output in the console as `npx` downloads and runs the `@modelcontextprotocol/server-filesystem` package. This is the `MCPToolset` launching the external tool server.
+    When the server starts, you will see some output in the console as `npx` downloads and runs the `@modelcontextprotocol/server-filesystem` package. This is the `MCPToolset` launching the external tool server. If `npx` asks for confirmation to install, type `y`.
 
 2.  **Interact with the agent:**
     *   Open the Dev UI in your browser.

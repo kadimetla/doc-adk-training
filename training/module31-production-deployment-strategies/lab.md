@@ -1,6 +1,6 @@
-# Module 24: Production Deployment Strategies
+# Module 31: Production Deployment Strategies
 
-## Lab 24: Choosing the Right Deployment Strategy
+## Lab 31: Choosing the Right Deployment Strategy
 
 ### Goal
 

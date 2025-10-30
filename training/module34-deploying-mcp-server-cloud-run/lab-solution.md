@@ -1,6 +1,6 @@
-# Module 31: Deploying an MCP Server to Cloud Run
+# Module 34: Deploying an MCP Server to Cloud Run
 
-## Lab 31: Solution
+## Lab 34: Solution
 
 This file contains the complete code for the `stateless_cart_server.py` and the `agent.py` client for the lab.
 
@@ -84,7 +84,7 @@ from mcp import StreamableHTTPConnectionParams
 MCP_SERVER_URL = "YOUR_CLOUD_RUN_SERVICE_URL"
 
 root_agent = LlmAgent(
-    model='gemini-1.5-flash',
+    model='gemini-2.5-flash',
     name='cloud_shopping_agent',
     instruction='You are a shopping assistant. Help the user by adding items to their cart and showing them their cart contents.',
     tools=[

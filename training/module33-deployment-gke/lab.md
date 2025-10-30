@@ -1,6 +1,6 @@
-# Module 26: Deployment to Google Kubernetes Engine (GKE)
+# Module 33: Deployment to Google Kubernetes Engine (GKE)
 
-## Lab 26: Manually Deploying an Agent to GKE
+## Lab 33: Manually Deploying an Agent to GKE
 
 ### Goal
 
@@ -22,7 +22,17 @@ In this lab, you will learn the fundamental process of deploying an ADK agent to
     cd gke-echo-agent/
     ```
 
-2.  **Set Environment Variables:**
+2.  **Update Agent Model:**
+    Open `root_agent.yaml` and ensure the model is set to `gemini-2.5-flash`.
+    ```yaml
+    # In root_agent.yaml
+    name: echo_agent
+    model: gemini-2.5-flash # Ensure this is gemini-2.5-flash
+    description: "An agent that repeats the user's input."
+    instruction: "You are an echo agent. Your only job is to repeat the user's input back to them exactly as they wrote it."
+    ```
+
+3.  **Set Environment Variables:**
     In your terminal, set these variables. **Replace `YOUR_PROJECT_ID` with your actual GCP Project ID.**
     ```shell
     export GOOGLE_CLOUD_PROJECT=YOUR_PROJECT_ID
@@ -53,7 +63,7 @@ In this lab, you will learn the fundamental process of deploying an ADK agent to
     RUN pip install --no-cache-dir -r requirements.txt
     COPY . .
     EXPOSE 8080
-    CMD ["adk", "web", "--host", "0.0.0.0"]
+    CMD ["adk", "api_server", "--host", "0.0.0.0", "echo-agent/"]
     ```
 
 ### Step 3: Build and Push the Container Image
@@ -134,6 +144,7 @@ spec:
     ```shell
     envsubst < deployment.yaml | kubectl apply -f -
     ```
+    *   **Note on `envsubst`:** This command is used to substitute the shell environment variables (like `GOOGLE_CLOUD_PROJECT`) directly into your `deployment.yaml` file before `kubectl` applies it.
 
 ### Step 5: Test Your Deployed Agent
 
@@ -154,3 +165,27 @@ You have successfully deployed an agent to GKE. You learned to:
 *   Create a GKE cluster.
 *   Write Kubernetes `Deployment` and `Service` manifests.
 *   Use `envsubst` and `kubectl` to deploy your application.
+
+### Cleanup (Important!)
+
+GKE clusters can incur significant costs if left running. It is crucial to delete the resources you created after completing the lab.
+
+1.  **Delete the GKE Cluster:**
+    ```shell
+    gcloud container clusters delete adk-cluster \
+        --location=$GOOGLE_CLOUD_LOCATION \
+        --async # Runs in background
+    ```
+
+2.  **Delete the Artifact Registry Repository:**
+    ```shell
+    gcloud artifacts repositories delete adk-images \
+        --location=$GOOGLE_CLOUD_LOCATION \
+        --async # Runs in background
+    ```
+
+3.  **Delete the `gke-echo-agent` directory:**
+    ```shell
+    cd ..
+    rm -rf gke-echo-agent
+    ```

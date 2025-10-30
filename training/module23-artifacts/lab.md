@@ -1,6 +1,6 @@
-# Module 21: Handling Files with Artifacts
+# Module 23: Handling Files with Artifacts
 
-## Lab 21: Building a Document Processing Pipeline
+## Lab 23: Building a Document Processing Pipeline
 
 ### Goal
 
@@ -83,13 +83,26 @@ async def create_report(document_name: str, tool_context: ToolContext) -> str:
 # TODO: Define the `root_agent`. Give it an instruction that tells it to run the
 # pipeline in the correct order (extract -> summarize -> report) and register
 # the three async tools.
-root_agent = None
+root_agent = Agent(
+    model='gemini-2.5-flash',
+    name='document_processor',
+    instruction="""
+    # Your instruction here...
+    """,
+    tools=[
+        # Your tools here...
+    ]
+)
 ```
 
 ### Step 3: Run and Test the Pipeline
 
 1.  **Set up your `.env` file** with your API key or Vertex AI project.
-2.  **Start the Dev UI:** `adk web`
+2.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI:
+    ```shell
+    adk web doc-processor
+    ```
+    *   **Note on Persistence:** For this lab, the default `InMemoryArtifactService` is used, meaning artifacts will be lost if the `adk web` server is restarted. For persistent storage, a `GcsArtifactService` would be configured in the `Runner`.
 3.  **Interact with the agent:**
     *   Select "document_processor" and send a prompt like: "Process the document named 'Annual_Report_2025'."
 4.  **Analyze the Trace and Artifacts:**
