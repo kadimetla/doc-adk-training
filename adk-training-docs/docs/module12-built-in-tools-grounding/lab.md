@@ -2,9 +2,8 @@
 sidebar_position: 2
 ---
 ---
-# Module 11: Built-in Tools and Grounding
 
-# Lab 12: Solution
+# Lab 12: Challenge
 
 This file contains the complete code for the `agent.py` script in the Research Assistant lab.
 
