@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 # Module 35: Agent-to-Agent Communication
 
 # Lab 21: Solution

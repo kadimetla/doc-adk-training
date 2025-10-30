@@ -1,7 +1,10 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
+sidebar_label: Lab Challenge
 # Module 23: Evaluating Agent Performance
 
 # Lab 24: Solution

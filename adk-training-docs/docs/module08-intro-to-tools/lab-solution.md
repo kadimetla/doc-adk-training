@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 # Module 7: Introduction to Tools
 
 # Lab 8: Solution

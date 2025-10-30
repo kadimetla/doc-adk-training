@@ -1,7 +1,10 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
+sidebar_label: Lab Challenge
 ## Module 34: Deploying an MCP Server to Cloud Run
 
 # Lab 34: Solution
@@ -21,14 +24,16 @@ from mcp import types as mcp_types
 from mcp.server.lowlevel import Server
 import mcp.server.http_stream
 
-# --- Configuration ---
+# ---
+sidebar_label: Lab Challenge Configuration ---
 # In a serverless environment, we can use the temporary filesystem for a simple demo.
 # In a real app, this would be a Redis or database connection.
 STATE_STORAGE_PATH = "/tmp/carts"
 if not os.path.exists(STATE_STORAGE_PATH):
     os.makedirs(STATE_STORAGE_PATH)
 
-# --- MCP Server Setup ---
+# ---
+sidebar_label: Lab Challenge MCP Server Setup ---
 app = Server("stateless_shopping_cart_server")
 
 # Helper functions to simulate an external state store
@@ -69,7 +74,8 @@ async def call_mcp_tool(name: str, arguments: dict, session_id: str) -> list[mcp
     else:
         return [mcp_types.TextContent(type="text", text=json.dumps({"status": "error", "message": "Unknown tool."}))]
 
-# --- Server Runner for HTTP ---
+# ---
+sidebar_label: Lab Challenge Server Runner for HTTP ---
 # This uses the HTTP stream runner, suitable for Cloud Run
 main = mcp.server.http_stream.create_main(app)
 

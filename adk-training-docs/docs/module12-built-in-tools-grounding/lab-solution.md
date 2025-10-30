@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 # Module 11: Built-in Tools and Grounding
 
 # Lab 12: Solution
@@ -19,7 +21,8 @@ from datetime import datetime
 from google.adk.agents import Agent
 from google.adk.tools import FunctionTool, GoogleSearchAgentTool
 
-# --- Custom Tools ---
+# ---
+sidebar_label: Lab Solution Custom Tools ---
 
 def format_research_notes(topic: str, findings: str) -> dict:
     """Formats research findings into a document."""
@@ -39,7 +42,8 @@ def extract_key_facts(text: str, num_facts: int = 5) -> list[str]:
     # Filter out empty strings that may result from splitting
     return [s.strip() for s in sentences if s.strip()][:num_facts]
 
-# --- Agent Definition ---
+# ---
+sidebar_label: Lab Solution Agent Definition ---
 
 # Create search tool (using workaround for mixing with custom tools)
 search_tool = GoogleSearchAgentTool()

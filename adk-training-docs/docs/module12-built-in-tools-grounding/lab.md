@@ -1,10 +1,12 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
-# Module 11: Built-in Tools and Grounding
+sidebar_label: Lab Challenge
 
-# Lab 12: Solution
+# Lab 12: Challenge
 
 This file contains the complete code for the `agent.py` script in the Research Assistant lab.
 
@@ -20,7 +22,8 @@ from datetime import datetime
 from google.adk.agents import Agent
 from google.adk.tools import FunctionTool, GoogleSearchAgentTool
 
-# --- Custom Tools ---
+# ---
+sidebar_label: Lab Challenge Custom Tools ---
 
 def format_research_notes(topic: str, findings: str) -> dict:
     """Formats research findings into a document."""
@@ -40,7 +43,8 @@ def extract_key_facts(text: str, num_facts: int = 5) -> list[str]:
     # Filter out empty strings that may result from splitting
     return [s.strip() for s in sentences if s.strip()][:num_facts]
 
-# --- Agent Definition ---
+# ---
+sidebar_label: Lab Challenge Agent Definition ---
 
 # Create search tool (using workaround for mixing with custom tools)
 search_tool = GoogleSearchAgentTool()

@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 # Module 15: Building a Coordinator/Dispatcher Agent
 
 # Lab 16: Solution

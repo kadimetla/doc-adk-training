@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 # Module 26: Callbacks and Guardrails - Building a Content Moderator
 
 # Lab 26: Solution

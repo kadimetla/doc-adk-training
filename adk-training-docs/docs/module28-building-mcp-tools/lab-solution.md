@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 ## Module 28: Building a Custom MCP Tool
 
 # Lab 28: Solution
@@ -20,12 +22,14 @@ from mcp.server.lowlevel import Server, NotificationOptions
 from mcp.server.models import InitializationOptions
 import mcp.server.stdio
 
-# --- Server State ---
+# ---
+sidebar_label: Lab Solution Server State ---
 # In a real application, this would be a database. For this lab, a simple
 # in-memory dictionary is enough to demonstrate statefulness.
 SESSION_CARTS = {}
 
-# --- MCP Server Setup ---
+# ---
+sidebar_label: Lab Solution MCP Server Setup ---
 app = Server("shopping_cart_mcp_server")
 
 @app.list_tools()
@@ -62,7 +66,8 @@ async def call_mcp_tool(name: str, arguments: dict, session_id: str) -> list[mcp
     if session_id not in SESSION_CARTS:
         SESSION_CARTS[session_id] = []
 
-    # --- Tool Logic ---
+    # ---
+sidebar_label: Lab Solution Tool Logic ---
     if name == "add_item_to_cart":
         item = arguments.get("item")
         if item:
@@ -82,7 +87,8 @@ async def call_mcp_tool(name: str, arguments: dict, session_id: str) -> list[mcp
         response_text = json.dumps({"status": "error", "message": f"Tool '{name}' not found."}) 
         return [mcp_types.TextContent(type="text", text=response_text)]
 
-# --- MCP Server Runner ---
+# ---
+sidebar_label: Lab Solution MCP Server Runner ---
 async def run_mcp_stdio_server():
     """Runs the server, listening for connections over standard input/output."""
     async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):

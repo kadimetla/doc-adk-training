@@ -1,10 +1,12 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
-# Module 5: Running and Interacting with Agents
+sidebar_label: Lab Challenge
 
-# Lab 5: Exploring Different Execution Modes
+# Lab 5: Challenge
 
 ### Goal
 

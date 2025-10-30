@@ -1,7 +1,10 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
+sidebar_label: Lab Challenge
 ## Module 33: Deployment to Google Kubernetes Engine (GKE)
 
 # Lab 33: Solution

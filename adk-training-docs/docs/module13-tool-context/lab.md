@@ -1,7 +1,10 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
+sidebar_label: Lab Challenge
 # Module 12: Advanced Tool Concepts: Tool Context
 
 # Lab 13: Solution

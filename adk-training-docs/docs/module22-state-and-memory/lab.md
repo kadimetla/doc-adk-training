@@ -1,7 +1,10 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
+sidebar_label: Lab Challenge
 # Module 20: State and Memory - Building a Personal Tutor Agent
 
 # Lab 22: Solution

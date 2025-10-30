@@ -1,7 +1,10 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
+sidebar_label: Lab Challenge
 # Module 15: Building a Coordinator/Dispatcher Agent
 
 # Lab 16: Solution

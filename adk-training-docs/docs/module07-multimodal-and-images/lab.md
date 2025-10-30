@@ -1,7 +1,10 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
+sidebar_label: Lab Challenge
 # Module 7: Multimodal and Image Processing
 
 # Lab 7: Solution
@@ -72,7 +75,8 @@ You are a product catalog content creator. Generate professional, marketing-read
 
     async def analyze_product(self, product_id: str, image_path: str):
         """Analyze a product image and create a catalog entry."""
-        print(f"\n--- Analyzing Product: {product_id} ---")
+        print(f"\n---
+sidebar_label: Lab Challenge Analyzing Product: {product_id} ---")
 
         # Step 1: Visual analysis with the vision_agent
         print("📸 Step 1: Performing visual analysis...")

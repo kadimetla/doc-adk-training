@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 ## Module 32: Deployment to Cloud Run
 
 # Lab 32: Solution

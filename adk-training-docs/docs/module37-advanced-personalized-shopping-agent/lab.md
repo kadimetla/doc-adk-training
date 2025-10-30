@@ -1,7 +1,10 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
+sidebar_label: Lab Challenge
 # Module 37: Advanced - Building a Personalized Shopping Agent
 
 # Lab 37: Solution
@@ -23,6 +26,7 @@ capstone-shopping-system/
 ```
 
 ---
+sidebar_label: Lab Challenge
 
 ### 1. `web-agent/agent.py`
 This agent exposes the webshop tools via an OpenAPI spec and an A2A server.
@@ -33,7 +37,8 @@ from google.adk.a2a.utils.agent_to_a2a import to_a2a
 from google.adk.tools import OpenAPIToolset
 from shared_libraries.init_env import get_webshop_env # Assumes shared lib
 
-# --- OpenAPI Specification for Web Tools ---
+# ---
+sidebar_label: Lab Challenge OpenAPI Specification for Web Tools ---
 WEBSHOP_API_SPEC = {
     "openapi": "3.0.0",
     "info": {"title": "Webshop API", "version": "1.0"},
@@ -71,7 +76,8 @@ WEBSHOP_API_SPEC = {
     }
 }
 
-# --- Agent Definition ---
+# ---
+sidebar_label: Lab Challenge Agent Definition ---
 root_agent = Agent(
     model="gemini-1.5-flash",
     name="web_agent",
@@ -79,11 +85,13 @@ root_agent = Agent(
     tools=[OpenAPIToolset(spec_dict=WEBSHOP_API_SPEC)]
 )
 
-# --- A2A Server ---
+# ---
+sidebar_label: Lab Challenge A2A Server ---
 a2a_app = to_a2a(root_agent, port=8001)
 ```
 
 ---
+sidebar_label: Lab Challenge
 
 ### 2. `personalization-agent/agent.py`
 This agent manages user preferences using persistent state.
@@ -93,7 +101,8 @@ from google.adk.agents import Agent
 from google.adk.a2a.utils.agent_to_a2a import to_a2a
 from google.adk.tools import ToolContext
 
-# --- Stateful Tools ---
+# ---
+sidebar_label: Lab Challenge Stateful Tools ---
 def save_preference(key: str, value: str, tool_context: ToolContext) -> dict:
     """Saves a user's preference (e.g., color, size)."""
     state_key = f"user:{key}"
@@ -109,7 +118,8 @@ def get_preferences(tool_context: ToolContext) -> dict:
     }
     return {"status": "success", "preferences": user_prefs}
 
-# --- Agent Definition ---
+# ---
+sidebar_label: Lab Challenge Agent Definition ---
 root_agent = Agent(
     model="gemini-1.5-flash",
     name="personalization_agent",
@@ -117,11 +127,13 @@ root_agent = Agent(
     tools=[save_preference, get_preferences]
 )
 
-# --- A2A Server ---
+# ---
+sidebar_label: Lab Challenge A2A Server ---
 a2a_app = to_a2a(root_agent, port=8002)
 ```
 
 ---
+sidebar_label: Lab Challenge
 
 ### 3. `orchestrator-agent/agent.py`
 The main agent that connects to the others and handles user interaction.
@@ -130,7 +142,8 @@ The main agent that connects to the others and handles user interaction.
 import logging
 from google.adk.agents import Agent, CallbackContext, RemoteA2aAgent, AGENT_CARD_WELL_KNOWN_PATH
 
-# --- Observability Callback ---
+# ---
+sidebar_label: Lab Challenge Observability Callback ---
 def before_tool_callback(callback_context: CallbackContext, tool_name: str, args: dict) -> None:
     """Logs every delegation attempt."""
     if tool_name == "transfer_to_agent":
@@ -140,7 +153,8 @@ def before_tool_callback(callback_context: CallbackContext, tool_name: str, args
         )
     return None
 
-# --- Remote Agent Definitions ---
+# ---
+sidebar_label: Lab Challenge Remote Agent Definitions ---
 remote_web_agent = RemoteA2aAgent(
     name="web_agent",
     description="A remote specialist for searching and clicking on the e-commerce website.",
@@ -153,7 +167,8 @@ remote_personalization_agent = RemoteA2aAgent(
     agent_card=f"http://localhost:8002/a2a/personalization_agent{AGENT_CARD_WELL_KNOWN_PATH}"
 )
 
-# --- Main Orchestrator Agent ---
+# ---
+sidebar_label: Lab Challenge Main Orchestrator Agent ---
 root_agent = Agent(
     model="gemini-1.5-flash",
     name="orchestrator_agent",
@@ -172,6 +187,7 @@ root_agent = Agent(
 ```
 
 ---
+sidebar_label: Lab Challenge
 
 ### 4. `deployment_plan.md`
 

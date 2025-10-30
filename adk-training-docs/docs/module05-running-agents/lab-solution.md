@@ -1,7 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
-# Module 5: Running and Interacting with Agents
+sidebar_label: Lab Solution
 
 # Lab 5: Exploring Different Execution Modes
 

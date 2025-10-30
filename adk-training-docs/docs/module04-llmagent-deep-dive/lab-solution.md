@@ -1,6 +1,8 @@
 ---
+sidebar_label: Lab Solution
 sidebar_position: 3
 ---
+sidebar_label: Lab Solution
 # Module 4: Core Agent Concepts: `LlmAgent` Deep Dive
 
 # Lab 4: Exercise

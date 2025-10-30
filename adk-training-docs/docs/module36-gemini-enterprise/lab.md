@@ -1,7 +1,10 @@
 ---
+sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+sidebar_label: Lab Challenge
 ---
+sidebar_label: Lab Challenge
 ## Module 36: Gemini Enterprise
 
 # Lab 36: Solution
@@ -11,6 +14,7 @@ sidebar_position: 2
 This file contains example answers and thought processes for the conceptual lab exercise on designing an enterprise agent strategy.
 
 ---
+sidebar_label: Lab Challenge
 
 ### Step 1: Identify the Agents (Example Ideas)
 
@@ -27,6 +31,7 @@ This file contains example answers and thought processes for the conceptual lab 
     *   **Resume Screener (ADK-built):** An agent that can review resumes (PDF artifacts) and check them against a job description to provide a shortlist.
 
 ---
+sidebar_label: Lab Challenge
 
 ### Step 2: Plan the Data Connectors (Example Plan)
 
@@ -36,6 +41,7 @@ This file contains example answers and thought processes for the conceptual lab 
 *   **HubSpot Connector:** Used by the `Social Media Scheduler` to post content.
 
 ---
+sidebar_label: Lab Challenge
 
 ### Step 3: Design the Governance and Access Control (Example Policy)
 
@@ -49,6 +55,7 @@ This file contains example answers and thought processes for the conceptual lab 
     *   The `Marketing Team` should **not** have direct access to the `Salesforce Connector`. If they need sales data, they should ask the `Lead Qualifier Agent`, which can provide summarized, non-sensitive information. This enforces a layer of abstraction and security.
 
 ---
+sidebar_label: Lab Challenge
 
 ### Step 4: Plan for Monitoring and Cost Management (Example Plan)
 
