@@ -1,12 +1,15 @@
-# Module 11: Built-in Tools and Grounding
+# Module 12: Built-in Tools and Grounding
 
-## Lab 11: Building a Research Assistant with Web Search
+## Lab 12: Building a Research Assistant with Web Search
 
 ### Goal
 
 In this lab, you will build a **Research Assistant** that can access up-to-date information from the internet. You will learn how to use the `GoogleSearchAgentTool` wrapper to combine web search with your own custom tools.
 
-### Step 1: Create the Project Structure
+### Prerequisites
+*   **Note on Costs:** This lab requires the Vertex AI API, which may incur small costs on your Google Cloud bill.
+
+### Step 1: Create and Prepare the Project
 
 1.  **Create the agent project:**
     ```shell
@@ -17,6 +20,14 @@ In this lab, you will build a **Research Assistant** that can access up-to-date 
 2.  **Navigate into the new directory:**
     ```shell
     cd research-assistant
+    ```
+
+3.  **Create the `.env` file:**
+    The `GoogleSearchAgentTool` requires a Vertex AI configuration. Create a `.env` file in this directory with the following content, replacing `<your_gcp_project>` with your actual Google Cloud project ID.
+    ```
+    GOOGLE_GENAI_USE_VERTEXAI=1
+    GOOGLE_CLOUD_PROJECT=<your_gcp_project>
+    GOOGLE_CLOUD_LOCATION=us-central1
     ```
 
 ### Step 2: Define the Agent and Tools
@@ -52,38 +63,41 @@ def extract_key_facts(text: str, num_facts: int = 5) -> list[str]:
 # --- Agent Definition ---
 
 # TODO: 1. Create an instance of the GoogleSearchAgentTool.
-search_tool = None
+search_tool = ...
 
 # TODO: 2. Define the `root_agent`.
-# TODO: 3. Add the `search_tool` and the two custom tools (`extract_key_facts`,
-# `format_research_notes`) to the agent's `tools` list.
-# TODO: 4. Write an instruction that tells the agent to perform the research
-# workflow in the correct order: search -> extract -> format.
 root_agent = Agent(
-    model='gemini-1.5-flash',
+    model='gemini-2.5-flash',
     name='research_assistant',
     description='Conducts web research and compiles findings',
     instruction="""
-    # Your instruction here...
+    # TODO: 3. Write an instruction that tells the agent to perform the research
+    # workflow in the correct order:
+    # 1. Use search_tool to find information.
+    # 2. Use extract_key_facts on the search results.
+    # 3. Use format_research_notes on the extracted facts.
+    # 4. Present the final document as the answer.
     """,
     tools=[
-        # Your tools here...
+        # TODO: 4. Add the `search_tool` and the two custom tools
+        # (`extract_key_facts`, `format_research_notes`) to this list.
     ]
 )
 ```
 
 ### Step 3: Run and Test the Research Assistant
 
-1.  **Set up your `.env` file for Vertex AI.** The `google_search` tool requires a Vertex AI configuration.
+1.  **Navigate to the parent directory:**
+    ```shell
+    cd ..
+    ```
 
 2.  **Start the Dev UI:**
     ```shell
-    cd ..
-    adk web
+    adk web research-assistant
     ```
 
 3.  **Interact with the agent:**
-    *   Open `http://localhost:8080` and select "research_assistant".
     *   Give the agent a research topic, like "What are the latest developments in AI in 2025?"
 
 4.  **Analyze the Trace View:**

@@ -1,8 +1,32 @@
 ---
+id: module03-lab-challenge
+title: "Module 3: Lab Challenge - Build and Run the Echo Agent"
+description: "A hands-on exercise to create, configure, and run a simple Echo agent using the ADK."
+sidebar_label: "03: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "echo agent", "adk web", "YAML", "Python"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+id: module03-lab-challenge
+title: "Module 3: Lab Challenge - Build and Run the Echo Agent"
+description: "A hands-on exercise to create, configure, and run a simple Echo agent using the ADK."
+sidebar_label: "03: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "echo agent", "adk web", "YAML", "Python"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
+---
+id: module03-lab-challenge
+title: "Module 3: Lab Challenge - Build and Run the Echo Agent"
+description: "A hands-on exercise to create, configure, and run a simple Echo agent using the ADK."
+sidebar_label: "03: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "echo agent", "adk web", "YAML", "Python"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Challenge
 # Module 3: Your First Agent: The "Echo" Agent

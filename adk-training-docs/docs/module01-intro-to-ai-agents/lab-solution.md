@@ -1,6 +1,11 @@
 ---
-sidebar_label: Lab Solution
+id: module01-lab-solution
+title: 'Module 1: Lab Solution - Exploring the ADK Ecosystem'
+description: 'Provides the solution and key resource links for the Module 1 lab exercise on exploring the ADK ecosystem.'
+sidebar_label: '01: Lab Solution'
 sidebar_position: 3
+keywords: ['Google ADK', 'documentation', 'GitHub', 'AI agents', 'solution']
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Solution
 # Module 1: Introduction to AI Agents & Google ADK

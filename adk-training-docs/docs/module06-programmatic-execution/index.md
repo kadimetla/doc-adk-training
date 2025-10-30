@@ -1,5 +1,21 @@
 ---
+id: module06-overview
+title: "Module 6: Running an Agent Programmatically"
+description: "Learn how to run an ADK agent from within a Python script, giving you full control over the agent's lifecycle."
+sidebar_label: "06: Overview"
 sidebar_position: 1
+keywords: ["ADK", "programmatic execution", "InMemoryRunner", "Session", "async"]
+image: /img/docusaurus-social-card.jpg
+---
+sidebar_position: 1
+---
+id: module06-overview
+title: "Module 6: Running an Agent Programmatically"
+description: "Learn how to run an ADK agent from within a Python script, giving you full control over the agent's lifecycle."
+sidebar_label: "06: Overview"
+sidebar_position: 1
+keywords: ["ADK", "programmatic execution", "InMemoryRunner", "Session", "async"]
+image: /img/docusaurus-social-card.jpg
 ---
 # Module 6: Running an Agent Programmatically
 

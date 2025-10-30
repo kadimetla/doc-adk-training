@@ -1,6 +1,6 @@
-# Module 17: Multi-Agent Systems - Complex Orchestration
+# Module 19: Multi-Agent Systems - Complex Orchestration
 
-## Lab 17: Solution
+## Lab 19: Solution
 
 This file contains the complete code for the `agent.py` script in the Content Publishing System lab.
 
@@ -10,7 +10,13 @@ This file contains the complete code for the `agent.py` script in the Content Pu
 from __future__ import annotations
 
 from google.adk.agents import Agent, ParallelAgent, SequentialAgent
-from google.adk.tools import google_search
+from google.adk.tools import GoogleSearchAgentTool
+
+# =====================================================
+# SHARED TOOLS
+# =====================================================
+# Create a single search tool instance to be shared by multiple agents.
+search_tool = GoogleSearchAgentTool()
 
 # =====================================================
 # PARALLEL BRANCH 1: News Research Pipeline
@@ -23,7 +29,7 @@ news_fetcher = Agent(
         "You are a news researcher. Based on the user's topic, search for "
         "current news articles and recent developments.\n"
         "\n"
-        "Use the google_search tool to find 3-4 current news articles.\n"
+        "Use the GoogleSearchAgentTool to find 3-4 current news articles.\n"
         "Focus on recent, credible news sources from the past 6 months.\n"
         "\n"
         "Output a bulleted list with:\n"
@@ -32,7 +38,7 @@ news_fetcher = Agent(
         "\n"
         "Search query should be: '[topic] news recent developments site:reputable-news-sites'"
     ),
-    tools=[google_search],
+    tools=[search_tool],
     output_key="raw_news"
 )
 
@@ -73,7 +79,7 @@ social_monitor = Agent(
         "You are a social media analyst. Based on the user's topic, search for "
         "trending discussions, popular hashtags, and public sentiment.\n"
         "\n"
-        "Use the google_search tool to find:\n"
+        "Use the GoogleSearchAgentTool to find:\n"
         "• Trending hashtags and topics on social platforms\n"
         "• Recent social media discussions and viral content\n"
         "• Public opinion and sentiment analysis\n"
@@ -85,7 +91,7 @@ social_monitor = Agent(
         "• Popular discussion themes\n"
         "• General sentiment (positive/negative/mixed) with evidence"
     ),
-    tools=[google_search],
+    tools=[search_tool],
     output_key="raw_social"
 )
 
@@ -126,7 +132,7 @@ expert_finder = Agent(
         "You are an expert opinion researcher. Based on the user's topic, search for "
         "what industry experts, academics, or thought leaders are saying.\n"
         "\n"
-        "Use the google_search tool to find:\n"
+        "Use the GoogleSearchAgentTool to find:\n"
         "• Industry experts and their credentials\n"
         "• Academic researchers and their affiliations\n"
         "• Thought leaders and their recent statements\n"
@@ -138,7 +144,7 @@ expert_finder = Agent(
         "• Their key statements or positions\n"
         "• Source (where they said it) with links when available"
     ),
-    tools=[google_search],
+    tools=[search_tool],
     output_key="raw_experts"
 )
 

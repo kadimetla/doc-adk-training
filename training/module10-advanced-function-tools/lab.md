@@ -1,6 +1,6 @@
-# Module 9: Advanced Function Tools
+# Module 10: Advanced Function Tools
 
-## Lab 9: Building a Personal Finance Assistant
+## Lab 10: Building a Personal Finance Assistant
 
 ### Goal
 
@@ -88,7 +88,10 @@ root_agent = None
 
 ### Step 3: Run and Test Your Assistant
 
-1.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI: `adk web`
+1.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI:
+    ```shell
+    adk web finance-assistant
+    ```
 2.  **Interact with the agent:**
     *   Test each of your tools with prompts like:
         *   "If I invest $10,000 at 6% for 5 years, how much will I have?"

@@ -1,6 +1,6 @@
-# Module 12: Advanced Tool Concepts: Tool Context
+# Module 13: Advanced Tool Concepts: Tool Context
 
-## Lab 12: Creating a "Memory" Agent with Tool Context
+## Lab 13: Creating a "Memory" Agent with Tool Context
 
 ### Goal
 
@@ -37,6 +37,9 @@ def remember_name(name: str, tool_context: ToolContext) -> dict:
     Args:
         name: The user's name to remember.
     """
+    # Note: Do not describe the 'tool_context' parameter in the docstring.
+    # The LLM does not need to know about it.
+    
     # TODO: Use the tool_context to save the user's `name` to the
     # session state under the key 'user_name'.
     
@@ -64,7 +67,7 @@ def recall_name(tool_context: ToolContext) -> dict:
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
 name: memory_agent
-model: gemini-1.5-flash
+model: gemini-2.5-flash
 description: An agent that can remember and recall the user's name.
 instruction: |
   # TODO: Write an instruction that tells the agent:
@@ -78,11 +81,15 @@ tools:
 
 ### Step 4: Test the Memory Agent
 
-1.  **Set up your `.env` file** and start the Dev UI: `adk web`
-2.  **Interact with the agent:**
+1.  **Set up your `.env` file.**
+2.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI:
+    ```shell
+    adk web memory-agent
+    ```
+3.  **Interact with the agent:**
     *   **Turn 1:** "Hi, my name is Alex."
     *   **Turn 2:** "What is my name?"
-3.  **Examine the Trace and State:**
+4.  **Examine the Trace and State:**
     *   After the first turn, check the **State** tab to see if `user_name` was saved correctly.
     *   Check the **Trace** view for both turns to see the `remember_name` and `recall_name` tools being called.
 

@@ -1,6 +1,22 @@
 ---
+id: module02-lab-solution
+title: "Module 2: Lab Solution - Environment Setup"
+description: "Provides the solution and verification steps for the Module 2 lab exercise on environment setup."
+sidebar_label: "02: Lab Solution"
+sidebar_position: 3
+keywords: ["Python", "venv", "pip", "gcloud", "solution"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Solution
 sidebar_position: 3
+---
+id: module02-lab-solution
+title: "Module 2: Lab Solution - Environment Setup"
+description: "Provides the solution and verification steps for the Module 2 lab exercise on environment setup."
+sidebar_label: "02: Lab Solution"
+sidebar_position: 3
+keywords: ["Python", "venv", "pip", "gcloud", "solution"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Solution
 # Module 2: Setting Up Your Development Environment

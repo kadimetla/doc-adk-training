@@ -8,17 +8,15 @@ This solution provides a summary of the key resources you should have explored d
 
 The primary source for all information related to the Google Agent Development Kit.
 
-*   **Get Started Section:**
-    *   [About the ADK](/adk-docs/get-started/about)
-    *   [Installation Guide](/adk-docs/get-started/installation)
-    *   [Quickstart Tutorial](/adk-docs/get-started/quickstart)
-*   **Agents Section:**
-    *   [LlmAgent](/adk-docs/agents/llm-agent)
-*   **Tools Section:**
-    *   [Built-in Tools](/adk-docs/tools/built-in-tools)
-    *   [Function Tools](/adk-docs/tools/function-tools)
+*   [About the ADK](https://google.github.io/adk-docs/get-started/about)
+*   [Installation Guide](https://google.github.io/adk-docs/get-started/installation)
+*   [Quickstart Tutorial](https://google.github.io/adk-docs/get-started/quickstart)
+*   [LlmAgent](https://google.github.io/adk-docs/agents/llm-agent)
+*   [Built-in Tools](https://google.github.io/adk-docs/tools/built-in-tools)
+*   [Function Tools](https://google.github.io/adk-docs/tools/function-tools)
 
-*(Note: The placeholder URLs have been updated to point to the correct documentation pages.)*
+***Scavenger Hunt Answer:***
+> For the `hello_world_ollama` example, the agent is typically run as a Python module. The main function used to run the agent would likely be `main()` within a `main.py` file (e.g., `python -m contributing.samples.hello_world_ollama.main`).
 
 ### 2. Official Code Repositories
 

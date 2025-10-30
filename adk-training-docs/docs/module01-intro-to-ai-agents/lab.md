@@ -1,10 +1,12 @@
 ---
-sidebar_label: Lab Challenge
+id: module01-lab-challenge
+title: 'Module 1: Lab Challenge - Exploring the ADK Ecosystem'
+description: 'A hands-on exercise to familiarize yourself with the Google ADK documentation, code repositories, and community channels.'
+sidebar_label: '01: Lab Challenge'
 sidebar_position: 2
+keywords: ['Google ADK', 'documentation', 'GitHub', 'AI agents', 'community']
+image: /img/docusaurus-social-card.jpg
 ---
-sidebar_label: Lab Challenge
----
-sidebar_label: Lab Challenge
 # Module 1: Introduction to AI Agents & Google ADK
 
 # Lab 1: Solution

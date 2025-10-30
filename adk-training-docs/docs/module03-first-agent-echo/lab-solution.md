@@ -1,6 +1,22 @@
 ---
+id: module03-lab-solution
+title: "Module 3: Lab Solution - Build and Run the Echo Agent"
+description: "Provides the final code for the Echo agent in both YAML and Python formats."
+sidebar_label: "03: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "echo agent", "solution", "YAML", "Python"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Solution
 sidebar_position: 3
+---
+id: module03-lab-solution
+title: "Module 3: Lab Solution - Build and Run the Echo Agent"
+description: "Provides the final code for the Echo agent in both YAML and Python formats."
+sidebar_label: "03: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "echo agent", "solution", "YAML", "Python"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Solution
 # Module 3: Your First Agent: The "Echo" Agent

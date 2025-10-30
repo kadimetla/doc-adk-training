@@ -1,5 +1,21 @@
 ---
+id: module03-overview
+title: "Module 3: Your First Agent - The Echo Agent"
+description: "Learn the basics of creating an ADK agent, including configuration-based and programmatic approaches."
+sidebar_label: "03: Overview"
 sidebar_position: 1
+keywords: ["ADK", "LlmAgent", "YAML", "Python", "adk create"]
+image: /img/docusaurus-social-card.jpg
+---
+sidebar_position: 1
+---
+id: module03-overview
+title: "Module 3: Your First Agent - The Echo Agent"
+description: "Learn the basics of creating an ADK agent, including configuration-based and programmatic approaches."
+sidebar_label: "03: Overview"
+sidebar_position: 1
+keywords: ["ADK", "LlmAgent", "YAML", "Python", "adk create"]
+image: /img/docusaurus-social-card.jpg
 ---
 # Module 3: Your First Agent: The "Echo" Agent
 

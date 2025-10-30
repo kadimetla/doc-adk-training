@@ -1,8 +1,32 @@
 ---
+id: module08-lab-challenge
+title: "Module 8: Lab Challenge - Creating a Researcher Agent"
+description: "A hands-on exercise to build a research agent that can search the web using the google_search tool."
+sidebar_label: "08: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "tools", "google_search", "Vertex AI"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+id: module08-lab-challenge
+title: "Module 8: Lab Challenge - Creating a Researcher Agent"
+description: "A hands-on exercise to build a research agent that can search the web using the google_search tool."
+sidebar_label: "08: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "tools", "google_search", "Vertex AI"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
+---
+id: module08-lab-challenge
+title: "Module 8: Lab Challenge - Creating a Researcher Agent"
+description: "A hands-on exercise to build a research agent that can search the web using the google_search tool."
+sidebar_label: "08: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "tools", "google_search", "Vertex AI"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Challenge
 # Module 7: Introduction to Tools

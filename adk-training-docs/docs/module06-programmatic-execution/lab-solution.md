@@ -1,6 +1,22 @@
 ---
+id: module06-lab-solution
+title: "Module 6: Lab Solution - Executing Your Agent in a Python Script"
+description: "Provides the complete code for running an ADK agent programmatically."
+sidebar_label: "06: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "Python", "asyncio"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Solution
 sidebar_position: 3
+---
+id: module06-lab-solution
+title: "Module 6: Lab Solution - Executing Your Agent in a Python Script"
+description: "Provides the complete code for running an ADK agent programmatically."
+sidebar_label: "06: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "Python", "asyncio"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Solution
 # Module 6: Running an Agent Programmatically

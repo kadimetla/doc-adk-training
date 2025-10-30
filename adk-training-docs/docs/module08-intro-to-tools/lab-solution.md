@@ -1,6 +1,22 @@
 ---
+id: module08-lab-solution
+title: "Module 8: Lab Solution - Creating a Researcher Agent"
+description: "Provides the final YAML configuration for the Researcher agent."
+sidebar_label: "08: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "tools", "google_search"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Solution
 sidebar_position: 3
+---
+id: module08-lab-solution
+title: "Module 8: Lab Solution - Creating a Researcher Agent"
+description: "Provides the final YAML configuration for the Researcher agent."
+sidebar_label: "08: Lab Solution"
+sidebar_position: 3
+keywords: ["ADK", "solution", "tools", "google_search"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Solution
 # Module 7: Introduction to Tools

@@ -1,5 +1,21 @@
 ---
+id: module05-overview
+title: "Module 5: Running and Interacting with Agents"
+description: "Learn the different ways to run and interact with your ADK agents, including the Dev UI, command line, and as an API server."
+sidebar_label: "05: Overview"
 sidebar_position: 1
+keywords: ["ADK", "adk web", "adk run", "adk api_server", "Dev UI"]
+image: /img/docusaurus-social-card.jpg
+---
+sidebar_position: 1
+---
+id: module05-overview
+title: "Module 5: Running and Interacting with Agents"
+description: "Learn the different ways to run and interact with your ADK agents, including the Dev UI, command line, and as an API server."
+sidebar_label: "05: Overview"
+sidebar_position: 1
+keywords: ["ADK", "adk web", "adk run", "adk api_server", "Dev UI"]
+image: /img/docusaurus-social-card.jpg
 ---
 # Module 5: Running and Interacting with Agents
 

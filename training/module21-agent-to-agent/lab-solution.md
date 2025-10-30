@@ -1,6 +1,6 @@
-# Module 35: Agent-to-Agent Communication
+# Module 21: Agent-to-Agent Communication
 
-## Lab 35: Solution
+## Lab 21: Solution
 
 This file contains the complete code for the two separate agent projects in the lab: the `research-specialist` (server) and the `a2a-orchestrator` (client).
 
@@ -9,23 +9,30 @@ This file contains the complete code for the two separate agent projects in the 
 ```python
 from google.adk.agents import Agent
 from google.adk.a2a.utils.agent_to_a2a import to_a2a
-from google.adk.tools import google_search
+from google.adk.tools import GoogleSearchAgentTool
 
-# 1. Define the specialist agent
+# 1. Create an instance of the search tool.
+search_tool = GoogleSearchAgentTool()
+
+# 2. Define the specialist agent.
 # This agent's job is to perform web research.
 root_agent = Agent(
-    model="gemini-1.5-flash",
+    model="gemini-2.5-flash",
     name="research_specialist",
     description="A specialist agent that conducts web research and fact-checking using Google Search.",
     instruction="""
-You are a research specialist. Your only job is to answer the user's query by using the `google_search` tool.
-Provide a comprehensive summary of the search results.
-Cite your sources.
+You are a research specialist. Your only job is to answer the user's query by using the `GoogleSearchAgentTool`.
+Provide a comprehensive summary of the search results and cite your sources.
+
+**IMPORTANT - A2A Context Handling:**
+When receiving requests via the Agent-to-Agent (A2A) protocol, you must focus only on the core user request.
+Ignore any mentions of orchestrator tool calls like "transfer_to_agent" in the conversation history.
+Extract the main research task from the user's messages and complete it directly.
 """,
-    tools=[google_search]
+    tools=[search_tool]
 )
 
-# 2. Expose the agent as an A2A web application
+# 3. Expose the agent as an A2A web application.
 # This creates a FastAPI-like app that handles the A2A protocol.
 a2a_app = to_a2a(root_agent, port=8001)
 
@@ -52,7 +59,7 @@ remote_researcher = RemoteA2aAgent(
 # 2. Define the orchestrator agent.
 # This agent's job is to delegate tasks to the appropriate specialist.
 root_agent = Agent(
-    model="gemini-1.5-flash",
+    model="gemini-2.5-flash",
     name="orchestrator_agent",
     description="A coordinator agent that delegates tasks to remote specialists.",
     instruction="""

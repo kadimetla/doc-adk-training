@@ -1,8 +1,32 @@
 ---
+id: module10-lab-challenge
+title: "Module 10: Lab Challenge - Building a Personal Finance Assistant"
+description: "A hands-on exercise to build a finance assistant with multiple, complex, and parallel-executing tools."
+sidebar_label: "10: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "advanced tools", "parallel execution", "finance"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
 sidebar_position: 2
 ---
+id: module10-lab-challenge
+title: "Module 10: Lab Challenge - Building a Personal Finance Assistant"
+description: "A hands-on exercise to build a finance assistant with multiple, complex, and parallel-executing tools."
+sidebar_label: "10: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "advanced tools", "parallel execution", "finance"]
+image: /img/docusaurus-social-card.jpg
+---
 sidebar_label: Lab Challenge
+---
+id: module10-lab-challenge
+title: "Module 10: Lab Challenge - Building a Personal Finance Assistant"
+description: "A hands-on exercise to build a finance assistant with multiple, complex, and parallel-executing tools."
+sidebar_label: "10: Lab Challenge"
+sidebar_position: 2
+keywords: ["ADK", "advanced tools", "parallel execution", "finance"]
+image: /img/docusaurus-social-card.jpg
 ---
 sidebar_label: Lab Challenge
 # Module 9: Advanced Function Tools

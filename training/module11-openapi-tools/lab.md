@@ -1,6 +1,6 @@
-# Module 10: OpenAPI Tools
+# Module 11: OpenAPI Tools
 
-## Lab 10: Building a Chuck Norris Fact Assistant
+## Lab 11: Building a Chuck Norris Fact Assistant
 
 ### Goal
 
@@ -19,7 +19,7 @@ In this lab, you will build an agent that can retrieve Chuck Norris jokes from a
 
 ### Step 2: Define the OpenAPI Specification
 
-**Exercise:** Open `agent.py`. A skeleton for the OpenAPI specification is provided. Your first task is to complete the spec for the `/random` endpoint. You can find the necessary information from the API documentation at [https://api.chucknorris.io/](https://api.chucknorris.io/).
+**Exercise:** Open `agent.py`. A more complete skeleton for the OpenAPI specification is provided below. Your task is to complete the spec for the `/random` endpoint's `get` operation. You can find the necessary information from the API documentation at [https://api.chucknorris.io/](https://api.chucknorris.io/).
 
 ```python
 # In agent.py (Starter Code)
@@ -30,11 +30,9 @@ from google.adk.tools.openapi_tool import OpenAPIToolset
 # ============================================================================
 # OPENAPI SPECIFICATION
 # ============================================================================
+# The `operationId` is critical. The ADK uses it to generate the tool's name
+# (e.g., `operationId: "get_random_joke"` becomes the `get_random_joke` tool).
 
-# TODO: Complete the OpenAPI spec for the "/random" endpoint's GET operation.
-# - The operationId should be "get_random_joke".
-# - The summary should be "Get a random Chuck Norris joke".
-# - It should have one optional query parameter named "category".
 CHUCK_NORRIS_SPEC = {
     "openapi": "3.0.0",
     "info": {
@@ -46,10 +44,15 @@ CHUCK_NORRIS_SPEC = {
     "paths": {
         "/random": {
             "get": {
-                # Fill in this section based on the TODO above
+                # TODO: Complete this section for the "/random" endpoint.
+                # - The operationId should be "get_random_joke".
+                # - The summary should be "Get a random Chuck Norris joke".
+                # - It needs a "parameters" list with one optional query
+                #   parameter named "category".
+                # - It needs a "responses" section for a "200" status code.
             }
         },
-        # (The other paths are provided for you below)
+        # The other paths are provided for you.
         "/search": {
             "get": {
                 "operationId": "search_jokes",
@@ -75,23 +78,25 @@ CHUCK_NORRIS_SPEC = {
 # OPENAPI TOOLSET
 # ============================================================================
 
-# TODO: Create an OpenAPIToolset instance from the spec dictionary you just completed.
-chuck_norris_toolset = None
+# TODO: Create an OpenAPIToolset instance from the spec dictionary.
+chuck_norris_toolset = OpenAPIToolset(...)
 
 # ============================================================================
 # AGENT DEFINITION
 # ============================================================================
 
-# TODO: Define the root_agent. Give it an instruction to be a fun Chuck Norris
-# fact assistant and register the `chuck_norris_toolset` in its `tools` list.
-root_agent = None
+# TODO: Define the root_agent.
+# - Give it a name, model ('gemini-2.5-flash'), and description.
+# - Write an instruction to be a fun Chuck Norris fact assistant.
+# - Register the `chuck_norris_toolset` in its `tools` list.
+root_agent = Agent(...)
 ```
 
 ### Step 3: Run and Test Your Agent
 
-1.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI: `adk web`
+1.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI: `adk web chuck-norris-agent`
 2.  **Interact with the agent:**
-    *   Select "chuck_norris_agent" and test its capabilities:
+    *   Test its capabilities:
         *   "Tell me a random Chuck Norris joke"
         *   "Find jokes about computers"
         *   "What joke categories exist?"

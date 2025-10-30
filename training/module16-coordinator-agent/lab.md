@@ -1,6 +1,6 @@
-# Module 15: Building a Coordinator/Dispatcher Agent
+# Module 16: Building a Coordinator/Dispatcher Agent
 
-## Lab 15: Implementing the "Greeting Router"
+## Lab 16: Implementing the "Greeting Router"
 
 ### Goal
 
@@ -16,29 +16,54 @@ In this lab, you will implement the multi-agent "Greeting Router" system. You wi
 
 ### Step 2: Create the Specialist Agent
 
-**Exercise:** Create a new file named `spanish_greeter.yaml`. In this file, define the configuration for the `spanish_greeter_agent`.
+**Exercise:** Create a new file named `spanish_greeter.yaml`. In this file, use the skeleton below to define the configuration for the `spanish_greeter_agent`.
 
-**Your Task:**
-*   Give the agent the `name`: `spanish_greeter_agent`.
-*   Write a clear `description` that explains its capability (e.g., "An expert at providing friendly greetings in Spanish."). This is critical for the router to find it.
-*   Write an `instruction` that tells the agent its only job is to provide a warm greeting in Spanish.
+```yaml
+# In spanish_greeter.yaml
+# yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
+name: spanish_greeter_agent
+model: gemini-2.5-flash
+description: |
+  # TODO: Write a clear description that explains this agent's capability
+  # (e.g., "An expert at providing friendly greetings in Spanish.").
+  # This is critical for the router to find it.
+instruction: |
+  # TODO: Write an instruction that tells the agent its only job is to
+  # provide a warm greeting in Spanish.
+```
 
 ### Step 3: Configure the Coordinator (Router) Agent
 
-**Exercise:** Now, open the main `root_agent.yaml` file and configure it to act as the router.
+**Exercise:** Now, open the main `root_agent.yaml` file and use the skeleton below to configure it to act as the router.
 
-**Your Task:**
-*   Set the `name` to `router_agent`.
-*   Write an `instruction` that tells the agent its job is to delegate to the `spanish_greeter_agent` for Spanish greetings and that it should *not* greet the user itself.
-*   Add the `sub_agents` section and use `config_path` to link to your `spanish_greeter.yaml` file.
+```yaml
+# In root_agent.yaml
+# yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
+name: router_agent
+model: gemini-2.5-flash
+description: The main greeter agent that routes to language specialists.
+instruction: |
+  # TODO: Write an instruction that tells the agent its job is to delegate
+  # to the `spanish_greeter_agent` for Spanish greetings and that it
+  # should *not* greet the user itself.
+
+# TODO: Add the `sub_agents` section and use `config_path` to link to your
+# `spanish_greeter.yaml` file.
+sub_agents:
+  - config_path: ...
+```
 
 ### Step 4: Test the Multi-Agent System
 
-1.  **Set up your `.env` file** and start the Dev UI: `adk web`
-2.  **Interact with the router:**
+1.  **Set up your `.env` file.**
+2.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI:
+    ```shell
+    adk web greeting-agent
+    ```
+3.  **Interact with the router:**
     *   **Test Case 1:** "Say hello to me in Spanish."
     *   **Test Case 2:** "Say hello in French."
-3.  **Examine the Trace:** For the first test case, you should see the `router_agent` run, call `transfer_to_agent`, and then the `spanish_greeter_agent` run to produce the final output. For the second case, the router should respond itself that it cannot handle the request.
+4.  **Examine the Trace:** For the first test case, you should see the `router_agent` run, call `transfer_to_agent`, and then the `spanish_greeter_agent` run to produce the final output. For the second case, the router should respond itself that it cannot handle the request.
 
 ### Having Trouble?
 

@@ -1,6 +1,6 @@
-# Module 11: Built-in Tools and Grounding
+# Module 12: Built-in Tools and Grounding
 
-## Lab 11: Solution
+## Lab 12: Solution
 
 This file contains the complete code for the `agent.py` script in the Research Assistant lab.
 
@@ -43,7 +43,7 @@ search_tool = GoogleSearchAgentTool()
 
 # Create research assistant
 root_agent = Agent(
-    model='gemini-1.5-flash',
+    model='gemini-2.5-flash',
     name='research_assistant',
     description='Conducts web research and compiles findings',
     instruction="""

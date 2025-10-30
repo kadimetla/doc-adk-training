@@ -1,6 +1,6 @@
-# Module 18: Advanced Multi-Agent Architectures
+# Module 19: Advanced Multi-Agent Architectures
 
-## Lab 18: Building a Content Publishing System
+## Lab 19: Building a Content Publishing System
 
 ### Goal
 
@@ -20,7 +20,7 @@ In this lab, you will build a sophisticated **Content Publishing System** that d
     *   **Editor Agent:** Reviews and improves the draft.
     *   **Formatter Agent:** Formats the final article for publication.
 
-### Step 1: Create the Project Structure
+### Step 1: Create and Prepare the Project
 
 1.  **Create the agent project:**
     ```shell
@@ -32,22 +32,82 @@ In this lab, you will build a sophisticated **Content Publishing System** that d
     ```shell
     cd content-publisher
     ```
+3.  **Create the `.env` file:**
+    The search tools require a Vertex AI configuration. Create a `.env` file in this directory with the following content, replacing `<your_gcp_project>` with your actual Google Cloud project ID.
+    ```
+    GOOGLE_GENAI_USE_VERTEXAI=1
+    GOOGLE_CLOUD_PROJECT=<your_gcp_project>
+    GOOGLE_CLOUD_LOCATION=us-central1
+    ```
 
 ### Step 2: Assemble the Multi-Agent System
 
-**Exercise:** Open `agent.py`. All eight of the individual specialist agents (e.g., `news_fetcher`, `news_summarizer`, `article_writer`, etc.) have been provided for you. Your task is to assemble them into the complete, multi-level architecture described above.
+**Exercise:** Open `agent.py`. All eight of the individual specialist agents have been provided for you below. Your task is to assemble them into the complete, multi-level architecture described above by completing the `TODO` sections at the bottom.
 
 ```python
 # In agent.py (Starter Code)
 
 from __future__ import annotations
 from google.adk.agents import Agent, ParallelAgent, SequentialAgent
-from google.adk.tools import google_search
+from google.adk.tools import GoogleSearchAgentTool
 
-# ===== All 8 Specialist Agent Definitions Are Provided Here... =====
-# (news_fetcher, news_summarizer, social_monitor, sentiment_analyzer, 
-#  expert_finder, quote_extractor, article_writer, article_editor, 
-#  article_formatter)
+# ===== SHARED TOOLS =================================
+search_tool = GoogleSearchAgentTool()
+
+# ===== SPECIALIST AGENTS (Provided for you) =====
+
+# --- Branch 1: News ---
+news_fetcher = Agent(
+    name="news_fetcher", model="gemini-2.5-flash", tools=[search_tool],
+    instruction="You are a news researcher. Use the GoogleSearchAgentTool to find 3-4 current news articles about the user's topic.",
+    output_key="raw_news"
+)
+news_summarizer = Agent(
+    name="news_summarizer", model="gemini-2.5-flash",
+    instruction="Summarize the news articles from {raw_news} into 2-3 key takeaways.",
+    output_key="news_summary"
+)
+
+# --- Branch 2: Social Media ---
+social_monitor = Agent(
+    name="social_monitor", model="gemini-2.5-flash", tools=[search_tool],
+    instruction="You are a social media analyst. Use the GoogleSearchAgentTool to find trending discussions and public sentiment about the user's topic.",
+    output_key="raw_social"
+)
+sentiment_analyzer = Agent(
+    name="sentiment_analyzer", model="gemini-2.5-flash",
+    instruction="Analyze the social media data from {raw_social} and extract key insights on trends and sentiment.",
+    output_key="social_insights"
+)
+
+# --- Branch 3: Expert Opinion ---
+expert_finder = Agent(
+    name="expert_finder", model="gemini-2.5-flash", tools=[search_tool],
+    instruction="You are an expert opinion researcher. Use the GoogleSearchAgentTool to find what industry experts or academics are saying about the user's topic.",
+    output_key="raw_experts"
+)
+quote_extractor = Agent(
+    name="quote_extractor", model="gemini-2.5-flash",
+    instruction="Extract the most impactful quotes from the expert opinions in {raw_experts}.",
+    output_key="expert_quotes"
+)
+
+# --- Content Creation ---
+article_writer = Agent(
+    name="article_writer", model="gemini-2.5-flash",
+    instruction="You are a professional writer. Write an engaging article using the research provided in {news_summary}, {social_insights}, and {expert_quotes}.",
+    output_key="draft_article"
+)
+article_editor = Agent(
+    name="article_editor", model="gemini-2.5-flash",
+    instruction="You are an editor. Review and improve the draft article from {draft_article} for clarity, flow, and impact.",
+    output_key="edited_article"
+)
+article_formatter = Agent(
+    name="article_formatter", model="gemini-2.5-flash",
+    instruction="Format the article from {edited_article} for publication with proper markdown, including a title and headings.",
+    output_key="published_article"
+)
 
 # =====================================================
 # ASSEMBLE THE MULTI-AGENT SYSTEM
@@ -73,13 +133,15 @@ content_publishing_system = SequentialAgent(...)
 # TODO: 4. Set the `root_agent` to be your final `content_publishing_system`.
 root_agent = None
 ```
-*(Note: The full agent definitions are in the `lab-solution.md` if you need to inspect them.)*
 
 ### Step 3: Run and Test the System
 
-1.  **Set up your `.env` file** and start the Dev UI: `adk web`
+1.  **Navigate to the parent directory** (`cd ..`) and start the Dev UI:
+    ```shell
+    adk web content-publisher
+    ```
 2.  **Interact with the system:**
-    *   Select "content_publisher" and give it a topic, like: "The future of electric vehicles".
+    *   Give it a topic, like: "The future of electric vehicles".
 3.  **Analyze the Trace:**
     *   This is the most important step. Expand the trace to see the nested structure. Verify that the three research pipelines run in parallel, and that the content creation agents run sequentially after the parallel phase is complete.
 

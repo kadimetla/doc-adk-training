@@ -10,20 +10,20 @@ Instead of echoing, we will turn our agent into a witty pirate who translates us
 
 ### Step 1: Prepare Your Agent
 
-1.  **Navigate to your `echo-agent` directory:**
+1.  **Navigate to your `adk-training` directory:**
 
-    Open your terminal and make sure you are inside the `echo-agent` directory you created in the previous lab.
+    Open your terminal and make sure you are inside the `adk-training` directory that contains your `echo-agent` project.
 
     ```shell
-    cd /path/to/your/adk-training/echo-agent
+    cd /path/to/your/adk-training
     ```
 
 2.  **Ensure your virtual environment is active:**
 
     If you see `(.venv)` at the start of your prompt, you're all set. If not, activate it:
 
-    *   **macOS / Linux:** `source ../.venv/bin/activate`
-    *   **Windows:** `..\.venv\Scripts\activate.bat`
+    *   **macOS / Linux:** `source .venv/bin/activate`
+    *   **Windows:** `.venv\Scripts\activate.bat`
 
 ### Step 2: Modify the Agent's Instructions
 
@@ -31,7 +31,7 @@ This is where the magic happens. We will change the agent from a simple repeater
 
 1.  **Open the `root_agent.yaml` file:**
 
-    Open the configuration file in your favorite text editor. It should currently look like this:
+    Navigate into the `echo-agent` directory and open the configuration file in your favorite text editor. It should currently look like this:
 
     ```yaml
     # ...
@@ -73,10 +73,10 @@ This is where the magic happens. We will change the agent from a simple repeater
 
 1.  **Start the web server:**
 
-    From inside the `echo-agent` directory, run the `adk web` command as before.
+    From your `adk-training` directory, run the `adk web` command, specifying the agent to run.
 
     ```shell
-    adk web
+    adk web echo-agent
     ```
 
 2.  **Interact with Captain Coder:**
@@ -89,6 +89,14 @@ This is where the magic happens. We will change the agent from a simple repeater
         *   "I need to go to the grocery store."
         *   "Can you help me with my homework?" (Notice how it follows the constraint to only translate, not help).
         *   "That's a cool trick."
+
+### Challenge Yourself
+
+Now that you've seen how to change the agent's persona, try creating a new one!
+1.  Stop the `adk web` server (`Ctrl+C`).
+2.  Open `root_agent.yaml` again.
+3.  Change the `instruction` to create a completely different character. How about a formal Shakespearean poet, a futuristic robot, or a pessimistic philosopher?
+4.  Relaunch the server and test your new creation!
 
 ### Lab Summary
 

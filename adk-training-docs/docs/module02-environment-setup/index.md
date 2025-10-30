@@ -1,4 +1,13 @@
 ---
+id: module02-overview
+title: "Module 2: Environment Setup"
+description: "Learn how to set up a clean Python virtual environment and authenticate with Google Cloud to start building AI agents."
+sidebar_label: "02: Overview"
+sidebar_position: 1
+keywords: ["Python", "virtual environment", "venv", "gcloud", "authentication"]
+image: /img/docusaurus-social-card.jpg
+---
+---
 sidebar_position: 1
 ---
 # Module 2: Setting Up Your Development Environment
