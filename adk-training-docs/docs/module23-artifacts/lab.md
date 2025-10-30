@@ -1,4 +1,7 @@
 ---
+sidebar_position: 2
+---
+---
 # Module 21: Handling Files with Artifacts
 
 # Lab 23: Solution

@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 ## Module 30: Building a Custom Streaming Client
 
 # Lab 30: Solution

@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 27: Advanced Observability with Plugins
 
 # Lab 25: Solution

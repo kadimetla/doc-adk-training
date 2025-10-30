@@ -1,4 +1,7 @@
 ---
+sidebar_position: 2
+---
+---
 # Module 13: Integrating Third-Party Tools
 
 # Lab 14: Solution

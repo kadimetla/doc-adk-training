@@ -1,4 +1,7 @@
 ---
+sidebar_position: 2
+---
+---
 # Module 8: Creating Custom Function Tools
 
 # Lab 9: Solution

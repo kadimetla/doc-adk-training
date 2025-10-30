@@ -1,4 +1,7 @@
 ---
+sidebar_position: 2
+---
+---
 # Module 7: Introduction to Tools
 
 # Lab 8: Solution

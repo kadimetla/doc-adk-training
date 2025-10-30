@@ -1,4 +1,7 @@
 ---
+sidebar_position: 2
+---
+---
 # Module 3: Your First Agent: The "Echo" Agent
 
 # Lab 3: Exercise

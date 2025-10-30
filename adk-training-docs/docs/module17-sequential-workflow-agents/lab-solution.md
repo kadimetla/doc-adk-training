@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 16: Building Agent Pipelines with SequentialAgent
 
 # Lab 17: Solution

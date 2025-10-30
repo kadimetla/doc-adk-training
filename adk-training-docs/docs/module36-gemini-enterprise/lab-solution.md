@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 ## Module 36: Gemini Enterprise
 
 # Lab 36: Solution

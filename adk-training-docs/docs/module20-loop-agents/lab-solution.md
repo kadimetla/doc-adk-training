@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Module 19: Iterative Refinement with Loop Agents
 
 # Lab 20: Solution
