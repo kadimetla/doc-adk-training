@@ -1,6 +1,6 @@
-# Module 29: Introduction to MCP & Stateful Tools
+# Module 27: Introduction to MCP & Stateful Tools
 
-## Lab 29: Solution
+## Lab 27: Solution
 
 This file contains the complete code for the `agent.py` script in the Stateful File System Tool lab.
 
@@ -20,7 +20,7 @@ TARGET_FOLDER_PATH = os.path.abspath("./test_files")
 
 # -- Agent Definition --
 root_agent = LlmAgent(
-    model='gemini-1.5-flash',
+    model='gemini-2.5-flash',
     name='filesystem_agent',
     instruction='You are a helpful assistant that can interact with a user\'s local file system. You can list files and read their content.',
     tools=[

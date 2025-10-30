@@ -1,6 +1,6 @@
-# Module 30: Building a Custom MCP Tool
+# Module 28: Building a Custom MCP Tool
 
-## Lab 30: Building a "Shopping Cart" MCP Server
+## Lab 28: Building a "Shopping Cart" MCP Server
 
 ### Goal
 
@@ -32,7 +32,12 @@ from mcp.server.lowlevel import Server
 from mcp.server.models import InitializationOptions
 import mcp.server.stdio
 
+# --- Server State ---
+# In a real application, this would be a database. For this lab, a simple
+# in-memory dictionary is enough to demonstrate statefulness.
 SESSION_CARTS = {}
+
+# --- MCP Server Setup ---
 app = Server("shopping_cart_mcp_server")
 
 @app.list_tools()
@@ -75,10 +80,15 @@ async def call_mcp_tool(name: str, arguments: dict, session_id: str) -> list[mcp
 # --- MCP Server Runner (Provided for you) ---
 async def run_mcp_stdio_server():
     async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):
-        await app.run(read_stream, write_stream, InitializationOptions(server_name=app.name))
+        print("[Server]: Waiting for a client to connect...")
+        await app.run(read_stream, write_stream, InitializationOptions(server_name=app.name, server_version="0.1.0"))
 
 if __name__ == "__main__":
-    asyncio.run(run_mcp_stdio_server())
+    print("[Server]: Starting Shopping Cart MCP Server...")
+    try:
+        asyncio.run(run_mcp_stdio_server())
+    except KeyboardInterrupt:
+        print("\n[Server]: Shutting down.")
 ```
 
 ### Step 3: Create the ADK Client Agent
@@ -95,7 +105,7 @@ from mcp import StdioServerParameters
 PATH_TO_SERVER = os.path.abspath("./cart_server.py")
 
 root_agent = LlmAgent(
-    model='gemini-1.5-flash',
+    model='gemini-2.5-flash',
     name='shopping_agent',
     instruction='You are a shopping assistant. Help the user by adding items to their cart and showing them their cart contents.',
     tools=[
@@ -110,11 +120,11 @@ root_agent = LlmAgent(
     ],
 )
 ```
-Also create an empty `__init__.py` and a `.env` file.
+Also create an empty `__init__.py` and a `.env` file with `MODEL="gemini-2.5-flash"`.
 
 ### Step 4: Test the Full System
 
-1.  **Start the ADK web server:** `adk web`
+1.  **Start the ADK web server:** `adk web shopping-agent`
 2.  **Check the console logs:** You should see logs from your `cart_server.py` as it starts up.
 3.  **Interact with the agent** in the Dev UI:
     *   "Please add 'milk' to my cart."

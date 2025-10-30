@@ -1,6 +1,6 @@
-# Module 36: Best Practices & Production Patterns
+# Module 38: Best Practices & Production Patterns
 
-## Lab 36: Solution
+## Lab 38: Solution
 
 This file contains the complete code for the `agent.py` script in the Best Practices Agent lab.
 
@@ -79,7 +79,7 @@ def cache_operation_tool(item_id: str) -> dict:
 # --- Agent Definition ---
 
 root_agent = Agent(
-    model='gemini-1.5-flash',
+    model='gemini-2.5-flash',
     name='best_practices_agent',
     instruction="""
 You are an agent that demonstrates production best practices.

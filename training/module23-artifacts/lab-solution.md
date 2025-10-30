@@ -1,6 +1,6 @@
-# Module 21: Handling Files with Artifacts
+# Module 23: Handling Files with Artifacts
 
-## Lab 21: Solution
+## Lab 23: Solution
 
 This file contains the complete, simplified code for the `agent.py` script in the Document Processing Pipeline lab.
 
@@ -75,7 +75,7 @@ async def create_report(document_name: str, tool_context: ToolContext) -> str:
 # ============================================================================ 
 
 root_agent = Agent(
-    model='gemini-1.5-flash',
+    model='gemini-2.5-flash',
     name='document_processor',
     instruction="""
 You are a document processing pipeline agent. Your job is to take a document name

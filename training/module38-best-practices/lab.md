@@ -1,6 +1,6 @@
-# Module 36: Best Practices & Production Patterns
+# Module 38: Best Practices & Production Patterns
 
-## Lab 36: Building a Production-Ready Agent
+## Lab 38: Building a Production-Ready Agent
 
 ### Goal
 
@@ -33,6 +33,7 @@ from retry import retry
 
 from google.adk.agents import Agent
 from google.adk.tools import FunctionTool
+from google.adk.tools.tool_context import ToolContext # Import ToolContext
 
 # --- 1. Input Validation with Pydantic ---
 
@@ -44,14 +45,20 @@ class ValidatedInput(BaseModel):
 # TODO: 1. Implement this tool. Inside a try/except block, attempt to
 # instantiate the `ValidatedInput` model with the provided `user_id` and `query`.
 # Return a success dictionary if it validates, or an error dictionary if it fails.
-def validate_input_tool(user_id: str, query: str) -> dict:
+def validate_input_tool(user_id: str, query: str, tool_context: ToolContext) -> dict:
     """Validates user_id and query using a Pydantic model."""
-    pass
+    try:
+        ValidatedInput(user_id=user_id, query=query)
+        return {"status": "success", "message": "Input is valid."}
+    except ValueError as e:
+        return {"status": "error", "message": f"Invalid input: {e}"}
 
 # --- 2. Resilience with Retries and Exponential Backoff ---
 
 # TODO: 2. Apply the `@retry` decorator to this function. Configure it to
 # try 4 times with a delay that doubles, starting at 1 second.
+# Note: `logger=None` prevents duplicate logging if a root logger is already configured.
+@retry(tries=4, delay=1, backoff=2, logger=None)
 def _flaky_api_call():
     """Simulates an API call that might fail."""
     print("Attempting to call the flaky API...")
@@ -61,7 +68,7 @@ def _flaky_api_call():
     print("API call succeeded!")
     return {"status": "success", "data": "Successfully retrieved data."}
 
-def retry_with_backoff_tool() -> dict:
+def retry_with_backoff_tool(tool_context: ToolContext) -> dict:
     """Calls an external service that might fail intermittently."""
     try:
         return _flaky_api_call()
@@ -72,6 +79,8 @@ def retry_with_backoff_tool() -> dict:
 
 # TODO: 3. Apply the `@functools.lru_cache` decorator to this function
 # to cache its results. Set a maxsize of 128.
+# Note: `lru_cache` is a built-in Python decorator for memoization.
+@functools.lru_cache(maxsize=128)
 def _slow_database_query(item_id: str) -> str:
     """Simulates a slow database query that takes 2 seconds."""
     print(f"Performing slow query for item: {item_id}...")
@@ -79,7 +88,7 @@ def _slow_database_query(item_id: str) -> str:
     print("Query complete.")
     return f"Data for {item_id}"
 
-def cache_operation_tool(item_id: str) -> dict:
+def cache_operation_tool(item_id: str, tool_context: ToolContext) -> dict:
     """Fetches data from a slow database with caching."""
     result = _slow_database_query(item_id)
     return {"status": "success", "data": result}
@@ -89,7 +98,20 @@ def cache_operation_tool(item_id: str) -> dict:
 # TODO: 4. Define the `root_agent`. Give it an instruction to use the
 # appropriate tool based on the user's request and register your three
 # new tools with it.
-root_agent = None
+root_agent = Agent(
+    model='gemini-2.5-flash',
+    name='best_practices_agent',
+    instruction="""
+You are an agent that demonstrates production best practices.
+You have tools for validation, resilience, and performance.
+Use the appropriate tool based on the user's request.
+""",
+    tools=[
+        FunctionTool(validate_input_tool),
+        FunctionTool(retry_with_backoff_tool),
+        FunctionTool(cache_operation_tool),
+    ]
+)
 ```
 
 ### Step 3: Run and Test the Agent
@@ -98,7 +120,10 @@ root_agent = None
     ```shell
     pip install pydantic retry
     ```
-2.  **Set up your `.env` file** and start the Dev UI: `adk web`
+2.  **Set up your `.env` file** and start the Dev UI:
+    ```shell
+    adk web best-practices-agent
+    ```
 3.  **Interact with the Agent and Observe the Patterns:**
     *   **Test Caching:**
         *   "Fetch item `item-123`" (will be slow)

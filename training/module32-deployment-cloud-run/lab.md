@@ -1,6 +1,6 @@
-# Module 25: Deployment to Cloud Run
+# Module 32: Deployment to Cloud Run
 
-## Lab 25: Deploying the Customer Support Agent
+## Lab 32: Deploying the Customer Support Agent
 
 ### Goal
 
@@ -11,6 +11,15 @@ In this lab, you will take the multi-agent customer support system you built in 
 *   A Google Cloud Project with billing enabled.
 *   You have completed Module 2 and have the Google Cloud CLI installed and authenticated (`gcloud auth login` and `gcloud auth application-default login`).
 *   You have been granted the `Owner` or `Editor` IAM role in your GCP project, which is necessary for the deployment command to enable APIs and set permissions.
+*   **Required APIs:** Ensure the following APIs are enabled in your project:
+    *   Cloud Run API
+    *   Cloud Build API
+    *   Artifact Registry API
+    *   Vertex AI API
+*   **Set GCP Project:** Before starting, ensure your `gcloud` CLI is configured to the correct project:
+    ```shell
+    gcloud config set project YOUR_PROJECT_ID
+    ```
 
 ### Step 1: Prepare Your Project for Deployment
 
@@ -41,7 +50,7 @@ The `adk deploy cloud_run` command is a powerful tool that automates most of the
     *   **`billing_agent.yaml`:**
         ```yaml
         name: billing_agent
-        model: gemini-1.5-flash
+        model: gemini-2.5-flash
         description: "Handles questions about billing, invoices, and payments."
         instruction: "You are a billing support agent. Politely answer questions about billing and payment issues."
         ```
@@ -49,7 +58,7 @@ The `adk deploy cloud_run` command is a powerful tool that automates most of the
     *   **`tech_support_agent.yaml`:**
         ```yaml
         name: tech_support_agent
-        model: gemini-1.5-flash
+        model: gemini-2.5-flash
         description: "Handles technical support questions and troubleshooting."
         instruction: "You are a technical support agent. Help users troubleshoot technical issues and provide clear solutions."
         ```
@@ -57,7 +66,7 @@ The `adk deploy cloud_run` command is a powerful tool that automates most of the
     *   **`root_agent.yaml`:**
         ```yaml
         name: router_agent
-        model: gemini-1.5-flash
+        model: gemini-2.5-flash
         description: "The main customer support router."
         instruction: |
           You are the customer support router.

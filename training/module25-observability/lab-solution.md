@@ -1,6 +1,6 @@
-# Module 27: Advanced Observability with Plugins
+# Module 25: Advanced Observability with Plugins
 
-## Lab 27: Solution
+## Lab 25: Solution
 
 This file contains the complete code for the `agent.py` script in the Observability System with Plugins lab.
 
@@ -120,7 +120,7 @@ class PerformanceProfilerPlugin(BasePlugin):
 # --- Agent Definition ---
 
 root_agent = Agent(
-    model='gemini-1.5-flash',
+    model='gemini-2.5-flash',
     name='observability_agent',
     instruction="You are a helpful assistant. Your responses are being monitored for quality and performance.",
 )
@@ -144,7 +144,9 @@ def main():
     )
     
     # The `adk web` command will automatically discover this runner
-    # and use it, enabling all the plugins.
+    # and use it, enabling all the plugins. When `adk web` starts, it looks
+    # for a `main()` function in your `agent.py` to allow for this kind of
+    # custom runner configuration.
     print("Runner with observability plugins is configured.")
     print("Run `adk web` and interact with the agent to see plugin output in the console.")
 

@@ -1,6 +1,6 @@
-# Module 27: Advanced Observability with Plugins
+# Module 25: Advanced Observability with Plugins
 
-## Lab 27: Building an Observability System with Plugins
+## Lab 25: Building an Observability System with Plugins
 
 ### Goal
 
@@ -95,7 +95,7 @@ class PerformanceProfilerPlugin(BasePlugin):
 
 # --- Agent Definition (Provided for you) ---
 root_agent = Agent(
-    model='gemini-1.5-flash',
+    model='gemini-2.5-flash',
     name='observability_agent',
     instruction="You are a helpful assistant.",
 )
@@ -108,8 +108,12 @@ def main():
     # TODO: 6. Create an InMemoryRunner and pass your plugins
     # to its `plugins` list.
     
+    # The `adk web` command will automatically discover this runner and use it,
+    # enabling all the plugins. When `adk web` starts, it looks for a `main()`
+    # function in your `agent.py` to allow for this kind of custom runner
+    # configuration.
     print("Runner with observability plugins is configured.")
-    print("Run `adk web` and interact with the agent to see plugin output in the console.")
+    print("Run `adk web observability-agent` from the parent directory and interact with the agent to see plugin output in the console.")
 
 if __name__ == "__main__":
     main()

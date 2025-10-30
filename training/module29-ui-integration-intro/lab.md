@@ -1,6 +1,6 @@
-# Module 38: Introduction to UI Integration
+# Module 29: Introduction to UI Integration
 
-## Lab 38: Building a Simple Custom Chat UI
+## Lab 29: Building a Simple Custom Chat UI
 
 ### Goal
 
@@ -21,7 +21,7 @@ In this lab, you will build a simple, standalone HTML file with JavaScript that 
     from google.adk.agents import Agent
 
     root_agent = Agent(
-        model="gemini-1.5-flash",
+        model="gemini-2.5-flash",
         name="ui_agent",
         instruction="You are a helpful and friendly assistant.",
     )
@@ -62,6 +62,8 @@ In this lab, you will build a simple, standalone HTML file with JavaScript that 
         const chatContainer = document.getElementById('chat-container');
         const inputForm = document.getElementById('input-form');
         const messageInput = document.getElementById('message-input');
+        // This is a simple client-side session ID for the lab.
+        // In a real app, you would manage this more robustly.
         const sessionId = `session-${Date.now()}`;
 
         inputForm.addEventListener('submit', async (e) => {
@@ -75,14 +77,21 @@ In this lab, you will build a simple, standalone HTML file with JavaScript that 
             try {
                 // TODO: 1. Use the `fetch` API to make a POST request to the
                 // ADK's `/run_sse` endpoint (http://localhost:8080/run_sse).
-                // - Set the method, headers, and construct the JSON body with the
-                //   app_name, session_id, and the user's query.
                 const response = await fetch('http://localhost:8080/run_sse', {
-                    // Your fetch options here
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        app_name: "ui-agent",
+                        session_id: sessionId,
+                        new_message: {
+                            role: "user",
+                            parts: [{ "text": query }]
+                        }
+                    })
                 });
 
                 // TODO: 2. Get the `reader` from the response body to process the stream.
-                const reader = null; // Replace null
+                const reader = response.body.getReader();
                 const decoder = new TextDecoder();
                 let fullResponse = '';
 
@@ -113,7 +122,8 @@ In this lab, you will build a simple, standalone HTML file with JavaScript that 
 
 ### Step 3: Run the Full-Stack Application
 
-1.  **Terminal 1 (Agent Server):** In the `ui-agent` directory, run `adk api_server`.
+1.  **Terminal 1 (Agent Server):** In the `ui-agent` directory, run `adk api_server ui-agent`.
+    *   **Note on CORS:** The ADK API server automatically handles Cross-Origin Resource Sharing (CORS), allowing your web page on port 8081 to make requests to your agent on port 8080.
 2.  **Terminal 2 (Client Server):** In the same directory, run `python3 -m http.server 8081`.
 
 ### Step 4: Test Your Custom UI

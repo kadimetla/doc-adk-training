@@ -1,12 +1,27 @@
-# Module 31: Deploying an MCP Server to Cloud Run
+# Module 34: Deploying an MCP Server to Cloud Run
 
-## Lab 31: Deploying the "Shopping Cart" Server
+## Lab 34: Deploying the "Shopping Cart" Server
 
 ### Goal
 
 In this lab, you will take the "Shopping Cart" MCP server from Module 30, re-architect it to be stateless, containerize it with a `Dockerfile`, and deploy it to Google Cloud Run. You will then configure an ADK agent to connect to this live, cloud-hosted tool.
 
 **Note:** This is an advanced lab. For simplicity, we will simulate an external state store with a file written to a temporary directory. In a real production system, you would replace this with a connection to a service like Redis or Memorystore.
+
+### Prerequisites
+
+*   A Google Cloud Project with billing enabled.
+*   Google Cloud CLI installed and authenticated.
+*   Docker running on your local machine.
+*   **Required APIs:** Ensure the following APIs are enabled in your project:
+    *   Cloud Run API
+    *   Cloud Build API
+    *   Artifact Registry API
+    *   Vertex AI API
+*   **Set GCP Project:** Before starting, ensure your `gcloud` CLI is configured to the correct project:
+    ```shell
+    gcloud config set project YOUR_PROJECT_ID
+    ```
 
 ### Step 1: Create the Stateless MCP Server
 
@@ -33,8 +48,9 @@ We need to modify our server so it doesn't store the shopping carts in memory.
     import mcp.server.http_stream
 
     # --- Configuration ---
-    # In a serverless environment, we can use the temporary filesystem.
-    # In a real app, this would be a Redis/database connection string.
+    # In a serverless environment, we can use the temporary filesystem for a simple demo.
+    # In a real production system, this would be a connection to a dedicated external
+    # persistence service like Redis or Memorystore.
     STATE_STORAGE_PATH = "/tmp/carts"
     if not os.path.exists(STATE_STORAGE_PATH):
         os.makedirs(STATE_STORAGE_PATH)
@@ -150,13 +166,13 @@ Now, create an ADK agent that connects to your newly deployed server.
     # Filename: agent.py
     from google.adk.agents import LlmAgent
     from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset
-    from mcp import StreamableHTTPConnectionParams
+    from mcp import StreamableHTTPConnectionParams # Import this for remote connections
 
     # The URL of your deployed MCP server
     MCP_SERVER_URL = "YOUR_CLOUD_RUN_SERVICE_URL"
 
     root_agent = LlmAgent(
-        model='gemini-1.5-flash',
+        model='gemini-2.5-flash',
         name='cloud_shopping_agent',
         instruction='You are a shopping assistant. Help the user by adding items to their cart and showing them their cart contents.',
         tools=[
@@ -169,15 +185,20 @@ Now, create an ADK agent that connects to your newly deployed server.
         ],
     )
     ```
-3.  **Create `__init__.py` and `.env` files** as in previous labs.
+3.  **Create `__init__.py` and `.env` files:**
+    Create an empty `__init__.py` file in the `cloud-mcp-server` directory.
+    Create a `.env` file in the `cloud-mcp-server` directory with the following content:
+    ```
+    MODEL="gemini-2.5-flash"
+    ```
 
 ### Step 5: Test the Full Cloud-Based System
 
 1.  **Start the ADK web server locally:**
-    This will run your *client* agent.
+    This will run your *client* agent from the parent directory.
 
     ```shell
-    adk web
+    adk web cloud_shopping_agent
     ```
 
 2.  **Interact with the agent:**
@@ -194,3 +215,27 @@ You have learned to:
 *   Containerize a Python application with a `Dockerfile`.
 *   Deploy a custom server to Google Cloud Run.
 *   Configure the `MCPToolset` to connect to a remote HTTP-based MCP server using `StreamableHTTPConnectionParams`.
+
+### Cleanup (Important!)
+
+Cloud Run services and Artifact Registry repositories can incur costs if left running. It is crucial to delete the resources you created after completing the lab.
+
+1.  **Delete the Cloud Run Service:**
+    ```shell
+    gcloud run services delete mcp-cart-server \
+        --region=$GOOGLE_CLOUD_LOCATION \
+        --async # Runs in background
+    ```
+
+2.  **Delete the Artifact Registry Repository:**
+    ```shell
+    gcloud artifacts repositories delete adk-images \
+        --location=$GOOGLE_CLOUD_LOCATION \
+        --async # Runs in background
+    ```
+
+3.  **Delete the `cloud-mcp-server` directory:**
+    ```shell
+    cd ..
+    rm -rf cloud-mcp-server
+    ```

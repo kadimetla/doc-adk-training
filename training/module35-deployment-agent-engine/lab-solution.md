@@ -1,6 +1,6 @@
-# Module 34: Deploying to Agent Engine
+# Module 35: Deploying to Agent Engine
 
-## Lab 34: Solution
+## Lab 35: Solution
 
 This lab is a procedural tutorial. The solution for both parts is a successfully deployed Agent Engine instance.
 
@@ -20,6 +20,77 @@ After running `gcloud builds submit --config=cloudbuild.yaml`, a successful Clou
 ### Part 2: Standard Deployment Solution
 
 This section contains the complete code for the `deploy.py` and `interact.py` scripts used in the manual deployment part of the lab.
+
+#### `calculator/agent.py`
+
+```python
+# Filename: calculator/agent.py
+from google.adk.agents import Agent
+
+def add(a: int, b: int) -> dict:
+    """
+    Adds two numbers together.
+    Use this tool when the user asks to find the sum of two numbers.
+    Args:
+        a: The first number.
+        b: The second number.
+    """
+    result = a + b
+    return {"status": "success", "result": result}
+
+def subtract(a: int, b: int) -> dict:
+    """
+    Subtracts the second number from the first number.
+    Use this tool when the user asks to find the difference between two numbers.
+    Args:
+        a: The first number.
+        b: The second number to subtract.
+    """
+    result = a - b
+    return {"status": "success", "result": result}
+
+def multiply(a: int, b: int) -> dict:
+    """
+    Multiplies two numbers together.
+    Use this tool when the user asks to find the product of two numbers.
+    Args:
+        a: The first number.
+        b: The second number.
+    """
+    result = a * b
+    return {"status": "success", "result": result}
+
+def divide(a: int, b: int) -> dict:
+    """
+    Divides the first number by the second number.
+    Use this tool when the user asks to divide one number by another.
+    Args:
+        a: The numerator.
+        b: The denominator.
+    """
+    if b == 0:
+        return {"status": "error", "message": "Cannot divide by zero."}
+    result = a / b
+    return {"status": "success", "result": result}
+
+root_agent = Agent(
+    model="gemini-2.5-flash",
+    name="calculator_agent",
+    description="An agent that can perform basic arithmetic calculations.",
+    instruction=(
+        "You are a helpful calculator assistant.\n"
+        "When the user asks you to perform a calculation (add, subtract, multiply, or divide), you MUST use the appropriate tool.\n"
+        "Clearly state the result of the calculation to the user.\n"
+        "If the user asks a question that is not a calculation, politely state that you can only perform math."
+    ),
+    tools=[
+        add,
+        subtract,
+        multiply,
+        divide
+    ]
+)
+```
 
 #### `deployment/deploy.py`
 
