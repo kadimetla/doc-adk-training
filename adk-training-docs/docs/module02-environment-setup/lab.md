@@ -1,6 +1,8 @@
 ---
 sidebar_position: 2
 ---
+sidebar_position: 2
+---
 # Lab 2: Environment Setup Challenge
 
 ## Goal

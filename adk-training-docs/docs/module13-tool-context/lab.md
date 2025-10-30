@@ -1,4 +1,6 @@
 ---
+sidebar_position: 2
+---
 ---
 # Module 12: Advanced Tool Concepts: Tool Context
 

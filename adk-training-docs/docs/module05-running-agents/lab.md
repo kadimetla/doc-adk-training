@@ -1,4 +1,6 @@
 ---
+sidebar_position: 2
+---
 ---
 # Module 5: Running and Interacting with Agents
 
@@ -95,7 +97,7 @@ Finally, let's run the agent as a background service that other applications cou
 4.  **Stop the API server:**
     Go back to the first terminal where the `api_server` is running and press `Ctrl+C`.
 
-## Lab Summary
+# Lab Summary
 
 You have now mastered the three ways to run an ADK agent:
 

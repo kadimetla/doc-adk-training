@@ -1,4 +1,6 @@
 ---
+sidebar_position: 2
+---
 ---
 # Module 8: Creating Custom Function Tools
 
@@ -139,7 +141,7 @@ You will build an agent that can perform basic arithmetic by creating your own c
     *   "What is 10 divided by 0?"
     *   "What is the capital of France?" (Should be gracefully declined).
 
-## Lab Summary
+# Lab Summary
 
 You have successfully built an agent with custom capabilities, learning to:
 *   Organize tool code into a separate Python module.

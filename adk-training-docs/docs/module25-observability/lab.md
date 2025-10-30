@@ -1,4 +1,6 @@
 ---
+sidebar_position: 2
+---
 ---
 # Module 27: Advanced Observability with Plugins
 

@@ -1,4 +1,6 @@
 ---
+sidebar_position: 2
+---
 ---
 # Module 23: Evaluating Agent Performance
 

@@ -1,4 +1,6 @@
 ---
+sidebar_position: 2
+---
 ---
 # Module 17: Multi-Agent Systems - Complex Orchestration
 
