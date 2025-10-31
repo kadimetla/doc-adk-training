@@ -116,44 +116,90 @@ This training course was inspired by the structure and content of the original A
 
 ## Detailed Time Estimation per Module (Minutes)
 
-| Module | Core Activity (Theory/Lab) | Estimated Complexity | Self-Service (SS) Duration (min) | ILC (Instructor-Led) Duration (min) |
-| :--- | :--- | :--- | :--- | :--- |
-| Module 01 | Theory: 13 min / Lab: 15 min | Low | 35 | 55 |
-| Module 02 | Theory: 7 min / Lab: 24 min | Medium | 40 | 60 |
-| Module 03 | Theory: 12 min / Lab: 16 min | Low | 35 | 55 |
-| Module 04 | Theory: 13 min / Lab: 12 min | Low | 30 | 50 |
-| Module 05 | Theory: 8 min / Lab: 16 min | Medium | 30 | 50 |
-| Module 06 | Theory: 13 min / Lab: 15 min | Medium | 35 | 55 |
-| Module 07 | Theory: 12 min / Lab: 20 min | High | 40 | 60 |
-| Module 08 | Theory: 8 min / Lab: 20 min | Medium | 35 | 55 |
-| Module 09 | Theory: 14 min / Lab: 20 min | High | 45 | 70 |
-| Module 10 | Theory: 13 min / Lab: 20 min | High | 40 | 65 |
-| Module 11 | Theory: 12 min / Lab: 15 min | High | 35 | 55 |
-| Module 12 | Theory: 7 min / Lab: 15 min | Medium | 30 | 45 |
-| Module 13 | Theory: 13 min / Lab: 20 min | High | 40 | 65 |
-| Module 14 | Theory: 8 min / Lab: 15 min | Medium | 30 | 40 |
-| Module 15 | Theory: 8 min / Lab: 5 min | Low | 15 | 30 |
-| Module 16 | Theory: 14 min / Lab: 16 min | Medium | 40 | 60 |
-| Module 17 | Theory: 7 min / Lab: 15 min | Medium | 30 | 45 |
-| Module 18 | Theory: 12 min / Lab: 20 min | High | 40 | 65 |
-| Module 19 | Theory: 12 min / Lab: 25 min | High | 45 | 75 |
-| Module 20 | Theory: 13 min / Lab: 20 min | High | 40 | 65 |
-| Module 21 | Theory: 14 min / Lab: 25 min | High | 50 | 70 |
-| Module 22 | Theory: 7 min / Lab: 20 min | High | 35 | 55 |
-| Module 23 | Theory: 13 min / Lab: 20 min | High | 40 | 65 |
-| Module 24 | Theory: 15 min / Lab: 24 min | Medium | 50 | 75 |
-| Module 25 | Theory: 7 min / Lab: 20 min | High | 35 | 55 |
-| Module 26 | Theory: 8 min / Lab: 25 min | High | 40 | 65 |
-| Module 27 | Theory: 8 min / Lab: 25 min | High | 40 | 65 |
-| Module 28 | Theory: 8 min / Lab: 25 min | High | 40 | 65 |
-| Module 29 | Theory: 7 min / Lab: 20 min | High | 35 | 55 |
-| Module 30 | Theory: 9 min / Lab: 25 min | High | 45 | 65 |
-| Module 31 | Theory: 8 min / Lab: 3 min | Low | 15 | 25 |
-| Module 32 | Theory: 8 min / Lab: 20 min | High | 35 | 50 |
-| Module 33 | Theory: 9 min / Lab: 40 min | High | 60 | 95 |
-| Module 34 | Theory: 14 min / Lab: 40 min | High | 70 | 105 |
-| Module 35 | Theory: 7 min / Lab: 40 min | High | 60 | 90 |
-| Module 36 | Theory: 8 min / Lab: 3 min | Low | 15 | 25 |
-| Module 37 | Theory: 8 min / Lab: 60 min | High | 85 | 120 |
-| Module 38 | Theory: 8 min / Lab: 20 min | High | 35 | 50 |
-| **TOTAL** | | | **21.5 Hours** | **40.5 Hours** |
+### 🧑‍💻 Self-Service (SS) Detailed Timetable
+
+| Module | Core Activity (Theory/Lab) | Estimated Complexity | Duration (min) |
+| :--- | :--- | :--- | :--- |
+| Module 01 | Theory: 13 min / Lab: 15 min | Low | 35 |
+| Module 02 | Theory: 7 min / Lab: 24 min | Medium | 40 |
+| Module 03 | Theory: 12 min / Lab: 16 min | Low | 35 |
+| Module 04 | Theory: 13 min / Lab: 12 min | Low | 30 |
+| Module 05 | Theory: 8 min / Lab: 16 min | Medium | 30 |
+| Module 06 | Theory: 13 min / Lab: 15 min | Medium | 35 |
+| Module 07 | Theory: 12 min / Lab: 20 min | High | 40 |
+| Module 08 | Theory: 8 min / Lab: 20 min | Medium | 35 |
+| Module 09 | Theory: 14 min / Lab: 20 min | High | 45 |
+| Module 10 | Theory: 13 min / Lab: 20 min | High | 40 |
+| Module 11 | Theory: 12 min / Lab: 15 min | High | 35 |
+| Module 12 | Theory: 7 min / Lab: 15 min | Medium | 30 |
+| Module 13 | Theory: 13 min / Lab: 20 min | High | 40 |
+| Module 14 | Theory: 8 min / Lab: 15 min | Medium | 30 |
+| Module 15 | Theory: 8 min / Lab: 5 min | Low | 15 |
+| Module 16 | Theory: 14 min / Lab: 16 min | Medium | 40 |
+| Module 17 | Theory: 7 min / Lab: 15 min | Medium | 30 |
+| Module 18 | Theory: 12 min / Lab: 20 min | High | 40 |
+| Module 19 | Theory: 12 min / Lab: 25 min | High | 45 |
+| Module 20 | Theory: 13 min / Lab: 20 min | High | 40 |
+| Module 21 | Theory: 14 min / Lab: 25 min | High | 50 |
+| Module 22 | Theory: 7 min / Lab: 20 min | High | 35 |
+| Module 23 | Theory: 13 min / Lab: 20 min | High | 40 |
+| Module 24 | Theory: 15 min / Lab: 24 min | Medium | 50 |
+| Module 25 | Theory: 7 min / Lab: 20 min | High | 35 |
+| Module 26 | Theory: 8 min / Lab: 25 min | High | 40 |
+| Module 27 | Theory: 8 min / Lab: 25 min | High | 40 |
+| Module 28 | Theory: 8 min / Lab: 25 min | High | 40 |
+| Module 29 | Theory: 7 min / Lab: 20 min | High | 35 |
+| Module 30 | Theory: 9 min / Lab: 25 min | High | 45 |
+| Module 31 | Theory: 8 min / Lab: 3 min | Low | 15 |
+| Module 32 | Theory: 8 min / Lab: 20 min | High | 35 |
+| Module 33 | Theory: 9 min / Lab: 40 min | High | 60 |
+| Module 34 | Theory: 14 min / Lab: 40 min | High | 70 |
+| Module 35 | Theory: 7 min / Lab: 40 min | High | 60 |
+| Module 36 | Theory: 8 min / Lab: 3 min | Low | 15 |
+| Module 37 | Theory: 8 min / Lab: 60 min | High | 85 |
+| Module 38 | Theory: 8 min / Lab: 20 min | High | 35 |
+| **TOTAL** | | | **21.5 Hours** |
+
+### 👨‍🏫 Instructor-Led Classroom (ILC) Detailed Timetable
+
+| Module | Core Activity (Theory/Lab) | Estimated Complexity | Duration (min) |
+| :--- | :--- | :--- | :--- |
+| Module 01 | Theory: 13 min / Lab: 15 min | Low | 55 |
+| Module 02 | Theory: 7 min / Lab: 24 min | Medium | 60 |
+| Module 03 | Theory: 12 min / Lab: 16 min | Low | 55 |
+| Module 04 | Theory: 13 min / Lab: 12 min | Low | 50 |
+| Module 05 | Theory: 8 min / Lab: 16 min | Medium | 50 |
+| Module 06 | Theory: 13 min / Lab: 15 min | Medium | 55 |
+| Module 07 | Theory: 12 min / Lab: 20 min | High | 60 |
+| Module 08 | Theory: 8 min / Lab: 20 min | Medium | 55 |
+| Module 09 | Theory: 14 min / Lab: 20 min | High | 70 |
+| Module 10 | Theory: 13 min / Lab: 20 min | High | 65 |
+| Module 11 | Theory: 12 min / Lab: 15 min | High | 55 |
+| Module 12 | Theory: 7 min / Lab: 15 min | Medium | 45 |
+| Module 13 | Theory: 13 min / Lab: 20 min | High | 65 |
+| Module 14 | Theory: 8 min / Lab: 15 min | Medium | 40 |
+| Module 15 | Theory: 8 min / Lab: 5 min | Low | 30 |
+| Module 16 | Theory: 14 min / Lab: 16 min | Medium | 60 |
+| Module 17 | Theory: 7 min / Lab: 15 min | Medium | 45 |
+| Module 18 | Theory: 12 min / Lab: 20 min | High | 65 |
+| Module 19 | Theory: 12 min / Lab: 25 min | High | 75 |
+| Module 20 | Theory: 13 min / Lab: 20 min | High | 65 |
+| Module 21 | Theory: 14 min / Lab: 25 min | High | 70 |
+| Module 22 | Theory: 7 min / Lab: 20 min | High | 55 |
+| Module 23 | Theory: 13 min / Lab: 20 min | High | 65 |
+| Module 24 | Theory: 15 min / Lab: 24 min | Medium | 75 |
+| Module 25 | Theory: 7 min / Lab: 20 min | High | 55 |
+| Module 26 | Theory: 8 min / Lab: 25 min | High | 65 |
+| Module 27 | Theory: 8 min / Lab: 25 min | High | 65 |
+| Module 28 | Theory: 8 min / Lab: 25 min | High | 65 |
+| Module 29 | Theory: 7 min / Lab: 20 min | High | 55 |
+| Module 30 | Theory: 9 min / Lab: 25 min | High | 65 |
+| Module 31 | Theory: 8 min / Lab: 3 min | Low | 25 |
+| Module 32 | Theory: 8 min / Lab: 20 min | High | 50 |
+| Module 33 | Theory: 9 min / Lab: 40 min | High | 95 |
+| Module 34 | Theory: 14 min / Lab: 40 min | High | 105 |
+| Module 35 | Theory: 7 min / Lab: 40 min | High | 90 |
+| Module 36 | Theory: 8 min / Lab: 3 min | Low | 25 |
+| Module 37 | Theory: 8 min / Lab: 60 min | High | 120 |
+| Module 38 | Theory: 8 min / Lab: 20 min | High | 50 |
+| **TOTAL** | | | **40.5 Hours** |
