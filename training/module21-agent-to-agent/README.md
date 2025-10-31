@@ -52,6 +52,8 @@ A key part of the A2A protocol is the **Agent Card**. This is a JSON file that a
   "authentication": { "type": "none" }
 }
 ```
+> **Note on Authentication:** In a production environment, the `"authentication"` field in the Agent Card would typically specify more robust security mechanisms, such as OAuth2 flows or API Key requirements, rather than `"type": "none"`. The ADK is designed to integrate with these standard security protocols, which is crucial for securing distributed agent systems.
+
 An orchestrator agent uses this card to discover the specialist and understand how to interact with it.
 
 ### A2A in the ADK

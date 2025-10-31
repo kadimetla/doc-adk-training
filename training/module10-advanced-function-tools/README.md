@@ -23,6 +23,8 @@ This provides a significant performance benefit. The total time to get a respons
 
 As your tools become more complex, it's important to make them robust.
 
+> **Note on Type Hints:** You might see `from __future__ import annotations` at the top of Python files in more advanced examples. This is a best practice for handling type hints in Python, especially when dealing with forward references (types that are defined later in the code) or complex type structures. It allows for more flexible and robust type annotations.
+
 #### 1. Input Validation
 Never assume the LLM will provide perfect inputs. Your tool function should be the last line of defense. Validate the arguments you receive to prevent errors.
 

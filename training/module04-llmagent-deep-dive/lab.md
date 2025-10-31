@@ -12,6 +12,7 @@ Your task is to transform the "Echo" agent into a "Pirate Translator" agent by o
     *   Include at least two examples (few-shot prompts) in your instruction to guide the agent.
 3.  Return to the parent `adk-training` directory.
 4.  Run the agent using the `adk web echo-agent` command.
+    > **Note:** The `echo-agent` argument in the command refers to the name of the folder containing your `root_agent.yaml` file, not the `name` field inside the YAML file.
 5.  Interact with the agent in the Dev UI to verify that it correctly translates your messages into pirate-speak.
 
 ### Self-Reflection Questions

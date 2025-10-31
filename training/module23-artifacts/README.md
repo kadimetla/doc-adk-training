@@ -58,6 +58,7 @@ artifact_service = GcsArtifactService(bucket_name='your-gcs-bucket')
 runner = Runner(
     agent=root_agent,
     artifact_service=artifact_service
+    # Other services (session, memory) can also be configured here
 )
 ```
 
@@ -81,5 +82,7 @@ This system uses a more complex `AuthConfig` object and is designed for producti
 ### Key Takeaways
 - The ADK's **Artifacts** system provides persistent, versioned file storage for agents.
 - Artifacts are essential for tasks that require creating and managing files like reports, data, or images.
+- **Versioning and Auditability:** The automatic versioning of artifacts is crucial for production environments. It provides a complete audit trail, allowing you to trace changes, debug errors by reverting to previous states, and ensure compliance by having a verifiable history of all generated files.
 - You must configure an `artifact_service` in your `Runner`, using `InMemoryArtifactService` for development and `GcsArtifactService` for production.
 - Tools interact with artifacts asynchronously using the `ToolContext`, with methods like `save_artifact`, `load_artifact`, and `list_artifacts`.
+- **Asynchronous Operations:** All interactions with the Artifact Service (e.g., `save_artifact`, `load_artifact`) are asynchronous (`async`). This is because file I/O operations, especially with cloud storage services like GCS, can be time-consuming. Using `async` ensures that the main Python thread remains non-blocking, allowing the agent to handle other tasks or requests concurrently while waiting for file operations to complete.

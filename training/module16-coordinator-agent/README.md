@@ -68,6 +68,8 @@ This instruction, combined with the sub-agents' descriptions, gives the LLM all 
 
 When the coordinator's LLM decides to delegate, it invokes a special built-in function called `transfer_to_agent`, specifying the `name` of the target agent. The ADK framework intercepts this and automatically transfers control of the conversation to the chosen sub-agent. The sub-agent then takes over and responds to the user directly.
 
+> **Note on `transfer_to_agent`:** While it acts as a delegation mechanism, `transfer_to_agent` is internally treated as a special kind of built-in tool. The LLM implicitly "calls" this tool when its reasoning, based on the coordinator's instruction and sub-agent descriptions, leads it to delegate. This connects the multi-agent delegation pattern directly to the Function Calling mechanism you learned in earlier modules.
+
 In the following lab, you will implement the "Greeting Router" you designed in the previous module, putting all these concepts into practice.
 
 ### Key Takeaways

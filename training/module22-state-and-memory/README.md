@@ -19,6 +19,8 @@ The agent's **scratchpad**—a key-value dictionary for conversation-level data.
 | `app:`  | All users/sessions      | Persistent               | `state['app:course_catalog'] = [...]` - Global settings      |
 | `temp:` | Current invocation only | **Never persisted**      | `state['temp:quiz_score'] = 85` - Temporary calculations     |
 
+> **Note on `temp:` State Visibility:** Although `temp:` state is never persisted beyond the current invocation, it is fully visible within the Event Stream and the Dev UI's Trace View during the agent's execution. This makes it a valuable tool for debugging intermediate calculations or temporary data flow within a single turn, even if the data is discarded afterwards.
+
 **Key Points**:
 
 - `temp:` state is **discarded** after the current turn completes.

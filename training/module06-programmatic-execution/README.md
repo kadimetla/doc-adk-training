@@ -30,6 +30,16 @@ The entire process is asynchronous. When you call `runner.run_async()`, you don'
 
 Your application code will typically use an `async for` loop to iterate through these events and decide how to handle them. For a simple chatbot, you might just print the text from the final `'model'` response event. For a more complex application, you might inspect `'tool'` events to show a spinner in the UI while a tool is running.
 
+To better visualize this flow, consider the following conceptual diagram:
+
+$$\text{User Query} \xrightarrow{\text{Runner}} \text{Agent} \xrightarrow{\text{LLM/Tools}} \text{Event Stream} \xrightarrow{\text{App Logic}} \text{Response}$$
+
+This highlights the Runner's central role as the orchestrator. For a more detailed visual explanation, refer to these diagrams:
+
+![Event Loop Diagram](img/event-loop.png)
+
+![Invocation Flow Diagram](img/invocation-flow.png)
+
 By managing these components yourself, you gain the power to embed your ADK agent into any Python application, from a simple command-line interface to a complex, scalable web service.
 
 ### Key Takeaways

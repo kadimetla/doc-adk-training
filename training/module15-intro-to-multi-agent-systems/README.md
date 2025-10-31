@@ -36,6 +36,9 @@ The most fundamental concept is the parent-child relationship. You can define a 
 #### 2. **LLM-Driven Delegation (Agent Transfer)**
 This is the most dynamic form of collaboration. A parent `LlmAgent` can be instructed to analyze a user's request and then **transfer** control of the conversation to the most appropriate `sub_agent`.
 
+> **Analogy: The Call Transfer**
+> Think of Agent Transfer like a call transfer at a switchboard. The initial receptionist (the router agent) understands your need and connects you to the right department (the specialist agent). Once the call is transferred, the receptionist is no longer part of that conversation; the specialist now has direct control and continues the interaction with you.
+
 For this to work:
 *   The parent agent needs a clear `instruction` on how to route tasks.
 *   Each sub-agent needs a good `description` of its capabilities so the parent agent's LLM can make an informed choice.

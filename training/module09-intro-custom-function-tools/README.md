@@ -78,3 +78,4 @@ In the lab for this module, you will put all these principles into practice by b
 - The ADK automatically generates a tool schema from your function's signature (name, parameters, type hints) and its docstring.
 - A well-defined tool function must have a descriptive name, clear type hints for all parameters, and a detailed docstring explaining its purpose and usage.
 - All custom tool functions must return a dictionary.
+- **Note on Programmatic Tools:** While this module uses string references in YAML for tool names (e.g., `tools.calculator.add`), when defining agents programmatically in Python, you would explicitly import and register these functions as Python objects (e.g., `from .tools.calculator import add, subtract`). This highlights that tools are, at their core, Python functions.

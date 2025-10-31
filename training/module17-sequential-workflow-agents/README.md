@@ -28,3 +28,4 @@ The `SequentialAgent` is a **Workflow Agent**, meaning it is not powered by an L
 - It is ideal for building multi-step pipelines where each step depends on the previous one.
 - Data is passed between agents in the sequence using the shared session state.
 - An agent's `output_key` is used to save its result to the state, and the next agent can read it using `{key}` syntax in its prompt.
+- **Advanced Level - Code Organization:** For larger Python-based multi-agent systems, it's a best practice to define your specialist sub-agents in separate Python modules (e.g., `specialists.py`) and then import them into your main `agent.py` file. This improves modularity and keeps your main pipeline definition clean.

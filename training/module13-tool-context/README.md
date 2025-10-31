@@ -45,6 +45,8 @@ This is the most common use case. The `tool_context.state` attribute gives your 
     ```python
     tool_context.state['last_order_id'] = 'XYZ-123'
     ```
+> **Note on State Scope:** The `tool_context.state` directly accesses the state specific to the *current session*. While not explicitly covered in this module, the ADK also supports broader state scopes, such as `user:*` (for user-specific, cross-session state) and `app:*` (for global application-level state). Understanding this distinction is key for designing more persistent and scalable agent memory.
+
 This turns your stateless functions into stateful tools that can participate in building up a shared understanding of the conversation.
 
 #### 2. **Flow Control (`tool_context.actions`)**
