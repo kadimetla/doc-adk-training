@@ -18,13 +18,6 @@ Please be aware that this training course is in its early stages of development.
 
 We are working hard to refine and expand the material, but you may encounter typos, errors, or incomplete sections. Your feedback and contributions are highly encouraged! If you find an issue or have a suggestion, please [open an issue on GitHub](https://github.com/mauripsale/doc-adk-training/issues).
 
-## 📚 Course Variants
-
-While this repository contains the full, comprehensive "From Zero to Hero" track, we also offer shorter, focused delivery variants for different training needs:
-
-*   **[Variant A: 1-Day Workshop (ILC)](./variant-a-1-day-workshop.md)**: A high-impact, 6-hour workshop focused on building your first tool-powered agent.
-*   **[Variant B: Standard 2-Day ILT](./variant-b-2-day-ilt.md)**: A comprehensive 2-day course covering all foundational and key intermediate skills.
-
 ## ⏱️ Time Estimation
 
 This comprehensive training course is designed for both self-service and instructor-led delivery. The estimates below provide a realistic guide for pacing, considering the technical depth and hands-on nature of the labs.
@@ -32,12 +25,9 @@ This comprehensive training course is designed for both self-service and instruc
 *   🧑‍💻 **Self-Service (SS) Duration:** This estimate reflects the time a motivated individual learner would take to read the theory, complete the labs, and account for a 25% troubleshooting/review factor.
 *   👨‍🏫 **Instructor-Led Training (ILT) Duration:** This estimate is tailored for a classroom environment (up to 16 participants) with a net delivery time of 6 hours per day. It includes a 75% buffer for instructor guidance, Q&A, and assisting students during labs, plus a 5-minute transition buffer between modules.
 
-### Overall Pacing Assessment
-The course is substantial, suitable for a 3-day intensive self-service format or a full 7-day instructor-led training session. The modules are well-structured, progressing from foundational concepts to advanced, real-world deployment scenarios. The complexity ramps up significantly in the later modules, particularly those involving multi-agent systems and cloud deployment.
-Legend: 
-🧑‍💻 Self-Service (SS)
-👨‍🏫 Instructor-led Training (ILT)
 ---
+
+## ⏱️ Course Outline
 
 ### 🌱 Part 1: Foundations (Modules 1-7)
 This part covers the absolute basics of AI agents and the ADK, getting your environment set up and guiding you through building and running your first agents, including multimodal capabilities.
@@ -106,6 +96,21 @@ Apply everything you've learned in a final capstone project and review the essen
 *   ✨ **[Module 38: Best Practices](./training/module38-best-practices/)** (🧑‍💻 35 min / 👨‍🏫 50 min)
 
 ---
+## Detailed Timetables
+
+For a detailed breakdown of the time required for each module, please see the following timetables:
+
+*   **[🧑‍💻 Self-Service (SS) Detailed Timetable](./timetable-self-service.md)**
+*   **[👨‍🏫 Instructor-Led Classroom (ILC) Detailed Timetable](./timetable-ilt.md)**
+
+---
+## 📚 Course Variants
+
+While this repository contains the full, comprehensive "From Zero to Hero" track, we also offer shorter, focused delivery variants for different training needs:
+
+*   **[Variant A: 1-Day Workshop (ILC)](./variant-a-1-day-workshop.md)**: A high-impact, 6-hour workshop focused on building your first tool-powered agent.
+*   **[Variant B: Standard 2-Day ILT](./variant-b-2-day-ilt.md)**: A comprehensive 2-day course covering all foundational and key intermediate skills.
+---
 
 ## ▶️ Getting Started
 
@@ -139,12 +144,3 @@ Software components, such as the code in the `sample-agents` directory, are lice
 ## 🙏 Acknowledgements
 
 This training course was inspired by the structure and content of the original ADK Training Hub created by Raphael Mansuy. While all content has been originally rewritten and adapted, we gratefully acknowledge his foundational work.
-
----
-
-## Detailed Timetables
-
-For a detailed breakdown of the time required for each module, please see the following timetables:
-
-*   **[🧑‍💻 Self-Service (SS) Detailed Timetable](./timetable-self-service.md)**
-*   **[👨‍🏫 Instructor-Led Classroom (ILC) Detailed Timetable](./timetable-ilt.md)**
