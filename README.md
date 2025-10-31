@@ -12,11 +12,18 @@ This course was created and is maintained by **Maurizio Ipsale**, a Google Autho
 
 ## 🚧 Project Status 🚧
 
-**Current Version:** `v0.1.0`
+**Current Version:** `v0.2.0`
 
 Please be aware that this training course is in its early stages of development. As a "version zero" project, the content is subject to significant changes, additions, and refactoring.
 
 We are working hard to refine and expand the material, but you may encounter typos, errors, or incomplete sections. Your feedback and contributions are highly encouraged! If you find an issue or have a suggestion, please [open an issue on GitHub](https://github.com/mauripsale/doc-adk-training/issues).
+
+## 📚 Course Variants
+
+While this repository contains the full, comprehensive "From Zero to Hero" track, we also offer shorter, focused delivery variants for different training needs:
+
+*   **[Variant A: 1-Day Workshop (ILC)](./variant-a-1-day-workshop.md)**: A high-impact, 6-hour workshop focused on building your first tool-powered agent.
+*   **[Variant B: Standard 2-Day ILT](./variant-b-2-day-ilt.md)**: A comprehensive 2-day course covering all foundational and key intermediate skills.
 
 ## ⏱️ Time Estimation
 
@@ -27,7 +34,9 @@ This comprehensive training course is designed for both self-service and instruc
 
 ### Overall Pacing Assessment
 The course is substantial, suitable for a 3-day intensive self-service format or a full 7-day instructor-led training session. The modules are well-structured, progressing from foundational concepts to advanced, real-world deployment scenarios. The complexity ramps up significantly in the later modules, particularly those involving multi-agent systems and cloud deployment.
-
+Legend: 
+🧑‍💻 Self-Service (SS)
+👨‍🏫 Instructor-led Training (ILT)
 ---
 
 ### 🌱 Part 1: Foundations (Modules 1-7)
@@ -100,7 +109,24 @@ Apply everything you've learned in a final capstone project and review the essen
 
 ## ▶️ Getting Started
 
-To get started with the course, begin with **Module 1** and proceed through the modules in order. Each lab builds upon the concepts and code from the previous one. Happy building!
+Before you begin, please ensure you have the following prerequisites installed:
+*   Git
+*   Python 3.11+
+*   A Google Cloud Project with billing enabled
+*   The Google Cloud CLI (`gcloud`)
+
+To get started with the course:
+1.  **Clone the repository:** `git clone https://github.com/mauripsale/doc-adk-training.git`
+2.  **Navigate to the directory:** `cd training`
+3.  **Begin with Module 1** and proceed through the modules in order. Each lab builds upon the concepts and code from the previous one.
+
+Happy building!
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! If you find an issue, have a suggestion for a new module, or want to improve the existing content, please see our **[Contributing Guidelines](./CONTRIBUTING.md)** to get started.
 
 ---
 
@@ -114,92 +140,11 @@ Software components, such as the code in the `sample-agents` directory, are lice
 
 This training course was inspired by the structure and content of the original ADK Training Hub created by Raphael Mansuy. While all content has been originally rewritten and adapted, we gratefully acknowledge his foundational work.
 
-## Detailed Time Estimation per Module (Minutes)
+---
 
-### 🧑‍💻 Self-Service (SS) Detailed Timetable
+## Detailed Timetables
 
-| Module | Core Activity (Theory/Lab) | Estimated Complexity | Duration (min) |
-| :--- | :--- | :--- | :--- |
-| Module 01 | Theory: 13 min / Lab: 15 min | Low | 35 |
-| Module 02 | Theory: 7 min / Lab: 24 min | Medium | 40 |
-| Module 03 | Theory: 12 min / Lab: 16 min | Low | 35 |
-| Module 04 | Theory: 13 min / Lab: 12 min | Low | 30 |
-| Module 05 | Theory: 8 min / Lab: 16 min | Medium | 30 |
-| Module 06 | Theory: 13 min / Lab: 15 min | Medium | 35 |
-| Module 07 | Theory: 12 min / Lab: 20 min | High | 40 |
-| Module 08 | Theory: 8 min / Lab: 20 min | Medium | 35 |
-| Module 09 | Theory: 14 min / Lab: 20 min | High | 45 |
-| Module 10 | Theory: 13 min / Lab: 20 min | High | 40 |
-| Module 11 | Theory: 12 min / Lab: 15 min | High | 35 |
-| Module 12 | Theory: 7 min / Lab: 15 min | Medium | 30 |
-| Module 13 | Theory: 13 min / Lab: 20 min | High | 40 |
-| Module 14 | Theory: 8 min / Lab: 15 min | Medium | 30 |
-| Module 15 | Theory: 8 min / Lab: 5 min | Low | 15 |
-| Module 16 | Theory: 14 min / Lab: 16 min | Medium | 40 |
-| Module 17 | Theory: 7 min / Lab: 15 min | Medium | 30 |
-| Module 18 | Theory: 12 min / Lab: 20 min | High | 40 |
-| Module 19 | Theory: 12 min / Lab: 25 min | High | 45 |
-| Module 20 | Theory: 13 min / Lab: 20 min | High | 40 |
-| Module 21 | Theory: 14 min / Lab: 25 min | High | 50 |
-| Module 22 | Theory: 7 min / Lab: 20 min | High | 35 |
-| Module 23 | Theory: 13 min / Lab: 20 min | High | 40 |
-| Module 24 | Theory: 15 min / Lab: 24 min | Medium | 50 |
-| Module 25 | Theory: 7 min / Lab: 20 min | High | 35 |
-| Module 26 | Theory: 8 min / Lab: 25 min | High | 40 |
-| Module 27 | Theory: 8 min / Lab: 25 min | High | 40 |
-| Module 28 | Theory: 8 min / Lab: 25 min | High | 40 |
-| Module 29 | Theory: 7 min / Lab: 20 min | High | 35 |
-| Module 30 | Theory: 9 min / Lab: 25 min | High | 45 |
-| Module 31 | Theory: 8 min / Lab: 3 min | Low | 15 |
-| Module 32 | Theory: 8 min / Lab: 20 min | High | 35 |
-| Module 33 | Theory: 9 min / Lab: 40 min | High | 60 |
-| Module 34 | Theory: 14 min / Lab: 40 min | High | 70 |
-| Module 35 | Theory: 7 min / Lab: 40 min | High | 60 |
-| Module 36 | Theory: 8 min / Lab: 3 min | Low | 15 |
-| Module 37 | Theory: 8 min / Lab: 60 min | High | 85 |
-| Module 38 | Theory: 8 min / Lab: 20 min | High | 35 |
-| **TOTAL** | | | **21.5 Hours** |
+For a detailed breakdown of the time required for each module, please see the following timetables:
 
-### 👨‍🏫 Instructor-Led Classroom (ILC) Detailed Timetable
-
-| Module | Core Activity (Theory/Lab) | Estimated Complexity | Duration (min) |
-| :--- | :--- | :--- | :--- |
-| Module 01 | Theory: 13 min / Lab: 15 min | Low | 55 |
-| Module 02 | Theory: 7 min / Lab: 24 min | Medium | 60 |
-| Module 03 | Theory: 12 min / Lab: 16 min | Low | 55 |
-| Module 04 | Theory: 13 min / Lab: 12 min | Low | 50 |
-| Module 05 | Theory: 8 min / Lab: 16 min | Medium | 50 |
-| Module 06 | Theory: 13 min / Lab: 15 min | Medium | 55 |
-| Module 07 | Theory: 12 min / Lab: 20 min | High | 60 |
-| Module 08 | Theory: 8 min / Lab: 20 min | Medium | 55 |
-| Module 09 | Theory: 14 min / Lab: 20 min | High | 70 |
-| Module 10 | Theory: 13 min / Lab: 20 min | High | 65 |
-| Module 11 | Theory: 12 min / Lab: 15 min | High | 55 |
-| Module 12 | Theory: 7 min / Lab: 15 min | Medium | 45 |
-| Module 13 | Theory: 13 min / Lab: 20 min | High | 65 |
-| Module 14 | Theory: 8 min / Lab: 15 min | Medium | 40 |
-| Module 15 | Theory: 8 min / Lab: 5 min | Low | 30 |
-| Module 16 | Theory: 14 min / Lab: 16 min | Medium | 60 |
-| Module 17 | Theory: 7 min / Lab: 15 min | Medium | 45 |
-| Module 18 | Theory: 12 min / Lab: 20 min | High | 65 |
-| Module 19 | Theory: 12 min / Lab: 25 min | High | 75 |
-| Module 20 | Theory: 13 min / Lab: 20 min | High | 65 |
-| Module 21 | Theory: 14 min / Lab: 25 min | High | 70 |
-| Module 22 | Theory: 7 min / Lab: 20 min | High | 55 |
-| Module 23 | Theory: 13 min / Lab: 20 min | High | 65 |
-| Module 24 | Theory: 15 min / Lab: 24 min | Medium | 75 |
-| Module 25 | Theory: 7 min / Lab: 20 min | High | 55 |
-| Module 26 | Theory: 8 min / Lab: 25 min | High | 65 |
-| Module 27 | Theory: 8 min / Lab: 25 min | High | 65 |
-| Module 28 | Theory: 8 min / Lab: 25 min | High | 65 |
-| Module 29 | Theory: 7 min / Lab: 20 min | High | 55 |
-| Module 30 | Theory: 9 min / Lab: 25 min | High | 65 |
-| Module 31 | Theory: 8 min / Lab: 3 min | Low | 25 |
-| Module 32 | Theory: 8 min / Lab: 20 min | High | 50 |
-| Module 33 | Theory: 9 min / Lab: 40 min | High | 95 |
-| Module 34 | Theory: 14 min / Lab: 40 min | High | 105 |
-| Module 35 | Theory: 7 min / Lab: 40 min | High | 90 |
-| Module 36 | Theory: 8 min / Lab: 3 min | Low | 25 |
-| Module 37 | Theory: 8 min / Lab: 60 min | High | 120 |
-| Module 38 | Theory: 8 min / Lab: 20 min | High | 50 |
-| **TOTAL** | | | **40.5 Hours** |
+*   **[🧑‍💻 Self-Service (SS) Detailed Timetable](./timetable-self-service.md)**
+*   **[👨‍🏫 Instructor-Led Classroom (ILC) Detailed Timetable](./timetable-ilt.md)**
