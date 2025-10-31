@@ -74,3 +74,8 @@ You have now practiced applying a strategic framework to real-world deployment d
 *   Understand the specific use cases for Cloud Run, Agent Engine, GKE, and custom server deployments.
 
 Check the `lab-solution.md` to see the recommended answers for each scenario.
+
+### Self-Reflection Questions
+- For the Startup MVP, what are the potential downsides of choosing Cloud Run? At what point might they need to consider migrating to a different platform like GKE?
+- Why is a "platform-first" security model, where you rely on the deployment environment for features like authentication and DDoS protection, generally a better approach than trying to build these features into your agent application code?
+- If a new compliance requirement (e.g., PCI for handling credit card data) was introduced, how would that influence your choice of deployment platform?

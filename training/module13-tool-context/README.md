@@ -70,3 +70,10 @@ if uploaded_file:
 ```
 
 By leveraging the `ToolContext`, you can elevate your custom functions from simple calculators to powerful, context-aware components that are deeply integrated into the agent's lifecycle. In the following lab, you will use the `tool_context.state` to create a tool that can remember information across turns.
+
+### Key Takeaways
+- The `ToolContext` object gives your custom tools "situational awareness" by providing access to the agent's runtime environment.
+- To use it, add a `tool_context: ToolContext` parameter to your tool function's signature.
+- `tool_context.state` allows your tool to read from and write to the current session's state, enabling stateful operations.
+- `tool_context.actions` allows your tool to influence the agent's workflow, such as by transferring to another agent.
+- `tool_context.load_artifact` allows your tool to access user-uploaded files.

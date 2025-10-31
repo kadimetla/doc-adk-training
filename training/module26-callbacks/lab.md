@@ -310,3 +310,8 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+### Self-Reflection Questions
+- What is the key difference between a callback and a plugin in the ADK? When would you choose one over the other?
+- The `before_model_callback` returns a `GenerateContentResponse` to block an inappropriate prompt. Why is it important to return a specific object type here instead of just a string or a dictionary?
+- How does using callbacks for guardrails and validation make an agent more reliable and safer to deploy in a production environment?

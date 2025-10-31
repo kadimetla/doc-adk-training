@@ -185,3 +185,8 @@ You have learned to:
 *   Run an evaluation and interpret the "Pass/Fail" results.
 *   Analyze the detailed scores for tool trajectory and response matching.
 *   Understand how evaluations help you catch regressions in your agent's behavior.
+
+### Self-Reflection Questions
+- Why is testing the `tool_trajectory` often more important for ensuring an agent's correctness than just testing its final text response?
+- The `response_match_score` is not a simple "equals" check. Why is this fuzzy matching necessary for evaluating LLM-generated text?
+- How could you integrate the `adk eval` command into a CI/CD pipeline (like GitHub Actions) to automatically test your agent every time you push new code?

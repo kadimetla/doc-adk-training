@@ -45,3 +45,8 @@ Congratulations, you've completed your first lab! You now know:
 *   Where to look for community support and project updates.
 
 In the next module, you will use this knowledge to set up your own local development environment and prepare for building your first agent.
+
+### Self-Reflection Questions
+- Why is it important to have official documentation and code examples for a framework like the ADK?
+- Based on the file names in the `examples` directory, what are some of the advanced capabilities you think the ADK might have?
+- How can community support channels like GitHub Issues and Discussions accelerate your learning process?

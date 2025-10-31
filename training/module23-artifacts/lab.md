@@ -120,3 +120,8 @@ You have successfully built a multi-step document processing agent that uses art
 *   Use `await tool_context.save_artifact()` to create versioned files.
 *   Use `await tool_context.load_artifact()` to read previously created files.
 *   Chain tools together to create a pipeline where the output of one step is the input to the next.
+
+### Self-Reflection Questions
+- Why is the versioning feature of the Artifacts system important for audibility and debugging in a production environment?
+- All the tool functions in this lab are `async`. Why is this a requirement for functions that interact with the Artifact Service?
+- The lab uses an `InMemoryArtifactService`. What changes would you need to make to the `Runner` configuration to use the persistent `GcsArtifactService` in a production deployment?

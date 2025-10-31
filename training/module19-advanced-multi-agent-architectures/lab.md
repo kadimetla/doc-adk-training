@@ -155,3 +155,8 @@ You have successfully built and orchestrated a complex, production-quality multi
 *   How to nest `SequentialAgent` workflows inside a `ParallelAgent`.
 *   How to combine parallel and sequential patterns to create a fan-out/gather architecture.
 *   How to analyze the execution of a complex, nested trace in the Dev UI.
+
+### Self-Reflection Questions
+- In this architecture, a single `GoogleSearchAgentTool` instance is shared across multiple agents. What are the benefits of this approach compared to each agent creating its own instance?
+- The final output of this system is a fully formatted article. How could you modify the system to produce a different type of output, such as a slide presentation or a podcast script, while reusing the parallel research phase?
+- This system is fully automated. Where would be the most logical place to insert a human-in-the-loop step if you wanted a person to approve the research before the `article_writer` begins its work?

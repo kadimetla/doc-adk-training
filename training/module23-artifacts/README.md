@@ -1,4 +1,4 @@
-# Module 21: Handling Files with Artifacts
+# Module 23: Handling Files with Artifacts
 
 ## Theory
 
@@ -77,3 +77,9 @@ While you can store simple secrets in the session state, the ADK provides a more
 *   **`await context.load_credential(auth_config)`**
 
 This system uses a more complex `AuthConfig` object and is designed for production scenarios requiring robust security. For many use cases, storing simple API keys in the `user:` or `app:` state is a sufficient and simpler alternative.
+
+### Key Takeaways
+- The ADK's **Artifacts** system provides persistent, versioned file storage for agents.
+- Artifacts are essential for tasks that require creating and managing files like reports, data, or images.
+- You must configure an `artifact_service` in your `Runner`, using `InMemoryArtifactService` for development and `GcsArtifactService` for production.
+- Tools interact with artifacts asynchronously using the `ToolContext`, with methods like `save_artifact`, `load_artifact`, and `list_artifacts`.

@@ -22,3 +22,9 @@ The `SequentialAgent` is a **Workflow Agent**, meaning it is not powered by an L
 *   When each step depends on the previous step's output.
 *   When you need predictable, deterministic execution.
 *   For building pipelines (e.g., ETL, content creation, review processes).
+
+### Key Takeaways
+- The `SequentialAgent` is a deterministic workflow agent that executes sub-agents in a fixed order.
+- It is ideal for building multi-step pipelines where each step depends on the previous one.
+- Data is passed between agents in the sequence using the shared session state.
+- An agent's `output_key` is used to save its result to the state, and the next agent can read it using `{key}` syntax in its prompt.

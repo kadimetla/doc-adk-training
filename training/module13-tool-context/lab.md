@@ -104,3 +104,8 @@ You have now created a tool with "memory"! You have learned to:
 *   Write data to the session `state` using `tool_context.state['key'] = value`.
 *   Read data from the session `state` using `tool_context.state.get('key')`.
 *   Build an agent that can carry information across multiple turns of a conversation.
+
+### Self-Reflection Questions
+- Why is it important that the `tool_context` parameter is *not* included in the function's docstring?
+- The `recall_name` function uses `tool_context.state.get('user_name')` instead of `tool_context.state['user_name']`. What is the difference, and why is `.get()` a safer choice here?
+- How could you extend this agent to forget a user's name? What would the new tool function look like?

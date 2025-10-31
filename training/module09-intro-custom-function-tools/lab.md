@@ -117,3 +117,8 @@ You have successfully built an agent with custom capabilities! You have learned 
 *   Write well-defined Python functions with type hints and docstrings to serve as tools.
 *   Reference and register your custom tools in the `root_agent.yaml` configuration.
 *   Write instructions that effectively guide the agent on how and when to use its new tools.
+
+### Self-Reflection Questions
+- The docstring for each function is critical. What do you think would happen if you removed the docstrings from your calculator functions? Would the agent still be able to use them?
+- Why is it a good practice to return a dictionary with a `status` key from a tool function, especially for operations that can fail (like division)?
+- How would you add a new tool to this agent, for example, a function to calculate the square root of a number? What steps would you need to take?

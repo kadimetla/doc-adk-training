@@ -34,3 +34,10 @@ The typical workflow is to build and test your agent locally using the ADK, and 
 ```
 
 By providing a clear separation between development (ADK) and operations (Gemini Enterprise), this model allows developers to focus on building great agent logic, while platform administrators can focus on ensuring security, compliance, and efficient operation at scale.
+
+### Key Takeaways
+- **Gemini Enterprise** is Google Cloud's managed platform for **operating** agents at an enterprise scale, while the **ADK** is the framework for **building** them.
+- It provides critical enterprise features like managed hosting, centralized governance (RBAC, audit logging), and compliance.
+- **Data Connectors** allow agents to be securely grounded in private enterprise data sources like Salesforce and SharePoint.
+- The **Agent Gallery** serves as an internal marketplace for discovering and sharing agents within an organization.
+- Gemini Enterprise also includes **pre-built Google agents** and a no-code **Agent Designer** for non-developers.

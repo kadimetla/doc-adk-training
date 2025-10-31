@@ -38,3 +38,9 @@ The ADK is flexible and supports several approaches for UI integration, each sui
 ```
 
 By using the AG-UI protocol and the associated libraries, you can quickly build a production-ready chat interface with minimal front-end code, as the pre-built components handle the complexities of state management and streaming.
+
+### Key Takeaways
+- Integrating an agent with a UI makes it accessible to a wider audience and enables richer interactions.
+- The ADK supports multiple UI integration strategies, including the official **AG-UI Protocol**, the native ADK API, direct Python integration, and messaging platforms.
+- The **AG-UI Protocol**, developed in partnership with CopilotKit, is the recommended approach for modern web applications, providing pre-built components for frameworks like React and Next.js.
+- For other frameworks or custom needs, you can use the ADK's native API server (`adk api_server`) and its `/run_sse` endpoint to build your own client.

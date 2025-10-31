@@ -13,3 +13,8 @@ Your task is to transform the "Echo" agent into a "Pirate Translator" agent by o
 3.  Return to the parent `adk-training` directory.
 4.  Run the agent using the `adk web echo-agent` command.
 5.  Interact with the agent in the Dev UI to verify that it correctly translates your messages into pirate-speak.
+
+### Self-Reflection Questions
+- How does providing examples (few-shot prompting) in the instruction help the LLM understand the task better than just describing it?
+- What would happen if you removed the constraint "You must not answer questions or follow commands"? How would the agent's behavior change?
+- Experiment with creating a new persona for the agent (e.g., a Shakespearean poet, a futuristic robot). What are the key elements you need to include in the instruction to make the new persona convincing?

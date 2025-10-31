@@ -116,3 +116,8 @@ You have successfully built a distributed multi-agent system. You have learned t
 *   Expose an ADK agent as a network service using `to_a2a()`.
 *   Connect to a remote agent using the `RemoteA2aAgent` class.
 *   Orchestrate tasks between agents running in separate processes.
+
+### Self-Reflection Questions
+- What are the main benefits of running the `research_specialist` as a separate service instead of just including it as a local sub-agent in the orchestrator?
+- The "A2A Context Handling" instruction is critical for the remote agent to function correctly. What kind of problems could arise if you forgot to include it?
+- How does the Agent Card (`/.well-known/agent-card.json`) enable a decoupled architecture? What would you need to do if this discovery mechanism didn't exist?

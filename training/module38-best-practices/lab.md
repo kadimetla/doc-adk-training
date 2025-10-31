@@ -141,3 +141,8 @@ You have successfully built an agent with tools that incorporate production-grad
 *   Use `Pydantic` for robust input validation.
 *   Implement automatic retries with `retry`.
 *   Use caching with `lru_cache` to improve performance.
+
+### Self-Reflection Questions
+- The `@lru_cache` decorator stores results in memory. What are the limitations of this caching strategy in a distributed, multi-instance deployment on a platform like Cloud Run? What would be a better solution for caching in that environment?
+- Our `_flaky_api_call` function simulates a network error. What other kinds of errors should a production-grade tool handle gracefully?
+- How does using a library like `Pydantic` for input validation make your tools more secure and reliable compared to writing manual `if/else` checks?

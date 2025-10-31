@@ -1,6 +1,6 @@
 # Module 1: Introduction to AI Agents
 
-![Introduction to AI Agents](../../nanobanana-output/a_futuristic_illustration_of_an_.png)
+![Introduction to AI Agents](img/module01-header.png)
 
 # Module 1: Introduction to AI Agents & Google ADK
 
@@ -44,3 +44,8 @@ The ADK is built on a philosophy of **modularity, flexibility, and scalability**
 *   **Deployment:** Tools to easily package and deploy your agent to scalable environments like Google Cloud Run and GKE, bridging the gap from development to production.
 
 In this course, you will learn how to master these concepts to build powerful and intelligent AI agents.
+
+### Key Takeaways
+- AI Agents are autonomous systems that can perceive, reason, plan, and act using tools.
+- The Google Agent Development Kit (ADK) is a framework for building, managing, and deploying sophisticated AI agents.
+- Core ADK concepts include Agents, Tools, Sessions, Memory, Runners, Evaluation, and Deployment.

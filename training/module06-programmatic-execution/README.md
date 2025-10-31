@@ -31,3 +31,10 @@ The entire process is asynchronous. When you call `runner.run_async()`, you don'
 Your application code will typically use an `async for` loop to iterate through these events and decide how to handle them. For a simple chatbot, you might just print the text from the final `'model'` response event. For a more complex application, you might inspect `'tool'` events to show a spinner in the UI while a tool is running.
 
 By managing these components yourself, you gain the power to embed your ADK agent into any Python application, from a simple command-line interface to a complex, scalable web service.
+
+### Key Takeaways
+- Programmatic execution gives you full control over the agent's lifecycle for integration into custom applications.
+- The `InMemoryRunner` is the engine that manages the agent's execution and event loop.
+- The `runner.session_service` is used to create and manage sessions for conversational context.
+- User messages must be packaged into structured `types.Content` and `types.Part` objects.
+- The `runner.run_async()` method returns an asynchronous stream of `Event` objects that you process in a loop.

@@ -112,3 +112,8 @@ You have learned to:
 *   Plan the file structure for a multi-agent project.
 
 In the next module, you will bring this design to life by implementing this Greeting Router system.
+
+### Self-Reflection Questions
+- What is the most important piece of information that allows the `router_agent` to decide which specialist to delegate to?
+- How would you extend this system to support a new language, like French? What new files or modifications would you need to make?
+- This lab uses LLM-driven delegation (agent transfer). What might be the advantages or disadvantages of this approach compared to the `router_agent` using an `AgentTool` to explicitly call the `spanish_greeter_agent`?

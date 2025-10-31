@@ -94,3 +94,8 @@ You have successfully built a deterministic, multi-agent pipeline. You have lear
 *   Configure a `SequentialAgent` to orchestrate multiple sub-agents.
 *   Understand how `output_key` and state variables (`{key}`) are used to pass data between agents in a sequence.
 *   Analyze the execution of a pipeline using the Trace and State views.
+
+### Self-Reflection Questions
+- The `SequentialAgent` is deterministic. What does this mean, and why is it a desirable property for a workflow like content creation?
+- What do you think would happen if you forgot to add the `output_key` to the `research_agent`? How would the `writer_agent` behave?
+- How could you modify this pipeline to include a human-in-the-loop? For example, what if you wanted a human to approve the `draft_post` before the `editor_agent` runs?

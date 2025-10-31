@@ -15,3 +15,8 @@ Your task is to run and interact with your "Pirate Translator" agent using the t
     *   Stop the command-line runner.
     *   Run your agent using the `adk api_server echo-agent` command.
     *   From a separate terminal, use `curl` to send a POST request to the `/run_sse` endpoint and verify that you get a valid response from the agent.
+
+### Self-Reflection Questions
+- In what scenarios would the detailed "Trace View" in `adk web` be more useful than the simple chat interface of `adk run`?
+- The `curl` command in the `adk api_server` section is a simple example of a programmatic client. What kind of real-world applications could you build that would interact with your agent's API in this way?
+- Why is it necessary to run the `adk api_server` and the `curl` command in two separate terminal windows? What does this separation represent in a real-world application architecture?

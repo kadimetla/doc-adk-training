@@ -57,3 +57,9 @@ return {
 }
 ```
 In the lab, you will implement these best practices and see parallel execution in action.
+
+### Key Takeaways
+- The ADK can automatically execute multiple, independent tool calls in parallel, significantly improving performance.
+- Robust tool functions should always perform their own input validation to prevent errors.
+- Tools should return structured error dictionaries to allow the agent to understand and report failures gracefully.
+- Providing a pre-formatted, human-readable `report` in a successful tool response makes the LLM's job easier and leads to better final answers.

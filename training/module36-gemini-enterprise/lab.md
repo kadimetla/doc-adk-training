@@ -72,3 +72,8 @@ You have learned to think about:
 *   Planning for monitoring, alerting, and cost management in a production environment.
 
 Check the `lab-solution.md` to see example answers for this exercise.
+
+### Self-Reflection Questions
+- Why is a centralized "Agent Gallery" a valuable feature for a large enterprise? What problems does it solve?
+- The "Agent Designer" is a no-code tool. What are the benefits of empowering non-developers to build their own simple agents, and what are the potential risks you would need to manage?
+- How does grounding an agent in a private, enterprise data source (like SharePoint) using a secure data connector mitigate the risk of the agent hallucinating or providing incorrect information?

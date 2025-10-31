@@ -146,3 +146,8 @@ You have learned to:
 *   Access and test your agent running live on a public URL.
 
 In the next module, you will learn about an alternative deployment target, Google Kubernetes Engine (GKE), for when you need more control over your agent's infrastructure.
+
+### Self-Reflection Questions
+- The `adk deploy cloud_run` command automates many steps. What are these steps, and what would you have to do manually if this command didn't exist?
+- We deployed with the `--with_ui` flag. In a real production scenario where your agent is being called by another application (not a human in a browser), why would you omit this flag?
+- Cloud Run can scale down to zero instances. What are the cost and performance implications of this feature for an agent that receives infrequent traffic?

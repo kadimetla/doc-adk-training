@@ -47,3 +47,9 @@ An agent can be wrapped in an `AgentTool`, which makes it look and feel like a r
 Agents in a system can communicate passively by reading and writing to the shared `session.state`. One agent can perform a task and save the result to the state, and a subsequent agent can then read that result to perform the next step in a process.
 
 In the upcoming modules, you will get hands-on experience with these patterns, starting with the most common one: building a coordinator agent that delegates tasks to a team of specialists.
+
+### Key Takeaways
+- Multi-Agent Systems (MAS) break down complex problems into smaller, specialized agents that collaborate.
+- This approach improves modularity, maintainability, reusability, and scalability compared to monolithic agents.
+- The ADK supports several collaboration patterns, including LLM-driven delegation (agent transfer), explicit invocation (`AgentTool`), and communication via shared state.
+- A clear hierarchy defined by `sub_agents` is the foundation for building multi-agent systems in the ADK.

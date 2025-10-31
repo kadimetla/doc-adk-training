@@ -29,3 +29,8 @@ The `google_maps_grounding` tool enables agents to answer location-based queries
 A current limitation of the ADK is that built-in tools (like `google_search`) cannot be directly combined with custom function tools in the same agent's `tools` list.
 
 To overcome this, the ADK provides the `GoogleSearchAgentTool`. This is a special wrapper that creates a sub-agent with the `google_search` tool and exposes that sub-agent as a regular `FunctionTool`. This allows you to build a primary agent that can use both your own custom tools and the powerful web search capabilities of the wrapped `google_search` agent.
+
+### Key Takeaways
+- Built-in tools like `google_search` allow agents to access real-time information from the web, overcoming the knowledge cutoff of the LLM.
+- These tools run within the model's environment, requiring no local code execution.
+- To combine built-in tools with your own custom function tools, you must use a wrapper like the `GoogleSearchAgentTool`.

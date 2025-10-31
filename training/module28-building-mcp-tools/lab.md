@@ -141,3 +141,8 @@ You have successfully built and consumed your own stateful MCP tool. You have le
 *   Implement the `@app.call_tool()` handler to provide tool logic.
 *   Manage state on the server side, tied to a `session_id`.
 *   Connect an ADK agent to your custom-built MCP server.
+
+### Self-Reflection Questions
+- In our `cart_server.py`, we used a global dictionary `SESSION_CARTS` to store the state. Why is this approach not suitable for a production environment with multiple server instances? What would be a better solution?
+- The `call_tool` handler receives a `session_id`. Why is this ID crucial for managing state in a multi-user environment?
+- By building an MCP server, you have decoupled your tool's logic from the agent. What are the long-term benefits of this separation for maintaining and scaling your application?

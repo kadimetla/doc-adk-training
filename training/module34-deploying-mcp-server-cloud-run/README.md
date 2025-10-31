@@ -67,3 +67,9 @@ You can implement HITL in the ADK using a `before_tool_callback`. This callback 
 1.  Check if the tool being called is on a list of "destructive" operations.
 2.  If it is, you can block the execution and return a message to the agent indicating that approval is required.
 3.  This allows a user in the UI (or an automated policy) to review the requested operation and approve or deny it before it runs.
+
+### Key Takeaways
+- Serverless platforms like Cloud Run are **stateless**, meaning in-memory state is lost between requests.
+- To deploy a stateful service (like an MCP server) to a stateless platform, you must **externalize the state** using a persistent storage service like Redis or Firestore.
+- When connecting an ADK agent to a remote MCP server, you must use a network-based connection type, such as `StreamableHTTPConnectionParams`.
+- For production, it is critical to secure your MCP server with authentication (e.g., OAuth2) and implement Human-in-the-Loop (HITL) workflows for destructive tools.

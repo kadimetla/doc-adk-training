@@ -72,3 +72,9 @@ def get_weather(city: str, is_forecast: bool) -> dict:
 The LLM will receive this dictionary and use its contents to formulate the final response to the user.
 
 In the lab for this module, you will put all these principles into practice by building a set of calculator functions and integrating them into a new "Calculator" agent.
+
+### Key Takeaways
+- Custom Function Tools allow you to connect your agent to any capability you can program in Python.
+- The ADK automatically generates a tool schema from your function's signature (name, parameters, type hints) and its docstring.
+- A well-defined tool function must have a descriptive name, clear type hints for all parameters, and a detailed docstring explaining its purpose and usage.
+- All custom tool functions must return a dictionary.

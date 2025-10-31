@@ -98,3 +98,8 @@ You have learned to:
 *   Package a user's message into the required `types.Content` and `types.Part` structure.
 *   Use `runner.run_async` to execute the agent and loop through the streamed `Event` objects to get the response.
 *   Structure the entire process within an `async` Python function.
+
+### Self-Reflection Questions
+- Why is programmatic execution necessary for integrating an agent into a larger application (like a web backend or a mobile app)?
+- What is the purpose of the `Session` object? What would happen if you created a new session for every single message from a user?
+- The `runner.run_async` method returns a stream of events. Besides the final answer, what other types of events might you want to handle in a more complex application? (Hint: Think about tools).

@@ -1,4 +1,4 @@
-# Module 20: State and Memory - Persistent Agent Context
+# Module 22: State and Memory - Persistent Agent Context
 
 ## Theory
 
@@ -40,3 +40,9 @@ The Memory Service provides **long-term, searchable memory** for your agent, lik
 2.  In a future session, an agent can query the memory service (e.g., "What did I learn about Python functions before?").
 3.  The service returns relevant excerpts from past conversations.
 4.  The agent uses this retrieved context to provide a more informed and personalized response.
+
+### Key Takeaways
+- The ADK provides both short-term **State** and long-term **Memory** for agents.
+- **Session State** is a key-value store with four scopes defined by prefixes: session (no prefix), `user:`, `app:`, and `temp:`.
+- `user:` and `app:` prefixes enable persistent memory across sessions, but require a persistent `SessionService` in production.
+- The **Memory Service** provides long-term, searchable storage for entire conversations, with `VertexAiMemoryBankService` offering powerful semantic search for production use.

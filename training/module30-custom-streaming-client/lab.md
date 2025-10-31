@@ -178,3 +178,8 @@ You have successfully built a custom client for a streaming ADK agent. You have 
 *   How to run an ADK agent as a backend service using `adk api_server`.
 *   The basic structure of an HTML/JavaScript client for streaming.
 *   How to use the `WebSocket` and Web Audio APIs to create a real-time voice application.
+
+### Self-Reflection Questions
+- This lab's client only displays the text from the agent. How would you modify the `websocket.onmessage` handler to also process and play back the `audio/mp3` data that the server sends?
+- What are the benefits of using WebSockets for this application compared to the Server-Sent Events (SSE) approach used in the previous UI lab?
+- The `MediaRecorder` is configured to send audio data every 100ms. What do you think would be the impact on the user experience if you increased this value to 1000ms (1 second)?

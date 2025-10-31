@@ -112,3 +112,8 @@ If you get stuck, you can find the complete, working code in the `lab-solution.m
 You have successfully built an agent that can access real-world, current information from the internet and process it using custom logic. You have learned:
 *   How to use the `GoogleSearchAgentTool` wrapper to combine built-in search with custom `FunctionTool`s.
 *   How to write an instruction that orchestrates a sequence of different tool types.
+
+### Self-Reflection Questions
+- The `GoogleSearchAgentTool` is a workaround for a current limitation. Why is it architecturally cleaner to have a wrapper like this instead of building the search logic directly into your own custom tool?
+- Our `extract_key_facts` tool is very simple. How could you make it more robust? (Hint: Could another LLM be used for this task?)
+- The agent's instruction defines a specific, sequential workflow. What might happen if you didn't specify the order of the tool calls in the instruction?

@@ -80,3 +80,9 @@ Ignore any mentions of orchestrator tool calls like "transfer_to_agent" in the c
 Extract the main content creation task from the user's messages and complete it directly.
 ```
 This ensures that your specialist agents remain focused on their tasks and are not distracted by the internal mechanics of the orchestrator that called them.
+
+### Key Takeaways
+- Agent-to-Agent (A2A) communication enables the creation of scalable, distributed multi-agent systems.
+- The A2A protocol uses **Agent Cards** for discovery and standard HTTP for communication.
+- The ADK provides the `to_a2a()` utility to expose an agent as a remote service and the `RemoteA2aAgent` class to consume a remote service.
+- It is a critical best practice to include an "A2A Context Handling" section in the instruction of any remote agent to ensure it ignores the orchestrator's internal tool calls.

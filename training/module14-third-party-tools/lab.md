@@ -90,3 +90,8 @@ You have successfully integrated a tool from an external library into your ADK a
 *   Instantiate a tool from a library like LangChain.
 *   Use an ADK wrapper (`LangchainTool`) to make the third-party tool compatible with your agent.
 *   Define an agent in a Python file (`agent.py`) to handle the tool setup.
+
+### Self-Reflection Questions
+- The `LangchainTool` wrapper works by inspecting the LangChain tool object. What attributes do you think the wrapper is looking for on the LangChain tool to automatically generate the schema for the ADK agent?
+- Besides Wikipedia, what other pre-built tools from the LangChain ecosystem can you find that would be useful to integrate into an ADK agent?
+- What are the potential downsides or risks of relying on third-party, community-maintained tools in a production application?

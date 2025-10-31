@@ -54,3 +54,8 @@ Crafting good instructions is a skill often called "prompt engineering." Here ar
 *   **Iterate and Refine:** Your first instruction will rarely be your last. Test your agent with different inputs and refine the instruction based on its responses.
 
 In the lab for this module, you will practice this skill by modifying the "Echo" agent's instruction to give it a completely new personality and behavior, all without changing a single line of code.
+
+### Key Takeaways
+- The `LlmAgent` is the "brain" of an ADK application, using an LLM to reason and decide on actions.
+- The `instruction` parameter is the most powerful tool for controlling an agent's behavior, defining its persona, goals, constraints, and process.
+- Effective prompt engineering involves being specific, using simple language, providing examples (few-shot prompting), and iterating on your instructions.

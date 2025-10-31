@@ -50,3 +50,10 @@ The general steps are:
 5.  **Apply the Manifests:** Use the `kubectl` command-line tool to apply your manifest files to the GKE cluster, which triggers the deployment.
 
 While the ADK provides the `adk deploy gke` command to automate some of these steps, understanding the underlying concepts is crucial for managing a production deployment on Kubernetes. In the lab, you will walk through the manual process to gain a deeper understanding of how GKE works.
+
+### Key Takeaways
+- **Google Kubernetes Engine (GKE)** is a managed container orchestration platform that provides more control and flexibility than serverless options like Cloud Run.
+- GKE is the preferred choice for complex applications with specific hardware needs (like GPUs), fine-grained networking requirements, or for organizations already invested in the Kubernetes ecosystem.
+- The deployment process to GKE is more involved, requiring you to containerize your application with a `Dockerfile` and define its desired state using Kubernetes **Manifests** (YAML files).
+- Key Kubernetes objects include the **Deployment** (manages your application's running instances) and the **Service** (exposes your application to the network).
+- You interact with a GKE cluster using the `kubectl` command-line tool.

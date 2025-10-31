@@ -33,3 +33,9 @@ This allows you to build agents that can:
 *   Create charts and diagrams from data.
 
 In the lab, you will build a "Visual Product Catalog Analyzer" that uses a vision-capable agent to analyze a product image and a second agent to generate a marketing description from that analysis.
+
+### Key Takeaways
+- Multimodal models like Gemini can process text and images together, enabling vision-enabled agents.
+- The `google.genai.types.Part` object is the building block for multimodal content, allowing you to combine text and image data in a single prompt.
+- Vision-capable agents can be used for a wide range of tasks, including image analysis, document understanding, and multimodal reasoning.
+- You can create custom tools to integrate with image generation services like Vertex AI Imagen.

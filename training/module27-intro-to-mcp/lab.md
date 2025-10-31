@@ -148,3 +148,8 @@ You have learned to:
 *   Build an agent that can use tools provided by an external service without having to define them locally.
 
 This pattern is incredibly powerful for integrating with complex, pre-existing systems that offer an MCP interface. In the next module, you will take the next step and build your own simple MCP server from scratch.
+
+### Self-Reflection Questions
+- The `MCPToolset` dynamically discovers the tools from the server. What are the advantages of this approach compared to manually defining each tool on the agent side?
+- The file system server is "stateful" because it remembers the state of the `test_files` directory between tool calls. How does this differ from the stateless calculator tools you built in earlier modules?
+- The `StdioConnectionParams` launches the MCP server as a subprocess. What are the security implications of this, and why is it important that the server is sandboxed to a specific `TARGET_FOLDER_PATH`?
