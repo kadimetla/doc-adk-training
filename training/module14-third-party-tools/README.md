@@ -42,3 +42,4 @@ In the lab for this module, you will put this into practice by integrating a pow
 - The ADK is interoperable and can integrate tools from third-party libraries like LangChain.
 - The ADK uses a "Wrapper Pattern" (e.g., `LangchainTool`) to adapt third-party tools for use within an ADK agent.
 - This approach saves significant development time by allowing you to leverage a vast ecosystem of pre-built, community-maintained tools.
+- **Potential Risk:** Integrating third-party libraries, especially those with extensive dependencies (like LangChain), can introduce the risk of "dependency conflicts" (often called "dependency hell"), where different libraries require incompatible versions of the same underlying package.

@@ -35,6 +35,6 @@ User ───┼──── Agent 2 (hotels) ─────┼──→ Merge
 
 ### Key Takeaways
 - The `ParallelAgent` is a workflow agent that executes its sub-agents concurrently, improving performance for independent tasks.
-- The total execution time of a `ParallelAgent` is determined by its slowest sub-agent.
+- **Performance Note:** The total execution time of a `ParallelAgent` is limited by the slowest of its sub-agents, including the latency of LLM calls and tool executions. This makes `ParallelAgent` particularly advantageous for workflows involving multiple, potentially slow LLM/Tool interactions, as they run simultaneously rather than sequentially.
 - It's crucial to use different `output_key`s for each sub-agent in a `ParallelAgent` to avoid overwriting data in the shared state.
 - The "fan-out/gather" pattern, which combines a `ParallelAgent` for data collection and a `SequentialAgent` for synthesis, is a powerful architecture for building efficient, complex agents.

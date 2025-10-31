@@ -39,7 +39,7 @@ The `adk api_server` command runs your agent as a standalone HTTP server, exposi
 
 **Key Features:**
 
-*   **API Endpoints:** It creates standard API endpoints (e.g., `/run_sse`, `/list-apps`) that allow other applications to communicate with your agent programmatically.
+*   **API Endpoints:** It creates standard API endpoints (e.g., `/run_sse`, `/list-apps`) that allow other applications to communicate with your agent programmatically. Notably, `/run_sse` uses Server-Sent Events for real-time, streaming interactions.
 *   **Decoupled Architecture:** This is how you would typically run your agent in a production or staging environment. Your user-facing application (e.g., a web app, a mobile app) would make HTTP requests to this agent server.
 *   **Scalability:** Running the agent as an API server allows it to be containerized (e.g., with Docker) and deployed to scalable infrastructure like Cloud Run or Google Kubernetes Engine.
 

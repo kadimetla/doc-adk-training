@@ -4,7 +4,7 @@
 
 ### Why Built-in Tools Matter
 
-Traditional AI models have a knowledge cutoff date—they don't know about recent events, current news, or real-time information. Built-in tools solve this by allowing models to **ground** their responses in current web data.
+Traditional AI models have a knowledge cutoff date—they don't know about recent events, current news, or real-time information. Built-in tools solve this by allowing models to **ground** their responses in current web data. This process of retrieving external information to enhance the LLM's generation is the foundation of **Retrieval Augmented Generation (RAG)** systems.
 
 **Key Advantages**:
 *   **Current Information:** Access to up-to-date web content.

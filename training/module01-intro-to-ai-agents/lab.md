@@ -23,11 +23,11 @@ The ADK is an open-source project with repositories on GitHub. These repositorie
 
 1.  **Find the ADK Python Repository:** Search on Google or GitHub for "Google ADK Python". The official repository should be one of the top results.
 2.  **Explore the `examples` Directory:** Once you are on the GitHub page, find and click on the `examples` directory. This directory contains practical, runnable examples of different ADK features.
-Find a Simple Example: Navigate into `contributing/samples/` and look for a simple agent, such as the `hello_world_ollama` or `plugin_basic` example.
-4.  **Examine the Code:** Click on the Python files (e.g., `agent.py` or `main.py`). Read through the code and the comments. Try to connect what you see in the code with the concepts you skimmed in the documentation (e.g., creating an `LlmAgent`, defining a `tool`).
+Find a Simple Example: Navigate into `contributing/samples/hello_world`. This is a great starting point.
+4.  **Examine the Code:** Click on the Python files (`agent.py` and `main.py`). Read through the code and the comments. Try to connect what you see in the code with the concepts you skimmed in the documentation (e.g., creating an `LlmAgent`).
 
 ***Scavenger Hunt!***
-> Find the `01-hello-world` example and identify the name of the main function used to run the agent.
+> Find the `hello_world` example and identify the name of the main function used to run the agent.
 
 **Key Takeaway:** The official examples are the best place to find working code that you can learn from and adapt for your own projects.
 

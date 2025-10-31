@@ -118,3 +118,4 @@ You have successfully integrated a live REST API into your agent without writing
 - What are the main advantages of using `OpenAPIToolset` compared to writing a custom Python function for each API endpoint?
 - The `operationId` in the OpenAPI spec is very important. What do you think would happen if two different paths in the spec had the same `operationId`?
 - Many modern web services publish their own OpenAPI specifications. How does this widespread adoption of the OpenAPI standard make it easier to build powerful, integrated AI agents?
+- The agent's instructions often need to specify which part of a tool's JSON response is important (e.g., "extract the 'value' field"). Why is this necessary, and what does it tell you about how the agent perceives the data it receives from a tool?
