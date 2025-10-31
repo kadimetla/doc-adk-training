@@ -18,12 +18,15 @@ Please be aware that this training course is in its early stages of development.
 
 We are working hard to refine and expand the material, but you may encounter typos, errors, or incomplete sections. Your feedback and contributions are highly encouraged! If you find an issue or have a suggestion, please [open an issue on GitHub](https://github.com/mauripsale/doc-adk-training/issues).
 
-## 📚 Course Structure
+## ⏱️ Time Estimation
 
-The course is divided into several parts, each containing a set of modules. Each module includes:
-*   🧠 **Theory (`README.md`)**: Core concepts and explanations.
-*   💻 **Hands-on Lab (`lab.md`)**: Practical exercises to reinforce learning.
-*   ✅ **Solution (`lab-solution.md`)**: The complete solution to the lab.
+This comprehensive training course is designed for both self-service and instructor-led delivery. The estimates below provide a realistic guide for pacing, considering the technical depth and hands-on nature of the labs.
+
+*   🧑‍💻 **Self-Service (SS) Duration:** This estimate reflects the time a motivated individual learner would take to read the theory, complete the labs, and account for a 25% troubleshooting/review factor.
+*   👨‍🏫 **Instructor-Led Training (ILT) Duration:** This estimate is tailored for a classroom environment (up to 16 participants) with a net delivery time of 6 hours per day. It includes a 75% buffer for instructor guidance, Q&A, and assisting students during labs, plus a 5-minute transition buffer between modules.
+
+### Overall Pacing Assessment
+The course is substantial, suitable for a 3-day intensive self-service format or a full 7-day instructor-led training session. The modules are well-structured, progressing from foundational concepts to advanced, real-world deployment scenarios. The complexity ramps up significantly in the later modules, particularly those involving multi-agent systems and cloud deployment.
 
 ---
 
@@ -110,3 +113,47 @@ Software components, such as the code in the `sample-agents` directory, are lice
 ## 🙏 Acknowledgements
 
 This training course was inspired by the structure and content of the original ADK Training Hub created by Raphael Mansuy. While all content has been originally rewritten and adapted, we gratefully acknowledge his foundational work.
+
+## Detailed Time Estimation per Module (Minutes)
+
+| Module | Core Activity (Theory/Lab) | Estimated Complexity | Self-Service (SS) Duration (min) | ILC (Instructor-Led) Duration (min) |
+| :--- | :--- | :--- | :--- | :--- |
+| Module 01 | Theory: 13 min / Lab: 15 min | Low | 35 | 55 |
+| Module 02 | Theory: 7 min / Lab: 24 min | Medium | 40 | 60 |
+| Module 03 | Theory: 12 min / Lab: 16 min | Low | 35 | 55 |
+| Module 04 | Theory: 13 min / Lab: 12 min | Low | 30 | 50 |
+| Module 05 | Theory: 8 min / Lab: 16 min | Medium | 30 | 50 |
+| Module 06 | Theory: 13 min / Lab: 15 min | Medium | 35 | 55 |
+| Module 07 | Theory: 12 min / Lab: 20 min | High | 40 | 60 |
+| Module 08 | Theory: 8 min / Lab: 20 min | Medium | 35 | 55 |
+| Module 09 | Theory: 14 min / Lab: 20 min | High | 45 | 70 |
+| Module 10 | Theory: 13 min / Lab: 20 min | High | 40 | 65 |
+| Module 11 | Theory: 12 min / Lab: 15 min | High | 35 | 55 |
+| Module 12 | Theory: 7 min / Lab: 15 min | Medium | 30 | 45 |
+| Module 13 | Theory: 13 min / Lab: 20 min | High | 40 | 65 |
+| Module 14 | Theory: 8 min / Lab: 15 min | Medium | 30 | 40 |
+| Module 15 | Theory: 8 min / Lab: 5 min | Low | 15 | 30 |
+| Module 16 | Theory: 14 min / Lab: 16 min | Medium | 40 | 60 |
+| Module 17 | Theory: 7 min / Lab: 15 min | Medium | 30 | 45 |
+| Module 18 | Theory: 12 min / Lab: 20 min | High | 40 | 65 |
+| Module 19 | Theory: 12 min / Lab: 25 min | High | 45 | 75 |
+| Module 20 | Theory: 13 min / Lab: 20 min | High | 40 | 65 |
+| Module 21 | Theory: 14 min / Lab: 25 min | High | 50 | 70 |
+| Module 22 | Theory: 7 min / Lab: 20 min | High | 35 | 55 |
+| Module 23 | Theory: 13 min / Lab: 20 min | High | 40 | 65 |
+| Module 24 | Theory: 15 min / Lab: 24 min | Medium | 50 | 75 |
+| Module 25 | Theory: 7 min / Lab: 20 min | High | 35 | 55 |
+| Module 26 | Theory: 8 min / Lab: 25 min | High | 40 | 65 |
+| Module 27 | Theory: 8 min / Lab: 25 min | High | 40 | 65 |
+| Module 28 | Theory: 8 min / Lab: 25 min | High | 40 | 65 |
+| Module 29 | Theory: 7 min / Lab: 20 min | High | 35 | 55 |
+| Module 30 | Theory: 9 min / Lab: 25 min | High | 45 | 65 |
+| Module 31 | Theory: 8 min / Lab: 3 min | Low | 15 | 25 |
+| Module 32 | Theory: 8 min / Lab: 20 min | High | 35 | 50 |
+| Module 33 | Theory: 9 min / Lab: 40 min | High | 60 | 95 |
+| Module 34 | Theory: 14 min / Lab: 40 min | High | 70 | 105 |
+| Module 35 | Theory: 7 min / Lab: 40 min | High | 60 | 90 |
+| Module 36 | Theory: 8 min / Lab: 3 min | Low | 15 | 25 |
+| Module 37 | Theory: 8 min / Lab: 60 min | High | 85 | 120 |
+| Module 38 | Theory: 8 min / Lab: 20 min | High | 35 | 50 |
+| **TOTAL** | | | **21.5 Hours** | **40.5 Hours** |
