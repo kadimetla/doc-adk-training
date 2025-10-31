@@ -44,3 +44,10 @@ The ADK supports several ways to connect to an MCP server:
 *   **`StreamableHTTPConnectionParams`**: For connecting to a remote server that supports bidirectional streaming over HTTP.
 
 In the lab, you will use the `Stdio` connection to run a local filesystem server and give your agent the ability to interact with your files.
+
+### Key Takeaways
+- Standard function tools are **stateless**, which limits their ability to handle ongoing, multi-turn interactions.
+- The **Model Context Protocol (MCP)** is an open standard that enables agents to connect to **stateful** external tools.
+- The ADK acts as an MCP client, using the `MCPToolset` to connect to and consume tools from an MCP server.
+- This architecture allows you to leverage a growing ecosystem of pre-built, community-maintained MCP tools for common tasks like filesystem and database access.
+- The `StdioConnectionParams` are used to connect to an MCP server running as a local subprocess, which is ideal for development.

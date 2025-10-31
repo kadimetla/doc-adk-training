@@ -69,3 +69,10 @@ This instruction, combined with the sub-agents' descriptions, gives the LLM all 
 When the coordinator's LLM decides to delegate, it invokes a special built-in function called `transfer_to_agent`, specifying the `name` of the target agent. The ADK framework intercepts this and automatically transfers control of the conversation to the chosen sub-agent. The sub-agent then takes over and responds to the user directly.
 
 In the following lab, you will implement the "Greeting Router" you designed in the previous module, putting all these concepts into practice.
+
+### Key Takeaways
+- The Coordinator/Dispatcher is a common multi-agent pattern where a central agent routes tasks to specialists.
+- In the ADK, this is implemented by defining a parent agent with a list of `sub_agents` linked via `config_path`.
+- The coordinator's LLM uses the `description` of each sub-agent to make intelligent routing decisions.
+- A clear `instruction` is needed to tell the coordinator that its primary job is to delegate, not to perform tasks itself.
+- The `transfer_to_agent` function is the mechanism by which the coordinator hands off control to a sub-agent.

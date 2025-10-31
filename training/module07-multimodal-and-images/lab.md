@@ -151,3 +151,8 @@ If you get stuck, you can find the complete, working code in the `lab-solution.m
 You have successfully built a multi-agent system that can see and understand images! You have learned to:
 *   Create multimodal prompts by combining text and image `types.Part` objects.
 *   Build a pipeline where one agent's visual analysis becomes the input for another agent's text generation task.
+
+### Self-Reflection Questions
+- In our two-agent pipeline, the `vision_agent`'s output is passed to the `catalog_agent`. What are the benefits of separating these two tasks into specialized agents instead of using one single, more complex agent?
+- The `load_image_from_file` helper function reads the image as bytes. Why is it necessary to also provide a `mime_type` (like 'image/jpeg') when creating the `types.Part` object?
+- How could you extend this project to handle video input? What kind of new agent or tool would you need to build?

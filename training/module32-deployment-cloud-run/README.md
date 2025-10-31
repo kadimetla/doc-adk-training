@@ -41,3 +41,9 @@ When you run this command, it performs a series of steps behind the scenes:
 The result is a publicly accessible HTTPS endpoint for your agent, all from a single command. This streamlined process allows you to focus on building your agent's logic, not on the complexities of cloud infrastructure.
 
 In the lab for this module, you will use the `adk deploy cloud_run` command to deploy the multi-agent customer support system you built in Module 15.
+
+### Key Takeaways
+- **Deployment** is the process of packaging an agent into a **container** and running it on a production server.
+- **Google Cloud Run** is a fully managed, serverless platform that is ideal for deploying ADK agents due to its simplicity, automatic scaling (including to zero), and pay-per-use cost model.
+- The `adk deploy cloud_run` command automates the entire deployment workflow, including containerization, pushing to a registry, and configuring the Cloud Run service.
+- This streamlined command allows you to deploy a production-ready, publicly accessible agent with a single command.

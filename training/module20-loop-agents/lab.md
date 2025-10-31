@@ -96,8 +96,13 @@ If you get stuck, you can find the complete, working code in the `lab-solution.m
 
 ### Lab Summary
 
-You have successfully built a self-correcting system using a `LoopAgent`. You have learned:
+You have successfully built a self-correcting system using a `LoopAgent`. You have learned to:
 *   How to implement the "Critic -> Refiner" pattern.
 *   How to create and use an `exit_loop` tool for smart loop termination.
 *   How to use state overwriting to refine data over multiple iterations.
 *   How to combine a `LoopAgent` with a `SequentialAgent` to create complex workflows.
+
+### Self-Reflection Questions
+- Why is the `max_iterations` parameter a crucial safety feature for a `LoopAgent`? What could go wrong without it?
+- In our "Critic -> Refiner" pattern, the `refiner` agent overwrites the `current_essay` in the state on each iteration. Why is this overwriting behavior essential for the loop to work correctly?
+- Can you think of another problem, besides writing an essay, that could be solved effectively using a `LoopAgent` with a "Critic -> Refiner" pattern?

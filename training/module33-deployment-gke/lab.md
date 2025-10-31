@@ -189,3 +189,8 @@ GKE clusters can incur significant costs if left running. It is crucial to delet
     cd ..
     rm -rf gke-echo-agent
     ```
+
+### Self-Reflection Questions
+- This lab was much more complex than the Cloud Run deployment. What are the key trade-offs you are making (in terms of complexity vs. control) when choosing GKE over Cloud Run?
+- In the `deployment.yaml` file, what is the purpose of the `Deployment` object versus the `Service` object? Why do you need both?
+- The `Dockerfile` uses `CMD ["adk", "api_server", ...]`. Why is it important to use `api_server` here instead of `web` for a production deployment?

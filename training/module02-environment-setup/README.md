@@ -29,3 +29,9 @@ The **Google Cloud CLI (gcloud)** is the primary tool for managing your Google C
 This process creates "Application Default Credentials" (ADC) on your machine. When you run your ADK agent, the underlying Google client libraries automatically find and use these credentials to securely authenticate API requests, so you don't have to manage API keys directly in your code.
 
 In the following lab, you will put these concepts into practice by creating a virtual environment, installing the ADK, and authenticating with Google Cloud.
+
+### Key Takeaways
+- A **virtual environment** is essential for isolating project dependencies and ensuring reproducibility.
+- The `venv` module is the standard tool for creating virtual environments in Python.
+- The **Google Cloud CLI (gcloud)** is used to authenticate your local environment to securely access Google Cloud services like the Gemini API.
+- `gcloud auth application-default login` creates Application Default Credentials (ADC) that the ADK uses automatically.

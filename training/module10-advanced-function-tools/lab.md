@@ -118,3 +118,8 @@ You have successfully built an advanced agent with multiple, complex function to
 *   How to implement robust tools with input validation and structured error handling.
 *   How to write tools that produce user-friendly reports.
 *   How to trigger and verify parallel tool execution for more efficient agent responses.
+
+### Self-Reflection Questions
+- Why is it a good practice for a tool to perform its own input validation, even though the LLM is usually good at providing the correct arguments?
+- In the parallel execution test, the two tool calls are independent. Can you think of a scenario where a user's query might seem like it could be parallelized, but actually requires the tools to be run sequentially?
+- How does providing a pre-formatted, human-readable `report` in the tool's return dictionary simplify the agent's `instruction` prompt?

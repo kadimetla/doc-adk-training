@@ -64,3 +64,9 @@ Running `adk create <agent_name>` initiates a wizard that lets you choose your p
 *   **`.env`:** A file for storing environment variables, such as your API keys. This keeps your secrets separate from your agent's code and configuration.
 
 In the upcoming lab, you will use these concepts to create, configure, and run your first agent using both methods.
+
+### Key Takeaways
+- An ADK agent is defined by its `name`, `model`, `instruction`, and `description`.
+- The `instruction` is the most critical part, defining the agent's persona, goals, and rules.
+- Agents can be defined simply with YAML (`root_agent.yaml`) or programmatically with Python (`agent.py`).
+- The `adk create` command scaffolds the necessary project structure for a new agent.

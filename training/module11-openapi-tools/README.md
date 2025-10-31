@@ -32,3 +32,9 @@ This process has significant benefits:
 4.  **Autonomous Use:** The LLM receives the schemas for all the auto-generated tools and can now decide to call them just like any other function tool.
 
 This allows you to integrate complex external services, like the GitHub, Stripe, or Twilio APIs, with just a few lines of code.
+
+### Key Takeaways
+- OpenAPI is a standard specification for describing REST APIs.
+- The ADK's `OpenAPIToolset` automatically generates a full set of agent tools from an OpenAPI specification.
+- This eliminates the need to write manual Python functions for each API endpoint, saving time and reducing errors.
+- The `operationId` in the OpenAPI spec is used to generate the tool's name for the agent.

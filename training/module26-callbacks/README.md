@@ -33,3 +33,10 @@ Here are the primary callbacks for an `LlmAgent`:
 | `after_agent_callback` | After the agent finishes. | `Content` object | Add a standard disclaimer or footer to every final agent response. |
 
 By mastering this "return None vs. return Object" pattern, you can build robust, production-ready agents with sophisticated safety and monitoring capabilities.
+
+### Key Takeaways
+- **Callbacks** are functions that run at specific checkpoints in an agent's execution lifecycle, allowing for observation and control.
+- Returning `None` from a callback allows the agent to continue its normal execution, which is used for logging and monitoring.
+- Returning an object from a callback **overrides** the agent's default behavior, allowing you to block or modify operations.
+- Callbacks are the primary mechanism for implementing safety **guardrails**, such as blocking inappropriate content (`before_model_callback`) or validating tool arguments (`before_tool_callback`).
+- They can also be used for output filtering (e.g., PII redaction in `after_model_callback`) and adding standard content to all responses (`after_agent_callback`).

@@ -50,3 +50,9 @@ The interaction between a custom client and the ADK server follows a specific fl
     *   When it receives an audio chunk, it decodes it and plays it through the user's speakers, creating a continuous stream of speech.
 
 In the lab for this module, you will be provided with a complete HTML and JavaScript client that implements this entire flow. You will run it against your own ADK agent to see how a custom streaming application is built.
+
+### Key Takeaways
+- To build a custom voice-enabled UI, you need a **custom streaming client** (front-end) and an **ADK server** (back-end).
+- The ADK server is run with `adk api_server`, which exposes a `/live` **WebSocket** endpoint for real-time, bidirectional communication.
+- The client uses the browser's Web Audio API to capture microphone input and the WebSocket API to send and receive audio and text data.
+- The data flow is a continuous, full-duplex stream: the client sends audio chunks to the server, and the server sends back text and audio responses as they are generated.

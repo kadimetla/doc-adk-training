@@ -97,3 +97,8 @@ You have successfully built a high-performance, multi-agent system using the fan
 *   How to configure and use a `ParallelAgent` to run agents concurrently.
 *   How to combine `ParallelAgent` and `SequentialAgent` to create efficient data-gathering and synthesis pipelines.
 *   How to verify parallel execution in the Trace View.
+
+### Self-Reflection Questions
+- What would be the performance impact if you replaced the `ParallelAgent` in this lab with a `SequentialAgent`?
+- It is critical that the three finder agents have different `output_key`s. What would happen if they all had the same `output_key`, like `"search_result"`?
+- Can you think of another real-world problem (besides travel planning) where the fan-out/gather pattern would be a highly effective architecture?

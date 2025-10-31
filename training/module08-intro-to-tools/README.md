@@ -39,3 +39,8 @@ The ADK provides a rich and flexible ecosystem for tools, which can be categoriz
 3.  **Third-Party Tools:** The ADK is designed to be extensible, allowing you to integrate tools from other popular agent frameworks like LangChain and CrewAI.
 
 In the following modules, you will get hands-on experience with these different types of tools, starting with the powerful and easy-to-use `google_search` tool.
+
+### Key Takeaways
+- Tools give agents the ability to interact with the outside world, overcoming the limitations of the LLM's static knowledge.
+- The process of an agent deciding to use a tool is called Function Calling.
+- The ADK supports three main types of tools: Built-in Tools (like `google_search`), Custom Function Tools (your own Python code), and Third-Party Tools (from libraries like LangChain).

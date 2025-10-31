@@ -46,3 +46,8 @@ The `adk api_server` command runs your agent as a standalone HTTP server, exposi
 This mode is essential for moving your agent from a local development tool to a component that can be integrated into a larger system.
 
 In the lab for this module, you will get hands-on experience with all three of these commands, giving you a complete toolkit for running and interacting with your agents.
+
+### Key Takeaways
+- `adk web`: The primary tool for interactive development and debugging, featuring a chat UI and a detailed Trace View.
+- `adk run`: A headless, command-line interface for quick tests and automated scripting.
+- `adk api_server`: Runs the agent as a standalone HTTP server, exposing a RESTful API for integration with other applications and deployment to production environments.

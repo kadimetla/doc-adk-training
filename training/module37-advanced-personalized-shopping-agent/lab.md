@@ -342,3 +342,8 @@ This is a complex lab with multiple deployments. It is crucial to delete the res
     gcloud artifacts repositories delete adk-images --location=$GOOGLE_CLOUD_LOCATION --async
     ```
 3.  **Delete the GitHub Repository:** If you used the Agent Starter Pack, delete the GitHub repository you created.
+
+### Self-Reflection Questions
+- This system uses three separate agents. What are the advantages of this distributed architecture in terms of scalability, maintainability, and reusability?
+- The `orchestrator-agent` uses a `before_tool_callback` for logging. How does this separate the concern of observability from the agent's core business logic?
+- The `web-agent` abstracts the website behind an OpenAPI spec. Why is this a better design than having the orchestrator directly interact with the raw HTML of the website?

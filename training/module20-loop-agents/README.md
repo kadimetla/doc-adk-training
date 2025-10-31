@@ -49,3 +49,9 @@ An infinite loop is a bug. Every `LoopAgent` MUST have a way to stop.
     *   The `exit_loop` tool uses `tool_context.actions.end_of_agent = True` to tell the `LoopAgent` to terminate immediately.
 
 Using both `max_iterations` and an exit tool is the best practice for creating robust and efficient loops.
+
+### Key Takeaways
+- The `LoopAgent` is a workflow agent for tasks that require iterative refinement.
+- It repeatedly executes its sub-agents until a termination condition is met.
+- The "Critic -> Refiner" pattern is a common and powerful way to structure a `LoopAgent` for self-improving tasks.
+- All `LoopAgent`s must have a termination condition, which should include a `max_iterations` safety net and, ideally, a smart termination mechanism using an exit tool.

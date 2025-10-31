@@ -132,3 +132,8 @@ Agent Engine deployments and GCS buckets can incur costs if left running. It is 
     cd ..
     rm -rf deploy-calculator
     ```
+
+### Self-Reflection Questions
+- What are the main advantages of the "Accelerated Deployment" method using the Agent Starter Pack compared to the "Standard Deployment" method?
+- The Accelerated method uses a GitOps workflow (`git push` to deploy). Why is this a powerful and reliable pattern for managing deployments in a team environment?
+- The `interact.py` script is a simple client. How does the architecture of Agent Engine (a managed, scalable backend) make it easier to build and connect more complex clients (like a web app or mobile app) compared to running your agent locally?

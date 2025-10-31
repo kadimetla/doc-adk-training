@@ -239,3 +239,8 @@ Cloud Run services and Artifact Registry repositories can incur costs if left ru
     cd ..
     rm -rf cloud-mcp-server
     ```
+
+### Self-Reflection Questions
+- Our stateless server uses the `/tmp` directory for storage. Why is this approach not truly persistent, and what could happen to a user's shopping cart if the Cloud Run service scales down and then back up?
+- What are the advantages of using a managed service like Google Cloud Memorystore (Redis) for storing session state compared to the file-based approach used in this lab?
+- The `MCPToolset` on the client side doesn't need to know *how* the server is storing its state. Why is this separation of concerns a key benefit of the MCP architecture?

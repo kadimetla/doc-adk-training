@@ -113,3 +113,8 @@ You have successfully integrated a live REST API into your agent without writing
 *   How to read API documentation to create an OpenAPI specification.
 *   How to use `OpenAPIToolset` to automatically generate tools from a spec.
 *   How to instruct your agent to use the new, auto-generated tools.
+
+### Self-Reflection Questions
+- What are the main advantages of using `OpenAPIToolset` compared to writing a custom Python function for each API endpoint?
+- The `operationId` in the OpenAPI spec is very important. What do you think would happen if two different paths in the spec had the same `operationId`?
+- Many modern web services publish their own OpenAPI specifications. How does this widespread adoption of the OpenAPI standard make it easier to build powerful, integrated AI agents?

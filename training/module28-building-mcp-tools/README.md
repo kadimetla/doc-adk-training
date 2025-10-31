@@ -41,3 +41,9 @@ The `mcp` Python library provides a `Server` class and decorators to simplify th
 4.  **Run the Server:** You use a runner function (e.g., `mcp.server.stdio.stdio_server`) to start the server and listen for connections.
 
 In the lab, you will build a simple MCP server that exposes a stateful "shopping cart" tool, learning the fundamentals of implementing these handlers.
+
+### Key Takeaways
+- By building an MCP server, you become a **provider** of tools to any MCP-compliant client, not just your own agents.
+- An MCP server must implement two core handlers: `list_tools` to advertise its capabilities, and `call_tool` to execute them.
+- The `mcp` Python library simplifies server creation with a `Server` class and the `@app.list_tools()` and `@app.call_tool()` decorators.
+- The `call_tool` handler receives a `session_id`, which is the key to managing state for different clients across multiple requests.

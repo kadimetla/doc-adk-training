@@ -38,3 +38,9 @@ The personalized shopping agent is a **distributed multi-agent system** composed
     To provide a better user experience, the agent saves the HTML content of the current page as an artifact after each action. This allows the user to see the web page that the agent is interacting with in the ADK's web UI.
 
 By combining these components, we can create a powerful agent that can navigate a web environment, gather information, and interact with a user to complete a complex task.
+
+### Key Takeaways
+- This capstone project integrates many concepts from the course: distributed multi-agent systems (A2A), state management, OpenAPI tools, multimodal input, and artifacts.
+- The architecture separates concerns into a main **Orchestrator**, a stateful **Personalization Agent**, and a **Web Agent** that abstracts the web environment.
+- The agent's `instruction` is engineered to follow a state machine-like process, guiding it through the complex, multi-step task of navigating a website.
+- Artifacts are used to provide a better user experience by visualizing the agent's interaction with the web environment.

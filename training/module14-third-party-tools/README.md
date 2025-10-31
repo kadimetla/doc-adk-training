@@ -37,3 +37,8 @@ Your ADK agent sees them all as a unified set of capabilities, and the LLM can r
 *   **Focus on Your Core Logic:** You can spend your time building the unique tools and business logic that are specific to your application, while relying on the community for common, general-purpose tools.
 
 In the lab for this module, you will put this into practice by integrating a powerful web search tool from the LangChain ecosystem into your ADK agent.
+
+### Key Takeaways
+- The ADK is interoperable and can integrate tools from third-party libraries like LangChain.
+- The ADK uses a "Wrapper Pattern" (e.g., `LangchainTool`) to adapt third-party tools for use within an ADK agent.
+- This approach saves significant development time by allowing you to leverage a vast ecosystem of pre-built, community-maintained tools.

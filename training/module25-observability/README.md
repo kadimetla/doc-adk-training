@@ -52,3 +52,9 @@ A comprehensive observability strategy is built on four pillars, all of which ca
 5.  You register your plugin when you instantiate the `Runner`: `Runner(plugins=[MyMetricsPlugin()])`.
 
 This event-driven, plugin-based architecture is the foundation for building sophisticated, enterprise-grade monitoring for your agents.
+
+### Key Takeaways
+- The ADK **Plugin System** provides a modular way to add observability features like logging, metrics, and tracing without modifying the agent's core logic.
+- Plugins are classes that inherit from `BasePlugin` and implement the `on_event_callback` method to intercept and process all events during an agent's execution.
+- This event-driven architecture allows for a clean separation of concerns between the agent's business logic and its monitoring infrastructure.
+- You register plugins by passing them to the `Runner`'s constructor: `Runner(plugins=[...])`.

@@ -139,3 +139,8 @@ You have successfully built a full-stack agent application with a custom front-e
 *   How to run an ADK agent as a backend service using `adk api_server`.
 *   How to connect a custom JavaScript client to the ADK's native `/run_sse` streaming endpoint.
 *   The basic principles of handling streaming responses in a web UI.
+
+### Self-Reflection Questions
+- The ADK server sends events using Server-Sent Events (SSE). What are the advantages of SSE for a chat application compared to a traditional request-response model?
+- Our simple client generates a new `sessionId` every time the page loads. What problems would this cause in a real application, and how would you solve it (e.g., using cookies or `localStorage`)?
+- This lab uses the native ADK API. What are the potential benefits of using a higher-level framework like the AG-UI Protocol and CopilotKit for a more complex, production-ready application?

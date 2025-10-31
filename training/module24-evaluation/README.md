@@ -97,3 +97,10 @@ The ADK provides a comprehensive set of built-in metrics to assess different asp
 *   **`hallucinations_v1`:** Detects fabricated or incorrect information in the agent's response. A lower score (closer to 0.0) is better.
 *   **`rubric_based_final_response_quality_v1`:** Allows you to define your own custom criteria (a rubric) for what makes a "good" response, and then uses an LLM to score the agent's output against it.
 *   **`rubric_based_tool_use_quality_v1`:** Similar to the above, but evaluates the quality of the tool usage against your custom rubric.
+
+### Key Takeaways
+- `LlmAgent`s are non-deterministic, so traditional pass/fail tests are insufficient.
+- The ADK evaluation framework measures quality by comparing an agent's behavior against a recorded "golden path" or **Evaluation Case**.
+- Evaluation focuses on two key areas: the **Final Response** (quality of the answer) and the **Trajectory** (correctness of the reasoning process).
+- Evaluation Cases can be easily created from the ADK Developer UI and run automatically from the UI, the command line (`adk eval`), or a CI/CD pipeline.
+- A robust testing strategy follows the testing pyramid: a large base of fast, deterministic **Unit Tests** for tools, a smaller layer of **Integration Tests** for agent logic, and a focused set of **Evaluation Tests** for end-to-end quality.

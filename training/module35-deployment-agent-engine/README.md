@@ -28,3 +28,9 @@ The Agent Starter Pack streamlines the path to production into three distinct ph
 2.  **Provision (`gcloud builds submit --config=cloudbuild-terraform.yaml`):** This command runs a Cloud Build pipeline that uses Terraform to create all the necessary cloud infrastructure for your agent. This includes the Artifact Registry for your container images, the Cloud Run or Agent Engine service, and the necessary service accounts and permissions. This step is typically run once per environment (e.g., dev, staging, prod).
 
 3.  **Deploy (`git push`):** This is the step you will perform most often. Every time you push new code to your `main` branch, the Cloud Build trigger you created during setup automatically runs. It packages your agent, builds a new container image, and deploys it to the infrastructure you created in the provision step. This creates a seamless GitOps workflow.
+
+### Key Takeaways
+- **Google Cloud's Agent Engine** is a fully managed service in Vertex AI for deploying, scaling, and securing ADK agents.
+- The **Accelerated Deployment** method, using the official **Agent Starter Pack**, is the recommended best practice for new projects, providing a pre-configured CI/CD pipeline and Infrastructure as Code.
+- The **Standard Deployment** method involves writing a custom Python script with the Vertex AI SDK, which is useful for understanding the underlying mechanics.
+- The Accelerated workflow follows a three-phase process: **Setup** (connects Git to GCP), **Provision** (creates infrastructure with Terraform), and **Deploy** (triggered by a `git push`).

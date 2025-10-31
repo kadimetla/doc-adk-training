@@ -77,3 +77,8 @@ You have successfully built your first multi-agent system! You have learned to:
 *   Write a clear `description` for a specialist agent so the coordinator can understand its function.
 *   Write an `instruction` for a coordinator agent that tells it how to delegate tasks.
 *   Verify the agent transfer process by inspecting the Trace View.
+
+### Self-Reflection Questions
+- What do you think would happen if you forgot to add the `description` to the `spanish_greeter.yaml` file? How would the `router_agent` behave?
+- In the `router_agent`'s instruction, why is it important to explicitly tell it *not* to greet the user itself?
+- How does breaking the logic into a router and a specialist make the system easier to extend in the future (e.g., to add a `french_greeter_agent`)?
