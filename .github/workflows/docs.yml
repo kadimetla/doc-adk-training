@@ -1,8 +1,9 @@
 name: Docs
+
 on:
   push:
     branches: [main]
-  pull_request:
+  pull_request: {}
 
 permissions:
   contents: read
@@ -16,15 +17,27 @@ jobs:
       run:
         working-directory: doc
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm ci
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
         with:
+          # Docusaurus output path inside the doc folder
           path: doc/build
 
   deploy:
@@ -34,6 +47,10 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
     steps:
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
