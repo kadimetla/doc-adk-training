@@ -1,5 +1,8 @@
-// doc/docusaurus.config.js (CommonJS)
 module.exports = {
+  title: 'ADK Training Docs',
+  url: 'https://mauripsale.github.io',
+  baseUrl: '/',
+  favicon: 'img/favicon.ico',
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -7,7 +10,7 @@ module.exports = {
         docs: {
           path: '../training',
           routeBasePath: '/',
-          include: ['**/*.md', '**/*.mdx'],
+          include: ['**/*.md','**/*.mdx'],
           async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
             const items = await defaultSidebarItemsGenerator(args);
             const order = (id) => {
