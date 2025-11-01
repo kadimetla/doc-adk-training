@@ -55,7 +55,7 @@ const config = {
                     const readme = children.find(
                       (c) => c.type === 'doc' && c.id && c.id.toLowerCase().endsWith('/readme')
                     );
-                    const link = readme ? { type: 'doc', id: readme.id } : it.link;
+                    const link = readme ? { type: 'doc', id: readme.id } : (children.length > 0 ? { type: 'doc', id: children[0].id } : null);
                     return { ...it, items: children, link };
                   }
                   return it;
