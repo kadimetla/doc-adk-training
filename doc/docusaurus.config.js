@@ -11,9 +11,9 @@ const config = {
   },
   themeConfig: {
     navbar: {
-      title: 'ADK Training Docs',
+      title: 'ADK Training: From Zero to Hero',
       logo: {
-        alt: 'ADK Training Docs Logo',
+        alt: 'ADK Training Logo',
         src: 'img/favicon.ico',
       },
       items: [
