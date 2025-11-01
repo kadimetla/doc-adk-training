@@ -4,12 +4,11 @@ export default {
       '@docusaurus/preset-classic',
       {
         docs: {
-          // legge i contenuti dalla cartella training nella root del repo
+          // Read content from the 'training' directory in the repo root
           path: '../training',
           routeBasePath: '/',
           include: ['**/*.md','**/*.mdx'],
-          // Ordina: readme -> lab -> lab-solution e rende il readme la pagina della categoria
-          async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+          // Sort order: readme -> lab -> lab-solution, and make the readme the category index page          async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
             const items = await defaultSidebarItemsGenerator(args);
             const order = (id) => {
               const x = id.toLowerCase();
@@ -22,10 +21,9 @@ export default {
               list
                 .map((it) => {
                   if (it.type === 'category' && Array.isArray(it.items)) {
-                    // ordina i figli
+                    // sort children
                     const children = visit(it.items);
-                    // se esiste un doc readme nel gruppo, linka la categoria a quel doc
-                    const readme = children.find(
+                    // if a 'readme' doc exists in the group, link the category to that doc                    const readme = children.find(
                       (c) => c.type === 'doc' && c.id && c.id.toLowerCase().endsWith('/readme')
                     );
                     const link = readme ? { type: 'doc', id: readme.id } : it.link;
@@ -36,7 +34,13 @@ export default {
                 .sort((a, b) => {
                   const ka = a.type === 'doc' && a.id ? order(a.id) : Number.POSITIVE_INFINITY;
                   const kb = b.type === 'doc' && b.id ? order(b.id) : Number.POSITIVE_INFINITY;
-                  return ka - kb;
+                  if (ka < kb) return -1;
+                  if (ka > kb) return 1;
+
+                  // Fallback to alphabetical sort for stability when order is the same.
+                  const labelA = a.label || '';
+                  const labelB = b.label || '';
+                  return labelA.localeCompare(labelB);
                 });
             return visit(items);
           },
