@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   title: 'ADK Training Docs',
   url: 'https://mauripsale.github.io',
   baseUrl: '/',
@@ -48,3 +48,5 @@ module.exports = {
     ],
   ],
 };
+
+export default config;
