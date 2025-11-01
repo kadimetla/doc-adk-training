@@ -1,7 +1,7 @@
 const config = {
   title: 'ADK Training Docs',
   url: 'https://mauripsale.github.io',
-  baseUrl: '/',
+  baseUrl: '/doc-adk-training/',
   favicon: 'img/favicon.ico',
   onBrokenLinks: 'throw',
     markdown: {
