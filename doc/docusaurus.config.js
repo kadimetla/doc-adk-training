@@ -3,6 +3,8 @@ const config = {
   url: 'https://mauripsale.github.io',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -40,8 +42,6 @@ const config = {
                 });
             return visit(items);
           },
-          onBrokenLinks: 'throw',
-          onBrokenMarkdownLinks: 'warn',
         },
         blog: false,
       },
