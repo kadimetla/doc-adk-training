@@ -18,7 +18,7 @@ const config = {
       },
       items: [
         {
-          to: '/',
+          to: '/module01-intro-to-ai-agents/',
           label: 'Modules',
           position: 'left'
         },
