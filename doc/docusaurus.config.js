@@ -9,6 +9,27 @@ const config = {
       onBrokenMarkdownLinks: 'warn',
     },
   },
+  themeConfig: {
+    navbar: {
+      title: 'ADK Training Docs',
+      logo: {
+        alt: 'ADK Training Docs Logo',
+        src: 'img/favicon.ico',
+      },
+      items: [
+        {
+          to: '/',
+          label: 'Modules',
+          position: 'left'
+        },
+      ],
+    },
+    footer: {
+      style: 'dark',
+      links: [],
+      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+    },
+  },
   presets: [
     [
       '@docusaurus/preset-classic',
