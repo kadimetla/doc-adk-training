@@ -32,7 +32,7 @@ Your application code will typically use an `async for` loop to iterate through 
 
 To better visualize this flow, consider the following conceptual diagram:
 
-$$\text{User Query} \xrightarrow{\text{Runner}} \text{Agent} \xrightarrow{\text{LLM/Tools}} \text{Event Stream} \xrightarrow{\text{App Logic}} \text{Response}$$
+$$\\text{User Query} \\xrightarrow{\\text{Runner}} \\text{Agent} \\xrightarrow{\\text{LLM/Tools}} \\text{Event Stream} \\xrightarrow{\\text{App Logic}} \\text{Response}$$
 
 This highlights the Runner's central role as the orchestrator. For a more detailed visual explanation, refer to these diagrams:
 
