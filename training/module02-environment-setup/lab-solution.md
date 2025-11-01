@@ -1,6 +1,4 @@
-# Module 2: Setting Up Your Development Environment
-
-## Lab 2: Installation and Configuration
+# Lab 2 Solution: Installation and Configuration
 
 ### Goal
 

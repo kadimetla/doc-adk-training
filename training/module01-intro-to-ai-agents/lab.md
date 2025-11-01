@@ -1,6 +1,4 @@
-# Module 1: Introduction to AI Agents & Google ADK
-
-## Lab 1: Exploring the ADK Ecosystem
+# Lab 1: Your First Interaction Challenge
 
 ### Goal
 
