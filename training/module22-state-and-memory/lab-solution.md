@@ -1,6 +1,6 @@
-# Module 22: State and Memory - Building a Personal Tutor Agent
+# Lab 22 Solution: Building a Personal Learning Tutor
 
-## Lab 22: Solution
+## Goal
 
 This file contains the complete code for the `agent.py` script in the Personal Learning Tutor lab.
 

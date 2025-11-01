@@ -1,6 +1,6 @@
-# Module 16: Building a Coordinator/Dispatcher Agent
+# Lab 16: Implementing the "Greeting Router" Challenge
 
-## Lab 16: Implementing the "Greeting Router"
+## Goal
 
 ### Goal
 

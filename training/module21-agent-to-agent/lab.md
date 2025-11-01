@@ -1,6 +1,6 @@
-# Module 21: Agent-to-Agent Communication
+# Lab 21: Building a Distributed Research System Challenge
 
-## Lab 21: Building a Distributed Research System
+## Goal
 
 ### Goal
 
@@ -13,7 +13,7 @@ In this lab, you will build a distributed multi-agent system. You will create a 
     adk create a2a-orchestrator
     adk create research-specialist
     ```
-    Choose the **Programmatic (Python script)** option for both.
+    When prompted, choose the **Programmatic (Python script)** option for both.
 
 2.  **Install Server Dependencies:**
     Navigate into the `research-specialist` directory and install `uvicorn`, which is needed to run the agent as a web server.

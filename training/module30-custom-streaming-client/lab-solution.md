@@ -1,6 +1,6 @@
-# Module 30: Building a Custom Streaming Client
+# Lab 30 Solution: Interacting with a Custom Voice Client
 
-## Lab 30: Solution
+## Goal
 
 This file contains the complete, working code for the `index.html` custom client.
 

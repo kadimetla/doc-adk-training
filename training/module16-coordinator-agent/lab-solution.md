@@ -1,6 +1,6 @@
-# Module 16: Building a Coordinator/Dispatcher Agent
+# Lab 16 Solution: Implementing the "Greeting Router"
 
-## Lab 16: Solution
+## Goal
 
 This file contains the complete YAML configurations for the "Greeting Router" multi-agent system.
 

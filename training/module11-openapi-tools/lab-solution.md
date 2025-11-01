@@ -1,6 +1,6 @@
-# Module 11: OpenAPI Tools
+# Lab 11 Solution: Building a Chuck Norris Fact Assistant
 
-## Lab 11: Solution
+## Goal
 
 This file contains the complete code for the `agent.py` script in the Chuck Norris Fact Assistant lab.
 

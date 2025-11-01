@@ -1,6 +1,6 @@
-# Module 14: Integrating Third-Party Tools
+# Lab 14: Integrating a LangChain Wikipedia Tool Challenge
 
-## Lab 14: Integrating a LangChain Wikipedia Tool
+## Goal
 
 ### Goal
 

@@ -1,8 +1,6 @@
-# Module 32: Deployment to Cloud Run
+# Lab 32: Deploying the Customer Support Agent Challenge
 
-## Lab 32: Deploying the Customer Support Agent
-
-### Goal
+## Goal
 
 In this lab, you will take the multi-agent customer support system you built in Module 15 and deploy it to Google Cloud Run. This will make your agent accessible via a public URL, transforming it from a local project into a shareable, cloud-hosted service.
 

@@ -1,6 +1,6 @@
-# Module 11: OpenAPI Tools
+# Lab 11: Building a Chuck Norris Fact Assistant Challenge
 
-## Lab 11: Building a Chuck Norris Fact Assistant
+## Goal
 
 ### Goal
 

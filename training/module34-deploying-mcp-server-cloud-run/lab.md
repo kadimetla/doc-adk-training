@@ -1,8 +1,6 @@
-# Module 34: Deploying an MCP Server to Cloud Run
+# Lab 34: Deploying the "Shopping Cart" Server Challenge
 
-## Lab 34: Deploying the "Shopping Cart" Server
-
-### Goal
+## Goal
 
 In this lab, you will take the "Shopping Cart" MCP server from Module 30, re-architect it to be stateless, containerize it with a `Dockerfile`, and deploy it to Google Cloud Run. You will then configure an ADK agent to connect to this live, cloud-hosted tool.
 

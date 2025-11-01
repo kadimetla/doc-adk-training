@@ -1,6 +1,6 @@
-# Module 9: Creating Custom Function Tools
+# Lab 9 Solution: Building a "Calculator" Agent
 
-## Lab 9: Solution
+## Goal
 
 This file contains the complete, step-by-step guide to creating the "Calculator" agent.
 

@@ -1,6 +1,6 @@
-# Module 38: Best Practices & Production Patterns
+# Lab 38 Solution: Building a Production-Ready Agent
 
-## Lab 38: Solution
+## Goal
 
 This file contains the complete code for the `agent.py` script in the Best Practices Agent lab.
 

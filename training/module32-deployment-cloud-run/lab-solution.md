@@ -1,6 +1,6 @@
-# Module 32: Deployment to Cloud Run
+# Lab 32 Solution: Deploying the Customer Support Agent
 
-## Lab 32: Solution
+## Goal
 
 This lab is a procedural tutorial. The primary "solution" is a successfully deployed agent and a public URL.
 

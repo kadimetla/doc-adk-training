@@ -1,6 +1,6 @@
-# Module 17: Building Agent Pipelines with SequentialAgent
+# Lab 17: Building a Blog Post Generator Pipeline Challenge
 
-## Lab 17: Building a Blog Post Generator Pipeline
+## Goal
 
 ### Goal
 

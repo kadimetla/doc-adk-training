@@ -1,6 +1,6 @@
-# Module 21: Agent-to-Agent Communication
+# Lab 21 Solution: Building a Distributed Research System
 
-## Lab 21: Solution
+## Goal
 
 This file contains the complete code for the two separate agent projects in the lab: the `research-specialist` (server) and the `a2a-orchestrator` (client).
 

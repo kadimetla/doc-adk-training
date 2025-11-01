@@ -1,8 +1,6 @@
-# Module 24: Evaluating Agent Performance
+# Lab 24: Creating an Evaluation Case for the Calculator Agent Challenge
 
-## Lab 24: Creating an Evaluation Case for the Calculator Agent
-
-### Goal
+## Goal
 
 In this lab, you will learn the fundamental workflow of the ADK's evaluation feature. You will use the ADK Developer UI to have a "golden path" conversation with the Calculator agent you built in Module 9. Then, you will save that conversation as an evaluation case and re-run it to validate the agent's behavior.
 

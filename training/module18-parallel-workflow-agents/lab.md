@@ -1,6 +1,6 @@
-# Module 18: Parallel Processing with ParallelAgent
+# Lab 18: Building a Smart Travel Planner Challenge
 
-## Lab 18: Building a Smart Travel Planner
+## Goal
 
 ### Goal
 

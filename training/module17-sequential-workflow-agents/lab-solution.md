@@ -1,6 +1,6 @@
-# Module 17: Building Agent Pipelines with SequentialAgent
+# Lab 17 Solution: Building a Blog Post Generator Pipeline
 
-## Lab 17: Solution
+## Goal
 
 This file contains the complete code for the `agent.py` script in the Blog Post Generator Pipeline lab.
 
@@ -70,6 +70,9 @@ editor_agent = Agent(
         "\n"
         "**Draft Blog Post:**\n"
         "{draft_post}\n"  # Reads from state!
+        "\n"
+        "**Editorial Feedback:**\n"
+        "{editorial_feedback}\n"  # Reads from state!
         "\n"
         "Analyze the post for:\n"
         "1. Clarity and flow\n"

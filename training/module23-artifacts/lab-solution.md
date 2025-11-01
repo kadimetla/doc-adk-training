@@ -1,6 +1,6 @@
-# Module 23: Handling Files with Artifacts
+# Lab 23 Solution: Building a Document Processing Pipeline
 
-## Lab 23: Solution
+## Goal
 
 This file contains the complete, simplified code for the `agent.py` script in the Document Processing Pipeline lab.
 

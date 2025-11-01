@@ -1,6 +1,6 @@
-# Module 4: Core Agent Concepts: `LlmAgent` Deep Dive
+# Lab 4 Solution: Transforming the "Echo" Agent with Instructions
 
-## Lab 4: Transforming the "Echo" Agent with Instructions
+## Goal
 
 ### Goal
 
@@ -38,7 +38,7 @@ This is where the magic happens. We will change the agent from a simple repeater
     name: echo_agent
     model: gemini-2.5-flash
     description: An agent that repeats the user's input.
-    instruction: You are an echo agent. Your only job is to repeat the user's input back to them exactly as they wrote it. Do not add any extra words or explanations.
+    instruction: An agent that repeats the user's input.
     ```
 
 2.  **Update the configuration:**

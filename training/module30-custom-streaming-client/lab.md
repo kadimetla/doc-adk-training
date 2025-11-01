@@ -1,8 +1,6 @@
-# Module 30: Building a Custom Streaming Client
+# Lab 30: Interacting with a Custom Voice Client Challenge
 
-## Lab 30: Interacting with a Custom Voice Client
-
-### Goal
+## Goal
 
 In this lab, you will run an ADK agent as a backend API server and interact with it using a custom, standalone HTML/JavaScript client. This will demonstrate how to build your own user-facing applications on top of the ADK's streaming capabilities.
 

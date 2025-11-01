@@ -1,8 +1,6 @@
-# Module 25: Advanced Observability with Plugins
+# Lab 25: Building an Observability System with Plugins Challenge
 
-## Lab 25: Building an Observability System with Plugins
-
-### Goal
+## Goal
 
 In this lab, you will build a comprehensive observability system for an agent using the ADK's **Plugin System**. You will implement separate plugins for metrics collection, alerting, and performance profiling.
 

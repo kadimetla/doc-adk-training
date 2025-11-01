@@ -1,6 +1,6 @@
-# Module 3: Your First Agent: The "Echo" Agent
+# Lab 3 Solution: Build and Run the "Echo" Agent
 
-## Lab 3: Build and Run the "Echo" Agent
+## Goal
 
 ### Overview
 

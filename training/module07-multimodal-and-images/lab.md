@@ -1,6 +1,6 @@
-# Module 7: Multimodal and Image Processing
+# Lab 7: Building a Visual Product Catalog Analyzer Challenge
 
-## Lab 7: Building a Visual Product Catalog Analyzer
+## Goal
 
 ### Goal
 

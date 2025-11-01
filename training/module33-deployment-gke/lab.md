@@ -1,8 +1,6 @@
-# Module 33: Deployment to Google Kubernetes Engine (GKE)
+# Lab 33: Manually Deploying an Agent to GKE Challenge
 
-## Lab 33: Manually Deploying an Agent to GKE
-
-### Goal
+## Goal
 
 In this lab, you will learn the fundamental process of deploying an ADK agent to Google Kubernetes Engine (GKE). Walking through the manual steps of creating a `Dockerfile`, building a container, and writing Kubernetes manifests provides a deep understanding of the deployment process.
 

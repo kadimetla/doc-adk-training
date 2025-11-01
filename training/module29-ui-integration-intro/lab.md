@@ -1,8 +1,6 @@
-# Module 29: Introduction to UI Integration
+# Lab 29: Building a Simple Custom Chat UI Challenge
 
-## Lab 29: Building a Simple Custom Chat UI
-
-### Goal
+## Goal
 
 In this lab, you will build a simple, standalone HTML file with JavaScript that acts as a custom chat client for an ADK agent, demonstrating how to connect a UI to the ADK's native API server.
 
