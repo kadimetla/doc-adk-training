@@ -31,8 +31,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Copy root README to docs folder
-        run: cp README.md training/README.md
+      - name: Prepare docs content
+        run: |
+          # Copy all root markdown files needed for the overview page
+          cp README.md timetable-*.md variant-*.md CONTRIBUTING.md training/
+          # Fix relative links in the copied README for Docusaurus
+          sed -i 's|(./training/|(./|g' training/README.md
         working-directory: .
 
       - name: Build website
