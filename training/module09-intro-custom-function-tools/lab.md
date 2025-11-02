@@ -1,6 +1,6 @@
-# Module 9: Creating Custom Function Tools
+# Lab 9: Building a "Calculator" Agent Challenge
 
-## Lab 9: Building a "Calculator" Agent
+## Goal
 
 ### Goal
 

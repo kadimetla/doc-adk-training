@@ -1,6 +1,6 @@
-# Module 25: Advanced Observability with Plugins
+# Lab 25 Solution: Building an Observability System with Plugins
 
-## Lab 25: Solution
+## Goal
 
 This file contains the complete code for the `agent.py` script in the Observability System with Plugins lab.
 

@@ -1,6 +1,6 @@
-# Module 12: Built-in Tools and Grounding
+# Lab 12 Solution: Building a Research Assistant with Web Search
 
-## Lab 12: Solution
+## Goal
 
 This file contains the complete code for the `agent.py` script in the Research Assistant lab.
 

@@ -1,8 +1,6 @@
-# Module 38: Best Practices & Production Patterns
+# Lab 38: Building a Production-Ready Agent Challenge
 
-## Lab 38: Building a Production-Ready Agent
-
-### Goal
+## Goal
 
 In this lab, you will build a **Best Practices Agent** that demonstrates several production-ready patterns, including input validation, error handling with retries, and caching.
 

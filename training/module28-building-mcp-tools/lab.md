@@ -1,8 +1,6 @@
-# Module 28: Building a Custom MCP Tool
+# Lab 28: Building a "Shopping Cart" MCP Server Challenge
 
-## Lab 28: Building a "Shopping Cart" MCP Server
-
-### Goal
+## Goal
 
 In this lab, you will build your own simple, standalone MCP server from scratch. This server will manage a stateful shopping cart, allowing clients to add items and view the cart's contents. You will then connect an ADK agent to your custom server.
 

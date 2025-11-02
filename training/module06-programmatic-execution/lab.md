@@ -1,6 +1,6 @@
-# Module 6: Running an Agent Programmatically
+# Lab 6: Executing Your Agent in a Python Script Challenge
 
-## Lab 6: Executing Your Agent in a Python Script
+## Goal
 
 ### Goal
 

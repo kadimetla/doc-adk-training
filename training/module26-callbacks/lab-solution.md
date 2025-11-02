@@ -1,6 +1,6 @@
-# Module 26: Callbacks and Guardrails - Building a Content Moderator
+# Lab 26 Solution: Building a Content Moderation Assistant
 
-## Lab 26: Solution
+## Goal
 
 This file contains the complete code for the `agent.py` script in the Content Moderation Assistant lab.
 

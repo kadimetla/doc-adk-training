@@ -1,6 +1,6 @@
-# Module 24: Evaluating Agent Performance
+# Lab 24 Solution: Creating an Evaluation Case for the Calculator Agent
 
-## Lab 24: Solution
+## Goal
 
 This file contains the expected output for the `eval_results/calculator_tests.evalset.json` file that is generated during the lab. This demonstrates the structure of a "golden path" test case that can be used for automated regression testing.
 

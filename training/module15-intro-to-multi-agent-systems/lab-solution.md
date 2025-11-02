@@ -1,6 +1,6 @@
-# Module 15: Introduction to Multi-Agent Systems
+# Lab 15 Solution: Designing a Multi-Agent System
 
-## Lab 15: Solution
+## Goal
 
 This lab was a conceptual design exercise. There is no single "correct" solution, but this file provides a more detailed example of the design planned in the lab.
 

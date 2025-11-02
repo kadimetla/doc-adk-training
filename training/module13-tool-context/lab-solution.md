@@ -1,6 +1,6 @@
-# Module 13: Advanced Tool Concepts: Tool Context
+# Lab 13 Solution: Creating a "Memory" Agent with Tool Context
 
-## Lab 13: Solution
+## Goal
 
 This file contains the complete code for the `memory.py` and `root_agent.yaml` files in the Memory Agent lab.
 

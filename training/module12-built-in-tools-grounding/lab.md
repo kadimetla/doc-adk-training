@@ -1,6 +1,6 @@
-# Module 12: Built-in Tools and Grounding
+# Lab 12: Building a Research Assistant with Web Search Challenge
 
-## Lab 12: Building a Research Assistant with Web Search
+## Goal
 
 ### Goal
 

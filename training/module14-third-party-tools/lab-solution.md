@@ -1,6 +1,6 @@
-# Module 14: Integrating Third-Party Tools
+# Lab 14 Solution: Integrating a LangChain Wikipedia Tool
 
-## Lab 14: Solution
+## Goal
 
 This file contains the complete code for the `agent.py` file in the Fact-finder Agent lab.
 

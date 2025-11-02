@@ -1,6 +1,6 @@
-# Module 20: Iterative Refinement with Loop Agents
+# Lab 20 Solution: Building an Essay Refinement System
 
-## Lab 20: Solution
+## Goal
 
 This file contains the complete code for the `agent.py` script in the Essay Refinement System lab.
 

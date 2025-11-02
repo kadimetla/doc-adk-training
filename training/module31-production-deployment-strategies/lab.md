@@ -1,8 +1,6 @@
-# Module 31: Production Deployment Strategies
+# Lab 31: Choosing the Right Deployment Strategy Challenge
 
-## Lab 31: Choosing the Right Deployment Strategy
-
-### Goal
+## Goal
 
 In this lab, you will apply the decision framework from the theory section to a series of real-world scenarios. This is a conceptual exercise to help you develop the strategic thinking needed to choose the right deployment path for your agents. There is no coding in this lab.
 

@@ -1,6 +1,6 @@
-# Module 20: Iterative Refinement with Loop Agents
+# Lab 20: Building an Essay Refinement System Challenge
 
-## Lab 20: Building an Essay Refinement System
+## Goal
 
 ### Goal
 

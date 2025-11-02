@@ -1,8 +1,6 @@
-# Module 35: Deploying to Agent Engine
+# Lab 35: Deploying the Calculator Agent Challenge
 
-## Lab 35: Deploying the Calculator Agent
-
-### Goal
+## Goal
 In this lab, you will deploy the `calculator-agent` to Google Cloud's Agent Engine using both the recommended Accelerated method and the manual Standard method.
 
 ### Prerequisites

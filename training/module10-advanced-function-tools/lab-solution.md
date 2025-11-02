@@ -1,6 +1,6 @@
-# Module 10: Advanced Function Tools
+# Lab 10 Solution: Building a Personal Finance Assistant
 
-## Lab 10: Solution
+## Goal
 
 This file contains the complete code for the `agent.py` script in the Personal Finance Assistant lab.
 

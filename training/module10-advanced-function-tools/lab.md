@@ -1,6 +1,6 @@
-# Module 10: Advanced Function Tools
+# Lab 10: Building a Personal Finance Assistant Challenge
 
-## Lab 10: Building a Personal Finance Assistant
+## Goal
 
 ### Goal
 

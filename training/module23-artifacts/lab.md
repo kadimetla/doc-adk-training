@@ -1,8 +1,6 @@
-# Module 23: Handling Files with Artifacts
+# Lab 23: Building a Document Processing Pipeline Challenge
 
-## Lab 23: Building a Document Processing Pipeline
-
-### Goal
+## Goal
 
 In this lab, you will build a **Document Processor** agent that uses a multi-step pipeline to process a file, saving the output of each step as a versioned artifact. This will teach you how to build complex, auditable file management workflows.
 

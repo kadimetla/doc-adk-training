@@ -1,6 +1,6 @@
-# Module 29: Introduction to UI Integration
+# Lab 29 Solution: Building a Simple Custom Chat UI
 
-## Lab 29: Solution
+## Goal
 
 This file contains the complete code for the `index.html` custom chat client.
 

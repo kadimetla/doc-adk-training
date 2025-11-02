@@ -1,6 +1,6 @@
-# Module 15: Introduction to Multi-Agent Systems
+# Lab 15: Designing a Multi-Agent System Challenge
 
-## Lab 15: Designing a Multi-Agent System
+## Goal
 
 ### Goal
 

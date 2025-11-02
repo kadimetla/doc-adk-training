@@ -1,6 +1,6 @@
-# Module 8: Introduction to Tools
+# Lab 8 Solution: Creating a "Researcher" Agent with Google Search
 
-## Lab 8: Solution
+## Goal
 
 This file contains the complete, step-by-step guide to creating the "Researcher" agent.
 

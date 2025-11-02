@@ -1,8 +1,6 @@
-# Module 36: Gemini Enterprise
+# Lab 36: Designing an Enterprise Agent Strategy Challenge
 
-## Lab 36: Designing an Enterprise Agent Strategy
-
-### Goal
+## Goal
 
 In this lab, you will design a strategy for a fictional company to adopt and govern a fleet of AI agents using Gemini Enterprise. This is a conceptual exercise to help you think about the challenges of managing agents at scale. **There is no coding in this lab.**
 

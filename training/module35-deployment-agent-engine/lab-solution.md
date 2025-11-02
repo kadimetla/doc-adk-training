@@ -1,6 +1,6 @@
-# Module 35: Deploying to Agent Engine
+# Lab 35 Solution: Deploying the Calculator Agent
 
-## Lab 35: Solution
+## Goal
 
 This lab is a procedural tutorial. The solution for both parts is a successfully deployed Agent Engine instance.
 

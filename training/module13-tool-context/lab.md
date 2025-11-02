@@ -1,6 +1,6 @@
-# Module 13: Advanced Tool Concepts: Tool Context
+# Lab 13: Creating a "Memory" Agent with Tool Context Challenge
 
-## Lab 13: Creating a "Memory" Agent with Tool Context
+## Goal
 
 ### Goal
 
