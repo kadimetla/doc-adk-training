@@ -35,8 +35,8 @@ jobs:
         run: |
           # Copy all root markdown files needed for the overview page
           cp README.md timetable-*.md variant-*.md CONTRIBUTING.md training/
-          # Fix relative links in the copied README for Docusaurus
-          sed -i 's|(./training/|(./|g' training/README.md
+          # Fix relative links in all copied markdown files for Docusaurus
+          sed -i 's|(./training/|(./|g' training/*.md
         working-directory: .
 
       - name: Build website
