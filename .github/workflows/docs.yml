@@ -32,7 +32,8 @@ jobs:
         run: npm install
 
       - name: Copy root README to docs folder
-        run: cp ../README.md ./training/README.md
+        run: cp README.md training/README.md
+        working-directory: .
 
       - name: Build website
         run: npm run build
