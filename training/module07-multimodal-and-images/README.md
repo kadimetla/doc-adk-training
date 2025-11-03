@@ -21,7 +21,7 @@ A `Part` can contain:
 *   **Text:** `types.Part.from_text("Describe this image")`
 *   **Image Data:** `types.Part(inline_data=types.Blob(data=image_bytes, mime_type='image/png'))`
 
-When you send a list of these parts to a vision-capable model like `gemini-1.5-flash`, the model can reason about the text and the image(s) together.
+When you send a list of these parts to a vision-capable model like `gemini-2.5-flash`, the model can reason about the text and the image(s) together.
 
 ### Image Generation
 

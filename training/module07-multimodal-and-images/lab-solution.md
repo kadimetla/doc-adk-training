@@ -15,8 +15,9 @@ Analyzes product images, extracts information, and generates descriptions.
 import asyncio
 import os
 from typing import List, Dict
-from google.adk.agents import Agent, Runner
+from google.adk.agents import Agent
 from google.genai import types
+from google.adk.runners import InMemoryRunner, Runner
 from PIL import Image
 import io
 
@@ -46,7 +47,7 @@ class ProductCatalogAnalyzer:
 
         # Agent 1: Vision specialist
         self.vision_agent = Agent(
-            model='gemini-1.5-flash',
+            model='gemini-2.5-flash',
             name='vision_analyzer',
             instruction="""
 You are a product vision analyst. When analyzing product images, identify the product type, describe key visual features (color, material, design), and note any visible text. Provide a structured, detailed analysis.
@@ -55,14 +56,14 @@ You are a product vision analyst. When analyzing product images, identify the pr
 
         # Agent 2: Content specialist
         self.catalog_agent = Agent(
-            model='gemini-1.5-flash',
+            model='gemini-2.5-flash',
             name='catalog_generator',
             instruction="""
 You are a product catalog content creator. Generate professional, marketing-ready product descriptions based on a visual analysis provided to you. Focus on compelling descriptions and key features.
             """.strip(),
         )
 
-        self.runner = Runner()
+        self.runner = InMemoryRunner()
 
     async def analyze_product(self, product_id: str, image_path: str):
         """Analyze a product image and create a catalog entry."""

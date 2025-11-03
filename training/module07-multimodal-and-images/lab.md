@@ -47,8 +47,9 @@ In this lab, you will build a multi-agent system that can analyze a product imag
 import asyncio
 import os
 from typing import List, Dict
-from google.adk.agents import Agent, Runner
+from google.adk.agents import Agent
 from google.genai import types
+from google.adk.runners import Runner
 import io
 
 # Helper function to load an image from a local file path
@@ -75,11 +76,11 @@ class ProductCatalogAnalyzer:
         """Initialize product catalog analyzer."""
         self.catalog: List[Dict] = []
         self.vision_agent = Agent(
-            model='gemini-1.5-flash', name='vision_analyzer',
+            model='gemini-2.5-flash', name='vision_analyzer',
             instruction="You are a product vision analyst. Describe key visual features."
         )
         self.catalog_agent = Agent(
-            model='gemini-1.5-flash', name='catalog_generator',
+            model='gemini-2.5-flash', name='catalog_generator',
             instruction="You are a product catalog writer. Generate marketing descriptions from a visual analysis."
         )
         self.runner = Runner()

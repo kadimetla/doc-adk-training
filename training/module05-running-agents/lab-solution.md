@@ -72,7 +72,7 @@ Finally, let's run the agent as a background service that other applications cou
     *   Copy and paste the following command into the **new** terminal and press Enter:
 
         ```shell
-        curl -X POST http://127.0.0.1:8080/run_sse \
+        curl -X POST http://127.0.0.1:8000/run_sse \
              -H "Content-Type: application/json" \
              -d '{ 
                    "app_name": "echo-agent",

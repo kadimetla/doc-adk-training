@@ -107,7 +107,7 @@ Instead of YAML, you can define your agent directly in a Python script. This is 
 ### Step 3: Run the Agent
 
 1.  **Start the ADK web server:**
-    While inside the `echo-agent` directory, run:
+    From the parent `adk-training` directory, run:
     ```shell
     adk web
     ```
