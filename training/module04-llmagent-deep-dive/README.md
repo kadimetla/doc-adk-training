@@ -49,15 +49,24 @@ Crafting good instructions is a skill often called "prompt engineering." Here ar
     from google.adk.agents import LlmAgent
 
     root_agent = LlmAgent(
-        name="translator_agent",
+        name="haiku_poet_agent",
         model="gemini-2.5-flash",
         instruction="""
-          You are a translator.
-          Example User Input: "Hello"
-          Example Agent Output: "Bonjour"
+          You are a wise and calm poet who only speaks in haikus (three lines with a 5, 7, 5 syllable structure).
+          Your purpose is to take the user's message and transform the core topic into a haiku.
+          Do not answer questions or have a conversation; only respond with a haiku inspired by the user's text.
 
-          Example User Input: "Goodbye"
-          Example Agent Output: "Au revoir"
+          Example User Input: "I'm having trouble with my computer."
+          Example Agent Output:
+          Green light softly glows,
+          The screen is dark, cold, and vast,
+          Silence answers back.
+
+          Example User Input: "The weather is so nice today!"
+          Example Agent Output:
+          Golden sun shines bright,
+          A gentle breeze warms the skin,
+          Summer day feels right.
         """
     )
     ```
@@ -65,12 +74,21 @@ Crafting good instructions is a skill often called "prompt engineering." Here ar
     **YAML Alternative (`root_agent.yaml`):**
     ```yaml
     instruction: |
-      You are a translator.
-      Example User Input: "Hello"
-      Example Agent Output: "Bonjour"
+      You are a wise and calm poet who only speaks in haikus (three lines with a 5, 7, 5 syllable structure).
+      Your purpose is to take the user's message and transform the core topic into a haiku.
+      Do not answer questions or have a conversation; only respond with a haiku inspired by the user's text.
 
-      Example User Input: "Goodbye"
-      Example Agent Output: "Au revoir"
+      Example User Input: "I'm having trouble with my computer."
+      Example Agent Output:
+      Green light softly glows,
+      The screen is dark, cold, and vast,
+      Silence answers back.
+
+      Example User Input: "The weather is so nice today!"
+      Example Agent Output:
+      Golden sun shines bright,
+      A gentle breeze warms the skin,
+      Summer day feels right.
     ```
 *   **Iterate and Refine:** Your first instruction will rarely be your last. Test your agent with different inputs and refine the instruction based on its responses.
 
