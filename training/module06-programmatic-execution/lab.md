@@ -1,87 +1,86 @@
-# Lab 6: Executing Your Agent in a Python Script Challenge
+# Lab 6: Programmatic Execution with the ADK Runner
 
 ## Goal
 
-### Goal
+In this lab, you will learn how to run an ADK agent programmatically from within a Python script, using the standard `Runner`. Instead of creating a new agent, you will import and run the **Haiku Poet agent** you built in Module 4.
 
-In this lab, you will learn how to run an ADK agent programmatically from within a Python script, without using the `adk web` Dev UI. You will write a script that initializes a runner, creates a session, sends a query, and prints the streamed response to the console.
+This will teach you the canonical way to execute an agent as part of a larger Python application, without using the `adk` command-line tools.
 
 ### Step 1: Prepare the Project
 
-1.  **Navigate to the lab directory:**
+1.  **Navigate to your `adk-training` directory:**
+    This is the root directory containing all your agents.
     ```shell
-    cd training/module06-programmatic-execution
+    cd /path/to/your/adk-training
     ```
 
-2.  **Create the Environment File:**
-    Inside this directory, create a new file named `.env` and add the following line to it. This file will provide the model name to your script.
-    ```
-    MODEL="gemini-2.5-flash"
-    ```
+2.  **Create the main execution script:**
+    In the `adk-training` directory, create a new Python file named `run_haiku_agent.py`. This is where you will write the code to run your agent.
 
-3.  **Inspect the files:**
-    You will find an `agent.py` file. This is where you will write your code.
+### Step 2: Complete the `run_haiku_agent.py` Script
 
-### Step 2: Complete the `agent.py` Script
-
-You will now complete the `agent.py` script. It has been started for you, but you need to fill in the core logic.
-
-**Exercise:** Open `agent.py` and complete the script by following the `# TODO` comments. The goal is to create and run a simple trivia agent.
+You will now complete the script to programmatically run your `haiku-poet-agent`. Open `run_haiku_agent.py` and follow the `# TODO` comments.
 
 ```python
 import asyncio
-from google.adk.agents import Agent
-from google.adk.runners import InMemoryRunner
-from google.adk.sessions import Session
+from google.adk.agents import LlmAgent
+from google.adk.runners import Runner
+from google.adk.sessions import Session, InMemorySessionService
 from google.genai import types
-import os
-from dotenv import load_dotenv
 
-# Load environment variables from the agent directory's .env file
-load_dotenv()
-model_name = os.getenv("MODEL")
+# TODO: Step 1 - Import your agent
+# The ADK makes any agent in a subdirectory available as a Python module.
+# Import the `root_agent` from your `haiku-poet-agent` directory.
+# Example: from haiku_poet_agent import agent as haiku_agent_module
 
 async def main():
-    # TODO: Step 1 - Define your Agent configuration.
-    # Give it the name "trivia_agent" and the instruction "Answer questions."
+    # TODO: Step 2 - Create a Session Service.
+    # For this lab, we'll use a simple in-memory session store.
+    # Instantiate `InMemorySessionService`.
 
-    # TODO: Step 2 - Create an InMemoryRunner with your agent.
-    # Use the app_name 'my_agent_app'.
+    # TODO: Step 3 - Initialize the Runner.
+    # Create an instance of the `Runner` class, passing the session_service you just created.
 
-    # TODO: Step 3 - Create a new session using the runner's session_service.
-    # Use the user_id 'user1'.
+    # TODO: Step 4 - Create a new session for your agent.
+    # Use the session_service's `create_session` method.
+    # You need to provide the `app_name` (the folder name of your agent) and a `user_id`.
+    
+    # TODO: Step 5 - Package your query.
+    # Create a query string, for example: "A quiet morning with a cup of coffee."
+    # Package this into a `types.Content` object.
 
-    # TODO: Step 4 - Package a query (e.g., "What is the capital of France?")
-    # into a genai.types.Content object.
+    # TODO: Step 6 - Run the agent.
+    # Call the `runner.run_async()` method. You will need to pass the
+    # session object you created and the new message.
 
-    # TODO: Step 5 - Call the runner.run_async() method with the session
-    # and new message.
-
-    # TODO: Step 6 - Loop through the events and print the text from
-    # the final agent response.
+    # TODO: Step 7 - Print the final response.
+    # The `run_async` method returns a stream of events. Loop through them
+    # and print the `text` from the `Part` of the final agent response.
+    # The final event will have `event.name == 'agent:response'`.
 
 if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-### Step 3: Run the Agent Script
+### Step 3: Run the Script
 
 Once you have completed the script, you can execute it directly from your terminal.
 
 1.  **Ensure your virtual environment is active.**
 
-2.  **Run the script:**
+2.  **Run the script from your `adk-training` directory:**
     ```shell
-    python agent.py
+    python run_haiku_agent.py
     ```
 
 ### Step 4: Observe the Output
 
-If your script is correct, you will see output printed directly to your console, showing both the user's query and the agent's response:
+If your script is correct, you will see the haiku response printed directly to your console. For the example query, it might look something like this:
 
 ```
-** User says: {'role': 'user', 'parts': [{'text': 'What is the capital of France?'}]}
-** trivia_agent: The capital of France is Paris.
+Steam gently does rise,
+The world outside is quiet,
+Warm mug in my hands.
 ```
 
 ### Having Trouble?
@@ -90,16 +89,16 @@ If you get stuck, you can find the complete code in the `lab-solution.md` file.
 
 ### Lab Summary
 
-You have successfully run an agent programmatically. This is the foundation for integrating your agent into any larger Python application.
+You have successfully run an agent programmatically using the standard `Runner`. This is the foundation for integrating your agent into any larger Python application.
 
 You have learned to:
-*   Instantiate an `InMemoryRunner` to manage agent execution.
-*   Create a `Session` programmatically using the runner's `session_service`.
-*   Package a user's message into the required `types.Content` and `types.Part` structure.
-*   Use `runner.run_async` to execute the agent and loop through the streamed `Event` objects to get the response.
-*   Structure the entire process within an `async` Python function.
+*   Import an agent from a subdirectory as a Python module.
+*   Instantiate an `InMemorySessionService` to manage session state.
+*   Instantiate the `Runner` and provide it with the necessary services.
+*   Create a `Session` programmatically for a specific agent app.
+*   Use `runner.run_async` to execute the agent and process the event stream to get the final response.
 
 ### Self-Reflection Questions
-- Why is programmatic execution necessary for integrating an agent into a larger application (like a web backend or a mobile app)?
-- What is the purpose of the `Session` object? What would happen if you created a new session for every single message from a user?
-- The `runner.run_async` method returns a stream of events. Besides the final answer, what other types of events might you want to handle in a more complex application? (Hint: Think about tools).
+- Why is it important to decouple the `Runner` from the `SessionService`? What advantage does this give you in a production environment?
+- The `runner.run_async` method returns a stream of events. Why is this streaming approach useful in a real-world application compared to a function that just returns the final string?
+- How would you modify this script to have a continuous conversation with the agent instead of just sending one message? (Hint: Think about loops and reusing the session object).

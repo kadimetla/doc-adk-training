@@ -2,15 +2,13 @@
 
 ## Goal
 
-### Goal
-
-In this lab, you will build an agent that can perform basic arithmetic. You will do this by creating your own custom function tools in Python and integrating them into a config-based agent.
+In this lab, you will build an agent that can perform basic arithmetic. You will do this by creating your own custom function tools in Python and integrating them into a Python-based agent.
 
 ### Step 1: Create the Project and File Structure
 
 1.  **Create the agent project:**
     ```shell
-    adk create --type=config calculator-agent
+    adk create calculator-agent
     cd calculator-agent
     ```
 
@@ -78,26 +76,32 @@ def divide(a: int, b: int) -> dict:
     pass
 ```
 
-### Step 3: Configure the Agent
+### Step 3: Configure the Agent in `agent.py`
 
-**Exercise:** Open `root_agent.yaml` and complete the configuration. You need to write an instruction and tell the agent which tools it can use.
+**Exercise:** Open `agent.py` and complete the configuration. You need to import your new tools, wrap them in `FunctionTool`, and add them to your agent's definition.
 
-```yaml
-# In root_agent.yaml
+```python
+# In agent.py
+from google.adk.agents import LlmAgent
+from google.adk.tools import FunctionTool
 
-# yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
-name: calculator_agent
-model: gemini-2.5-flash
-description: An agent that can perform basic arithmetic calculations.
-instruction: |
-  # TODO: Write an instruction that tells the agent it is a calculator.
-  # It MUST use its tools to perform calculations.
-  # It should politely decline non-mathematical questions.
+# TODO: Import the four functions from your tools.calculator module.
 
-# TODO: Add the four calculator tools you created.
-# The format is `[directory_name].[file_name].[function_name]`.
-tools:
-  - name: ...
+# TODO: Create a FunctionTool for each of your imported functions.
+
+root_agent = LlmAgent(
+    name="calculator_agent",
+    model="gemini-2.5-flash",
+    description="An agent that can perform basic arithmetic calculations.",
+    instruction="""
+You are a helpful calculator assistant.
+When the user asks you to perform a calculation (add, subtract, multiply, or divide), you MUST use the appropriate tool.
+Clearly state the result of the calculation to the user.
+If the user asks a question that is not a calculation, politely state that you can only perform math.
+""",
+    # TODO: Add the four FunctionTool objects you created to this list.
+    tools=[]
+)
 ```
 
 ### Step 4: Test Your Agent
@@ -115,7 +119,7 @@ If you get stuck, you can find the complete, working code and configuration in t
 You have successfully built an agent with custom capabilities! You have learned to:
 *   Organize tool code into a separate Python module.
 *   Write well-defined Python functions with type hints and docstrings to serve as tools.
-*   Reference and register your custom tools in the `root_agent.yaml` configuration.
+*   Import and register your custom tools in the `agent.py` file using `FunctionTool`.
 *   Write instructions that effectively guide the agent on how and when to use its new tools.
 
 ### Self-Reflection Questions

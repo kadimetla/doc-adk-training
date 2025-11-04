@@ -4,7 +4,7 @@
 
 ### Beyond the Dev UI: Production Execution
 
-While the `adk web` Dev UI is an excellent tool for interactive testing, debugging, and rapid prototyping, it's not designed for production use. To integrate your agent into a larger application, a backend service, or a custom user interface, you need to run it programmatically.
+While the `adk web` Dev UI is an excellent tool for interactive testing, it's not designed for production use. To integrate your agent into a larger application, a backend service, or a custom user interface, you need to run it programmatically.
 
 Running an agent programmatically means you are responsible for managing the components that the Dev UI handles automatically. This gives you complete control over the agent's lifecycle and how it integrates with your application.
 
@@ -12,13 +12,13 @@ Running an agent programmatically means you are responsible for managing the com
 
 When you run an agent outside the Dev UI, you need to explicitly create and manage three key components:
 
-1.  **The Runner (`InMemoryRunner`)**
-    *   **Feature:** Oversight of agent execution.
-    *   **Description:** The Runner is the engine responsible for the entire agent lifecycle. It receives the user's query, passes it to the agent, manages the event loop, and streams events (like the agent's final response or tool calls) back to your application. The `InMemoryRunner` is a simple, self-contained runner that manages sessions and artifacts in memory, making it perfect for single-instance applications or getting started.
-
-2.  **The Session Service (`runner.session_service`)**
+1.  **The Session Service (`InMemorySessionService`)**
     *   **Feature:** Conversation history & shared state.
-    *   **Description:** Sessions are crucial for maintaining conversational context. They store the history of messages and any stateful information the agent needs to remember between turns. When you create a runner, it automatically includes a session service. You use `runner.session_service.create_session()` to start a new conversation. While the `InMemoryRunner` uses a transient, in-memory session store, in a production environment you would replace this with a persistent database like Firestore or Spanner.
+    *   **Description:** Sessions are crucial for maintaining conversational context. They store the history of messages and any stateful information the agent needs to remember between turns. Before creating a `Runner`, you must first instantiate a session service. The `InMemorySessionService` is a simple, non-persistent store that keeps session data in memory, perfect for development and simple applications. For production, you would use a persistent service like `FirestoreSessionService`.
+
+2.  **The Runner (`Runner`)**
+    *   **Feature:** Oversight of agent execution.
+    *   **Description:** The `Runner` is the core engine responsible for the entire agent lifecycle. It receives the user's query, passes it to the agent, manages the event loop, and streams events back to your application. Crucially, the `Runner` is a stateless orchestrator; it requires services like a `SessionService` to be passed to its constructor to manage state.
 
 3.  **Structured Messages (`types.Content` and `types.Part`)**
     *   **Feature:** Structured, multimodal messages.
@@ -46,7 +46,7 @@ By managing these components yourself, you gain the power to embed your ADK agen
 
 ### Key Takeaways
 - Programmatic execution gives you full control over the agent's lifecycle for integration into custom applications.
-- The `InMemoryRunner` is the engine that manages the agent's execution and event loop.
-- The `runner.session_service` is used to create and manage sessions for conversational context.
+- The `Runner` is a stateless engine that requires services, like a `SessionService`, to be passed into it.
+- The `InMemorySessionService` is used to create and manage sessions in memory for development.
 - User messages must be packaged into structured `types.Content` and `types.Part` objects.
 - The `runner.run_async()` method returns an asynchronous stream of `Event` objects that you process in a loop.

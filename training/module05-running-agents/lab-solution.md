@@ -2,17 +2,15 @@
 
 ## Goal
 
-### Goal
-
 In this lab, you will learn how to run and interact with your "Haiku Poet" agent using the three primary execution modes provided by the ADK CLI: `adk web`, `adk run`, and `adk api_server`.
 
-### Prerequisites
+## Prerequisites
 
 *   You have successfully completed Module 4.
 *   You have the `haiku-poet-agent` configured in your `adk-training` directory.
 *   Your virtual environment is active.
 
-### Part 1: Interactive Development with `adk web`
+## Part 1: Interactive Development with `adk web`
 
 This is the mode you've used so far. Let's explore its features more deeply.
 
@@ -34,7 +32,7 @@ This is the mode you've used so far. Let's explore its features more deeply.
     *   **Trace View:** On the right side of the screen, click on the "Trace" tab. You will see a waterfall diagram. Click on the `LlmAgent` step to expand it. Here you can see the full prompt sent to the Gemini model, including your detailed instruction and the user's message. This view is critical for debugging why an agent behaves a certain way.
     *   **State View:** Click the "State" tab. This view shows the agent's short-term memory for the current conversation. We will explore this more in later modules.
 
-### Part 2: Headless Interaction with `adk run`
+## Part 2: Headless Interaction with `adk run`
 
 Now, let's chat with the agent directly in the terminal.
 
@@ -54,7 +52,7 @@ Now, let's chat with the agent directly in the terminal.
     *   You can have a continuous conversation.
     *   To exit, press `Ctrl+C`.
 
-### Part 3: Running as a Service with `adk api_server`
+## Part 3: Running as a Service with `adk api_server`
 
 Finally, let's run the agent as a background service that other applications could talk to.
 
@@ -102,7 +100,7 @@ Finally, let's run the agent as a background service that other applications cou
 4.  **Stop the API server:**
     Go back to the first terminal where the `api_server` is running and press `Ctrl+C`.
 
-### Lab Summary
+## Lab Summary
 
 You have now mastered the three ways to run an ADK agent:
 
