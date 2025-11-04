@@ -104,11 +104,14 @@ If the user asks a question that is not a calculation, politely state that you c
 )
 ```
 
-### Step 4: Test Your Agent
+### Step 4: Test the Calculator Agent
 
-1.  **Set up your API key** in the `.env` file.
-2.  **Start the web server:** `adk web`
-3.  **Interact with the agent** in the Dev UI. Test all four operations, including division by zero. Check the Trace View to ensure your tools are being called correctly.
+1.  **Start the web server:** `adk web`
+2.  **Interact with the agent** in the Dev UI and ask it to perform calculations. Check the Trace View to see the tools being executed.
+    *   "What is 42 + 118?"
+    *   "Multiply 15 by 3."
+    *   "What is 10 divided by 0?"
+    *   "What is the capital of France?" (Should be gracefully declined).
 
 ### Having Trouble?
 
