@@ -12,11 +12,11 @@ Building an effective `LlmAgent` requires a clear understanding of its core conf
 
 ### Defining the Agent's Identity
 
-As you saw in the previous module, every `LlmAgent` has a few basic identity parameters set in its `root_agent.yaml` file:
+As you saw in the previous module, every `LlmAgent` has a few basic identity parameters, which can be set in `agent.py` or, for simpler agents, in a `root_agent.yaml` file:
 
 *   **`name` (Required):** A unique identifier for the agent (e.g., `echo_agent`).
 *   **`description` (Optional):** A short summary of the agent's purpose.
-*   **`model` (Required):** The specific LLM that powers the agent (e.g., `gemini-1.5-flash`).
+*   **`model` (Required):** The specific LLM that powers the agent (e.g., `gemini-2.5-flash`).
 
 ### The Art of the Instruction
 
@@ -43,6 +43,26 @@ Crafting good instructions is a skill often called "prompt engineering." Here ar
 *   **Be Clear and Specific:** Ambiguity is the enemy. The more precise your instructions, the more reliable the agent's behavior will be.
 *   **Use Simple Language:** Write instructions as if you were talking to a person. Avoid jargon.
 *   **Provide Examples (Few-Shot Prompting):** One of the most powerful techniques is to include examples directly in the instruction.
+
+    **Python Example (`agent.py`):**
+    ```python
+    from google.adk.agents import LlmAgent
+
+    root_agent = LlmAgent(
+        name="translator_agent",
+        model="gemini-2.5-flash",
+        instruction="""
+          You are a translator.
+          Example User Input: "Hello"
+          Example Agent Output: "Bonjour"
+
+          Example User Input: "Goodbye"
+          Example Agent Output: "Au revoir"
+        """
+    )
+    ```
+
+    **YAML Alternative (`root_agent.yaml`):**
     ```yaml
     instruction: |
       You are a translator.
@@ -54,7 +74,7 @@ Crafting good instructions is a skill often called "prompt engineering." Here ar
     ```
 *   **Iterate and Refine:** Your first instruction will rarely be your last. Test your agent with different inputs and refine the instruction based on its responses.
 
-In the lab for this module, you will practice this skill by modifying the "Echo" agent's instruction to give it a completely new personality and behavior, all without changing a single line of code.
+In the lab for this module, you will practice this skill by modifying the "Echo" agent's instruction to give it a completely new personality and behavior.
 
 ### Key Takeaways
 - The `LlmAgent` is the "brain" of an ADK application, using an LLM to reason and decide on actions.
