@@ -2,7 +2,7 @@
 
 ## Goal
 
-This file contains the complete code for the `memory.py` and `root_agent.yaml` files in the Memory Agent lab.
+This file contains the complete code for the `memory.py` and `agent.py` files in the Memory Agent lab.
 
 ### `memory-agent/tools/memory.py`
 
@@ -46,7 +46,37 @@ def recall_name(tool_context: ToolContext) -> dict:
         return {"status": "not_found", "message": "I don't believe you've told me your name yet."}
 ```
 
-### `memory-agent/root_agent.yaml`
+### `memory-agent/agent.py` (Primary Solution)
+
+```python
+from google.adk.agents import LlmAgent
+from google.adk.tools import FunctionTool
+
+# Import the functions from your tools module
+from .tools.memory import remember_name, recall_name
+
+# Create a FunctionTool for each function
+remember_tool = FunctionTool(fn=remember_name)
+recall_tool = FunctionTool(fn=recall_name)
+
+root_agent = LlmAgent(
+    name="memory_agent",
+    model="gemini-2.5-flash",
+    description="An agent that can remember and recall the user's name.",
+    instruction="""
+You are a friendly assistant with a memory.
+- If the user tells you their name, you MUST use the `remember_name` tool to save it.
+- If the user asks you what their name is, you MUST use the `recall_name` tool to find it.
+- After recalling a name, address the user by their name.
+""",
+    tools=[
+        remember_tool,
+        recall_tool,
+    ],
+)
+```
+
+### `memory-agent/root_agent.yaml` (Alternative)
 
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
