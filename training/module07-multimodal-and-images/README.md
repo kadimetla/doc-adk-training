@@ -32,7 +32,7 @@ This allows you to build agents that can:
 *   Generate illustrations for a story.
 *   Create charts and diagrams from data.
 
-In the lab, you will build a "Visual Product Catalog Analyzer" that uses a vision-capable agent to analyze a product image and a second agent to generate a marketing description from that analysis.
+In the lab, you will build a "Visual Product Catalog Analyzer" that uses a single, vision-capable agent to analyze a product image and generate a marketing description from that analysis.
 
 ### Key Takeaways
 - Multimodal models like Gemini can process text and images together, enabling vision-enabled agents.

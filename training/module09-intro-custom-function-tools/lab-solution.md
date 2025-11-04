@@ -18,7 +18,7 @@ You will build an agent that can perform basic arithmetic by creating your own c
 2.  **Create the agent project:**
     ```shell
     adk create calculator-agent
-    ```
+xch    ```
 
 3.  **Navigate into the new directory:**
     ```shell
