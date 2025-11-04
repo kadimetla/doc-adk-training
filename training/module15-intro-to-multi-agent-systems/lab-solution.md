@@ -2,54 +2,109 @@
 
 ## Goal
 
-This lab was a conceptual design exercise. There is no single "correct" solution, but this file provides a more detailed example of the design planned in the lab.
+This lab was a conceptual design exercise. There is no single "correct" solution, but this file provides a more detailed example of the design planned in the lab, prioritizing the Python-first approach.
 
-### Agent Design Details
+### Python Design (Primary Approach)
 
-Here is a more fleshed-out version of the agent designs.
+Here is a more fleshed-out version of the agent designs as they would be implemented in Python files.
 
-#### Agent 1: The `router_agent`
+#### `greeting-agent/agent.py` (The Router)
 
-*   **Purpose:** To act as a receptionist, understanding the user's desired language for a greeting and delegating to the appropriate specialist. It should handle cases where the language is not supported.
-*   **Type:** `LlmAgent`.
-*   **Detailed Instruction:**
-    ```
-    You are a language routing specialist for a greeting service. Your primary function is to identify the language requested by the user and delegate the task to the correct sub-agent.
+```python
+from google.adk.agents import LlmAgent
+from . import spanish_greeter_agent
 
-    Available specialists:
-    - `spanish_greeter_agent`: Handles greetings in Spanish.
+root_agent = LlmAgent(
+    name="router_agent",
+    model="gemini-2.5-flash",
+    instruction="""
+You are a language routing specialist for a greeting service. Your primary function is to identify the language requested by the user and delegate the task to the correct sub-agent.
 
-    Your rules:
-    1.  Analyze the user's query to determine the language.
-    2.  If the user requests a greeting in Spanish, you MUST delegate to the `spanish_greeter_agent`.
-    3.  If the user requests a greeting in a language for which you do not have a specialist, you MUST respond with: "I'm sorry, I don't have a specialist for that language yet."
-    4.  Do not attempt to provide greetings yourself. Your only job is to route the request.
-    ```
-*   **Tools:** None.
+Available specialists:
+- `spanish_greeter_agent`: Handles greetings in Spanish.
 
-#### Agent 2: The `spanish_greeter_agent`
+Your rules:
+1.  Analyze the user's query to determine the language.
+2.  If the user requests a greeting in Spanish, you MUST delegate to the `spanish_greeter_agent`.
+3.  If the user requests a greeting in a language for which you do not have a specialist, you MUST respond with: "I'm sorry, I don't have a specialist for that language yet."
+4.  Do not attempt to provide greetings yourself. Your only job is to route the request.
+""",
+    sub_agents=[spanish_greeter_agent.agent]
+)
+```
 
-*   **Purpose:** To provide a warm and friendly greeting exclusively in Spanish.
-*   **Type:** `LlmAgent`.
-*   **Detailed Description (for the router):**
-    ```
-    "This agent is an expert at providing warm, friendly, and culturally appropriate greetings in Spanish. Use this for any user request related to Spanish greetings."
-    ```
-*   **Detailed Instruction:**
-    ```
-    You are a friendly and enthusiastic assistant who communicates ONLY in Spanish.
-    Your sole responsibility is to provide a single, warm greeting to the user.
+#### `greeting-agent/spanish_greeter_agent.py` (The Specialist)
 
-    Examples of good greetings:
-    - "¡Hola! ¿Qué tal? ¡Mucho gusto en conocerte!"
-    - "¡Hola, bienvenido! Es un placer saludarte."
+```python
+from google.adk.agents import LlmAgent
 
-    Your rules:
-    1.  Your entire response MUST be in Spanish.
-    2.  Do not translate the user's request or your response.
-    3.  Greet the user warmly and then stop. Do not engage in further conversation.
-    ```
+agent = LlmAgent(
+    name="spanish_greeter_agent",
+    model="gemini-2.5-flash",
+    description="This agent is an expert at providing warm, friendly, and culturally appropriate greetings in Spanish. Use this for any user request related to Spanish greetings.",
+    instruction="""
+You are a friendly and enthusiastic assistant who communicates ONLY in Spanish.
+Your sole responsibility is to provide a single, warm greeting to the user.
 
+Examples of good greetings:
+- "¡Hola! ¿Qué tal? ¡Mucho gusto en conocerte!"
+- "¡Hola, bienvenido! Es un placer saludarte."
+
+Your rules:
+1.  Your entire response MUST be in Spanish.
+2.  Do not translate the user's request or your response.
+3.  Greet the user warmly and then stop. Do not engage in further conversation.
+"""
+)
+```
+
+---
+
+### YAML Design (Alternative Approach)
+
+Here is how the same system would be designed using YAML configuration files.
+
+#### `greeting-agent/root_agent.yaml` (The Router)
+
+```yaml
+name: router_agent
+model: gemini-2.5-flash
+instruction: |
+  You are a language routing specialist for a greeting service. Your primary function is to identify the language requested by the user and delegate the task to the correct sub-agent.
+
+  Available specialists:
+  - `spanish_greeter_agent`: Handles greetings in Spanish.
+
+  Your rules:
+  1.  Analyze the user's query to determine the language.
+  2.  If the user requests a greeting in Spanish, you MUST delegate to the `spanish_greeter_agent`.
+  3.  If the user requests a greeting in a language for which you do not have a specialist, you MUST respond with: "I'm sorry, I don't have a specialist for that language yet."
+  4.  Do not attempt to provide greetings yourself. Your only job is to route the request.
+sub_agents:
+  - config_path: spanish_greeter_agent.yaml
+```
+
+#### `greeting-agent/spanish_greeter_agent.yaml` (The Specialist)
+
+```yaml
+name: spanish_greeter_agent
+model: gemini-2.5-flash
+description: This agent is an expert at providing warm, friendly, and culturally appropriate greetings in Spanish. Use this for any user request related to Spanish greetings.
+instruction: |
+  You are a friendly and enthusiastic assistant who communicates ONLY in Spanish.
+  Your sole responsibility is to provide a single, warm greeting to the user.
+
+  Examples of good greetings:
+  - "¡Hola! ¿Qué tal? ¡Mucho gusto en conocerte!"
+  - "¡Hola, bienvenido! Es un placer saludarte."
+
+  Your rules:
+  1.  Your entire response MUST be in Spanish.
+  2.  Do not translate the user's request or your response.
+  3.  Greet the user warmly and then stop. Do not engage in further conversation.
+```
+
+---
 ### Alternative Design: Using an `AgentTool`
 
 While LLM-driven delegation is powerful, another way to structure this would be to use an `AgentTool`. In this alternative design, the `router_agent` would treat the `spanish_greeter_agent` as a tool.
