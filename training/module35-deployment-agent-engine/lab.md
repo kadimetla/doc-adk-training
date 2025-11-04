@@ -1,12 +1,15 @@
-# Lab 35: Deploying the Calculator Agent Challenge
+# Lab 35: Deploying an Agent to Agent Engine Challenge
 
 ## Goal
-In this lab, you will deploy the `calculator-agent` to Google Cloud's Agent Engine using both the recommended Accelerated method and the manual Standard method.
+In this lab, you will deploy an ADK agent to Google Cloud's Agent Engine using both the recommended Accelerated method and the manual Standard method.
 
 ### Prerequisites
 *   A Google Cloud Project with billing enabled.
 *   `gcloud` CLI installed and authenticated (`gcloud auth application-default login`).
-*   A GCS bucket for staging files (`gsutil mb -p YOUR_PROJECT_ID -l us-central1 gs://YOUR_UNIQUE_BUCKET_NAME`).
+*   A GCS bucket for the Standard Deployment part (`gsutil mb -p YOUR_PROJECT_ID -l us-central1 gs://YOUR_UNIQUE_BUCKET_NAME`).
+*   **Python Environment:** A Python version between 3.9 and 3.13.
+*   **UV Tool:** For managing the Python environment. See [Install UV](https://github.com/astral-sh/uv#installation).
+*   **Make Tool:** A build automation tool, typically pre-installed on Unix-based systems.
 *   **Required APIs:** Ensure the following APIs are enabled in your project:
     *   Vertex AI API
     *   Cloud Build API
@@ -21,117 +24,113 @@ In this lab, you will deploy the `calculator-agent` to Google Cloud's Agent Engi
 
 ## Part 1: Accelerated Deployment (Recommended)
 
-This method uses the official [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack) to deploy your agent with a production-ready CI/CD pipeline using Terraform and Cloud Build.
+This method uses the Agent Starter Pack (ASP) to add deployment artifacts to your existing ADK project and deploy it.
 
-### Step 1: Setup
-1.  **Use the Template:** Go to the [Agent Starter Pack repository](https://github.com/GoogleCloudPlatform/agent-starter-pack) and click **"Use this template"** to create a new repository in your own GitHub account.
-2.  **Clone Your New Repository:** Clone the repository you just created to your local machine.
-3.  **Connect to Google Cloud:** In your terminal, run the interactive setup script. This will guide you through connecting your GitHub repository to Google Cloud Build.
+### Step 1: Prepare the Agent Project
+1.  **Get an Agent:** For this lab, we'll use the `multi_tool_agent` from the Python Quickstart. If you don't have it, create it now. These instructions assume your project is in a directory structure like `your-project-directory/multi_tool_agent/`.
+2.  **Navigate to the Parent Directory:** In your terminal, navigate to the parent directory that contains your agent folder (e.g., `your-project-directory/`).
+3.  **Enhance the Project:** Run the ASP `enhance` command to add the required deployment files to your project.
     ```shell
-    ./setup.sh
+    uvx agent-starter-pack enhance --adk -d agent_engine
     ```
-4.  **Add Your Agent Code:** Copy the `calculator-agent` project from `module08-intro-custom-function-tools` into the `src/` directory of your starter pack repository.
+4.  **Follow the Prompts:** The tool will ask you several questions. You can accept the defaults, but ensure you select a **supported region** for Agent Engine (e.g., `us-central1`).
 
-### Step 2: Provision Infrastructure
-This step uses Terraform and Cloud Build to create the necessary cloud infrastructure (like Artifact Registry, Cloud Run services, and IAM permissions).
-
-1.  **Configure Terraform:**
-    *   Rename `terraform/terraform.tfvars.example` to `terraform/terraform.tfvars`.
-    *   Edit `terraform/terraform.tfvars` and fill in your `project_id`, `region`, and a unique `app_name` (e.g., "calculator-agent").
-2.  **Run the Provisioning Build:**
+### Step 2: Connect to Your Google Cloud Project
+1.  **Login to Google Cloud:**
     ```shell
-    gcloud builds submit --config=cloudbuild-terraform.yaml
+    gcloud auth application-default login
     ```
-    This command executes the Terraform plan, which may take several minutes.
+2.  **Set Your Project ID:**
+    ```shell
+    gcloud config set project your-project-id-xxxxx
+    ```
+3.  **Verify the Project:**
+    ```shell
+    gcloud config get-value project
+    ```
 
 ### Step 3: Deploy the Agent
-Once the infrastructure is provisioned, you can deploy your agent by simply pushing your code to the `main` branch. The Cloud Build trigger you configured in the setup step will automatically build and deploy your agent.
-
-1.  **Commit and Push Your Code:**
+1.  **Ensure you are in the parent directory** (e.g., `your-project-directory/`).
+2.  **Run the Deployment Command:** This command uses the `Makefile` added by the ASP tool to provision the cloud infrastructure and deploy your agent. This process can take several minutes.
     ```shell
-    git add .
-    git commit -m "Add calculator agent"
-    git push origin main
+    make backend
     ```
-2.  **Monitor the Build:** Go to the Cloud Build section in your Google Cloud Console to watch the deployment pipeline run.
 3.  **Find Your Agent:** Once the build is complete, navigate to **Vertex AI -> Agent Engine** in the Cloud Console to find your deployed agent and its ID.
 
 ---
 
 ## Part 2: Standard Deployment (Manual)
 
-This method involves writing a custom Python script to deploy the agent, which is useful for understanding the underlying mechanics.
+This method involves writing a custom Python script to deploy the agent.
 
 ### Step 1: Prepare the Agent Project
-1.  Copy the `calculator-agent` project from `module09-intro-custom-function-tools` to a new directory named `deploy-calculator`.
+1.  **Get an Agent:** Copy the `multi_tool_agent` project to a new directory named `deploy-manual`.
     ```shell
-    cp -r ../module09-intro-custom-function-tools/calculator-agent deploy-calculator
-    cd deploy-calculator
+    cp -r /path/to/multi_tool_agent deploy-manual
+    cd deploy-manual
     ```
-2.  Create a `requirements.txt` file:
+2.  **Install Dependencies:**
     ```shell
-    echo "google-adk>=1.0.0" > requirements.txt
-    echo "google-cloud-aiplatform[adk,agent-engines]>=1.111.0" >> requirements.txt
+    pip install "google-cloud-aiplatform[adk,agent_engines]>=1.111"
     ```
-3.  Create an empty `__init__.py` file in the `calculator` directory to make it a Python package:
-    ```shell
-    touch calculator/__init__.py
-    ```
-4.  Update the `pyproject.toml` (if it exists) or ensure your environment has the necessary deployment dependencies. For this lab, we'll rely on `requirements.txt`.
-5.  **Clarify STAGING_BUCKET:** The `STAGING_BUCKET` name must be globally unique across all Google Cloud projects. Choose a name that is unlikely to be taken by others.
 
 ### Step 2: Create the Deployment Script
-1.  Create a `deployment/deploy.py` file.
-2.  **Action:** Add the code from the `lab-solution.md` and configure it with your `PROJECT_ID`, `LOCATION`, and `STAGING_BUCKET`.
+1.  In the `deploy-manual` directory, create a new file named `deploy.py`.
+2.  **Action:** Write the Python code to deploy the agent. Use the skeleton below and fill in the `# TODO` sections. You will need to:
+    *   Import `vertexai`, `agent_engines`, and your `root_agent`.
+    *   Initialize the Vertex AI SDK with your project details.
+    *   Wrap your `root_agent` in an `agent_engines.AdkApp`.
+    *   Call `agent_engines.create` to deploy the app.
 
-### Step 3: Deploy the Agent
+    ```python
+    # In deploy.py
+    import vertexai
+    from vertexai import agent_engines
+    from multi_tool_agent.agent import root_agent # Make sure this import is correct
+
+    # TODO: Fill in these values for your project
+    PROJECT_ID = "your-gcp-project-id"
+    LOCATION = "us-central1"
+    STAGING_BUCKET = "gs://your-gcs-bucket-name"
+
+    # Initialize the Vertex AI SDK
+    vertexai.init(
+        project=PROJECT_ID,
+        location=LOCATION,
+        staging_bucket=STAGING_BUCKET,
+    )
+
+    # Wrap the agent in an AdkApp object
+    app = agent_engines.AdkApp(
+        agent=root_agent,
+        enable_tracing=True,
+    )
+
+    # TODO: Call agent_engines.create() to deploy the app.
+    # Pass the `app` object to the `agent_engine` parameter.
+    # Also provide a `requirements` list: ["google-cloud-aiplatform[adk,agent_engines]"]
+    remote_app = None # Replace this
+
+    print(f"Deployment finished!")
+    print(f"Resource Name: {remote_app.resource_name}")
+    ```
+
+### Step 3: Test Agent Locally (Optional but Recommended)
+**Action:** Before deploying, add the local testing code from the `lab-solution.md` to your `deploy.py` script (before the deployment call) to test the `AdkApp` locally. This helps you catch errors before starting the lengthy deployment process.
+
+### Step 4: Deploy the Agent
 Run the deployment script. This will take several minutes.
 ```shell
-python deployment/deploy.py
+python deploy.py
 ```
 
-### Step 4: Interact with the Deployed Agent
+### Step 5: Interact with the Deployed Agent
 1.  Create an `interact.py` script (code available in `lab-solution.md`).
 2.  **Action:** Configure the script with your `PROJECT_ID`, `LOCATION`, and the `AGENT_ENGINE_ID` from the deployment output.
 3.  Run the script to test your deployed agent:
     ```shell
     python interact.py
     ```
-    You should see the agent respond with the correct answer.
-
-### Lab Summary
-You have successfully deployed an agent to Agent Engine using both the recommended automated method and the manual method. You have learned:
-*   How to use the Agent Starter Pack for accelerated, best-practice deployments.
-*   How to write a custom deployment script using the Vertex AI SDK.
-*   How to interact with a deployed agent programmatically.
 
 ### Cleanup (Important!)
-
-Agent Engine deployments and GCS buckets can incur costs if left running. It is crucial to delete the resources you created after completing the lab.
-
-#### For Part 1 (Accelerated Deployment):
-1.  **Delete the GitHub Repository:** Delete the repository you created from the Agent Starter Pack template.
-2.  **Delete Cloud Build Triggers and Service Accounts:** The `setup.sh` script creates Cloud Build triggers and service accounts. You may need to manually delete these from the Cloud Build section of the Google Cloud Console if they are not automatically removed with the repository.
-3.  **Delete Terraform-managed resources:** If you ran the Terraform provisioning, you might need to run `terraform destroy` from your local `terraform` directory within the starter pack, or manually delete the resources (Artifact Registry, Agent Engine instance) from the Google Cloud Console.
-
-#### For Part 2 (Standard Deployment):
-1.  **Delete the Agent Engine Instance:**
-    ```shell
-    gcloud ai agent-engines delete YOUR_AGENT_ENGINE_ID \
-        --region=$LOCATION \
-        --async # Runs in background
-    ```
-2.  **Delete the GCS Staging Bucket:**
-    ```shell
-    gsutil rm -r gs://YOUR_UNIQUE_BUCKET_NAME
-    ```
-3.  **Delete the `deploy-calculator` directory:**
-    ```shell
-    cd ..
-    rm -rf deploy-calculator
-    ```
-
-### Self-Reflection Questions
-- What are the main advantages of the "Accelerated Deployment" method using the Agent Starter Pack compared to the "Standard Deployment" method?
-- The Accelerated method uses a GitOps workflow (`git push` to deploy). Why is this a powerful and reliable pattern for managing deployments in a team environment?
-- The `interact.py` script is a simple client. How does the architecture of Agent Engine (a managed, scalable backend) make it easier to build and connect more complex clients (like a web app or mobile app) compared to running your agent locally?
+Follow the cleanup instructions in `lab-solution.md` to delete the Agent Engine instances and GCS buckets to avoid incurring costs.
