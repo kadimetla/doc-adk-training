@@ -85,7 +85,9 @@ def divide(a: int, b: int) -> dict:
 from google.adk.agents import LlmAgent
 from google.adk.tools import FunctionTool
 
-# TODO: Import the four functions from your tools.calculator module.
+# TODO: Import the four functions from your .tools.calculator module.
+# Hint: Since 'tools' is a package within the same directory as 'agent.py',
+# you should use a relative import like: `from .tools.calculator import add, subtract, multiply, divide`
 
 # TODO: Create a FunctionTool for each of your imported functions.
 
