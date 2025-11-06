@@ -158,3 +158,19 @@ You have learned to:
 *   Use examples (few-shot prompting) to guide the agent's output format.
 
 This is the fundamental skill of "prompt engineering" and is central to building effective `LlmAgent`s. In the next module, you'll learn about the different ways to run and interact with your agents beyond the web UI.
+
+### Self-Reflection Answers
+
+1.  **How does providing examples (few-shot prompting) in the instruction help the LLM understand the task better than just describing it?**
+    *   **Answer:** Few-shot prompting provides concrete demonstrations of the desired input-output format and behavior. While a textual description sets the general rules, examples clarify nuances, specific formatting requirements, and implicit constraints that might be ambiguous in text alone. This significantly reduces the chances of the LLM misinterpreting the instruction.
+
+2.  **What would happen if you removed the constraint "Do not answer questions or have a conversation"? How would the agent's behavior change?**
+    *   **Answer:** If this constraint were removed, the agent would likely become more conversational. It might attempt to answer questions directly, engage in dialogue, or provide additional context beyond just the haiku. This would deviate from its intended role as a dedicated haiku poet and could lead to less focused or less predictable responses.
+
+3.  **Experiment with creating a new persona for the agent (e.g., a Shakespearean poet, a futuristic robot). What are the key elements you need to include in the instruction to make the new persona convincing?**
+    *   **Answer:** Key elements for a convincing persona include:
+        *   **Role/Identity:** Explicitly state who the agent is (e.g., "You are a Shakespearean poet...").
+        *   **Tone/Style:** Describe the language and emotional register (e.g., "speak in archaic English, using flowery language and dramatic flair").
+        *   **Constraints:** Define what the agent *should* and *should not* do (e.g., "always respond in iambic pentameter," "do not use modern slang").
+        *   **Examples:** Provide few-shot examples that demonstrate the new persona's typical responses and adherence to its style and constraints.
+        *   **Goals:** Clearly state the agent's primary objective (e.g., "to transform user input into a sonnet").

@@ -43,9 +43,8 @@ Now, let's tell the agent how to behave and provide it with the necessary creden
     Open the `.env` file. This file stores secret information like API keys.
 
     *   **For Google AI Studio API Key:**
-        You can get a free API key from the [Google AI Studio](https://aistudio.google.com/app/apikey).
+        You can get a free API key from the [Google AI Studio](httpshttps://aistudio.google.com/app/apikey).
         ```
-        GOOGLE_GENAI_USE_VERTEXAI=0
         GOOGLE_API_KEY=<your-google-gemini-api-key>
         ```
     *   **For Google Cloud Vertex AI:**
@@ -102,7 +101,7 @@ Instead of Python, you can define your agent in a YAML file. This is simpler for
     ```shell
     adk web
     ```
-    You should see output indicating a server has started on `http://12.0.0.1:8080`.
+    You should see output indicating a server has started on `http://127.0.0.1:8080`.
 
 2.  **Interact with your agent:**
     *   Open the URL in your web browser.

@@ -100,7 +100,22 @@ Finally, let's run the agent as a background service that other applications cou
 4.  **Stop the API server:**
     Go back to the first terminal where the `api_server` is running and press `Ctrl+C`.
 
-## Lab Summary
+### Self-Reflection Answers
+
+1.  **In what scenarios would the detailed "Trace View" in `adk web` be more useful than the simple chat interface of `adk run`?**
+    *   **Answer:** The "Trace View" in `adk web` is invaluable for debugging complex agent behaviors. It allows developers to see the exact sequence of events, including LLM calls, tool executions, and state changes. This is crucial when an agent isn't behaving as expected, as it provides a granular understanding of its internal reasoning process. In contrast, `adk run` is better for quick, high-level testing of an agent's output.
+
+2.  **The `curl` command in the `adk api_server` section is a simple example of a programmatic client. What kind of real-world applications could you build that would interact with your agent's API in this way?**
+    *   **Answer:** Programmatic interaction with `adk api_server` enables a wide range of real-world applications, such as:
+        *   **Chatbots/Virtual Assistants:** Integrating the agent into a custom web or mobile application.
+        *   **Automated Workflows:** Triggering agent actions from other systems (e.g., a CRM, an email client).
+        *   **Backend Services:** Using the agent as a component within a larger microservice architecture.
+        *   **Data Processing:** Feeding structured data to the agent for analysis or transformation.
+
+3.  **Why is it necessary to run the `adk api_server` and the `curl` command in two separate terminal windows? What does this separation represent in a real-world application architecture?**
+    *   **Answer:** Running `adk api_server` and `curl` in separate terminal windows is necessary because `adk api_server` starts a long-running process that occupies the terminal. The `curl` command then acts as a client, sending requests to this running server. This separation represents a fundamental architectural pattern: **client-server architecture**. In a real-world application, the `adk api_server` would be deployed as a backend service (e.g., on Cloud Run), and the `curl` command would be analogous to a separate client application (e.g., a web frontend, a mobile app, or another backend service) making API calls to that deployed service.
+
+### Lab Summary
 
 You have now mastered the three ways to run an ADK agent:
 
@@ -109,3 +124,4 @@ You have now mastered the three ways to run an ADK agent:
 *   `adk api_server <agent_name>`: For running your agent as a service to be integrated with other applications.
 
 This completes the foundational part of the course. You are now ready to start extending your agent's capabilities with tools.
+

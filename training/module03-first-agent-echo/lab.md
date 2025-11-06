@@ -1,4 +1,4 @@
-# Lab 3: Build and Run the "Echo" Agent Challenge
+# Lab 3 Challenge: Build and Run the "Echo" Agent
 
 ## Goal
 Your task is to create, configure, and run a simple "Echo" agent using the ADK. The primary method uses Python for maximum flexibility, but a simpler YAML alternative is also provided.
@@ -46,4 +46,4 @@ instruction: ... # TODO: Provide the instruction for the echo agent.
 ### Self-Reflection Questions
 - What are the advantages of defining an agent in a Python script versus a YAML file?
 - Why is it important to keep API keys and other secrets in a `.env` file instead of directly in your agent's code?
-- Explore the "Trace" tab in the Dev UI after running your agent. What information does it provide, and how could this be useful for debugging a more complex agent?
+- Explore the "Events" tab in the Dev UI after running your agent. What information does it provide, and how could this be useful for debugging a more complex agent?
