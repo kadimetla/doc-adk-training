@@ -7,11 +7,7 @@ This lab is a guided walkthrough of the essential steps for setting up a clean, 
 ### Prerequisites
 
 *   **Python 3.8 or higher:** To check your Python version, open your terminal and run `python3 --version`. If that command doesn't work, try `python --version`. If neither works, or the version is too old, download Python from the [official website](https://www.python.org/downloads/).
-*   **Google Cloud Account:** You will need a Google Cloud account to access the Gemini API. If you don't have one, you can sign up for a free trial.
-*   **Configured Google Cloud Project:** Ensure you have a Google Cloud project created with billing enabled. You must also have the **Vertex AI API** enabled. Before running the authentication steps, it's a good practice to set your active project:
-    ```shell
-    gcloud config set project YOUR_PROJECT_ID
-    ```
+*   **Google Cloud Account or Google AI Studio API Key:** You will need one of these to access the Gemini API.
 
 ### Step 1: Create a Project Directory
 
@@ -27,17 +23,11 @@ cd adk-training
 We will use `venv` to create an isolated environment for our project.
 
 1.  **Create the virtual environment:**
-
-    Run the following command inside your `adk-training` directory. This creates a sub-directory named `.venv` which will contain the isolated Python environment.
-
     ```shell
     python3 -m venv .venv
     ```
 
 2.  **Activate the virtual environment:**
-
-    You must activate the environment to start using it. The command differs based on your operating system.
-
     *   **macOS / Linux (bash/zsh):**
         ```shell
         source .venv/bin/activate
@@ -46,73 +36,104 @@ We will use `venv` to create an isolated environment for our project.
         ```shell
         .venv\Scripts\activate.bat
         ```
-    *   **Windows (PowerShell):**
-        ```shell
-        .venv\Scripts\Activate.ps1
-        ```
 
-    After activation, you should see `(.venv)` at the beginning of your terminal prompt. To exit the environment at any time, simply run the command `deactivate`.
+    After activation, you should see `(.venv)` at the beginning of your terminal prompt.
 
-### Step 3: Install the Google ADK
+### Step 3: Install Dependencies
 
-With your virtual environment active, you can now safely install the ADK.
+With your virtual environment active, you can now safely install the ADK and the `dotenv` library for managing environment variables.
 
-1.  **Install the package using `pip`:**
-
+1.  **Install the packages using `pip`:
     ```shell
-    pip install google-adk
+    pip install google-adk python-dotenv
     ```
-    `pip` is the Python package installer, and this command downloads and installs the latest version of the ADK and its required dependencies into your `.venv`.
 
 2.  **Save your dependencies:**
-    To make your project reproducible, save the list of installed packages to a `requirements.txt` file.
     ```shell
     pip freeze > requirements.txt
     ```
 
-### Step 4: Authenticate with Google Cloud
+### Step 4: Configure Authentication
 
-Finally, let's authorize your local environment to use Google Cloud services.
+Create a file named `.env` in your `adk-training` directory. This file will securely store your authentication credentials. Choose **one** of the two options below.
 
-1.  **Install the Google Cloud CLI:**
+**Option A: Use a Google AI Studio API Key (Recommended for Beginners)**
+1.  Get your API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
+2.  Add the following line to your `.env` file, replacing `YOUR_API_KEY` with the key you generated:
+    ```
+    GOOGLE_API_KEY="YOUR_API_KEY"
+    ```
 
-    If you don't have it installed, follow the official instructions to [install the Google Cloud CLI](https://cloud.google.com/sdk/docs/install).
-
-2.  **Log in and create Application Default Credentials:**
-
-    Run the following command in your terminal:
-
+**Option B: Use Vertex AI (Advanced)**
+1.  Ensure you have a Google Cloud project with the Vertex AI API enabled.
+2.  Authenticate with the gcloud CLI:
     ```shell
     gcloud auth application-default login
     ```
+3.  Add the following lines to your `.env` file, replacing the placeholder values with your Google Cloud project details:
+    ```
+    GOOGLE_GENAI_USE_VERTEXAI="1"
+    GOOGLE_CLOUD_PROJECT="your-gcp-project-id"
+    GOOGLE_CLOUD_LOCATION="us-central1"
+    ```
 
-    This command will open a web browser and prompt you to log in with your Google account. After you approve the permissions, the gcloud CLI will store authentication credentials on your local machine. The ADK will automatically find and use these credentials to make secure API calls.
+### Step 5: Verify Your Setup
 
-### Step 5: Verify Your Setup (Optional but Recommended)
-
-To provide a more robust confirmation that the environment is working, you can run a small Python script to actively check the ADK installation and authentication.
+This script will load your `.env` file and use the credentials to test the connection to the LLM service via an ADK agent.
 
 1.  Create a new file named `verify_setup.py` in your `adk-training` directory.
 2.  Copy and paste the following code into the file:
     ```python
     # verify_setup.py
     import asyncio
+    import os
+    from dotenv import load_dotenv
     from google.adk.agents import LlmAgent
+    from google.adk.runners import Runner
+    from google.adk.sessions import InMemorySessionService
+    from google.genai import types
 
     async def main():
+        # Load environment variables from the .env file
+        load_dotenv()
+
         try:
             print("✅ Google ADK is installed correctly.")
-            print("Attempting to connect to the LLM service...")
+            print("Attempting to connect to the LLM service via an ADK agent...")
 
-            agent = LlmAgent(name="verify_agent", model="gemini-2.5-flash", instruction="You are a helpful assistant.")
+            # Define a simple ADK agent
+            agent = LlmAgent(
+                name="verify_agent",
+                model="gemini-2.5-flash",
+                instruction="You are a helpful assistant. Respond with a short confirmation."
+            )
 
-            response = await agent.invoke("hello")
+            # Use the ADK Runner to execute the agent
+            runner = Runner(
+                app_name="agents", # This must match the ADK's inferred app name
+                agent=agent,
+                session_service=InMemorySessionService()
+            )
+            session = await runner.session_service.create_session(
+                app_name="agents", user_id="test_user"
+            )
+            message = types.Content(parts=[types.Part(text="hello")])
 
-            if response:
-                print("✅ Authentication successful: Connected to the LLM service.")
-                print(f"LLM response: {response}")
+            # Stream the response from the agent
+            final_response_text = "Agent did not produce a final response."
+            async for event in runner.run_async(user_id="test_user", session_id=session.id, new_message=message):
+                if event.is_final_response():
+                    if event.content and event.content.parts:
+                        final_response_text = event.content.parts[0].text
+                    elif event.actions and event.actions.escalate:
+                        final_response_text = f"Agent escalated: {event.error_message or 'No specific message.'}"
+                    break
+
+            if final_response_text != "Agent did not produce a final response.":
+                print("✅ Authentication successful: Connected to the LLM service via ADK agent.")
+                print(f"ADK agent response: {final_response_text}")
             else:
-                print("❌ Authentication failed: Could not connect to the LLM service.")
+                print("❌ Authentication failed: Could not connect to the LLM service via ADK agent.")
 
         except ImportError:
             print("❌ Installation error: The 'google-adk' package could not be found.")
@@ -122,35 +143,22 @@ To provide a more robust confirmation that the environment is working, you can r
     if __name__ == "__main__":
         asyncio.run(main())
     ```
-3.  Run the script from your terminal (make sure your virtual environment is still active):
+3.  Run the script from your terminal:
     ```shell
     python verify_setup.py
     ```
-    If everything is set up correctly, you should see two success messages.
+    If everything is set up correctly, you should see a success message and a response from the LLM.
 
 ### Troubleshooting
 
-If you encountered issues, here are some common solutions:
-
-*   **`python3: command not found` or `python: command not found`**:
-    *   This means Python is not installed or not available in your system's PATH. Please download and install it from the [official Python website](https://www.python.org/downloads/).
-
-*   **`gcloud: command not found`**:
-    *   The Google Cloud CLI is not installed. Follow the official instructions to [install the Google Cloud CLI](https://cloud.google.com/sdk/docs/install).
-
-*   **Permissions error during `pip install`**:
-    *   This most likely means your virtual environment is **not active**. Make sure you see `(.venv)` at the start of your terminal prompt. If not, re-run the activation command for your operating system.
-
-*   **`pip freeze > requirements.txt` creates an empty file**:
-    *   Ensure your virtual environment is active. If it is, run `pip install google-adk` again to ensure the package is installed in the correct environment.
+*   **Authentication Errors:** Double-check that your `.env` file is correctly formatted and that the API key or project details are correct. Ensure there are no extra spaces or characters.
+*   **`google-adk: command not found`**: Your virtual environment is likely not active. Make sure you see `(.venv)` at the start of your terminal prompt.
+*   **`gcloud: command not found`**: The Google Cloud CLI is not installed. Follow the official instructions to [install the Google Cloud CLI](https://cloud.google.com/sdk/docs/install).
 
 ### Lab Summary
 
 Congratulations! You have successfully:
-
 *   Created and activated an isolated Python virtual environment.
-*   Installed the Google ADK package and saved your dependencies.
-*   Authenticated your machine with Google Cloud.
+*   Installed the Google ADK and other necessary packages.
+*   Configured your authentication using a `.env` file.
 *   Verified that your environment is ready for agent development.
-
-Your development environment is now ready. In the next module, you will use this setup to create and run your very first AI agent.
