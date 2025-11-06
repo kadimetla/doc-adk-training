@@ -6,7 +6,7 @@ This file contains the complete, step-by-step guide to creating the "Calculator"
 
 ### Goal
 
-You will build an agent that can perform basic arithmetic by creating your own custom function tools in Python and integrating them into a config-based agent.
+You will build an agent that can perform basic arithmetic by creating your own custom function tools in Python and integrating them into a Python-based agent.
 
 ### Step 1: Create the Calculator Agent Project
 
@@ -17,8 +17,8 @@ You will build an agent that can perform basic arithmetic by creating your own c
 
 2.  **Create the agent project:**
     ```shell
-    adk create --type=config calculator-agent
-    ```
+    adk create calculator-agent
+xch    ```
 
 3.  **Navigate into the new directory:**
     ```shell
@@ -108,8 +108,44 @@ You will build an agent that can perform basic arithmetic by creating your own c
 
 1.  **Set up your environment variables** in the `.env` file.
 
-2.  **Update the `root_agent.yaml` file:**
-    Open `root_agent.yaml` and replace its contents with the following:
+2.  **Update the `agent.py` file (Python approach):**
+    Open `agent.py` and replace its contents with the following:
+
+    ```python
+    from google.adk.agents import LlmAgent
+    from google.adk.tools import FunctionTool
+
+    # Import the functions from your tools module
+    from .tools.calculator import add, subtract, multiply, divide
+
+    # Create a FunctionTool for each function
+    add_tool = FunctionTool(fn=add)
+    subtract_tool = FunctionTool(fn=subtract)
+    multiply_tool = FunctionTool(fn=multiply)
+    divide_tool = FunctionTool(fn=divide)
+
+    root_agent = LlmAgent(
+        name="calculator_agent",
+        model="gemini-2.5-flash",
+        description="An agent that can perform basic arithmetic calculations.",
+        instruction="""
+    You are a helpful calculator assistant.
+    When the user asks you to perform a calculation (add, subtract, multiply, or divide), you MUST use the appropriate tool.
+    Clearly state the result of the calculation to the user.
+    If the user asks a question that is not a calculation, politely state that you can only perform math.
+    """,
+        tools=[
+            add_tool,
+            subtract_tool,
+            multiply_tool,
+            divide_tool,
+        ],
+    )
+    ```
+
+    **Alternative (YAML approach):**
+
+    If you had created a `config` type agent, you would open `root_agent.yaml` and replace its contents with the following:
 
     ```yaml
     # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
@@ -142,5 +178,5 @@ You will build an agent that can perform basic arithmetic by creating your own c
 You have successfully built an agent with custom capabilities, learning to:
 *   Organize tool code into a separate Python module.
 *   Write well-defined Python functions with type hints and docstrings to serve as tools.
-*   Reference and register your custom tools in the `root_agent.yaml` configuration.
+*   Reference and register your custom tools in both `agent.py` and `root_agent.yaml`.
 *   Write instructions that effectively guide the agent on how and when to use its new tools.

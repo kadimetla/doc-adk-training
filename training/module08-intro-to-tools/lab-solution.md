@@ -21,9 +21,15 @@ You will build a new agent that can answer questions about current events and to
     cd /path/to/your/adk-training
     ```
 
-2.  **Create the agent project:**
+2.  **Create the agent project (Python approach):**
 
-    Use the `adk create` command to create a new agent named `researcher-agent`.
+    Use the `adk create` command to create a new Python agent named `researcher-agent`.
+
+    ```shell
+    adk create --type=python researcher-agent
+    ```
+
+    **Alternative (YAML approach):**
 
     ```shell
     adk create --type=config researcher-agent
@@ -51,7 +57,31 @@ To use the `google_search` tool, you need to enable the **Vertex AI API** in you
     ```
     *   **Important:** The `google_search` tool does not work with a simple Google AI Studio API key; it requires a full Google Cloud project setup.
 
-3.  **Define the agent's behavior and add the tool:**
+3.  **Define the agent's behavior and add the tool (Python approach):**
+
+    Open the `agent.py` file inside `researcher-agent` and replace its contents with the following:
+
+    ```python
+    from google.adk.agents import LlmAgent
+    from google.adk.tools import google_search
+
+    root_agent = LlmAgent(
+        name="researcher_agent",
+        model="gemini-2.5-flash",
+        description="An agent that can research current events using Google Search.",
+        instruction=(
+            "You are a helpful research assistant. "
+            "Your job is to answer the user's questions accurately. "
+            "If the question is about a recent event, a specific person, or anything that might require up-to-date information, you MUST use the `google_search` tool. "
+            "Do not rely on your own knowledge for topics that could have changed since your training."
+        ),
+        tools=[
+            google_search
+        ],
+    )
+    ```
+
+    **Alternative (YAML approach):**
 
     Open the `root_agent.yaml` file and replace its contents with the following:
 
@@ -96,6 +126,6 @@ To use the `google_search` tool, you need to enable the **Vertex AI API** in you
 You have successfully given an agent a powerful new capability. You have learned how to:
 
 *   Enable the necessary Google Cloud APIs for advanced features.
-*   Configure an agent to use a built-in tool like `google_search`.
+*   Configure an agent to use a built-in tool like `google_search` (using both Python and YAML approaches).
 *   Write instructions that guide the agent on when to use its tools.
 *   Verify that a tool was used by inspecting the Trace View in the Dev UI.

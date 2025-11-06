@@ -33,6 +33,34 @@ The ADK provides several core mechanisms, or "primitives," that allow agents to 
 #### 1. **Hierarchy (`sub_agents`)**
 The most fundamental concept is the parent-child relationship. You can define a "parent" agent and assign it a list of `sub_agents`. This creates a tree-like structure that forms the basis for collaboration.
 
+#### Defining Agent Hierarchy
+
+You can define this parent-child relationship using either the Python-based or YAML-based approach.
+
+**Python (Primary Approach):**
+In your parent agent's `agent.py`, you import the sub-agent and add it to the `sub_agents` list.
+
+```python
+# In parent agent's agent.py
+from google.adk.agents import LlmAgent
+from . import spanish_greeter_agent # Assuming sub-agent is in a sibling module
+
+root_agent = LlmAgent(
+    # ... other params
+    sub_agents=[spanish_greeter_agent.agent]
+)
+```
+
+**YAML (Alternative Approach):**
+In your parent agent's `root_agent.yaml`, you reference the sub-agent's configuration file.
+
+```yaml
+# In parent agent's root_agent.yaml
+# ... other params
+sub_agents:
+  - config_path: spanish_greeter.yaml
+```
+
 #### 2. **LLM-Driven Delegation (Agent Transfer)**
 This is the most dynamic form of collaboration. A parent `LlmAgent` can be instructed to analyze a user's request and then **transfer** control of the conversation to the most appropriate `sub_agent`.
 

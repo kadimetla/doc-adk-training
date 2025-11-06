@@ -1,4 +1,4 @@
-# Lab 35 Solution: Deploying the Calculator Agent
+# Lab 35 Solution: Deploying an Agent to Agent Engine
 
 ## Goal
 
@@ -8,11 +8,11 @@ This lab is a procedural tutorial. The solution for both parts is a successfully
 
 ### Part 1: Accelerated Deployment Solution
 
-After running `gcloud builds submit --config=cloudbuild.yaml`, a successful Cloud Build run is the primary indicator of success.
+After running `make backend`, a successful run of the command is the primary indicator of success.
 
 **Expected Outcome:**
-*   The Cloud Build pipeline in your Google Cloud project completes without errors.
-*   A new agent named "calculator-agent" (or the `app_name` you configured) appears in the **Vertex AI -> Agent Engine** section of the Google Cloud Console.
+*   The `make backend` command completes without errors in your terminal.
+*   A new agent with the name you configured appears in the **Vertex AI -> Agent Engine** section of the Google Cloud Console.
 *   You can copy the **Agent Engine ID** from the console to use with a client application.
 
 ---
@@ -21,90 +21,52 @@ After running `gcloud builds submit --config=cloudbuild.yaml`, a successful Clou
 
 This section contains the complete code for the `deploy.py` and `interact.py` scripts used in the manual deployment part of the lab.
 
-#### `calculator/agent.py`
+#### `multi_tool_agent/agent.py`
+
+This file should be the `agent.py` from the Python Quickstart. It is included here for completeness.
 
 ```python
-# Filename: calculator/agent.py
-from google.adk.agents import Agent
+from google.adk.agents import LlmAgent
+from google.adk.tools import FunctionTool
+import random
 
-def add(a: int, b: int) -> dict:
-    """
-    Adds two numbers together.
-    Use this tool when the user asks to find the sum of two numbers.
-    Args:
-        a: The first number.
-        b: The second number.
-    """
-    result = a + b
-    return {"status": "success", "result": result}
+def roll_die(sides: int, count: int = 1) -> dict:
+    """Rolls a die with a specified number of sides, multiple times."""
+    rolls = [random.randint(1, sides) for _ in range(count)]
+    return {"rolls": rolls}
 
-def subtract(a: int, b: int) -> dict:
-    """
-    Subtracts the second number from the first number.
-    Use this tool when the user asks to find the difference between two numbers.
-    Args:
-        a: The first number.
-        b: The second number to subtract.
-    """
-    result = a - b
-    return {"status": "success", "result": result}
+def check_prime(number: int) -> dict:
+    """Checks if a number is prime."""
+    if number < 2:
+        is_prime = False
+    else:
+        is_prime = all(number % i != 0 for i in range(2, int(number**0.5) + 1))
+    return {"is_prime": is_prime}
 
-def multiply(a: int, b: int) -> dict:
-    """
-    Multiplies two numbers together.
-    Use this tool when the user asks to find the product of two numbers.
-    Args:
-        a: The first number.
-        b: The second number.
-    """
-    result = a * b
-    return {"status": "success", "result": result}
-
-def divide(a: int, b: int) -> dict:
-    """
-    Divides the first number by the second number.
-    Use this tool when the user asks to divide one number by another.
-    Args:
-        a: The numerator.
-        b: The denominator.
-    """
-    if b == 0:
-        return {"status": "error", "message": "Cannot divide by zero."}
-    result = a / b
-    return {"status": "success", "result": result}
-
-root_agent = Agent(
+root_agent = LlmAgent(
     model="gemini-2.5-flash",
-    name="calculator_agent",
-    description="An agent that can perform basic arithmetic calculations.",
-    instruction=(
-        "You are a helpful calculator assistant.\n"
-        "When the user asks you to perform a calculation (add, subtract, multiply, or divide), you MUST use the appropriate tool.\n"
-        "Clearly state the result of the calculation to the user.\n"
-        "If the user asks a question that is not a calculation, politely state that you can only perform math."
-    ),
+    name="multi_tool_agent",
+    instruction="You roll dice and answer questions about prime numbers.",
     tools=[
-        add,
-        subtract,
-        multiply,
-        divide
-    ]
+        FunctionTool(fn=roll_die),
+        FunctionTool(fn=check_prime),
+    ],
 )
 ```
 
-#### `deployment/deploy.py`
+#### `deploy.py`
 
 ```python
 import vertexai
 from vertexai import agent_engines
-from calculator.agent import root_agent
+from multi_tool_agent.agent import root_agent
 
 # --- CONFIGURATION ---
 # Note: Replace these with your actual Google Cloud project details.
 PROJECT_ID = "your-gcp-project-id"
 LOCATION = "us-central1"
 STAGING_BUCKET = "gs://your-unique-bucket-name"
-AGENT_DISPLAY_NAME = "my-calculator-agent"
+AGENT_DISPLAY_NAME = "my-multi-tool-agent"
 
 def main():
     # Initialize Vertex AI SDK
@@ -122,7 +84,7 @@ def main():
     remote_app = agent_engines.create(
         agent_engine=app,
         display_name=AGENT_DISPLAY_NAME,
-        requirements=["google-adk>=1.0.0"],
+        requirements=["google-cloud-aiplatform[adk,agent_engines]>=1.111"],
     )
 
     print(f"Deployment complete. Resource Name: {remote_app.resource_name}")
@@ -157,17 +119,72 @@ async def main():
     remote_session = await remote_app.async_create_session(user_id="test-user-123")
 
     # Send a query and stream the response
-    query = "What is 42 * 10?"
+    query = "Roll a 20-sided die 3 times."
     print(f"\nUser: {query}")
     print("Agent: ", end="")
     
+    final_response = ""
     async for event in remote_app.async_stream_query(
         session_id=remote_session["id"],
         message=query,
     ):
-        for part in event["content"]["parts"]:
-            print(part["text"], end="")
-    print()
+        # Look for the final text part in the model's response
+        if (
+            event.get("content", {}).get("parts", [{}])[0].get("text")
+            and not event.get("content", {}).get("parts", [{}])[0].get("function_call")
+        ):
+            final_response = event["content"]["parts"][0]["text"]
+
+    print(final_response)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+#### `local_test.py` (Optional)
+
+This script shows the code for the optional local testing step.
+
+```python
+import asyncio
+import vertexai
+from vertexai import agent_engines
+from multi_tool_agent.agent import root_agent
+
+async def main():
+    # Wrap the agent in an AdkApp object
+    app = agent_engines.AdkApp(
+        agent=root_agent,
+        enable_tracing=True,
+    )
+
+    # Create a local session to maintain conversation history
+    session = await app.async_create_session(user_id="u_123")
+    print(f"Local session created: {session.id}")
+
+    # Send a query to the agent
+    events = []
+    async for event in app.async_stream_query(
+        user_id="u_123",
+        session_id=session.id,
+        message="Roll a 6-sided die.",
+    ):
+        events.append(event)
+
+    # The full event stream shows the agent's thought process
+    print("\n--- Full Event Stream ---")
+    for event in events:
+        print(event)
+
+    # For quick tests, you can extract just the final text response
+    final_text_responses = [
+        e for e in events
+        if e.get("content", {}).get("parts", [{}])[0].get("text")
+        and not e.get("content", {}).get("parts", [{}])[0].get("function_call")
+    ]
+    if final_text_responses:
+        print("\n--- Final Response ---")
+        print(final_text_responses[0]["content"]["parts"][0]["text"])
 
 if __name__ == "__main__":
     asyncio.run(main())

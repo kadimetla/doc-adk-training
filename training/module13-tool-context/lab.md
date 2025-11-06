@@ -2,15 +2,13 @@
 
 ## Goal
 
-### Goal
-
 In this lab, you will build an agent that can remember and recall a piece of information using a custom tool. You will learn how to use the `ToolContext` object to read from and write to the session's state, giving your tool "memory."
 
 ### Step 1: Create the Memory Agent Project
 
 1.  **Create the agent project:**
     ```shell
-    adk create --type=config memory-agent
+    adk create memory-agent
     cd memory-agent
     ```
 
@@ -58,25 +56,31 @@ def recall_name(tool_context: ToolContext) -> dict:
     pass
 ```
 
-### Step 3: Configure the Agent
+### Step 3: Configure the Agent in `agent.py`
 
-**Exercise:** Open `root_agent.yaml` and configure the agent to use your new tools.
+**Exercise:** Open `agent.py` and configure the agent to use your new tools.
 
-```yaml
-# In root_agent.yaml
+```python
+# In agent.py
+from google.adk.agents import LlmAgent
+from google.adk.tools import FunctionTool
 
-# yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
-name: memory_agent
-model: gemini-2.5-flash
-description: An agent that can remember and recall the user's name.
-instruction: |
-  # TODO: Write an instruction that tells the agent:
-  # - To use the `remember_name` tool when the user provides their name.
-  # - To use the `recall_name` tool when the user asks what their name is.
+# TODO: Import the `remember_name` and `recall_name` functions from your tools.memory module.
 
-# TODO: Add the `tools.memory.remember_name` and `tools.memory.recall_name` tools.
-tools:
-  - name: ...
+# TODO: Create a FunctionTool for each of your imported functions.
+
+root_agent = LlmAgent(
+    name="memory_agent",
+    model="gemini-2.5-flash",
+    description="An agent that can remember and recall the user's name.",
+    instruction="""
+# TODO: Write an instruction that tells the agent:
+# - To use the `remember_name` tool when the user provides their name.
+# - To use the `recall_name` tool when the user asks what their name is.
+""",
+    # TODO: Add the two FunctionTool objects you created to this list.
+    tools=[]
+)
 ```
 
 ### Step 4: Test the Memory Agent

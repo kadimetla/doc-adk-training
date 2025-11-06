@@ -2,22 +2,23 @@
 
 ## Goal
 
-This file contains the complete code for the `agent.py` script in the Visual Product Catalog Analyzer lab.
+This file contains the complete code for the `agent.py` script in the Visual Product Catalog Analyzer lab, refactored to use a single agent and the standard `Runner`.
 
 ### `visual-catalog/agent.py`
 
 ```python
 """
 Visual Product Catalog Analyzer
-Analyzes product images, extracts information, and generates descriptions.
+Analyzes product images and generates descriptions using a single agent.
 """
 
 import asyncio
 import os
 from typing import List, Dict
-from google.adk.agents import Agent, Runner
+from google.adk.agents import Agent
 from google.genai import types
-from PIL import Image
+from google.adk.runners import Runner
+from google.adk.sessions import Session, InMemorySessionService
 import io
 
 # Helper function to load an image from a local file path
@@ -43,58 +44,49 @@ class ProductCatalogAnalyzer:
     def __init__(self):
         """Initialize product catalog analyzer."""
         self.catalog: List[Dict] = []
-
-        # Agent 1: Vision specialist
-        self.vision_agent = Agent(
-            model='gemini-1.5-flash',
-            name='vision_analyzer',
-            instruction="""
-You are a product vision analyst. When analyzing product images, identify the product type, describe key visual features (color, material, design), and note any visible text. Provide a structured, detailed analysis.
-            """.strip(),
-        )
-
-        # Agent 2: Content specialist
         self.catalog_agent = Agent(
-            model='gemini-1.5-flash',
-            name='catalog_generator',
+            model='gemini-2.5-flash',
+            name='catalog_agent',
             instruction="""
-You are a product catalog content creator. Generate professional, marketing-ready product descriptions based on a visual analysis provided to you. Focus on compelling descriptions and key features.
+You are an expert product catalog writer.
+Your task is to analyze the provided product image and write a compelling, professional, marketing-ready description for it.
+Describe the product type, key visual features (like color, material, and design), and any visible text.
             """.strip(),
         )
-
-        self.runner = Runner()
+        self.session_service = InMemorySessionService()
+        self.runner = Runner(session_service=self.session_service)
 
     async def analyze_product(self, product_id: str, image_path: str):
         """Analyze a product image and create a catalog entry."""
         print(f"\n--- Analyzing Product: {product_id} ---")
 
-        # Step 1: Visual analysis with the vision_agent
-        print("📸 Step 1: Performing visual analysis...")
+        # Create a new session for this specific analysis
+        session = await self.session_service.create_session(
+            app_name="visual-catalog", user_id=f"user_{product_id}"
+        )
+
+        # Step 1: Load the image
         image_part = load_image_from_file(image_path)
+
+        # Step 2: Create the multimodal prompt
         analysis_query = [
-            types.Part.from_text(f"Analyze this product image for {product_id}:"),
+            types.Part.from_text(
+                f"Analyze this product image for '{product_id}' and write a marketing description."
+            ),
             image_part
         ]
-        # Note: When calling the runner programmatically for a multimodal agent,
-        # you must pass the agent object directly.
-        analysis_result = await self.runner.run_async(
-            new_message=analysis_query,
-            agent=self.vision_agent
-        )
-        analysis_text = analysis_result.content.parts[0].text
-        print(f"🔍 Visual Analysis Complete:\n{analysis_text}\n")
 
-        # Step 2: Generate catalog entry with the catalog_agent
-        print("📝 Step 2: Generating catalog entry...")
-        catalog_query = f"Based on this visual analysis, create a professional catalog entry for {product_id}:\n\n{analysis_text}"
-        catalog_result = await self.runner.run_async(
-            new_message=types.Content(role="user", parts=[types.Part(text=catalog_query)]),
+        # Step 3: Run the agent to get the catalog entry in one step
+        print("📸📝 Analyzing image and generating catalog entry...")
+        analysis_result = await self.runner.run_async(
+            session=session,
+            new_message=analysis_query,
             agent=self.catalog_agent
         )
-        catalog_text = catalog_result.content.parts[0].text
+        catalog_text = analysis_result.content.parts[0].text
         print(f"✅ Catalog Entry Generated:\n{catalog_text}\n")
 
-        self.catalog.append({'product_id': product_id, 'analysis': analysis_text, 'catalog_entry': catalog_text})
+        self.catalog.append({'product_id': product_id, 'catalog_entry': catalog_text})
 
 async def main():
     """Main entry point to run a demo."""

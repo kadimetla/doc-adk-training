@@ -2,21 +2,23 @@
 
 ## Goal
 
-This file contains the complete code for the `agent.py` script in the Stateful File System Tool lab.
+This file contains the complete code for the `agent.py` script in the Stateful File System Tool lab, aligned with the standard `adk web` workflow.
 
 ### `mcp-agent/agent.py`
 
 ```python
-import os
+import os # Required for path operations
 from google.adk.agents import LlmAgent
 from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset
 from google.adk.tools.mcp_tool.mcp_session_manager import StdioConnectionParams
 from mcp import StdioServerParameters
 
 # -- Configuration --
-# Get the absolute path to the 'test_files' directory we created.
-# The MCP server needs an absolute path to know where to look.
-TARGET_FOLDER_PATH = os.path.abspath("./test_files")
+# It's good practice to define paths dynamically if possible,
+# or ensure the user understands the need for an ABSOLUTE path.
+# For this example, we'll construct a path relative to this file,
+# assuming 'test_files' is in the same directory as agent.py.
+TARGET_FOLDER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "test_files")
 
 # -- Agent Definition --
 root_agent = LlmAgent(
@@ -34,13 +36,19 @@ root_agent = LlmAgent(
                     args=[
                         "-y",  # Auto-confirm 'npx' installation
                         "@modelcontextprotocol/server-filesystem", # The server package
-                        TARGET_FOLDER_PATH, # The directory it should manage
+                        # IMPORTANT: This MUST be an ABSOLUTE path to a folder the
+                        # npx process can access.
+                        os.path.abspath(TARGET_FOLDER_PATH), # The directory it should manage
                     ],
                 ),
             ),
+            # Optional: Filter which tools from the MCP server are exposed
+            tool_filter=['list_directory', 'read_file']
         )
     ],
 )
 ```
 
-```
+### `mcp-agent/__init__.py`
+
+This file should be created and can be left empty. It is required for the ADK to discover the `agent.py` file as a Python module.

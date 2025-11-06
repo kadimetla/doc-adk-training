@@ -28,23 +28,12 @@ We will use the `adk` command-line tool to create the file structure for our new
     cd /path/to/your/adk-training
     ```
 
-2.  **Create the agent project directly:**
-    Run the following command to create a new agent named `echo-agent` using a configuration file.
-    ```shell
-    adk create --type=config echo-agent
-    ```
-    This command creates a new directory named `echo-agent/` with two files inside: `root_agent.yaml` and `.env`.
-
-#### Alternative: Interactive Agent Creation
-
-You can also create an agent using an interactive wizard.
-
-1.  **Run the `adk create` command without the `--type` flag:**
+2.  **Create the agent project:**
+    Run the following command to create a new agent named `echo-agent`. This defaults to the Python-based approach.
     ```shell
     adk create echo-agent
     ```
-2.  **Follow the prompts:**
-    The wizard will ask what type of agent you want to create. Select the `Config-based` option. This will produce the same `echo-agent` directory and files.
+    This command creates a new directory named `echo-agent/` with an `agent.py` file and a `.env` file inside.
 
 ### Step 2: Configure the Agent
 
@@ -66,26 +55,9 @@ Now, let's tell the agent how to behave and provide it with the necessary creden
         GOOGLE_CLOUD_LOCATION=us-central1
         ```
 
-3.  **Define the agent's behavior (YAML method):**
-    Open `root_agent.yaml` and replace its contents with this:
+2.  **Define the agent's behavior (Python method):**
+    Open `agent.py` and replace its contents with this:
 
-    ```yaml
-    # The first line is an optional schema definition that provides
-    # auto-completion and validation in compatible code editors.
-    # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
-    name: echo_agent
-    model: gemini-2.5-flash
-    description: An agent that repeats the user's input.
-    instruction: You are an echo agent. Your only job is to repeat the user's input back to them exactly as they wrote it. Do not add any extra words or explanations.
-    ```
-
-### Alternative: Defining the Agent in Python
-
-Instead of YAML, you can define your agent directly in a Python script. This is more flexible and required for advanced features.
-
-1.  **Create an `agent.py` file** in the `echo-agent` directory.
-
-2.  **Add the following code** to `agent.py`:
     ```python
     from google.adk.agents import LlmAgent
 
@@ -99,19 +71,38 @@ Instead of YAML, you can define your agent directly in a Python script. This is 
     )
     ```
 
-3.  **Delete the `root_agent.yaml` file.** The `adk` command will automatically find the `root_agent` object in `agent.py`.
+### Alternative: Defining the Agent in YAML
+
+Instead of Python, you can define your agent in a YAML file. This is simpler for basic agents but less flexible.
+
+1.  **Create the agent with the `--type=config` flag:**
     ```shell
-    rm root_agent.yaml
+    adk create --type=config echo-agent
     ```
+    This creates a `root_agent.yaml` file instead of `agent.py`.
+
+2.  **Define the agent's behavior in `root_agent.yaml`:**
+    Open `root_agent.yaml` and replace its contents with this:
+
+    ```yaml
+    # The first line is an optional schema definition that provides
+    # auto-completion and validation in compatible code editors.
+    # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
+    name: echo_agent
+    model: gemini-2.5-flash
+    description: An agent that repeats the user's input.
+    instruction: You are an echo agent. Your only job is to repeat the user's input back to them exactly as they wrote it. Do not add any extra words or explanations.
+    ```
+    > **Note:** If both `agent.py` and `root_agent.yaml` exist, the ADK will use the `root_agent.yaml` file.
 
 ### Step 3: Run the Agent
 
 1.  **Start the ADK web server:**
-    While inside the `echo-agent` directory, run:
+    From the parent `adk-training` directory, run:
     ```shell
     adk web
     ```
-    You should see output indicating a server has started on `http://127.0.0.1:8080`.
+    You should see output indicating a server has started on `http://12.0.0.1:8080`.
 
 2.  **Interact with your agent:**
     *   Open the URL in your web browser.
@@ -133,7 +124,7 @@ When you send a message:
 ✅ **`adk create`** is the starting point for all agents.
 ✅ Agent behavior is defined by its **`instruction`**.
 ✅ **`.env`** keeps your API keys safe and out of code.
-✅ You can define agents in **YAML** (simple) or **Python** (advanced).
+✅ You can define agents in **Python** (flexible) or **YAML** (simple).
 ✅ **`adk web`** is your primary tool for testing and debugging.
 
 ### Common Issues & Solutions

@@ -10,7 +10,8 @@ A custom function tool is, at its core, a regular Python function that you write
 
 ### How it Works: From Python to Agent Tool
 
-When you add one of your Python functions to an agent's `tools` list, the ADK framework performs a clever transformation behind the scenes. It inspects your function's **signature**—its name, parameters, type hints, and docstring—and automatically generates a detailed description, or **schema**.
+When you add one of your Python functions to an agent's `tools` list, the ADK framework performs a clever transformation behind the scenes. It inspects your function's **signature**
+—its name, parameters, type hints, and docstring—and automatically generates a detailed description, or **schema**.
 
 This schema is what's provided to the Large Language Model. The LLM doesn't see your Python code. It only sees this schema, which tells it:
 1.  The tool's name (from your function name).
@@ -71,6 +72,39 @@ def get_weather(city: str, is_forecast: bool) -> dict:
 ```
 The LLM will receive this dictionary and use its contents to formulate the final response to the user.
 
+### Registering Tools with Your Agent
+
+You can register your custom functions as tools using either the Python-based or YAML-based approach.
+
+**Python (Primary Approach):**
+In your `agent.py`, you directly import your functions and wrap them in a `FunctionTool`.
+
+```python
+# In agent.py
+from google.adk.agents import LlmAgent
+from google.adk.tools import FunctionTool
+from .tools.calculator import add, subtract # Import your functions
+
+root_agent = LlmAgent(
+    # ... other params
+    tools=[
+        FunctionTool(fn=add),
+        FunctionTool(fn=subtract),
+    ]
+)
+```
+
+**YAML (Alternative Approach):**
+In `root_agent.yaml`, you reference the functions using their module path.
+
+```yaml
+# In root_agent.yaml
+# ... other params
+tools:
+  - name: tools.calculator.add
+  - name: tools.calculator.subtract
+```
+
 In the lab for this module, you will put all these principles into practice by building a set of calculator functions and integrating them into a new "Calculator" agent.
 
 ### Key Takeaways
@@ -78,4 +112,4 @@ In the lab for this module, you will put all these principles into practice by b
 - The ADK automatically generates a tool schema from your function's signature (name, parameters, type hints) and its docstring.
 - A well-defined tool function must have a descriptive name, clear type hints for all parameters, and a detailed docstring explaining its purpose and usage.
 - All custom tool functions must return a dictionary.
-- **Note on Programmatic Tools:** While this module uses string references in YAML for tool names (e.g., `tools.calculator.add`), when defining agents programmatically in Python, you would explicitly import and register these functions as Python objects (e.g., `from .tools.calculator import add, subtract`). This highlights that tools are, at their core, Python functions.
+- Tools are registered in your agent's definition, with the Python-based approach being the primary method.

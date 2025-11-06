@@ -77,28 +77,35 @@ Based on our design, we can plan the files we'll need to create in the next lab.
 adk-training/
 └── greeting-agent/              <-- New project directory
     ├── .env                     <-- For API keys
-    ├── root_agent.yaml          <-- This will define our router_agent
-    └── spanish_greeter.yaml     <-- This will define our specialist agent
+    ├── agent.py                 <-- This will define our router_agent
+    ├── __init__.py              <-- Makes the directory a Python package
+    └── spanish_greeter_agent.py <-- This will define our specialist agent
 ```
 
-**`root_agent.yaml` (The Router):**
-We know this file will need a `sub_agents` section to link to our specialist.
-```yaml
-model: gemini-2.5-flash
-instruction: |
-  You are a language router...
-sub_agents:
-  - config_path: spanish_greeter.yaml
+**`agent.py` (The Router):**
+We know this file will need to import the sub-agent and add it to the `sub_agents` list.
+```python
+from google.adk.agents import LlmAgent
+from . import spanish_greeter_agent
+
+root_agent = LlmAgent(
+    model="gemini-2.5-flash",
+    instruction="You are a language router...",
+    sub_agents=[spanish_greeter_agent.agent]
+)
 ```
 
-**`spanish_greeter.yaml` (The Specialist):**
-This will be a standard agent configuration file.
-```yaml
-name: spanish_greeter_agent
-model: gemini-1.5-flash
-description: "An expert at providing friendly greetings in Spanish."
-instruction: |
-  You are a friendly assistant who only speaks Spanish...
+**`spanish_greeter_agent.py` (The Specialist):**
+This will be a standard agent definition file.
+```python
+from google.adk.agents import LlmAgent
+
+agent = LlmAgent(
+    name="spanish_greeter_agent",
+    model="gemini-1.5-flash",
+    description="An expert at providing friendly greetings in Spanish.",
+    instruction="You are a friendly assistant who only speaks Spanish..."
+)
 ```
 
 ### Lab Summary
@@ -109,7 +116,7 @@ You have learned to:
 *   Break down a problem into specialized agent roles.
 *   Define the purpose, instructions, and descriptions for each agent.
 *   Map the flow of information and control between agents.
-*   Plan the file structure for a multi-agent project.
+*   Plan the file structure for a multi-agent project using the Python-first approach.
 
 In the next module, you will bring this design to life by implementing this Greeting Router system.
 
