@@ -1,4 +1,4 @@
-# Lab 1: Your First Interaction Challenge
+# Lab 1 Challenge: Your First Interaction
 
 ### Goal
 

@@ -20,18 +20,31 @@ A virtual environment is an isolated directory that contains a specific version 
 
 In this course, we will be using `venv`, the standard virtual environment tool that comes built-in with Python 3.
 
-### Authenticating with Google Cloud
+### Authentication: Connecting to Google Services
 
-To use the ADK, your agent will need to communicate with Google's services, primarily to access the Gemini Large Language Models. To do this securely, your development environment must be authenticated with Google Cloud.
+To use the ADK, your agent needs to communicate with Google's services to access the Gemini Large Language Models. There are two primary ways to authenticate.
 
-The **Google Cloud CLI (gcloud)** is the primary tool for managing your Google Cloud resources and, importantly, for handling authentication. By running a simple command (`gcloud auth application-default login`), you can grant your local development environment the necessary permissions to access Google Cloud APIs on your behalf.
+#### Option A: API Key (Recommended for Beginners)
 
-This process creates "Application Default Credentials" (ADC) on your machine. When you run your ADK agent, the underlying Google client libraries automatically find and use these credentials to securely authenticate API requests, so you don't have to manage API keys directly in your code.
+The quickest way to get started is by using an API key from **Google AI Studio**.
 
-In the following lab, you will put these concepts into practice by creating a virtual environment, installing the ADK, and authenticating with Google Cloud.
+1.  **Get an API Key:** Visit [Google AI Studio](https://aistudio.google.com/app/apikey) and create a new API key.
+2.  **Set an Environment Variable:** You will then provide this key to your application through an environment variable named `GOOGLE_API_KEY`. This is typically done by creating a `.env` file in your project directory.
+
+This method is simple, fast, and doesn't require a full Google Cloud project, making it ideal for learning and prototyping.
+
+#### Option B: Google Cloud Authentication (Advanced)
+
+For production applications or for users who are already deeply integrated with Google Cloud, the standard authentication method is to use **Application Default Credentials (ADC)**.
+
+The **Google Cloud CLI (gcloud)** is the primary tool for handling this. By running a simple command (`gcloud auth application-default login`), you grant your local development environment the necessary permissions to access Google Cloud APIs (like the Vertex AI API) on your behalf.
+
+When you run your ADK agent, the underlying Google client libraries automatically find and use these credentials, so you don't have to manage API keys directly in your code. This method is more secure and robust for production environments.
+
+In the following lab, you will put these concepts into practice by creating a virtual environment, installing the ADK, and setting up your chosen authentication method.
 
 ### Key Takeaways
 - A **virtual environment** is essential for isolating project dependencies and ensuring reproducibility.
 - The `venv` module is the standard tool for creating virtual environments in Python.
-- The **Google Cloud CLI (gcloud)** is used to authenticate your local environment to securely access Google Cloud services like the Gemini API.
-- `gcloud auth application-default login` creates Application Default Credentials (ADC) that the ADK uses automatically.
+- You can authenticate with Google services using either a simple **API Key** from Google AI Studio or through **Google Cloud Authentication** with the `gcloud` CLI.
+- Using a `.env` file to manage your API key or project settings is a standard and secure practice.

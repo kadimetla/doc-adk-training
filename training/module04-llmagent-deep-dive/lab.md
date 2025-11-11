@@ -1,4 +1,4 @@
-# Lab 4: Transforming an Agent Challenge
+# Lab 4 Challenge: Transforming an Agent
 
 ## Goal
 Your task is to create a new "Haiku Poet" agent by duplicating and modifying the "Echo" agent from the previous lab. This will demonstrate how to build upon existing agents.
