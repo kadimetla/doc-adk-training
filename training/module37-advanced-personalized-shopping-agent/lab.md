@@ -15,6 +15,7 @@ In this capstone lab, you will synthesize concepts from the entire course to bui
 3.  Copy the `shared_libraries` and data from the original `personalized-shopping` sample into a shared location accessible by all three agents.
 
 ---
+sidebar_position: 2
 
 ### Exercise 1: Build and Expose the Web Agent
 This agent will be the interface to the e-commerce website.
@@ -51,6 +52,7 @@ This agent will be the interface to the e-commerce website.
     from shared_libraries.init_env import get_webshop_env # Assumes shared lib
 
     # --- OpenAPI Specification for Web Tools ---
+sidebar_position: 2
     WEBSHOP_API_SPEC = {
         "openapi": "3.0.0",
         "info": {"title": "Webshop API", "version": "1.0"},
@@ -89,6 +91,7 @@ This agent will be the interface to the e-commerce website.
     }
 
     # --- Agent Definition ---
+sidebar_position: 2
     # TODO: Define the `root_agent`. It should be an `Agent` that:
     # - Uses the `gemini-2.5-flash` model.
     # - Is named "web_agent".
@@ -109,6 +112,7 @@ This agent will be the interface to the e-commerce website.
     )
 
     # --- A2A Server ---
+sidebar_position: 2
     a2a_app = to_a2a(root_agent, port=8001)
     ```
 
@@ -118,6 +122,7 @@ This agent will be the interface to the e-commerce website.
     ```
 
 ---
+sidebar_position: 2
 
 ### Exercise 2: Build and Expose the Personalization Agent
 This agent will be responsible for remembering user preferences.
@@ -152,6 +157,7 @@ This agent will be responsible for remembering user preferences.
     from google.adk.tools import ToolContext
 
     # --- Stateful Tools ---
+sidebar_position: 2
     def save_preference(key: str, value: str, tool_context: ToolContext) -> dict:
         """Saves a user's preference (e.g., color, size)."""
         # TODO: Implement state management to save the preference.
@@ -170,6 +176,7 @@ This agent will be responsible for remembering user preferences.
         return {"status": "success", "preferences": user_prefs}
 
     # --- Agent Definition ---
+sidebar_position: 2
     # TODO: Define the `root_agent`. It should be an `Agent` that:
     # - Uses the `gemini-2.5-flash` model.
     # - Is named "personalization_agent".
@@ -190,6 +197,7 @@ This agent will be responsible for remembering user preferences.
     )
 
     # --- A2A Server ---
+sidebar_position: 2
     a2a_app = to_a2a(root_agent, port=8002)
     ```
 
@@ -199,6 +207,7 @@ This agent will be responsible for remembering user preferences.
     ```
 
 ---
+sidebar_position: 2
 
 ### Exercise 3: Build the Orchestrator Agent
 This is the main, user-facing agent that will coordinate the others.
@@ -232,6 +241,7 @@ This is the main, user-facing agent that will coordinate the others.
     from google.adk.agents import Agent, CallbackContext, RemoteA2aAgent, AGENT_CARD_WELL_KNOWN_PATH
 
     # --- Observability Callback ---
+sidebar_position: 2
     def before_tool_callback(callback_context: CallbackContext, tool_name: str, args: dict) -> None:
         """Logs every delegation attempt."""
         if tool_name == "transfer_to_agent":
@@ -242,6 +252,7 @@ This is the main, user-facing agent that will coordinate the others.
         return None
 
     # --- Remote Agent Definitions ---
+sidebar_position: 2
     # TODO: 1. Define `remote_web_agent` as a `RemoteA2aAgent`.
     # - Name: "web_agent"
     # - Description: "A remote specialist for searching and clicking on the e-commerce website."
@@ -263,6 +274,7 @@ This is the main, user-facing agent that will coordinate the others.
     )
 
     # --- Main Orchestrator Agent ---
+sidebar_position: 2
     # TODO: 3. Define the `root_agent`. It should be an `Agent` that:
     # - Uses the `gemini-2.5-flash` model.
     # - Is named "orchestrator_agent".
@@ -292,6 +304,7 @@ This is the main, user-facing agent that will coordinate the others.
     ```
 
 ---
+sidebar_position: 2
 
 ### Exercise 4: Add Multimodal Vision
 Enhance the Orchestrator to handle image-based searches.
@@ -301,6 +314,7 @@ Enhance the Orchestrator to handle image-based searches.
     b.  Then, use that text description to perform a search by delegating to the `web-agent`.
 
 ---
+sidebar_position: 2
 
 ### Exercise 5: Create a Deployment Plan
 Plan how you would deploy this distributed system.

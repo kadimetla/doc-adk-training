@@ -19,6 +19,7 @@ capstone-shopping-system/
 ```
 
 ---
+sidebar_position: 3
 
 ### 1. `web-agent/agent.py`
 This agent exposes the webshop tools via an OpenAPI spec and an A2A server.
@@ -30,6 +31,7 @@ from google.adk.tools import OpenAPIToolset
 from shared_libraries.init_env import get_webshop_env # Assumes shared lib
 
 # --- OpenAPI Specification for Web Tools ---
+sidebar_position: 3
 WEBSHOP_API_SPEC = {
     "openapi": "3.0.0",
     "info": {"title": "Webshop API", "version": "1.0"},
@@ -68,6 +70,7 @@ WEBSHOP_API_SPEC = {
 }
 
 # --- Agent Definition ---
+sidebar_position: 3
 root_agent = Agent(
     model="gemini-2.5-flash",
     name="web_agent",
@@ -82,10 +85,12 @@ root_agent = Agent(
 )
 
 # --- A2A Server ---
+sidebar_position: 3
 a2a_app = to_a2a(root_agent, port=8001)
 ```
 
 ---
+sidebar_position: 3
 
 ### 2. `personalization-agent/agent.py`
 This agent manages user preferences using persistent state.
@@ -96,6 +101,7 @@ from google.adk.a2a.utils.agent_to_a2a import to_a2a
 from google.adk.tools import ToolContext
 
 # --- Stateful Tools ---
+sidebar_position: 3
 def save_preference(key: str, value: str, tool_context: ToolContext) -> dict:
     """Saves a user's preference (e.g., color, size)."""
     state_key = f"user:{key}"
@@ -112,6 +118,7 @@ def get_preferences(tool_context: ToolContext) -> dict:
     return {"status": "success", "preferences": user_prefs}
 
 # --- Agent Definition ---
+sidebar_position: 3
 root_agent = Agent(
     model="gemini-2.5-flash",
     name="personalization_agent",
@@ -126,10 +133,12 @@ root_agent = Agent(
 )
 
 # --- A2A Server ---
+sidebar_position: 3
 a2a_app = to_a2a(root_agent, port=8002)
 ```
 
 ---
+sidebar_position: 3
 
 ### 3. `orchestrator-agent/agent.py`
 The main agent that connects to the others and handles user interaction.
@@ -139,6 +148,7 @@ import logging
 from google.adk.agents import Agent, CallbackContext, RemoteA2aAgent, AGENT_CARD_WELL_KNOWN_PATH
 
 # --- Observability Callback ---
+sidebar_position: 3
 def before_tool_callback(callback_context: CallbackContext, tool_name: str, args: dict) -> None:
     """Logs every delegation attempt."""
     if tool_name == "transfer_to_agent":
@@ -149,6 +159,7 @@ def before_tool_callback(callback_context: CallbackContext, tool_name: str, args
     return None
 
 # --- Remote Agent Definitions ---
+sidebar_position: 3
 remote_web_agent = RemoteA2aAgent(
     name="web_agent",
     description="A remote specialist for searching and clicking on the e-commerce website.",
@@ -162,6 +173,7 @@ remote_personalization_agent = RemoteA2aAgent(
 )
 
 # --- Main Orchestrator Agent ---
+sidebar_position: 3
 root_agent = Agent(
     model="gemini-2.5-flash",
     name="orchestrator_agent",
@@ -180,6 +192,7 @@ root_agent = Agent(
 ```
 
 ---
+sidebar_position: 3
 
 ### 4. `deployment_plan.md`
 

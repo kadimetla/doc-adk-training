@@ -21,20 +21,28 @@ An **artifact** is a versioned file stored by the agent system. Each `save` oper
 **Artifact Structure:**
 ```text
 +--------------------------------------------------+
+sidebar_position: 1
 |                 ARTIFACT SERVICE                 |
 +--------------------------------------------------+
+sidebar_position: 1
 |                                                  |
 |  +------------------+     +--------------------+ |
+sidebar_position: 1
 |  |   Filename       |     |  Version History   | |
 |  |  "report.txt"    |---->|   v0, v1, v2, ...  | |
+sidebar_position: 1
 |  +------------------+     +--------------------+ |
+sidebar_position: 1
 |           |                        |             |
 |           v                        v             |
 |  +------------------+     +--------------------+ |
+sidebar_position: 1
 |  |   Content        |     |      Metadata      | |
 |  |  (types.Part)    |     | (Author, Timestamp)| |
 |  +------------------+     +--------------------+ |
+sidebar_position: 1
 +--------------------------------------------------+
+sidebar_position: 1
 ```
 **Important:** Artifact versions are **0-indexed**. The first save of a file creates version 0.
 

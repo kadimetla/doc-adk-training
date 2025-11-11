@@ -28,6 +28,7 @@ Running and managing a Kubernetes cluster yourself can be incredibly complex. **
 
 | Feature | Google Cloud Run | Google Kubernetes Engine (GKE) |
 | :--- | :--- | :--- |
+sidebar_position: 1
 | **Abstraction Level** | High (Serverless) | Medium (Managed Kubernetes) |
 | **Control** | Less control, more automation | Full control over cluster configuration |
 | **Use Case** | Stateless web apps, APIs, simple agents | Complex microservices, stateful apps, custom hardware |

@@ -43,6 +43,7 @@ Do not greet the user yourself.
 ```
 
 ---
+sidebar_position: 3
 
 ### YAML Approach (Alternative)
 

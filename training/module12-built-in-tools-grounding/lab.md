@@ -42,6 +42,7 @@ from google.adk.agents import Agent
 from google.adk.tools import FunctionTool, GoogleSearchAgentTool
 
 # --- Custom Tools (Provided for you) ---
+sidebar_position: 2
 
 def format_research_notes(topic: str, findings: str) -> dict:
     """Formats research findings into a document."""
@@ -61,6 +62,7 @@ def extract_key_facts(text: str, num_facts: int = 5) -> list[str]:
     return [s.strip() for s in sentences if s.strip()][:num_facts]
 
 # --- Agent Definition ---
+sidebar_position: 2
 
 # TODO: 1. Create an instance of the GoogleSearchAgentTool.
 search_tool = ...

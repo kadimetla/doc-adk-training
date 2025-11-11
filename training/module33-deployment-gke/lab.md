@@ -123,6 +123,7 @@ spec:
       - name: GOOGLE_CLOUD_LOCATION
         value: "YOUR_REGION"
 ---
+sidebar_position: 2
 apiVersion: v1
 kind: Service
 metadata:

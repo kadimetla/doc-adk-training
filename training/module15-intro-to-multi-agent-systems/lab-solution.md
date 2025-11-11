@@ -59,6 +59,7 @@ Your rules:
 ```
 
 ---
+sidebar_position: 3
 
 ### YAML Design (Alternative Approach)
 
@@ -105,6 +106,7 @@ instruction: |
 ```
 
 ---
+sidebar_position: 3
 ### Alternative Design: Using an `AgentTool`
 
 While LLM-driven delegation is powerful, another way to structure this would be to use an `AgentTool`. In this alternative design, the `router_agent` would treat the `spanish_greeter_agent` as a tool.

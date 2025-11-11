@@ -46,6 +46,7 @@ We need to modify our server so it doesn't store the shopping carts in memory.
     import mcp.server.http_stream
 
     # --- Configuration ---
+sidebar_position: 2
     # In a serverless environment, we can use the temporary filesystem for a simple demo.
     # In a real production system, this would be a connection to a dedicated external
     # persistence service like Redis or Memorystore.
@@ -54,6 +55,7 @@ We need to modify our server so it doesn't store the shopping carts in memory.
         os.makedirs(STATE_STORAGE_PATH)
 
     # --- MCP Server Setup ---
+sidebar_position: 2
     app = Server("stateless_shopping_cart_server")
 
     # Helper functions to simulate external state
@@ -96,6 +98,7 @@ We need to modify our server so it doesn't store the shopping carts in memory.
             return [mcp_types.TextContent(type="text", text=json.dumps({"status": "error", "message": "Unknown tool."}))]
 
     # --- Server Runner for HTTP ---
+sidebar_position: 2
     # This uses the HTTP stream runner, suitable for Cloud Run
     main = mcp.server.http_stream.create_main(app)
 

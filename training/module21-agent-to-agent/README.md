@@ -21,10 +21,13 @@ A2A works on a client-server model where an "Orchestrator" agent delegates tasks
 
 ```text
 +----------------------+      +----------------------+      +--------------------+
+sidebar_position: 1
 | Orchestrator Agent   |----->|   RemoteA2aAgent     |----->|  Remote Specialist |
+sidebar_position: 1
 | (Your main agent)    |      | (ADK's built-in      |      |  Agent (runs on a  |
 |                      |      |   A2A client)        |      |  separate server)  |
 +----------------------+      +----------------------+      +--------------------+
+sidebar_position: 1
                                       |
                                       | (Communicates over HTTP
                                       |  using the A2A protocol)

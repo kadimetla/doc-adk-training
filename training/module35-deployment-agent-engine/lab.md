@@ -21,6 +21,7 @@ In this lab, you will deploy an ADK agent to Google Cloud's Agent Engine using b
     ```
 
 ---
+sidebar_position: 2
 
 ## Part 1: Accelerated Deployment (Recommended)
 
@@ -58,6 +59,7 @@ This method uses the Agent Starter Pack (ASP) to add deployment artifacts to you
 3.  **Find Your Agent:** Once the build is complete, navigate to **Vertex AI -> Agent Engine** in the Cloud Console to find your deployed agent and its ID.
 
 ---
+sidebar_position: 2
 
 ## Part 2: Standard Deployment (Manual)
 

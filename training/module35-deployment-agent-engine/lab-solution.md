@@ -5,6 +5,7 @@
 This lab is a procedural tutorial. The solution for both parts is a successfully deployed Agent Engine instance.
 
 ---
+sidebar_position: 3
 
 ### Part 1: Accelerated Deployment Solution
 
@@ -16,6 +17,7 @@ After running `make backend`, a successful run of the command is the primary ind
 *   You can copy the **Agent Engine ID** from the console to use with a client application.
 
 ---
+sidebar_position: 3
 
 ### Part 2: Standard Deployment Solution
 
@@ -62,6 +64,7 @@ from vertexai import agent_engines
 from multi_tool_agent.agent import root_agent
 
 # --- CONFIGURATION ---
+sidebar_position: 3
 # Note: Replace these with your actual Google Cloud project details.
 PROJECT_ID = "your-gcp-project-id"
 LOCATION = "us-central1"
@@ -102,6 +105,7 @@ import vertexai
 from vertexai import agent_engines
 
 # --- CONFIGURATION ---
+sidebar_position: 3
 # Note: Replace these with your actual Google Cloud project details.
 PROJECT_ID = "your-gcp-project-id"
 LOCATION = "us-central1"
@@ -173,6 +177,7 @@ async def main():
 
     # The full event stream shows the agent's thought process
     print("\n--- Full Event Stream ---")
+sidebar_position: 3
     for event in events:
         print(event)
 
@@ -184,6 +189,7 @@ async def main():
     ]
     if final_text_responses:
         print("\n--- Final Response ---")
+sidebar_position: 3
         print(final_text_responses[0]["content"]["parts"][0]["text"])
 
 if __name__ == "__main__":
