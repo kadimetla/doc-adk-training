@@ -12,15 +12,15 @@ Running an agent programmatically means you are responsible for managing the com
 
 When you run an agent outside the Dev UI, you need to explicitly create and manage three key components:
 
-1.  **The Session Service (`InMemorySessionService`)**
-    *   **Feature:** Conversation history & shared state.
-    *   **Description:** Sessions are crucial for maintaining conversational context. They store the history of messages and any stateful information the agent needs to remember between turns. Before creating a `Runner`, you must first instantiate a session service. The `InMemorySessionService` is a simple, non-persistent store that keeps session data in memory, perfect for development and simple applications. For production, you would use a persistent service like `FirestoreSessionService`.
-
-2.  **The Runner (`Runner`)**
+1.  **The Runner (`Runner`)**
     *   **Feature:** Oversight of agent execution.
     *   **Description:** The `Runner` is the core engine responsible for the entire agent lifecycle. It receives the user's query, passes it to the agent, manages the event loop, and streams events back to your application. Crucially, the `Runner` is a stateless orchestrator; it requires services like a `SessionService` to be passed to its constructor to manage state.
 
-3.  **Structured Messages (`types.Content` and `types.Part`)**
+2.  **The Session Service (`InMemorySessionService`)**
+    *   **Feature:** Conversation history & shared state.
+    *   **Description:** Sessions are crucial for maintaining conversational context. They store the history of messages and any stateful information the agent needs to remember between turns. Before creating a `Runner`, you must first instantiate a session service. The `InMemorySessionService` is a simple, non-persistent store that keeps session data in memory, perfect for development and simple applications. For production, you would use a persistent service like `FirestoreSessionService`.
+
+3.  **Structured Messages (`types.Content` and `types.Part`)`
     *   **Feature:** Structured, multimodal messages.
     *   **Description:** Instead of passing a simple string to the agent, you must package it in a structured `Content` object from the `google.genai` library. A `Content` object has a `role` (`'user'`, `'model'`, or `'tool'`) and a list of `parts`. Each `Part` can contain text, an image, or other data. This structure is what allows for rich, multimodal interactions with the underlying Gemini model.
 
