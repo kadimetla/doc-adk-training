@@ -59,7 +59,6 @@ Describe the product type, key visual features (like color, material, and design
     async def analyze_product(self, product_id: str, image_path: str):
         """Analyze a product image and create a catalog entry."""
         print(f"\n--- Analyzing Product: {product_id} ---")
-sidebar_position: 3
 
         # Create a new session for this specific analysis
         session = await self.session_service.create_session(
