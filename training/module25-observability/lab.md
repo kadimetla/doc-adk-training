@@ -33,7 +33,6 @@ from google.adk.plugins import BasePlugin
 from google.adk.events import Event
 
 # --- Data Classes (Provided for you) ---
-sidebar_position: 2
 @dataclass
 class RequestMetrics:
     request_id: str
@@ -48,7 +47,6 @@ class AggregateMetrics:
     requests: List[RequestMetrics] = field(default_factory=list)
 
 # --- Custom Observability Plugins ---
-sidebar_position: 2
 
 class MetricsCollectorPlugin(BasePlugin):
     """A plugin to collect request/response metrics."""
@@ -94,7 +92,6 @@ class PerformanceProfilerPlugin(BasePlugin):
         pass
 
 # --- Agent Definition (Provided for you) ---
-sidebar_position: 2
 root_agent = Agent(
     model='gemini-2.5-flash',
     name='observability_agent',
@@ -102,7 +99,6 @@ root_agent = Agent(
 )
 
 # --- Main Execution Block ---
-sidebar_position: 2
 def main():
     """Demonstrates how to register plugins with the runner."""
     # TODO: 5. Instantiate your three plugins.
