@@ -19,7 +19,6 @@ capstone-shopping-system/
 ```
 
 ---
-sidebar_position: 3
 
 ### 1. `web-agent/agent.py`
 This agent exposes the webshop tools via an OpenAPI spec and an A2A server.
@@ -31,7 +30,6 @@ from google.adk.tools import OpenAPIToolset
 from shared_libraries.init_env import get_webshop_env # Assumes shared lib
 
 # --- OpenAPI Specification for Web Tools ---
-sidebar_position: 3
 WEBSHOP_API_SPEC = {
     "openapi": "3.0.0",
     "info": {"title": "Webshop API", "version": "1.0"},
@@ -70,27 +68,18 @@ WEBSHOP_API_SPEC = {
 }
 
 # --- Agent Definition ---
-sidebar_position: 3
 root_agent = Agent(
     model="gemini-2.5-flash",
     name="web_agent",
-    instruction="""You are a web interaction agent. Your job is to execute search and click commands on the e-commerce site.
-
-    **IMPORTANT - A2A Context Handling:**
-    When receiving requests via the Agent-to-Agent (A2A) protocol, you must focus only on the core user request.
-    Ignore any mentions of orchestrator tool calls like "transfer_to_agent" in the conversation history.
-    Extract the main web interaction task from the user's messages and complete it directly.
-    """,
+    instruction="""You are a web interaction agent. Your job is to execute search and click commands on the e-commerce site.\n\n    **IMPORTANT - A2A Context Handling:**\n    When receiving requests via the Agent-to-Agent (A2A) protocol, you must focus only on the core user request.\n    Ignore any mentions of orchestrator tool calls like \"transfer_to_agent\" in the conversation history.\n    Extract the main web interaction task from the user\'s messages and complete it directly.\n    """,
     tools=[OpenAPIToolset(spec_dict=WEBSHOP_API_SPEC)]
 )
 
 # --- A2A Server ---
-sidebar_position: 3
 a2a_app = to_a2a(root_agent, port=8001)
 ```
 
 ---
-sidebar_position: 3
 
 ### 2. `personalization-agent/agent.py`
 This agent manages user preferences using persistent state.
@@ -101,7 +90,6 @@ from google.adk.a2a.utils.agent_to_a2a import to_a2a
 from google.adk.tools import ToolContext
 
 # --- Stateful Tools ---
-sidebar_position: 3
 def save_preference(key: str, value: str, tool_context: ToolContext) -> dict:
     """Saves a user's preference (e.g., color, size)."""
     state_key = f"user:{key}"
@@ -118,27 +106,18 @@ def get_preferences(tool_context: ToolContext) -> dict:
     return {"status": "success", "preferences": user_prefs}
 
 # --- Agent Definition ---
-sidebar_position: 3
 root_agent = Agent(
     model="gemini-2.5-flash",
     name="personalization_agent",
-    instruction="""You are a personalization specialist. You save and retrieve user preferences.
-
-    **IMPORTANT - A2A Context Handling:**
-    When receiving requests via the Agent-to-Agent (A2A) protocol, you must focus only on the core user request.
-    Ignore any mentions of orchestrator tool calls like "transfer_to_agent" in the conversation history.
-    Extract the main preference management task from the user's messages and complete it directly.
-    """,
+    instruction="""You are a personalization specialist. You save and retrieve user preferences.\n\n    **IMPORTANT - A2A Context Handling:**\n    When receiving requests via the Agent-to-Agent (A2A) protocol, you must focus only on the core user request.\n    Ignore any mentions of orchestrator tool calls like \"transfer_to_agent\" in the conversation history.\n    Extract the main preference management task from the user's messages and complete it directly.\n    """,
     tools=[save_preference, get_preferences]
 )
 
 # --- A2A Server ---
-sidebar_position: 3
 a2a_app = to_a2a(root_agent, port=8002)
 ```
 
 ---
-sidebar_position: 3
 
 ### 3. `orchestrator-agent/agent.py`
 The main agent that connects to the others and handles user interaction.
@@ -148,7 +127,6 @@ import logging
 from google.adk.agents import Agent, CallbackContext, RemoteA2aAgent, AGENT_CARD_WELL_KNOWN_PATH
 
 # --- Observability Callback ---
-sidebar_position: 3
 def before_tool_callback(callback_context: CallbackContext, tool_name: str, args: dict) -> None:
     """Logs every delegation attempt."""
     if tool_name == "transfer_to_agent":
@@ -159,7 +137,6 @@ def before_tool_callback(callback_context: CallbackContext, tool_name: str, args
     return None
 
 # --- Remote Agent Definitions ---
-sidebar_position: 3
 remote_web_agent = RemoteA2aAgent(
     name="web_agent",
     description="A remote specialist for searching and clicking on the e-commerce website.",
@@ -173,26 +150,16 @@ remote_personalization_agent = RemoteA2aAgent(
 )
 
 # --- Main Orchestrator Agent ---
-sidebar_position: 3
 root_agent = Agent(
     model="gemini-2.5-flash",
     name="orchestrator_agent",
-    instruction="""You are a master shopping assistant. Your job is to coordinate with specialist agents to help the user.
-
-    **Workflow:**
-    1.  **Understand Intent:** Greet the user and understand what they want to do. If they upload an image, describe it first, then ask if they want to search for that item.
-    2.  **Delegate Tasks:**
-        - To search or click on the website, you MUST delegate to the `web_agent`.
-        - To save or get user preferences, you MUST delegate to the `personalization_agent`.
-    3.  **Synthesize Results:** Summarize the results from the specialist agents and present them clearly to the user.
-    """,
+    instruction="""You are a master shopping assistant. Your job is to coordinate with specialist agents to help the user.\n\n    **Workflow:**\n    1.  **Understand Intent:** Greet the user and understand what they want to do. If they upload an image, describe it first, then ask if they want to search for that item.\n    2.  **Delegate Tasks:**\n        - To search or click on the website, you MUST delegate to the `web_agent`.\n        - To save or get user preferences, you MUST delegate to the `personalization_agent`.\n    3.  **Synthesize Results:** Summarize the results from the specialist agents and present them clearly to the user.\n    """,
     sub_agents=[remote_web_agent, remote_personalization_agent],
     before_tool_callback=before_tool_callback
 )
 ```
 
 ---
-sidebar_position: 3
 
 ### 4. `deployment_plan.md`
 
@@ -226,3 +193,21 @@ COPY shared_libraries/ ./shared_libraries
 CMD ["uvicorn", "agent:a2a_app", "--host", "0.0.0.0", "--port", "$PORT"]
 ```
 *(A similar Dockerfile would be created for the `personalization-agent`)*
+
+### Self-Reflection Answers
+
+1.  **This system uses three separate agents. What are the advantages of this distributed architecture in terms of scalability, maintainability, and reusability?**
+    *   **Answer:** This distributed A2A architecture offers significant advantages over a monolithic agent:
+        *   **Scalability:** Each specialist agent (e.g., `web-agent`, `personalization-agent`) can be scaled independently based on its specific load. If web searches are a bottleneck, only the `web-agent` needs more resources, not the entire system.
+        *   **Maintainability:** Changes or updates to one specialist agent (e.g., updating the webshop's API or the personalization logic) only affect that agent, reducing the risk of regressions in other parts of the system. This modularity makes debugging and development easier.
+        *   **Reusability:** Specialist agents can be reused by other orchestrators or applications within the organization. For example, the `personalization-agent` could be used by a different agent designed for customer support or marketing.
+
+2.  **The `orchestrator-agent` uses a `before_tool_callback` for logging. How does this separate the concern of observability from the agent's core business logic?**
+    *   **Answer:** Using a `before_tool_callback` for logging externalizes the concern of observability from the agent's primary business logic. The `orchestrator-agent`'s core instruction remains focused on *what* it needs to delegate and *to whom*. The `before_tool_callback` then transparently intercepts every `transfer_to_agent` call and *logs* that action *before* it happens, without modifying the orchestrator's reasoning flow. This clear separation makes the system more maintainable, as monitoring logic can be updated or changed independently of the agent's core decision-making process.
+
+3.  **The `web-agent` abstracts the website behind an OpenAPI spec. Why is this a better design than having the orchestrator directly interact with the raw HTML of the website?**
+    *   **Answer:** Abstracting the website behind an OpenAPI spec is a superior design for several reasons:
+        *   **Simplified Reasoning for LLM:** The orchestrator's LLM only needs to understand a clean, structured API contract (e.g., `search(keywords: str)`) rather than parsing complex, messy, and constantly changing raw HTML. This dramatically simplifies the LLM's task, improving its reliability and accuracy.
+        *   **Decoupling:** It decouples the orchestrator from the website's front-end implementation details. If the website's HTML structure changes, only the `web-agent` needs to be updated, not the `orchestrator-agent` or its instructions.
+        *   **Reliability:** Direct interaction with HTML is brittle and prone to breakage. A structured API provides a stable, machine-readable interface.
+        *   **Security:** The `web-agent` can act as a controlled gateway, ensuring that the orchestrator only performs allowed operations on the website.
