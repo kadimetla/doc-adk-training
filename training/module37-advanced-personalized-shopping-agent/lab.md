@@ -15,7 +15,6 @@ In this capstone lab, you will synthesize concepts from the entire course to bui
 3.  Copy the `shared_libraries` and data from the original `personalized-shopping` sample into a shared location accessible by all three agents.
 
 ---
-sidebar_position: 2
 
 ### Exercise 1: Build and Expose the Web Agent
 This agent will be the interface to the e-commerce website.
@@ -52,7 +51,6 @@ This agent will be the interface to the e-commerce website.
     from shared_libraries.init_env import get_webshop_env # Assumes shared lib
 
     # --- OpenAPI Specification for Web Tools ---
-sidebar_position: 2
     WEBSHOP_API_SPEC = {
         "openapi": "3.0.0",
         "info": {"title": "Webshop API", "version": "1.0"},
@@ -91,7 +89,6 @@ sidebar_position: 2
     }
 
     # --- Agent Definition ---
-sidebar_position: 2
     # TODO: Define the `root_agent`. It should be an `Agent` that:
     # - Uses the `gemini-2.5-flash` model.
     # - Is named "web_agent".
@@ -101,18 +98,11 @@ sidebar_position: 2
     root_agent = Agent(
         model="gemini-2.5-flash",
         name="web_agent",
-        instruction="""You are a web interaction agent. Your job is to execute search and click commands on the e-commerce site.
-
-    **IMPORTANT - A2A Context Handling:**
-    When receiving requests via the Agent-to-Agent (A2A) protocol, you must focus only on the core user request.
-    Ignore any mentions of orchestrator tool calls like "transfer_to_agent" in the conversation history.
-    Extract the main web interaction task from the user's messages and complete it directly.
-    """,
+        instruction="""You are a web interaction agent. Your job is to execute search and click commands on the e-commerce site.\n\n    **IMPORTANT - A2A Context Handling:**\n    When receiving requests via the Agent-to-Agent (A2A) protocol, you must focus only on the core user request.\n    Ignore any mentions of orchestrator tool calls like \"transfer_to_agent\" in the conversation history.\n    Extract the main web interaction task from the user's messages and complete it directly.\n    """,
         tools=[OpenAPIToolset(spec_dict=WEBSHOP_API_SPEC)]
     )
 
     # --- A2A Server ---
-sidebar_position: 2
     a2a_app = to_a2a(root_agent, port=8001)
     ```
 
@@ -122,7 +112,6 @@ sidebar_position: 2
     ```
 
 ---
-sidebar_position: 2
 
 ### Exercise 2: Build and Expose the Personalization Agent
 This agent will be responsible for remembering user preferences.
@@ -157,7 +146,6 @@ This agent will be responsible for remembering user preferences.
     from google.adk.tools import ToolContext
 
     # --- Stateful Tools ---
-sidebar_position: 2
     def save_preference(key: str, value: str, tool_context: ToolContext) -> dict:
         """Saves a user's preference (e.g., color, size)."""
         # TODO: Implement state management to save the preference.
@@ -176,7 +164,6 @@ sidebar_position: 2
         return {"status": "success", "preferences": user_prefs}
 
     # --- Agent Definition ---
-sidebar_position: 2
     # TODO: Define the `root_agent`. It should be an `Agent` that:
     # - Uses the `gemini-2.5-flash` model.
     # - Is named "personalization_agent".
@@ -186,18 +173,11 @@ sidebar_position: 2
     root_agent = Agent(
         model="gemini-2.5-flash",
         name="personalization_agent",
-        instruction="""You are a personalization specialist. You save and retrieve user preferences.
-
-    **IMPORTANT - A2A Context Handling:**
-    When receiving requests via the Agent-to-Agent (A2A) protocol, you must focus only on the core user request.
-    Ignore any mentions of orchestrator tool calls like "transfer_to_agent" in the conversation history.
-    Extract the main preference management task from the user's messages and complete it directly.
-    """,
+        instruction="""You are a personalization specialist. You save and retrieve user preferences.\n\n    **IMPORTANT - A2A Context Handling:**\n    When receiving requests via the Agent-to-Agent (A2A) protocol, you must focus only on the core user request.\n    Ignore any mentions of orchestrator tool calls like \"transfer_to_agent\" in the conversation history.\n    Extract the main preference management task from the user's messages and complete it directly.\n    """,
         tools=[save_preference, get_preferences]
     )
 
     # --- A2A Server ---
-sidebar_position: 2
     a2a_app = to_a2a(root_agent, port=8002)
     ```
 
@@ -207,7 +187,6 @@ sidebar_position: 2
     ```
 
 ---
-sidebar_position: 2
 
 ### Exercise 3: Build the Orchestrator Agent
 This is the main, user-facing agent that will coordinate the others.
@@ -241,7 +220,6 @@ This is the main, user-facing agent that will coordinate the others.
     from google.adk.agents import Agent, CallbackContext, RemoteA2aAgent, AGENT_CARD_WELL_KNOWN_PATH
 
     # --- Observability Callback ---
-sidebar_position: 2
     def before_tool_callback(callback_context: CallbackContext, tool_name: str, args: dict) -> None:
         """Logs every delegation attempt."""
         if tool_name == "transfer_to_agent":
@@ -252,7 +230,6 @@ sidebar_position: 2
         return None
 
     # --- Remote Agent Definitions ---
-sidebar_position: 2
     # TODO: 1. Define `remote_web_agent` as a `RemoteA2aAgent`.
     # - Name: "web_agent"
     # - Description: "A remote specialist for searching and clicking on the e-commerce website."
@@ -274,7 +251,6 @@ sidebar_position: 2
     )
 
     # --- Main Orchestrator Agent ---
-sidebar_position: 2
     # TODO: 3. Define the `root_agent`. It should be an `Agent` that:
     # - Uses the `gemini-2.5-flash` model.
     # - Is named "orchestrator_agent".
@@ -284,15 +260,7 @@ sidebar_position: 2
     root_agent = Agent(
         model="gemini-2.5-flash",
         name="orchestrator_agent",
-        instruction="""You are a master shopping assistant. Your job is to coordinate with specialist agents to help the user.
-
-    **Workflow:**
-    1.  **Understand Intent:** Greet the user and understand what they want to do. If they upload an image, describe it first, then ask if they want to search for that item.
-    2.  **Delegate Tasks:**
-        - To search or click on the website, you MUST delegate to the `web_agent`.
-        - To save or get user preferences, you MUST delegate to the `personalization_agent`.
-    3.  **Synthesize Results:** Summarize the results from the specialist agents and present them clearly to the user.
-    """,
+        instruction="""You are a master shopping assistant. Your job is to coordinate with specialist agents to help the user.\n\n    **Workflow:**\n    1.  **Understand Intent:** Greet the user and understand what they want to do. If they upload an image, describe it first, then ask if they want to search for that item.\n    2.  **Delegate Tasks:**\n        - To search or click on the website, you MUST delegate to the `web_agent`.\n        - To save or get user preferences, you MUST delegate to the `personalization_agent`.\n    3.  **Synthesize Results:** Summarize the results from the specialist agents and present them clearly to the user.\n    """,
         sub_agents=[remote_web_agent, remote_personalization_agent],
         before_tool_callback=before_tool_callback
     )
@@ -304,7 +272,6 @@ sidebar_position: 2
     ```
 
 ---
-sidebar_position: 2
 
 ### Exercise 4: Add Multimodal Vision
 Enhance the Orchestrator to handle image-based searches.
@@ -314,7 +281,6 @@ Enhance the Orchestrator to handle image-based searches.
     b.  Then, use that text description to perform a search by delegating to the `web-agent`.
 
 ---
-sidebar_position: 2
 
 ### Exercise 5: Create a Deployment Plan
 Plan how you would deploy this distributed system.
