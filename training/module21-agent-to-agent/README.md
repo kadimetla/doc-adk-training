@@ -19,19 +19,14 @@ The ADK enables this through its **Agent-to-Agent (A2A) communication** protocol
 
 A2A works on a client-server model where an "Orchestrator" agent delegates tasks to one or more remote "Specialist" agents.
 
-```text
 +----------------------+      +----------------------+      +--------------------+
-sidebar_position: 1
 | Orchestrator Agent   |----->|   RemoteA2aAgent     |----->|  Remote Specialist |
-sidebar_position: 1
 | (Your main agent)    |      | (ADK's built-in      |      |  Agent (runs on a  |
-|                      |      |   A2A client)        |      |  separate server)  |
+|                      |      |   A2a client)        |      |  separate server)  |
 +----------------------+      +----------------------+      +--------------------+
-sidebar_position: 1
                                       |
                                       | (Communicates over HTTP
-                                      |  using the A2A protocol)
-```
+                                      |  using the A2a protocol)
 
 ### The A2A Protocol
 
