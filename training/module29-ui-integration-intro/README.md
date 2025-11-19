@@ -12,7 +12,6 @@ The ADK is flexible and supports several approaches for UI integration, each sui
 
 | Approach | Best For | Key Features |
 | :--- | :--- | :--- |
-sidebar_position: 1
 | **AG-UI Protocol** | Modern web apps (React/Next.js) | Pre-built components, official support |
 | **Native ADK API** | Custom frameworks (Vue, Angular) | Full control, no dependencies |
 | **Direct Python** | Data apps (Streamlit) | In-process, no HTTP overhead |
@@ -26,20 +25,16 @@ sidebar_position: 1
 **The Stack:**
 ```text
 +---------------------------------+
-sidebar_position: 1
 |   Frontend (React/Next.js)      |
 | - @copilotkit/react-core (SDK)  |
 | - <CopilotChat> (UI Component)  |
 +---------------------------------+
-sidebar_position: 1
                 | (WebSocket/SSE)
 +---------------------------------+
-sidebar_position: 1
 |   Backend (Python/FastAPI)      |
 | - ag_ui_adk (Protocol Adapter)  |
 | - Your ADK Agent                |
 +---------------------------------+
-sidebar_position: 1
 ```
 
 By using the AG-UI protocol and the associated libraries, you can quickly build a production-ready chat interface with minimal front-end code, as the pre-built components handle the complexities of state management and streaming.
