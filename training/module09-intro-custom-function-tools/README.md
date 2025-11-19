@@ -114,94 +114,35 @@ In the lab for this module, you will put all these principles into practice by b
 - All custom tool functions must return a dictionary.
 - Tools are registered in your agent's definition, with the Python-based approach being the primary method.
 
-## Limitations
+## Limitations: Mixing Tool Types
 
-### Use Built-in tools with other tools
+As you start building more complex agents, it's important to be aware of a current limitation in the ADK regarding tool usage.
 
-Supported in ADKPythonJava
-The following code sample demonstrates how to use multiple built-in tools or how to use built-in tools with other tools by using multiple agents:
+### One Built-in Tool Per Agent
+
+Currently, a single agent generally supports using **only one type of tool at a time**.
+
+Specifically, you cannot easily mix a **Built-in Tool** (like `google_search`) with **Custom Function Tools** or other capabilities (like a code executor) within the same agent definition.
+
+**Unsupported Example:**
+You cannot simply list both `google_search` and your own `custom_function` in the same `tools` list for a single agent.
 
 ```python
-from google.adk.tools.agent_tool import AgentTool
-from google.adk.agents import Agent
-from google.adk.tools import google_search
-from google.adk.code_executors import BuiltInCodeExecutor
-
-
-search_agent = Agent(
-    model='gemini-2.0-flash',
-    name='SearchAgent',
-    instruction="""
-    You're a specialist in Google Search
-    """,
-    tools=[google_search],
-)
-coding_agent = Agent(
-    model='gemini-2.0-flash',
-    name='CodeAgent',
-    instruction="""
-    You're a specialist in Code Execution
-    """,
-    code_executor=BuiltInCodeExecutor(),
-)
+# This approach is NOT currently supported
 root_agent = Agent(
-    name="RootAgent",
-    model="gemini-2.0-flash",
-    description="Root Agent",
-    tools=[AgentTool(agent=search_agent), AgentTool(agent=coding_agent)],
+    name="MixedToolAgent",
+    model="gemini-2.5-flash",
+    tools=[google_search, custom_function], # Mixing types may cause issues
 )
 ```
 
-### Limitations
+### The Workaround: Multi-Agent Systems
 
-:::warning
+So, how do you build an agent that can search the web *and* use your custom calculator?
 
-Currently, for each root agent or single agent, only one built-in tool is supported. No other tools of any type can be used in the same agent.
+The solution is to use a **Multi-Agent System**. Instead of one agent doing everything, you create two specialized agents:
+1.  A "Search Specialist" agent with the `google_search` tool.
+2.  A "Calculator Specialist" agent with your custom function tools.
+3.  A "Coordinator" agent that delegates tasks to the specialists.
 
-For example, the following approach that uses a built-in tool along with other tools within a single agent is not currently supported:
-
-```python
-root_agent = Agent(
-    name="RootAgent",
-    model="gemini-2.0-flash",
-    description="Root Agent",
-    tools=[custom_function], 
-    code_executor=BuiltInCodeExecutor() # <-- not supported when used with tools
-)
-```
-
-ADK Python has a built-in workaroud which bypasses this limitation for GoogleSearchTool and VertexAiSearchTool (use bypass_multi_tools_limit=True to enable it), e.g. sample agent.
-
-:::warning
-
-Built-in tools cannot be used within a sub-agent, with the exception of GoogleSearchTool and VertexAiSearchTool in ADK Python because of the workaround mentioned above.
-
-For example, the following approach that uses built-in tools within sub-agents is not currently supported:
-
-```python
-url_context_agent = Agent(
-    model='gemini-2.0-flash',
-    name='UrlContextAgent',
-    instruction="""
-    You're a specialist in URL Context
-    """,
-    tools=[url_context],
-)
-coding_agent = Agent(
-    model='gemini-2.0-flash',
-    name='CodeAgent',
-    instruction="""
-    You're a specialist in Code Execution
-    """,
-    code_executor=BuiltInCodeExecutor(),
-)
-root_agent = Agent(
-    name="RootAgent",
-    model="gemini-2.0-flash",
-    description="Root Agent",
-    sub_agents=[
-        url_context_agent,
-        coding_agent
-    ],
-)
-```
+You will learn exactly how to build these powerful multi-agent architectures in **Module 15**. For now, focus on mastering custom tools within a single agent.
