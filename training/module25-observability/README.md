@@ -24,31 +24,23 @@ A comprehensive observability strategy is built on four pillars, all of which ca
 **Plugin System Architecture:**
 ```text
 +--------------+      +-----------------+      +----------------+
-sidebar_position: 1
 | User Request |----->|   ADK Runner    |----->|  Agent Core    |
-sidebar_position: 1
 |              |      | (with plugins)  |      | (Business Logic) |
 +--------------+      +-------+---------+      +-------+--------+
-sidebar_position: 1
                               |                        |
                               v                        v
                       +-----------------+      +----------------+
-sidebar_position: 1
                       |  Plugin System  |      |  Model & Tools |
                       | - MetricsPlugin |      +----------------+
-sidebar_position: 1
                       | - AlertingPlugin|
                       | - ProfilingPlugin|
                       +-------+---------+
-sidebar_position: 1
                               |
                               v
                       +-----------------+
-sidebar_position: 1
                       | Event Processing|
                       |  (Intercepted)  |
                       +-----------------+
-sidebar_position: 1
 ```
 
 #### How Plugins Work
