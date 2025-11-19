@@ -11,7 +11,6 @@ For each of the following scenarios, read the description and decide which deplo
 Be prepared to justify your choice based on the key requirements of each scenario.
 
 ---
-sidebar_position: 2
 
 #### **Scenario 1: The Startup MVP**
 
@@ -26,7 +25,6 @@ sidebar_position: 2
 **Your Task:** Which platform should they choose and why?
 
 ---
-sidebar_position: 2
 
 #### **Scenario 2: The Government Contractor**
 
@@ -40,7 +38,6 @@ sidebar_position: 2
 **Your Task:** Which platform is the only viable choice here, and why?
 
 ---
-sidebar_position: 2
 
 #### **Scenario 3: The FinTech Enterprise**
 
@@ -54,7 +51,6 @@ sidebar_position: 2
 **Your Task:** Which platform should they use, and what are the trade-offs?
 
 ---
-sidebar_position: 2
 
 #### **Scenario 4: The University Integration**
 
