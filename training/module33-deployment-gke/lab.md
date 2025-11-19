@@ -112,18 +112,17 @@ spec:
 spec:
   containers:
   - name: echo-agent
-    image: YOUR_REGION-docker.pkg.dev/YOUR_PROJECT_ID/adk-images/echo-agent:v1
+    image: ${GOOGLE_CLOUD_LOCATION}-docker.pkg.dev/${GOOGLE_CLOUD_PROJECT}/adk-images/echo-agent:v1
     ports:
     - containerPort: 8080
     env:
       - name: GOOGLE_GENAI_USE_VERTEXAI
         value: "1"
       - name: GOOGLE_CLOUD_PROJECT
-        value: "YOUR_PROJECT_ID"
+        value: "${GOOGLE_CLOUD_PROJECT}"
       - name: GOOGLE_CLOUD_LOCATION
-        value: "YOUR_REGION"
+        value: "${GOOGLE_CLOUD_LOCATION}"
 ---
-sidebar_position: 2
 apiVersion: v1
 kind: Service
 metadata:
