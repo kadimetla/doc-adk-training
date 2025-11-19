@@ -87,7 +87,7 @@ class ProductCatalogAnalyzer:
     async def analyze_product(self, product_id: str, image_path: str):
         """Analyze a product image and create a catalog entry."""
         print(f"\n--- Analyzing Product: {product_id} ---")
-sidebar_position: 2
+
 
         # TODO: 1. Create a new session for this analysis.
         # Use `self.session_service.create_session`, providing an `app_name`
