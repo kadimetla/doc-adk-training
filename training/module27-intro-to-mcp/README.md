@@ -28,12 +28,9 @@ MCP works on a client-server model:
 
 ```text
 +-----------------+      +----------------------+      +--------------------+
-sidebar_position: 1
 |   ADK Agent     |----->|    MCPToolset        |----->|     MCP Server     |
-sidebar_position: 1
 | (MCP Client)    |      | (ADK Wrapper/Client) |      | (e.g., Filesystem) |
 +-----------------+      +----------------------+      +--------------------+
-sidebar_position: 1
 ```
 
 The `MCPToolset` is the bridge. It connects to an MCP server, discovers the tools it offers, and makes them available to your agent. When your agent decides to use one of these tools, the `MCPToolset` proxies the call to the server, which executes the logic and maintains the state.
