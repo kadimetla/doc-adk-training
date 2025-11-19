@@ -27,14 +27,10 @@ The typical workflow is to build and test your agent locally using the ADK, and 
 
 ```text
 +---------------------+      +----------------------+      +-----------------------+
-sidebar_position: 1
 |  1. Build & Test    |----->|  2. Deploy via ADK    |----->|  3. Manage & Monitor  |
-sidebar_position: 1
 |   Agent Locally     |      |  or Cloud Console     |      |   in Gemini Enterprise|
 |     (using ADK)     |      +----------------------+      +-----------------------+
-sidebar_position: 1
 +---------------------+
-sidebar_position: 1
 ```
 
 By providing a clear separation between development (ADK) and operations (Gemini Enterprise), this model allows developers to focus on building great agent logic, while platform administrators can focus on ensuring security, compliance, and efficient operation at scale.
