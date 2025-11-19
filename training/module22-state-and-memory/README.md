@@ -14,7 +14,6 @@ The agent's **scratchpad**—a key-value dictionary for conversation-level data.
 
 | Prefix  | Scope                   | Persistence              | Example Use Case                                             |
 | ------- | ----------------------- | ------------------------ | ------------------------------------------------------------ |
-sidebar_position: 1
 | None    | Current session         | SessionService dependent | `state['current_topic'] = 'python'` - Task progress          |
 | `user:` | All sessions for user   | Persistent               | `state['user:preferred_language'] = 'en'` - User preferences |
 | `app:`  | All users/sessions      | Persistent               | `state['app:course_catalog'] = [...]` - Global settings      |
