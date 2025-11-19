@@ -28,7 +28,6 @@ A key design philosophy of the ADK is to leverage the security features of the u
 
 | Security Feature | Cloud Run | Agent Engine | GKE |
 | :--- | :--- | :--- | :--- |
-sidebar_position: 1
 | **HTTPS/TLS** | ✅ Auto | ✅ Auto | ⚙️ Manual |
 | **DDoS Protection** | ✅ Auto | ✅ Auto | ❌ Manual |
 | **Authentication** | ✅ Auto (IAM) | ✅ Auto (OAuth) | ⚙️ Manual |
