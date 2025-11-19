@@ -12,7 +12,6 @@ In this lab, you will design a strategy for a fictional company to adopt and gov
 You are the lead AI architect at a large retail company. The company wants to leverage AI agents across several departments: Sales, Marketing, and HR. Your task is to create a high-level plan for how you would use Gemini Enterprise to build, deploy, and govern these agents.
 
 ---
-sidebar_position: 2
 
 ### Step 1: Identify the Agents
 
@@ -28,7 +27,6 @@ First, brainstorm the types of agents each department might need. Think about wh
 **Your Task:** Come up with at least one more agent idea for each department.
 
 ---
-sidebar_position: 2
 
 ### Step 2: Plan the Data Connectors
 
@@ -38,7 +36,6 @@ For your agents to be useful, they need access to the company's data.
 *   *Example:* **Salesforce Connector** for the `Lead Qualifier Agent`.
 
 ---
-sidebar_position: 2
 
 ### Step 3: Design the Governance and Access Control
 
@@ -50,7 +47,6 @@ Not everyone should have access to every agent or every piece of data.
 *   Should the `Marketing Team` be able to see data from the `Salesforce Connector`?
 
 ---
-sidebar_position: 2
 
 ### Step 4: Plan for Monitoring and Cost Management
 
@@ -62,7 +58,6 @@ Finally, think about how you will monitor the system.
 *   How would you set a budget for the Marketing team's usage of the "Idea Generation Agent"?
 
 ---
-sidebar_position: 2
 
 ### Lab Summary
 
