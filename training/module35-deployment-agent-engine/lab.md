@@ -21,7 +21,6 @@ In this lab, you will deploy an ADK agent to Google Cloud's Agent Engine using b
     ```
 
 ---
-sidebar_position: 2
 
 ## Part 1: Accelerated Deployment (Recommended)
 
