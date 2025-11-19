@@ -18,7 +18,7 @@ You will build an agent that can perform basic arithmetic by creating your own c
 2.  **Create the agent project:**
     ```shell
     adk create calculator-agent
-xch    ```
+    ```
 
 3.  **Navigate into the new directory:**
     ```shell
@@ -172,6 +172,20 @@ xch    ```
     *   "Multiply 15 by 3."
     *   "What is 10 divided by 0?"
     *   "What is the capital of France?" (Should be gracefully declined).
+
+### Self-Reflection Answers
+
+1.  **The docstring for each function is critical. What do you think would happen if you removed the docstrings from your calculator functions? Would the agent still be able to use them?**
+    *   **Answer:** If you remove the docstrings, the agent (LLM) loses the primary description of what the tool does and how to use it. While the function name and type hints provide *some* information, the docstring provides the context. Without it, the agent might struggle to understand *when* to call the tool or might misinterpret its purpose, leading to unreliable behavior or failure to use the tool at all.
+
+2.  **Why is it a good practice to return a dictionary with a `status` key from a tool function, especially for operations that can fail (like division)?**
+    *   **Answer:** Returning a dictionary allows you to provide structured feedback to the agent. The `status` key gives the agent an explicit signal about whether the operation succeeded (`success`) or failed (`error`). If it failed, you can include an `error` message (like "Cannot divide by zero") which the agent can then read and explain to the user. This makes the agent more robust and capable of handling edge cases gracefully.
+
+3.  **How would you add a new tool to this agent, for example, a function to calculate the square root of a number? What steps would you need to take?**
+    *   **Answer:** You would need to follow the same three steps:
+        1.  **Write the function:** Add a `sqrt(n: float) -> dict` function to `tools/calculator.py` with a clear docstring.
+        2.  **Import it:** Import the `sqrt` function in your `agent.py`.
+        3.  **Register it:** Wrap it in a `FunctionTool` and add it to the `tools` list in the `LlmAgent` definition.
 
 ### Lab Summary
 
