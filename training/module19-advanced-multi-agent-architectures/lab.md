@@ -57,7 +57,6 @@ search_tool = GoogleSearchAgentTool()
 # ===== SPECIALIST AGENTS (Provided for you) =====
 
 # --- Branch 1: News ---
-sidebar_position: 2
 news_fetcher = Agent(
     name="news_fetcher", model="gemini-2.5-flash", tools=[search_tool],
     instruction="You are a news researcher. Use the GoogleSearchAgentTool to find 3-4 current news articles about the user's topic.",
@@ -70,7 +69,6 @@ news_summarizer = Agent(
 )
 
 # --- Branch 2: Social Media ---
-sidebar_position: 2
 social_monitor = Agent(
     name="social_monitor", model="gemini-2.5-flash", tools=[search_tool],
     instruction="You are a social media analyst. Use the GoogleSearchAgentTool to find trending discussions and public sentiment about the user's topic.",
@@ -83,7 +81,6 @@ sentiment_analyzer = Agent(
 )
 
 # --- Branch 3: Expert Opinion ---
-sidebar_position: 2
 expert_finder = Agent(
     name="expert_finder", model="gemini-2.5-flash", tools=[search_tool],
     instruction="You are an expert opinion researcher. Use the GoogleSearchAgentTool to find what industry experts or academics are saying about the user's topic.",
@@ -96,7 +93,6 @@ quote_extractor = Agent(
 )
 
 # --- Content Creation ---
-sidebar_position: 2
 article_writer = Agent(
     name="article_writer", model="gemini-2.5-flash",
     instruction="You are a professional writer. Write an engaging article using the research provided in {news_summary}, {social_insights}, and {expert_quotes}.",
