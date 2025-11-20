@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 11: OpenAPI Tools"
+---
+
 # Module 11: OpenAPI Tools
 
 ## Theory

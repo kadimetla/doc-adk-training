@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 12: Built-in Tools and Grounding"
+---
+
 # Module 12: Built-in Tools and Grounding
 
 ## Theory

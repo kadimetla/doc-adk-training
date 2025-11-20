@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 28: Building a "Shopping Cart" MCP Server Challenge
 
 ## Goal

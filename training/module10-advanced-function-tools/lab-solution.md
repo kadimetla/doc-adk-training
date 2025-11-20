@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: "Lab Solution"
+---
+
 # Lab 10 Solution: Building a Personal Finance Assistant
 
 ## Goal
@@ -195,3 +200,14 @@ root_agent = Agent(
     ]
 )
 ```
+
+### Self-Reflection Answers
+
+1.  **Why is it a good practice for a tool to perform its own input validation, even though the LLM is usually good at providing the correct arguments?**
+    *   **Answer:** LLMs are probabilistic and can occasionally "hallucinate" or make errors, especially with edge cases (like negative numbers for time). Validating inputs within the tool ensures the function doesn't crash or produce mathematically invalid results (like division by zero). It adds a layer of deterministic safety that is critical for robust software. Furthermore, returning a specific error message allows the agent to understand *why* the call failed and potentially correct itself or inform the user.
+
+2.  **In the parallel execution test, the two tool calls are independent. Can you think of a scenario where a user's query might seem like it could be parallelized, but actually requires the tools to be run sequentially?**
+    *   **Answer:** A sequential dependency occurs when the *output* of the first tool is required as the *input* for the second. For example: "Find the current stock price of Google, and then calculate how many shares I can buy with $1000." The agent must first call `get_stock_price('GOOG')`, wait for the result (e.g., $150), and *only then* can it perform the calculation (1000 / 150). The ADK handles this naturally: the agent will make the first call, receive the result, and then make the second call in a subsequent turn.
+
+3.  **How does providing a pre-formatted, human-readable `report` in the tool's return dictionary simplify the agent's `instruction` prompt?**
+    *   **Answer:** By including a `report` string (e.g., "Your monthly payment is $500..."), you reduce the burden on the LLM to format the raw data. Instead of needing complex instructions like "Take the 'payment' field from the result, format it as currency, and construct a sentence," you can simply instruct the agent to "Relay the tool's report to the user." This makes the agent's behavior more consistent and reduces the chance of the LLM misinterpreting the raw numbers.

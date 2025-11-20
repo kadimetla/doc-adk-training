@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 2: Environment Setup Challenge
 
 ## Goal

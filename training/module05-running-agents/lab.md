@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 5: Exploring Different Execution Modes Challenge
 
 ## Goal

@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 4: Core Agent Concepts: `LlmAgent` Deep Dive"
+---
+
 # Module 4: Core Agent Concepts: `LlmAgent` Deep Dive
 
 ## Theory

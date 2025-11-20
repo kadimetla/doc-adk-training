@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 16: Implementing the "Greeting Router" Challenge
 
 ## Goal

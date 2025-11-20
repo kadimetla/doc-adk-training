@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 3 Challenge: Build and Run the "Echo" Agent
 
 ## Goal

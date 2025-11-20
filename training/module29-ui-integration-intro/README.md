@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 29: Introduction to UI Integration"
+---
+
 # Module 29: Introduction to UI Integration
 
 ## Theory

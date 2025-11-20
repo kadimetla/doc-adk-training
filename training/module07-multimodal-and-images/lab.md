@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 7: Building a Visual Product Catalog Analyzer Challenge
 
 ## Goal
@@ -87,6 +92,7 @@ class ProductCatalogAnalyzer:
     async def analyze_product(self, product_id: str, image_path: str):
         """Analyze a product image and create a catalog entry."""
         print(f"\n--- Analyzing Product: {product_id} ---")
+
 
         # TODO: 1. Create a new session for this analysis.
         # Use `self.session_service.create_session`, providing an `app_name`

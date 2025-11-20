@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 2: Setting Up Your Development Environment"
+---
+
 # Module 2: Setting Up Your Development Environment
 
 ## Theory

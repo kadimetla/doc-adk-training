@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 35: Deploying an Agent to Agent Engine Challenge
 
 ## Goal
@@ -58,6 +63,7 @@ This method uses the Agent Starter Pack (ASP) to add deployment artifacts to you
 3.  **Find Your Agent:** Once the build is complete, navigate to **Vertex AI -> Agent Engine** in the Cloud Console to find your deployed agent and its ID.
 
 ---
+sidebar_position: 2
 
 ## Part 2: Standard Deployment (Manual)
 

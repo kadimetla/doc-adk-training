@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: "Lab Solution"
+---
+
 # Lab 26 Solution: Building a Content Moderation Assistant
 
 ## Goal
@@ -10,7 +15,7 @@ This file contains the complete code for the `agent.py` script in the Content Mo
 """
 Content Moderation Assistant - Demonstrates Callbacks & Guardrails
 
-This agent uses callbacks for:
+This agent uses:
 - Guardrails: Block inappropriate content (before_model_callback)
 - Validation: Check tool arguments (before_tool_callback)
 - Logging: Track all operations (multiple callbacks)
@@ -225,4 +230,26 @@ root_agent = Agent(
     after_tool_callback=after_tool_callback,
     output_key="last_response"
 )
+
+# --- Main Execution Block (for `adk web`) ---
+def main():
+    """Demonstrates how to register plugins with the runner."""
+    # In this lab, callbacks are registered directly with the agent, not as plugins.
+    # The `adk web` command will automatically discover the `root_agent`.
+    print("Agent with callbacks is configured.")
+    print("Run `adk web content-moderator` from the parent directory and interact with the agent to see callback output in the console.")
+
+if __name__ == "__main__":
+    main()
 ```
+
+### Self-Reflection Answers
+
+1.  **What is the key difference between a callback and a plugin in the ADK? When would you choose one over the other?**
+    *   **Answer:** The key difference lies in their scope and primary role. **Callbacks** are agent-specific, designed for control, modification, and implementing guardrails *within a single agent's logic*. They can block or alter an agent's execution. **Plugins** are global (registered at the `Runner` level), designed for observation and telemetry (metrics, logging, alerting) *across all agents in an application*. Choose a callback to modify or block an agent's specific operations; choose a plugin to monitor behavior across the entire system without altering its logic.
+
+2.  **The `before_model_callback` returns a `GenerateContentResponse` to block an inappropriate prompt. Why is it important to return a specific object type here instead of just a string or a dictionary?**
+    *   **Answer:** When a callback (like `before_model_callback`) returns a specific object type (e.g., `types.GenerateContentResponse`), it signals a clear override instruction to the ADK framework. This allows the framework to skip the standard operation (like calling the LLM) and use the returned object as a direct substitute, ensuring the data flow remains consistent and predictable. Returning a simple string or dictionary would break this control flow, as the framework would not know how to handle the unstructured data in the context of an LLM response.
+
+3.  **How does using callbacks for guardrails and validation make an agent more reliable and safer to deploy in a production environment?**
+    *   **Answer:** Callbacks significantly enhance reliability and safety by introducing deterministic, hard-coded checks for critical functionalities, reducing reliance on the LLM's non-deterministic reasoning. For instance, `before_model_callback` can proactively prevent harmful input from reaching the LLM, and `after_model_callback` can filter sensitive data (PII) from responses before they are exposed. Similarly, `before_tool_callback` validates tool arguments, preventing runtime errors and ensuring tools are used correctly. This layered approach creates a more stable, secure, and predictable agent behavior in production.

@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 14: Integrating a LangChain Wikipedia Tool Challenge
 
 ## Goal

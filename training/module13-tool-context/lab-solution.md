@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: "Lab Solution"
+---
+
 # Lab 13 Solution: Creating a "Memory" Agent with Tool Context
 
 ## Goal
@@ -91,4 +96,23 @@ instruction: |
 tools:
   - name: tools.memory.remember_name
   - name: tools.memory.recall_name
+
+### Self-Reflection Answers
+
+1.  **Why is it important that the `tool_context` parameter is *not* included in the function's docstring?**
+    *   **Answer:** The docstring is the "user manual" for the LLM. The LLM only needs to know about the parameters *it* is responsible for providing (like `name`). The `tool_context` is an internal infrastructure object provided by the ADK runtime, not the LLM. Including it in the docstring would confuse the model, leading it to mistakenly try to generate a value for it, which would cause the tool call to fail.
+
+2.  **The `recall_name` function uses `tool_context.state.get('user_name')` instead of `tool_context.state['user_name']`. What is the difference, and why is `.get()` a safer choice here?**
+    *   **Answer:** The `state` object behaves like a Python dictionary. If you try to access a key directly (`state['key']`) and that key doesn't exist, Python raises a `KeyError`, crashing your tool. The `.get('key')` method is safer because if the key is missing, it simply returns `None` (or a default value you provide) instead of crashing. Since we can't guarantee the user has already told us their name, `.get()` allows us to handle the "unknown" case gracefully.
+
+3.  **How could you extend this agent to forget a user's name? What would the new tool function look like?**
+    *   **Answer:** You would create a `forget_name` function that takes `tool_context` as an argument. Inside, you would use the `pop` method to remove the key from the state.
+        ```python
+        def forget_name(tool_context: ToolContext) -> dict:
+            """Forgets the user's name."""
+            if 'user_name' in tool_context.state:
+                tool_context.state.pop('user_name')
+                return {"status": "success", "message": "I have forgotten your name."}
+            return {"status": "error", "message": "I didn't know your name to begin with."}
+        ```
 ```

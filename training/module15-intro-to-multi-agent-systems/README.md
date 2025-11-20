@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 15: Introduction to Multi-Agent Systems"
+---
+
 # Module 15: Introduction to Multi-Agent Systems
 
 ## Theory

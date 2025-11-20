@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: "Lab Solution"
+---
+
 # Lab 8 Solution: Creating a "Researcher" Agent with Google Search
 
 ## Goal

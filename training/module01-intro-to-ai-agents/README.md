@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 1: Introduction to AI Agents"
+---
+
 # Module 1: Introduction to AI Agents
 
 ![Introduction to AI Agents](img/module01-header.png)

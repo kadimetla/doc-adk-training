@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 17: Sequential Workflows - Building Agent Pipelines"
+---
+
 # Module 17: Sequential Workflows - Building Agent Pipelines
 
 ## Theory

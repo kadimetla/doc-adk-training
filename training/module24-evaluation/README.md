@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 24: Evaluating Agent Performance"
+---
+
 # Module 24: Evaluating Agent Performance
 
 ## Theory

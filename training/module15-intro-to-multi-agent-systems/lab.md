@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 15: Designing a Multi-Agent System Challenge
 
 ## Goal
@@ -102,7 +107,7 @@ from google.adk.agents import LlmAgent
 
 agent = LlmAgent(
     name="spanish_greeter_agent",
-    model="gemini-1.5-flash",
+    model="gemini-2.5-flash",
     description="An expert at providing friendly greetings in Spanish.",
     instruction="You are a friendly assistant who only speaks Spanish..."
 )

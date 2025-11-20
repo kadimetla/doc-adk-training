@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 16: Building a Coordinator/Dispatcher Agent"
+---
+
 # Module 16: Building a Coordinator/Dispatcher Agent
 
 ## Theory

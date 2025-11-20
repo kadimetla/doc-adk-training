@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Module 22: State and Memory - Building a Personal Tutor Agent
 
 ## Lab 22: Building a Personal Learning Tutor

@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 29: Building a Simple Custom Chat UI Challenge
 
 ## Goal

@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: "Lab Solution"
+---
+
 # Lab 6 Solution: Programmatic Execution with the ADK Runner
 
 ## Goal

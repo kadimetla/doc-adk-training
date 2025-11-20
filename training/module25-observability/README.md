@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 25: Advanced Observability with Plugins"
+---
+
 # Module 25: Advanced Observability with Plugins
 
 ## Theory

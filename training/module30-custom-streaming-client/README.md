@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 30: Building a Custom Streaming Client"
+---
+
 # Module 30: Building a Custom Streaming Client
 
 ## Theory

@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 11: Building a Chuck Norris Fact Assistant Challenge
 
 ## Goal

@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 8: Introduction to Tools"
+---
+
 # Module 8: Introduction to Tools
 
 ## Theory

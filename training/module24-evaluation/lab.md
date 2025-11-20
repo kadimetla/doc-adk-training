@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 24: Creating an Evaluation Case for the Calculator Agent Challenge
 
 ## Goal

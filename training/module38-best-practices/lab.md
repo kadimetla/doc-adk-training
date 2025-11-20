@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 38: Building a Production-Ready Agent Challenge
 
 ## Goal
@@ -34,6 +39,7 @@ from google.adk.tools import FunctionTool
 from google.adk.tools.tool_context import ToolContext # Import ToolContext
 
 # --- 1. Input Validation with Pydantic ---
+sidebar_position: 2
 
 class ValidatedInput(BaseModel):
     """A Pydantic model to validate inputs for a tool."""
@@ -52,6 +58,7 @@ def validate_input_tool(user_id: str, query: str, tool_context: ToolContext) -> 
         return {"status": "error", "message": f"Invalid input: {e}"}
 
 # --- 2. Resilience with Retries and Exponential Backoff ---
+sidebar_position: 2
 
 # TODO: 2. Apply the `@retry` decorator to this function. Configure it to
 # try 4 times with a delay that doubles, starting at 1 second.
@@ -74,6 +81,7 @@ def retry_with_backoff_tool(tool_context: ToolContext) -> dict:
         return {"status": "error", "message": f"The API call failed after multiple retries: {e}"}
 
 # --- 3. Performance with Caching ---
+sidebar_position: 2
 
 # TODO: 3. Apply the `@functools.lru_cache` decorator to this function
 # to cache its results. Set a maxsize of 128.
@@ -92,6 +100,7 @@ def cache_operation_tool(item_id: str, tool_context: ToolContext) -> dict:
     return {"status": "success", "data": result}
 
 # --- Agent Definition ---
+sidebar_position: 2
 
 # TODO: 4. Define the `root_agent`. Give it an instruction to use the
 # appropriate tool based on the user's request and register your three

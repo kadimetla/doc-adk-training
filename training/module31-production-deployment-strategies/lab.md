@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 31: Choosing the Right Deployment Strategy Challenge
 
 ## Goal
@@ -63,6 +68,7 @@ Be prepared to justify your choice based on the key requirements of each scenari
 **Your Task:** Which hybrid approach is necessary here, and why?
 
 ---
+sidebar_position: 2
 
 ### Lab Summary
 

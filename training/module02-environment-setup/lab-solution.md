@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: "Lab Solution"
+---
+
 # Lab 2 Solution: Installation and Configuration
 
 ### Goal

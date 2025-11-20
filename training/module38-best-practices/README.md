@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 38: Best Practices & Production Patterns"
+---
+
 # Module 38: Best Practices & Production Patterns
 
 ## Theory

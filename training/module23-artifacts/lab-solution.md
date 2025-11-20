@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: "Lab Solution"
+---
+
 # Lab 23 Solution: Building a Document Processing Pipeline
 
 ## Goal
@@ -95,4 +100,29 @@ Workflow:
 )
 ```
 
-```
+### Self-Reflection Answers
+
+1.  **Why is the versioning feature of the Artifacts system important for audibility and debugging in a production environment?**
+    *   **Answer:** Versioning is crucial because it provides an immutable history of every file generated or modified by the agent. For audibility, you can trace exactly what data was used or produced at any point in time. For debugging, if an agent produces an incorrect report, you can easily go back to previous versions of intermediate artifacts (like the extracted text or summary) to pinpoint where the error was introduced. This is invaluable for understanding and rectifying complex agentic workflows.
+
+2.  **All the tool functions in this lab are `async`. Why is this a requirement for functions that interact with the Artifact Service?**
+    *   **Answer:** Interacting with file storage (especially cloud services like GCS) involves I/O operations that can be slow. If these operations were synchronous (`def` instead of `async def`), they would block the main Python thread, making the agent unresponsive and unable to process other requests or continue its own internal reasoning until the file operation completed. `async` functions, used with `await`, ensure that these I/O-bound tasks run concurrently, keeping the agent efficient and responsive.
+
+3.  **The lab uses an `InMemoryArtifactService`. What changes would you need to make to the `Runner` configuration to use the persistent `GcsArtifactService` in a production deployment?**
+    *   **Answer:** You would modify the `Runner` initialization in your main application entry point (e.g., `main.py`). Instead of `InMemoryArtifactService`, you would use `GcsArtifactService` and provide it with a Google Cloud Storage bucket name:
+
+        ```python
+        from google.adk.artifacts import GcsArtifactService
+        from google.adk.runner import Runner
+
+        # ... root_agent definition ...
+
+        gcs_artifact_service = GcsArtifactService(bucket_name="your-production-bucket-name")
+
+        runner = Runner(
+            agent=root_agent,
+            artifact_service=gcs_artifact_service,
+            # ... other services ...
+        )
+        ```
+        You would also need to ensure your environment has the necessary Google Cloud authentication configured (e.g., via `GOOGLE_APPLICATION_CREDENTIALS` or a service account).

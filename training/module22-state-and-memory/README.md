@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 22: State and Memory - Persistent Agent Context"
+---
+
 # Module 22: State and Memory - Persistent Agent Context
 
 ## Theory

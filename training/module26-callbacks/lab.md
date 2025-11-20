@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Module 26: Callbacks and Guardrails - Building a Content Moderator
 
 ## Lab 26: Building a Content Moderation Assistant
@@ -58,6 +63,7 @@ PII_PATTERNS = {
 }
 
 # --- Data Classes for Metrics (for logging purposes) ---
+sidebar_position: 2
 @dataclass
 class RequestMetrics:
     """Metrics for a single agent request."""
@@ -300,6 +306,7 @@ root_agent = Agent(
 )
 
 # --- Main Execution Block (for `adk web`) ---
+sidebar_position: 2
 def main():
     """Demonstrates how to register plugins with the runner."""
     # In this lab, callbacks are registered directly with the agent, not as plugins.

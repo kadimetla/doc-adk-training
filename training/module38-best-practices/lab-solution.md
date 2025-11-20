@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: "Lab Solution"
+---
+
 # Lab 38 Solution: Building a Production-Ready Agent
 
 ## Goal
@@ -17,6 +22,7 @@ from google.adk.agents import Agent
 from google.adk.tools import FunctionTool
 
 # --- 1. Input Validation with Pydantic ---
+sidebar_position: 3
 
 class ValidatedInput(BaseModel):
     """A Pydantic model to validate inputs for a tool."""
@@ -35,6 +41,7 @@ def validate_input_tool(user_id: str, query: str) -> dict:
         return {"status": "error", "message": f"Invalid input: {e}"}
 
 # --- 2. Resilience with Retries and Exponential Backoff ---
+sidebar_position: 3
 
 # This is a decorator that will retry the function if it raises an exception.
 # It will wait 1s, then 2s, then 4s between retries.
@@ -59,6 +66,7 @@ def retry_with_backoff_tool() -> dict:
         return {"status": "error", "message": f"The API call failed after multiple retries: {e}"}
 
 # --- 3. Performance with Caching ---
+sidebar_position: 3
 
 @functools.lru_cache(maxsize=128)
 def _slow_database_query(item_id: str) -> str:
@@ -77,6 +85,7 @@ def cache_operation_tool(item_id: str) -> dict:
     return {"status": "success", "data": result}
 
 # --- Agent Definition ---
+sidebar_position: 3
 
 root_agent = Agent(
     model='gemini-2.5-flash',

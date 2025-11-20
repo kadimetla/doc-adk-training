@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: "Challenge Lab"
+---
+
 # Lab 17: Building a Blog Post Generator Pipeline Challenge
 
 ## Goal

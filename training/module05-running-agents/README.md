@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: "Module 5: Running and Interacting with Agents"
+---
+
 # Module 5: Running and Interacting with Agents
 
 ## Theory
