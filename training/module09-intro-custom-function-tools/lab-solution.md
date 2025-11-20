@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 9 Solution: Building a "Calculator" Agent
 
 ## Goal

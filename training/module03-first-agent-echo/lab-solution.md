@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 3 Solution: Build and Run the "Echo" Agent
 
 ## Goal

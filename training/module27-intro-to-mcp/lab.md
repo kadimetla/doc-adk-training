@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 27: Using a Stateful File System Tool Challenge
 
 ## Goal

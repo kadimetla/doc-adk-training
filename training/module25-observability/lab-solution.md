@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 25 Solution: Building an Observability System with Plugins
 
 ## Goal
@@ -19,7 +24,6 @@ from google.adk.events import Event
 from google.genai import types
 
 # --- Data Classes for Metrics ---
-sidebar_position: 3
 
 @dataclass
 class RequestMetrics:
@@ -51,7 +55,6 @@ class AggregateMetrics:
         return self.total_latency / self.total_requests
 
 # --- Custom Observability Plugins ---
-sidebar_position: 3
 
 class MetricsCollectorPlugin(BasePlugin):
     """A plugin to collect request/response metrics."""
@@ -120,7 +123,6 @@ class PerformanceProfilerPlugin(BasePlugin):
                     self.current_profile = None
 
 # --- Agent Definition ---
-sidebar_position: 3
 
 root_agent = Agent(
     model='gemini-2.5-flash',
@@ -129,7 +131,6 @@ root_agent = Agent(
 )
 
 # --- Main Execution Block (for `adk web`) ---
-sidebar_position: 3
 
 # In a real application, you would likely run this in a separate script.
 # For this lab, we include it to show how plugins are registered.
@@ -157,3 +158,18 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+### Self-Reflection Answers
+
+1.  **What is the main advantage of using the Plugin System for observability instead of adding logging and metrics code directly inside your agent and tool functions?**
+    *   **Answer:** The primary advantage is **Separation of Concerns**. By using plugins, your observability code (e.g., sending metrics to Prometheus, logging to Splunk) is completely isolated from the agent's business logic. This makes both systems easier to test, update, and maintain. It promotes reusability of plugins across different agents and keeps the agent's core logic clean and focused on its primary task.
+
+2.  **The `on_event_callback` method is called for every single event. In a high-traffic production system, what performance considerations would you need to keep in mind for the code you write inside this method?**
+    *   **Answer:** The `on_event_callback` method is awaited by the agent's runtime, meaning its execution directly impacts the agent's overall latency. Therefore, any code within it must be extremely efficient. Key considerations:
+        *   **Avoid Blocking I/O:** Do not perform synchronous disk writes, network calls, or other blocking operations.
+        *   **Minimize CPU Usage:** Keep computations minimal. Avoid complex data transformations or heavy processing.
+        *   **Asynchronous Delegation:** For costly operations (e.g., sending data to a remote monitoring service), delegate them to asynchronous tasks (using `asyncio.create_task`) or offload them to separate threads/processes (e.g., a message queue) so they don't block the main event loop.
+        *   **Batching/Buffering:** Instead of sending every single event immediately, buffer events and send them in batches if possible.
+
+3.  **How could you extend the `MetricsCollectorPlugin` to track not just latency, but also the number of tokens used in each LLM call? (Hint: Inspect the `Event` objects for token information).**
+    *   **Answer:** You would extend the `RequestMetrics` dataclass to include fields like `prompt_token_count: Optional[int]` and `completion_token_count: Optional[int]`. Then, in the `on_event_callback` method, specifically for `request_complete` events (or `llm_call_complete` events if available and more granular), you would inspect the `event.response` object. The token information is typically found within `event.response.usage_metadata` or a similar attribute, which holds `prompt_token_count` and `candidates_token_count`. You would extract these values and store them in the `RequestMetrics` instance before appending it to the `AggregateMetrics`. This would provide detailed token usage per request, which is vital for cost analysis.

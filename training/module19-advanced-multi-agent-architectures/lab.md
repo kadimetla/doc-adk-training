@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Module 19: Advanced Multi-Agent Architectures
 
 ## Lab 19: Building a Content Publishing System

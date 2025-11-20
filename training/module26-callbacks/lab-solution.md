@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 26 Solution: Building a Content Moderation Assistant
 
 ## Goal

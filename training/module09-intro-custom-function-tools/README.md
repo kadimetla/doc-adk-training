@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
 # Module 9: Creating Custom Function Tools
 
 ## Theory

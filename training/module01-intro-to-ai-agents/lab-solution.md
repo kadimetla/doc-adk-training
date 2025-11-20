@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 1 Solution: Exploring the ADK Ecosystem
 
 ## Goal

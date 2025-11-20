@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 18: Building a Smart Travel Planner Challenge
 
 ## Goal

@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 7 Solution: Building a Visual Product Catalog Analyzer
 
 ## Goal

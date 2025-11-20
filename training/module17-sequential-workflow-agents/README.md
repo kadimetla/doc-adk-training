@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
 # Module 17: Sequential Workflows - Building Agent Pipelines
 
 ## Theory

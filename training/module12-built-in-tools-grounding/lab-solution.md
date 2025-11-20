@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 12 Solution: Building a Research Assistant with Web Search
 
 ## Goal
@@ -17,7 +22,6 @@ from google.adk.agents import Agent
 from google.adk.tools import FunctionTool, GoogleSearchAgentTool
 
 # --- Custom Tools ---
-sidebar_position: 3
 
 def format_research_notes(topic: str, findings: str) -> dict:
     """Formats research findings into a document."""
@@ -38,7 +42,6 @@ def extract_key_facts(text: str, num_facts: int = 5) -> list[str]:
     return [s.strip() for s in sentences if s.strip()][:num_facts]
 
 # --- Agent Definition ---
-sidebar_position: 3
 
 # Create search tool (using workaround for mixing with custom tools)
 search_tool = GoogleSearchAgentTool()
@@ -67,3 +70,14 @@ When given a research topic:
     ]
 )
 ```
+
+### Self-Reflection Answers
+
+1.  **The `GoogleSearchAgentTool` is a workaround for a current limitation. Why is it architecturally cleaner to have a wrapper like this instead of building the search logic directly into your own custom tool?**
+    *   **Answer:** Using a wrapper like `GoogleSearchAgentTool` maintains separation of concerns. The search logic (connecting to Google's API, handling authentication, parsing search results) is complex and best managed by the framework or a dedicated component. If you built this into your own custom tool, you would be duplicating code and increasing maintenance burden. The wrapper allows you to treat the search capability as a modular "black box" that just works, keeping your agent definition clean and focused on orchestration.
+
+2.  **Our `extract_key_facts` tool is very simple. How could you make it more robust? (Hint: Could another LLM be used for this task?)**
+    *   **Answer:** The current implementation just splits text by sentences, which is very fragile. A much more robust approach would be to use an LLM for this specific task. You could create a second agent (a "Summarizer Agent") whose sole instruction is to "Extract the top 5 key facts from the provided text." Your main agent would then call this sub-agent as a tool. This would leverage the semantic understanding of the LLM to identify actual "facts" rather than just grammatical sentences.
+
+3.  **The agent's instruction defines a specific, sequential workflow. What might happen if you didn't specify the order of the tool calls in the instruction?**
+    *   **Answer:** Without a specified order, the agent might try to call tools out of sequence or skip steps. For example, it might try to format notes before it has even searched for information, or it might search and then just dump the raw search results to the user without extracting facts. Explicitly defining the workflow ("First do X, then Y, then Z") acts as a "Chain of Thought" prompt, guiding the agent's reasoning process and ensuring a reliable, structured output.

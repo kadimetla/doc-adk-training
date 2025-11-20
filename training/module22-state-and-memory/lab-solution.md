@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 22 Solution: Building a Personal Learning Tutor
 
 ## Goal
@@ -230,3 +235,24 @@ root_agent = Agent(
     ],
     output_key="last_tutor_response"
 )
+```
+
+### Self-Reflection Answers
+
+1.  **The `InMemorySessionService` loses `user:` and `app:` state on restart. What are the advantages and disadvantages of using a persistent `SessionService` (like one backed by a database) in a production environment?**
+    *   **Answer:**
+        *   **Advantages:** True persistence across restarts/deployments; enables long-term personalization; supports horizontal scaling (multiple instances of your agent can access the same state); critical for user-facing applications that need to remember users.
+        *   **Disadvantages:** Adds operational overhead (database management, network latency); requires careful schema design; potential for data consistency issues in distributed systems if not managed well.
+
+2.  **The `temp:` state is automatically discarded after each turn. Why is this a useful feature? What kind of problems could arise if this temporary data was accidentally persisted?**
+    *   **Answer:** `temp:` state is useful for intermediate calculations or ephemeral data that is only relevant for a single turn (e.g., a quiz score before it's saved to `user:` state). If this data was accidentally persisted:
+        *   **State Bloat:** The state object would grow unnecessarily large over time, slowing down processing.
+        *   **Data Pollution:** Irrelevant data would clutter the state, potentially confusing the LLM in later turns or leading to incorrect decisions.
+        *   **Security Risks:** Sensitive temporary data might be unintentionally exposed or stored longer than intended.
+
+3.  **Our `search_past_lessons` tool simulates a memory search. In a real application using `VertexAiMemoryBankService`, the search would be semantic (based on meaning) rather than keyword-based. How does this change the kinds of queries the user could make?**
+    *   **Answer:** Semantic search is much more powerful. Instead of needing to remember exact keywords or topic titles, a user could ask conceptual questions like:
+        *   "What did we discuss about data transformation last week?" (Even if the topic was 'ETL processes').
+        *   "Remind me about the security implications of that code review we did." (Even if the exact phrase 'security implications' wasn't used).
+        *   "I'm confused about asynchronous programming; what did you teach me about Python coroutines?"
+        This allows for a more natural, intuitive, and flexible interaction with the agent's long-term knowledge.

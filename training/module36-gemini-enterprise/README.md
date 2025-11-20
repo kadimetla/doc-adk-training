@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
 # Module 36: Gemini Enterprise (formerly AgentSpace)
 
 ## Theory

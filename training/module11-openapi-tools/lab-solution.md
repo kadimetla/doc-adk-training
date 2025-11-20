@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 11 Solution: Building a Chuck Norris Fact Assistant
 
 ## Goal

@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 31: Choosing the Right Deployment Strategy Challenge
 
 ## Goal

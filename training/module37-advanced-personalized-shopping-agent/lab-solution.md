@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 37 Solution: Building a Distributed Multi-Agent System
 
 ## Goal

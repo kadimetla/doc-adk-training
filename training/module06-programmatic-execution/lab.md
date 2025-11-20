@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 6: Programmatic Execution with the ADK Runner
 
 ## Goal

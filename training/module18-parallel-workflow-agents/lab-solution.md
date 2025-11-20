@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 18 Solution: Building a Smart Travel Planner
 
 ## Goal

@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
 # Module 22: State and Memory - Persistent Agent Context
 
 ## Theory
