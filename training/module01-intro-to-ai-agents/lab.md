@@ -59,8 +59,8 @@ In the next module, you will use this knowledge to set up your own local develop
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTAxLWludHJvLXRvLWFpLWFnZW50cy9sYWItc29sdXRpb24=`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMDEtaW50cm8tdG8tYWktYWdlbnRzL2xhYi1zb2x1dGlvbg==`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module01-intro-to-ai-agents/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module01-intro-to-ai-agents/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>

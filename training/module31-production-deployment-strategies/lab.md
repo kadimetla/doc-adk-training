@@ -83,13 +83,14 @@ Check the `lab-solution.md` to see the recommended answers for each scenario.
 - For the Startup MVP, what are the potential downsides of choosing Cloud Run? At what point might they need to consider migrating to a different platform like GKE?
 - Why is a "platform-first" security model, where you rely on the deployment environment for features like authentication and DDoS protection, generally a better approach than trying to build these features into your agent application code?
 - If a new compliance requirement (e.g., PCI for handling credit card data) was introduced, how would that influence your choice of deployment platform?
+
 <hr/>
 
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTMxLXByb2R1Y3Rpb24tZGVwbG95bWVudC1zdHJhdGVnaWVzL2xhYi1zb2x1dGlvbg==`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMzEtcHJvZHVjdGlvbi1kZXBsb3ltZW50LXN0cmF0ZWdpZXMvbGFiLXNvbHV0aW9u`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module31-production-deployment-strategies/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module31-production-deployment-strategies/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>

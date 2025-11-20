@@ -193,13 +193,14 @@ You have learned to:
 - Why is testing the `tool_trajectory` often more important for ensuring an agent's correctness than just testing its final text response?
 - The `response_match_score` is not a simple "equals" check. Why is this fuzzy matching necessary for evaluating LLM-generated text?
 - How could you integrate the `adk eval` command into a CI/CD pipeline (like GitHub Actions) to automatically test your agent every time you push new code?
+
 <hr/>
 
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTI0LWV2YWx1YXRpb24vbGFiLXNvbHV0aW9u`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMjQtZXZhbHVhdGlvbi9sYWItc29sdXRpb24=`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module24-evaluation/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module24-evaluation/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>

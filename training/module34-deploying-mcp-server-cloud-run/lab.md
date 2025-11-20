@@ -247,13 +247,14 @@ Cloud Run services and Artifact Registry repositories can incur costs if left ru
 - Our stateless server uses the `/tmp` directory for storage. Why is this approach not truly persistent, and what could happen to a user's shopping cart if the Cloud Run service scales down and then back up?
 - What are the advantages of using a managed service like Google Cloud Memorystore (Redis) for storing session state compared to the file-based approach used in this lab?
 - The `MCPToolset` on the client side doesn't need to know *how* the server is storing its state. Why is this separation of concerns a key benefit of the MCP architecture?
+
 <hr/>
 
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTM0LWRlcGxveWluZy1tY3Atc2VydmVyLWNsb3VkLXJ1bi9sYWItc29sdXRpb24=`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMzQtZGVwbG95aW5nLW1jcC1zZXJ2ZXItY2xvdWQtcnVuL2xhYi1zb2x1dGlvbg==`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module34-deploying-mcp-server-cloud-run/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module34-deploying-mcp-server-cloud-run/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>

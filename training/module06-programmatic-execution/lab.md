@@ -113,8 +113,8 @@ You have learned to:
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTA2LXByb2dyYW1tYXRpYy1leGVjdXRpb24vbGFiLXNvbHV0aW9u`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMDYtcHJvZ3JhbW1hdGljLWV4ZWN1dGlvbi9sYWItc29sdXRpb24=`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module06-programmatic-execution/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module06-programmatic-execution/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>
