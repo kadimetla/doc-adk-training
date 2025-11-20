@@ -330,13 +330,14 @@ This is a complex lab with multiple deployments. It is crucial to delete the res
 - This system uses three separate agents. What are the advantages of this distributed architecture in terms of scalability, maintainability, and reusability?
 - The `orchestrator-agent` uses a `before_tool_callback` for logging. How does this separate the concern of observability from the agent's core business logic?
 - The `web-agent` abstracts the website behind an OpenAPI spec. Why is this a better design than having the orchestrator directly interact with the raw HTML of the website?
+
 <hr/>
 
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTM3LWFkdmFuY2VkLXBlcnNvbmFsaXplZC1zaG9wcGluZy1hZ2VudC9sYWItc29sdXRpb24=`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMzctYWR2YW5jZWQtcGVyc29uYWxpemVkLXNob3BwaW5nLWFnZW50L2xhYi1zb2x1dGlvbg==`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module37-advanced-personalized-shopping-agent/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module37-advanced-personalized-shopping-agent/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>

@@ -107,13 +107,14 @@ You have successfully built a high-performance, multi-agent system using the fan
 - What would be the performance impact if you replaced the `ParallelAgent` in this lab with a `SequentialAgent`?
 - It is critical that the three finder agents have different `output_key`s. What would happen if they all had the same `output_key`, like `"search_result"`?
 - Can you think of another real-world problem (besides travel planning) where the fan-out/gather pattern would be a highly effective architecture?
+
 <hr/>
 
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTE4LXBhcmFsbGVsLXdvcmtmbG93LWFnZW50cy9sYWItc29sdXRpb24=`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMTgtcGFyYWxsZWwtd29ya2Zsb3ctYWdlbnRzL2xhYi1zb2x1dGlvbg==`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module18-parallel-workflow-agents/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module18-parallel-workflow-agents/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>
