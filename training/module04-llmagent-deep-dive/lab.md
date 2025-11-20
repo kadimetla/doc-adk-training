@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 4 Challenge: Transforming an Agent
 
 ## Goal

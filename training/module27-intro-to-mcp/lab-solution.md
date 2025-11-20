@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 27 Solution: Using a Stateful File System Tool
 
 ## Goal
@@ -52,3 +57,14 @@ root_agent = LlmAgent(
 ### `mcp-agent/__init__.py`
 
 This file should be created and can be left empty. It is required for the ADK to discover the `agent.py` file as a Python module.
+
+### Self-Reflection Answers
+
+1.  **The `MCPToolset` dynamically discovers the tools from the server. What are the advantages of this approach compared to manually defining each tool on the agent side?**
+    *   **Answer:** Dynamic discovery reduces boilerplate code and improves maintainability. You don't need to update your agent's code every time the MCP server adds, removes, or modifies a tool. It promotes a clean separation of concerns: the MCP server is responsible for defining its capabilities, and the agent client simply consumes them. This makes the system more flexible and scalable.
+
+2.  **The file system server is "stateful" because it remembers the state of the `test_files` directory between tool calls. How does this differ from the stateless calculator tools you built in earlier modules?**
+    *   **Answer:** Stateless tools (like the calculator functions) execute, return a result, and retain no memory of previous calls. Each invocation is entirely independent. A stateful tool, like the filesystem server, maintains an internal state (the actual files and directories on disk). Actions like `write_file` in one turn directly affect subsequent calls like `read_file` or `list_directory` in later turns. This persistence of external state is what allows for more complex, multi-turn interactions with external systems.
+
+3.  **The `StdioConnectionParams` launches the MCP server as a subprocess. What are the security implications of this, and why is it important that the server is sandboxed to a specific `TARGET_FOLDER_PATH`?**
+    *   **Answer:** Launching any external process, especially one that can interact with the file system, introduces significant security risks. If the MCP server itself (or its dependencies) were compromised or had a vulnerability, it could potentially gain access to the entire host system. Sandboxing the server to a `TARGET_FOLDER_PATH` is critical because it acts as a security boundary. It restricts the server's operations to *only* that specific directory, preventing it from reading, writing, or deleting files outside of its designated area. This minimizes the "blast radius" of any potential exploit and is a fundamental security practice for running external tools in a production environment.

@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 32: Deploying the Customer Support Agent Challenge
 
 ## Goal

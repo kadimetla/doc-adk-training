@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 10: Building a Personal Finance Assistant Challenge
 
 ## Goal

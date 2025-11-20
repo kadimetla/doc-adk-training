@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 21 Solution: Building a Distributed Research System
 
 ## Goal
@@ -72,3 +77,19 @@ Do not try to answer research questions yourself.
     sub_agents=[remote_researcher]
 )
 ```
+
+### Self-Reflection Answers
+
+1.  **What are the main benefits of running the `research_specialist` as a separate service instead of just including it as a local sub-agent in the orchestrator?**
+    *   **Answer:** Running as a separate service offers:
+        *   **Scalability:** The research specialist can be scaled independently (e.g., in a serverless environment like Cloud Run) to handle varying loads without affecting the orchestrator.
+        *   **Resilience:** If the research specialist crashes, the orchestrator can potentially try another specialist or gracefully handle the error without the entire system failing.
+        *   **Reusability:** The `research_specialist` can be used by multiple orchestrators or other applications, promoting a microservices-like architecture.
+        *   **Technology Agnosticism:** Different specialist agents could be implemented in different languages or frameworks, as long as they adhere to the A2A protocol.
+        *   **Team Specialization:** Different teams can own and deploy their specialist agents independently.
+
+2.  **The "A2A Context Handling" instruction is critical for the remote agent to function correctly. What kind of problems could arise if you forgot to include it?**
+    *   **Answer:** If the remote agent doesn't have the A2A context handling instruction, it will see the full conversation history from the orchestrator. This history includes internal orchestrator tool calls (e.g., `transfer_to_agent`, `FunctionCall` requests from the orchestrator to its *own* tools). The remote agent's LLM might get confused by these irrelevant messages, try to interpret them, or even attempt to call tools that only exist in the orchestrator's environment (leading to errors like "I cannot use a tool called `transfer_to_agent`"). This would cause the remote agent to fail to perform its actual task.
+
+3.  **How does the Agent Card (`/.well-known/agent-card.json`) enable a decoupled architecture? What would you need to do if this discovery mechanism didn't exist?**
+    *   **Answer:** The Agent Card provides a standardized, discoverable endpoint for an agent to advertise its capabilities and communication URL. This decouples the client (orchestrator) from needing hardcoded knowledge of the server's exact endpoint or API schema. The orchestrator just needs the base URL of the specialist, and it can dynamically fetch the agent card. If this mechanism didn't exist, each orchestrator would need to be manually configured with the exact communication URL and a manually provided schema for every remote specialist, making the system much more brittle and harder to maintain as services evolve.

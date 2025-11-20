@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 17 Solution: Building a Blog Post Generator Pipeline
 
 ## Goal
@@ -71,9 +76,6 @@ editor_agent = Agent(
         "**Draft Blog Post:**\n"
         "{draft_post}\n"  # Reads from state!
         "\n"
-        "**Editorial Feedback:**\n"
-        "{editorial_feedback}\n"  # Reads from state!
-        "\n"
         "Analyze the post for:\n"
         "1. Clarity and flow\n"
         "2. Grammar and style\n"
@@ -134,3 +136,14 @@ blog_creation_pipeline = SequentialAgent(
 # MUST be named root_agent for ADK
 root_agent = blog_creation_pipeline
 ```
+
+### Self-Reflection Answers
+
+1.  **The `SequentialAgent` is deterministic. What does this mean, and why is it a desirable property for a workflow like content creation?**
+    *   **Answer:** "Deterministic" means the outcome is predictable and repeatable. Given the same starting conditions, a `SequentialAgent` will always execute the same agents in the exact same order. This is desirable for content pipelines because it ensures quality control (e.g., every post *must* be edited) and reliability (e.g., the formatter will always have an approved draft to work on). It eliminates the "unpredictability" of an LLM deciding which step to take next.
+
+2.  **What do you think would happen if you forgot to add the `output_key` to the `research_agent`? How would the `writer_agent` behave?**
+    *   **Answer:** If `research_agent` has no `output_key`, its output (the list of facts) would not be saved to the shared state. When the `writer_agent` runs, it would try to interpolate `{research_findings}` into its prompt. Since that key is missing from the state, the ADK (or the underlying Python f-string logic) would likely raise an error or insert a blank/placeholder value. This would cause the writer to hallucinate facts or fail to write a relevant post because it lacks the necessary input context.
+
+3.  **How could you modify this pipeline to include a human-in-the-loop? For example, what if you wanted a human to approve the `draft_post` before the `editor_agent` runs?**
+    *   **Answer:** You could insert a custom `FunctionTool` or a specialized "HumanAgent" between the writer and the editor. This component would pause the execution (if the runtime supports it) or present the draft to a UI and wait for a signal (like a button press or a specific input) before proceeding. In a simpler implementation, you could split the pipeline into two `SequentialAgent`s: one that generates the draft and stops, and a second one that takes the approved draft and runs the edit/format steps, with the human step happening manually in between.

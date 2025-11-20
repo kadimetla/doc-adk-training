@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 38: Building a Production-Ready Agent Challenge
 
 ## Goal

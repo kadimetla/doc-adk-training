@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 34 Solution: Deploying the "Shopping Cart" Server
 
 ## Goal
@@ -100,3 +105,18 @@ root_agent = LlmAgent(
     ],
 )
 ```
+
+### Self-Reflection Answers
+
+1.  **Our stateless server uses the `/tmp` directory for storage. Why is this approach not truly persistent, and what could happen to a user's shopping cart if the Cloud Run service scales down and then back up?**
+    *   **Answer:** Using the `/tmp` directory for storage in a Cloud Run container is not truly persistent because `/tmp` is part of the container's volatile filesystem. When Cloud Run scales a service to zero due to inactivity or recycles an instance, the container is terminated, and all data in `/tmp` is permanently lost. If a user's shopping cart were stored this way, and the service scaled down and then back up, their cart would be erased. This demonstrates the critical need for externalized state in serverless environments.
+
+2.  **What are the advantages of using a managed service like Google Cloud Memorystore (Redis) for storing session state compared to the file-based approach used in this lab?**
+    *   **Answer:** A managed in-memory service like Google Cloud Memorystore (Redis) offers several advantages over a file-based approach for production session state:
+        *   **True Persistence:** Data survives container restarts and scales to zero.
+        *   **High Performance:** In-memory key-value stores are extremely fast, providing low-latency access to session data.
+        *   **Scalability & Consistency:** All Cloud Run instances connect to the same central data source, ensuring state consistency across a horizontally scaled service.
+        *   **Operational Simplicity:** Managed services handle patching, backups, and scaling, reducing operational overhead.
+
+3.  **The `MCPToolset` on the client side doesn't need to know *how* the server is storing its state. Why is this separation of concerns a key benefit of the MCP architecture?**
+    *   **Answer:** This separation of concerns is a key benefit of the MCP architecture because it decouples the client (the ADK agent using `MCPToolset`) from the server's internal implementation details. The agent only needs to know the server's URL and the tool's schema (its name, description, and input arguments). It doesn't care whether the server stores state in memory, a file, Redis, or a database. This allows the server's backend to be changed or upgraded (e.g., migrating from file-based state to Redis) without requiring any changes or redeployment of the client agent, promoting modular maintenance, independent evolution, and system robustness.

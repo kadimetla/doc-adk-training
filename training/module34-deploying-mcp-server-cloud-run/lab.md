@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 34: Deploying the "Shopping Cart" Server Challenge
 
 ## Goal

@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 23: Building a Document Processing Pipeline Challenge
 
 ## Goal

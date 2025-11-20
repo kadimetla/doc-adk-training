@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
 # Module 20: Iterative Refinement with Loop Agents
 
 ## Theory

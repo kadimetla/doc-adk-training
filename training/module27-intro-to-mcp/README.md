@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
 # Module 27: Introduction to MCP & Stateful Tools
 
 ## Theory

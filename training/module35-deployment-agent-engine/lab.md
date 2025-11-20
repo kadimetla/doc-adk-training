@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 35: Deploying an Agent to Agent Engine Challenge
 
 ## Goal

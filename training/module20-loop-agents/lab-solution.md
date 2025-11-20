@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 20 Solution: Building an Essay Refinement System
 
 ## Goal

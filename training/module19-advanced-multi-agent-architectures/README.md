@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
 # Module 19: Advanced Multi-Agent Architectures
 
 ## Theory

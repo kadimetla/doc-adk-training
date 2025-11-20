@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
 # Module 21: Agent-to-Agent Communication
 
 ## Theory

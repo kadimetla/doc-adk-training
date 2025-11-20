@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 5 Solution: Exploring Different Execution Modes
 
 ## Goal

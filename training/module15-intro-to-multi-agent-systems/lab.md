@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 15: Designing a Multi-Agent System Challenge
 
 ## Goal
@@ -13,7 +18,6 @@ Our system will be a "Greeting Router." It will consist of a main router agent a
 We want to build an agent that can handle greetings in multiple languages. A monolithic approach would require a very complex `instruction` prompt. Instead, we will create a system with specialized agents for each language, and a router to direct the user's request. For this lab, we will only design the router and the Spanish specialist.
 
 ---
-sidebar_position: 2
 
 ### Step 1: Define the Roles and Responsibilities
 
@@ -45,7 +49,6 @@ First, let's define what each agent in our system will do.
     ```
 
 ---
-sidebar_position: 2
 
 ### Step 2: Map the Interaction Flow
 
@@ -70,7 +73,6 @@ Now, let's trace the path of a user's request through our designed system.
 5.  **Router's Final Response:** The `router_agent` replies: `"I'm sorry, I don't have a specialist for that language yet."`
 
 ---
-sidebar_position: 2
 
 ### Step 3: Plan the File Structure
 
@@ -105,7 +107,7 @@ from google.adk.agents import LlmAgent
 
 agent = LlmAgent(
     name="spanish_greeter_agent",
-    model="gemini-1.5-flash",
+    model="gemini-2.5-flash",
     description="An expert at providing friendly greetings in Spanish.",
     instruction="You are a friendly assistant who only speaks Spanish..."
 )

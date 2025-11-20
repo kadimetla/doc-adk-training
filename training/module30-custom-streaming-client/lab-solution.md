@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 30 Solution: Interacting with a Custom Voice Client
 
 ## Goal
@@ -133,3 +138,19 @@ This file contains the complete, working code for the `index.html` custom client
 *   **Connection opens but agent doesn't respond:**
     *   **Cause:** The agent server may have encountered an error. This is often because the `.env` file is not configured for Vertex AI.
     *   **Solution:** Check the terminal window running `adk api_server` for any error messages. Ensure your `streaming_agent/.env` file is correctly configured with your Vertex AI project details.
+
+### Self-Reflection Answers
+
+1.  **This lab's client only displays the text from the agent. How would you modify the `websocket.onmessage` handler to also process and play back the `audio/mp3` data that the server sends?**
+    *   **Answer:** You would extend the `websocket.onmessage` handler to detect messages with an `audio/mp3` `mime_type`. When such a message is received, you would:
+        1.  Decode the Base64-encoded audio data (from `event.data.data`) into a binary format.
+        2.  Use the Web Audio API (`AudioContext`) to decode this binary audio data into an `AudioBuffer`.
+        3.  Create an `AudioBufferSourceNode` from the `AudioBuffer`.
+        4.  Connect this source node to the `AudioContext`'s destination (speakers).
+        5.  Start playing the audio chunk. This needs to be done continuously for each incoming audio chunk to create a seamless voice experience.
+
+2.  **What are the benefits of using WebSockets for this application compared to the Server-Sent Events (SSE) approach used in the previous UI lab?**
+    *   **Answer:** WebSockets are essential for this voice streaming application because they provide a **full-duplex (bidirectional) communication channel**. This is crucial as the client needs to continuously stream microphone audio *to* the server while simultaneously receiving the agent's audio and text responses *from* the server. SSE, on the other hand, is a **unidirectional** protocol (server-to-client only), making it unsuitable for scenarios requiring continuous client input like voice interaction.
+
+3.  **The `MediaRecorder` is configured to send audio data every 100ms. What do you think would be the impact on the user experience if you increased this value to 1000ms (1 second)?**
+    *   **Answer:** Increasing the `MediaRecorder` interval to 1000ms (1 second) would dramatically degrade the user experience and introduce significant latency. The user would have to speak for a full second before any of their audio data is sent to the ADK server for processing. This would lead to noticeable and unnatural pauses in the conversation, making the interaction feel sluggish, broken, and far from a real-time conversational experience. It would break the illusion of a continuous voice interaction.

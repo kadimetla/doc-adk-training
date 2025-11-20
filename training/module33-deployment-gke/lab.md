@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 export const GOOGLE_CLOUD_LOCATION = '${GOOGLE_CLOUD_LOCATION}';
 export const GOOGLE_CLOUD_PROJECT = '${GOOGLE_CLOUD_PROJECT}';
 

@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Solution
+---
+
 # Lab 38 Solution: Building a Production-Ready Agent
 
 ## Goal

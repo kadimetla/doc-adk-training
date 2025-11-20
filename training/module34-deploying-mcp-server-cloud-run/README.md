@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
 # Module 34: Deploying an MCP Server to Cloud Run
 
 ## Theory

@@ -1,10 +1,15 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 1 Challenge: Your First Interaction
 
-### Goal
+## Goal
 
 The goal of this first lab is to familiarize yourself with the available resources for learning and using the Google Agent Development Kit (ADK). You won't be writing any code yet; instead, you'll be exploring the official documentation and code repositories to understand where to find information and inspiration.
 
-### Step 1: Navigate the Official Documentation
+## Step 1: Navigate the Official Documentation
 
 The official ADK documentation is the most important resource you will use. It's your primary source for tutorials, guides, and API references.
 
@@ -15,7 +20,7 @@ The official ADK documentation is the most important resource you will use. It's
 
 **Key Takeaway:** The documentation is your best friend. Knowing how to navigate it will save you a lot of time in the future.
 
-### Step 2: Discover the Official Code Repositories
+## Step 2: Discover the Official Code Repositories
 
 The ADK is an open-source project with repositories on GitHub. These repositories contain the source code, issue trackers, and, most importantly, a wealth of examples.
 
@@ -29,12 +34,12 @@ Find a Simple Example: Navigate into `contributing/samples/hello_world`. This is
 
 **Key Takeaway:** The official examples are the best place to find working code that you can learn from and adapt for your own projects.
 
-### Step 3: Understand the Community and Support Channels
+## Step 3: Understand the Community and Support Channels
 
 1.  **Issues Tab:** On the GitHub repository, click on the "Issues" tab. This is where developers report bugs and request new features. Browsing through the issues can give you insight into the current state of the project and common problems users face.
 2.  **Discussions Tab:** If available, the "Discussions" tab is a place for community conversations, questions, and sharing ideas.
 
-### Lab Summary
+## Lab Summary
 
 Congratulations, you've completed your first lab! You now know:
 
@@ -44,7 +49,7 @@ Congratulations, you've completed your first lab! You now know:
 
 In the next module, you will use this knowledge to set up your own local development environment and prepare for building your first agent.
 
-### Self-Reflection Questions
+## Self-Reflection Questions
 - Why is it important to have official documentation and code examples for a framework like the ADK?
 - Based on the file names in the `examples` directory, what are some of the advanced capabilities you think the ADK might have?
 - How can community support channels like GitHub Issues and Discussions accelerate your learning process?

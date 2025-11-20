@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
 # Module 6: Running an Agent Programmatically
 
 ## Theory

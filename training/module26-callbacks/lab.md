@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Module 26: Callbacks and Guardrails - Building a Content Moderator
 
 ## Lab 26: Building a Content Moderation Assistant

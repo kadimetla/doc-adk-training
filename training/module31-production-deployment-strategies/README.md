@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
 # Module 31: Production Deployment Strategies
 
 ## Theory

@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Challenge Lab
+---
+
 # Lab 7: Building a Visual Product Catalog Analyzer Challenge
 
 ## Goal
