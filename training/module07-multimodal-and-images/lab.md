@@ -158,3 +158,14 @@ You have successfully built a multimodal agent that can see and understand image
 - What are the benefits of using a single agent for this task versus the previous two-agent approach? What are the potential downsides?
 - The `load_image_from_file` helper function reads the image as bytes. Why is it necessary to also provide a `mime_type` (like 'image/jpeg') when creating the `types.Part` object?
 - How could you extend this project to handle video input? What kind of new agent or tool would you need to build?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTA3LW11bHRpbW9kYWwtYW5kLWltYWdlcy9sYWItc29sdXRpb24=`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module07-multimodal-and-images/lab-solution">Lab Solution</a>
+</div>

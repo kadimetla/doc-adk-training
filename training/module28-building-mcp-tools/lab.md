@@ -149,3 +149,13 @@ You have successfully built and consumed your own stateful MCP tool. You have le
 - In our `cart_server.py`, we used a global dictionary `SESSION_CARTS` to store the state. Why is this approach not suitable for a production environment with multiple server instances? What would be a better solution?
 - The `call_tool` handler receives a `session_id`. Why is this ID crucial for managing state in a multi-user environment?
 - By building an MCP server, you have decoupled your tool's logic from the agent. What are the long-term benefits of this separation for maintaining and scaling your application?
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTI4LWJ1aWxkaW5nLW1jcC10b29scy9sYWItc29sdXRpb24=`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module28-building-mcp-tools/lab-solution">Lab Solution</a>
+</div>

@@ -100,3 +100,14 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTAyLWVudmlyb25tZW50LXNldHVwL2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module02-environment-setup/lab-solution">Lab Solution</a>
+</div>

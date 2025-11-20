@@ -107,3 +107,14 @@ You have learned to:
 - Why is it important to decouple the `Runner` from the `SessionService`? What advantage does this give you in a production environment?
 - The `runner.run_async` method returns a stream of events. Why is this streaming approach useful in a real-world application compared to a function that just returns the final string?
 - How would you modify this script to have a continuous conversation with the agent instead of just sending one message? (Hint: Think about loops and reusing the session object).
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTA2LXByb2dyYW1tYXRpYy1leGVjdXRpb24vbGFiLXNvbHV0aW9u`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module06-programmatic-execution/lab-solution">Lab Solution</a>
+</div>

@@ -129,3 +129,13 @@ In the next module, you will bring this design to life by implementing this Gree
 - What is the most important piece of information that allows the `router_agent` to decide which specialist to delegate to?
 - How would you extend this system to support a new language, like French? What new files or modifications would you need to make?
 - This lab uses LLM-driven delegation (agent transfer). What might be the advantages or disadvantages of this approach compared to the `router_agent` using an `AgentTool` to explicitly call the `spanish_greeter_agent`?
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTE1LWludHJvLXRvLW11bHRpLWFnZW50LXN5c3RlbXMvbGFiLXNvbHV0aW9u`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module15-intro-to-multi-agent-systems/lab-solution">Lab Solution</a>
+</div>

@@ -26,3 +26,14 @@ Your task is to build and configure a new agent that can search the web to answe
 - Why is it important to explicitly instruct the agent *when* to use the `google_search` tool? What might happen if you just gave it the tool with no instructions?
 - The `google_search` tool requires a Vertex AI configuration. Why do you think this is a requirement, as opposed to using a simple Google AI Studio API key?
 - How does giving an agent access to real-time information fundamentally change the kinds of problems it can solve compared to an agent that only relies on its internal knowledge?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTA4LWludHJvLXRvLXRvb2xzL2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module08-intro-to-tools/lab-solution">Lab Solution</a>
+</div>

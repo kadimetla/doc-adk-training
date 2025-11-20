@@ -53,3 +53,14 @@ In the next module, you will use this knowledge to set up your own local develop
 - Why is it important to have official documentation and code examples for a framework like the ADK?
 - Based on the file names in the `examples` directory, what are some of the advanced capabilities you think the ADK might have?
 - How can community support channels like GitHub Issues and Discussions accelerate your learning process?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTAxLWludHJvLXRvLWFpLWFnZW50cy9sYWItc29sdXRpb24=`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module01-intro-to-ai-agents/lab-solution">Lab Solution</a>
+</div>
