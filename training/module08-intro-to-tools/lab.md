@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Challenge Lab
+title: "Challenge Lab"
 ---
 
 # Lab 8: Creating a "Researcher" Agent with Google Search Challenge

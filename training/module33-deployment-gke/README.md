@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 33: Deployment to Google Kubernetes Engine (GKE)"
 ---
 
 # Module 33: Deployment to Google Kubernetes Engine (GKE)

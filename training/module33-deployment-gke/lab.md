@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Challenge Lab
+title: "Challenge Lab"
 ---
 
 export const GOOGLE_CLOUD_LOCATION = '${GOOGLE_CLOUD_LOCATION}';

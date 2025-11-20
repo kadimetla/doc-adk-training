@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 29: Introduction to UI Integration"
 ---
 
 # Module 29: Introduction to UI Integration

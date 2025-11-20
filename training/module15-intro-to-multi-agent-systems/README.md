@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 15: Introduction to Multi-Agent Systems"
 ---
 
 # Module 15: Introduction to Multi-Agent Systems

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 14: Integrating Third-Party Tools"
 ---
 
 # Module 14: Integrating Third-Party Tools

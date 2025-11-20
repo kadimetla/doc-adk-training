@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 3: Your First Agent: The "Echo" Agent"
 ---
 
 # Module 3: Your First Agent: The "Echo" Agent

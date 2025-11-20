@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 24: Evaluating Agent Performance"
 ---
 
 # Module 24: Evaluating Agent Performance

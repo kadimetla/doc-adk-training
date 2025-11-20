@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 28: Building a Custom MCP Tool"
 ---
 
 # Module 28: Building a Custom MCP Tool

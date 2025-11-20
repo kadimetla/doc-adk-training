@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 10: Advanced Function Tools"
 ---
 
 # Module 10: Advanced Function Tools

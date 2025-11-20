@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Challenge Lab
+title: "Challenge Lab"
 ---
 
 # Lab 13: Creating a "Memory" Agent with Tool Context Challenge

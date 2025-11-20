@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 1: Introduction to AI Agents"
 ---
 
 # Module 1: Introduction to AI Agents
