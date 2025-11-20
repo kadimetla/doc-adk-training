@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Solution
+title: "Lab Solution"
 ---
 
 # Lab 11 Solution: Building a Chuck Norris Fact Assistant

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Challenge Lab
+title: "Challenge Lab"
 ---
 
 # Lab 7: Building a Visual Product Catalog Analyzer Challenge

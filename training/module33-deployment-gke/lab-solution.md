@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Solution
+title: "Lab Solution"
 ---
 
 # Lab 33 Solution: Manually Deploying an Agent to GKE

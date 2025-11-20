@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Solution
+title: "Lab Solution"
 ---
 
 # Lab 20 Solution: Building an Essay Refinement System

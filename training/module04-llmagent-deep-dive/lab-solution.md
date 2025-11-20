@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Solution
+title: "Lab Solution"
 ---
 
 # Lab 4 Solution: Transforming an Agent by Duplication and Modification

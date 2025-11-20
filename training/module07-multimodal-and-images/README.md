@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 7: Multimodal and Image Processing"
 ---
 
 # Module 7: Multimodal and Image Processing

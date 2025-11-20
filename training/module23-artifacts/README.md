@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 23: Handling Files with Artifacts"
 ---
 
 # Module 23: Handling Files with Artifacts

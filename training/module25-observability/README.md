@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 25: Advanced Observability with Plugins"
 ---
 
 # Module 25: Advanced Observability with Plugins

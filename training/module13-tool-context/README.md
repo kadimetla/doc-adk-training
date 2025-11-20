@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 13: Advanced Tool Concepts: Tool Context"
 ---
 
 # Module 13: Advanced Tool Concepts: Tool Context

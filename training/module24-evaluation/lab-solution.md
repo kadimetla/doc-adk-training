@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Solution
+title: "Lab Solution"
 ---
 
 # Lab 24 Solution: Creating an Evaluation Case for the Calculator Agent

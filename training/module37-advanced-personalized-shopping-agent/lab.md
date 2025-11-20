@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Challenge Lab
+title: "Challenge Lab"
 ---
 
 # Lab 37: Building a Distributed Multi-Agent System Challenge

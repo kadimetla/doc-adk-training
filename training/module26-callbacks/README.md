@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 26: Callbacks and Guardrails - Agent Safety and Monitoring"
 ---
 
 # Module 26: Callbacks and Guardrails - Agent Safety and Monitoring

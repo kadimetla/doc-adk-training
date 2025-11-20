@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 11: OpenAPI Tools"
 ---
 
 # Module 11: OpenAPI Tools

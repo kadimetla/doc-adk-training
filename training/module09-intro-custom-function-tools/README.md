@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 9: Creating Custom Function Tools"
 ---
 
 # Module 9: Creating Custom Function Tools

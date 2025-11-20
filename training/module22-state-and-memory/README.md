@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: "Module 22: State and Memory - Persistent Agent Context"
 ---
 
 # Module 22: State and Memory - Persistent Agent Context
