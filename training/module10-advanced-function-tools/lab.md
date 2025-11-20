@@ -128,3 +128,14 @@ You have successfully built an advanced agent with multiple, complex function to
 - Why is it a good practice for a tool to perform its own input validation, even though the LLM is usually good at providing the correct arguments?
 - In the parallel execution test, the two tool calls are independent. Can you think of a scenario where a user's query might seem like it could be parallelized, but actually requires the tools to be run sequentially?
 - How does providing a pre-formatted, human-readable `report` in the tool's return dictionary simplify the agent's `instruction` prompt?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTEwLWFkdmFuY2VkLWZ1bmN0aW9uLXRvb2xzL2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module10-advanced-function-tools/lab-solution">Lab Solution</a>
+</div>

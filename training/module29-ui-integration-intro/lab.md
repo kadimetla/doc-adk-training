@@ -147,3 +147,13 @@ You have successfully built a full-stack agent application with a custom front-e
 - The ADK server sends events using Server-Sent Events (SSE). What are the advantages of SSE for a chat application compared to a traditional request-response model?
 - Our simple client generates a new `sessionId` every time the page loads. What problems would this cause in a real application, and how would you solve it (e.g., using cookies or `localStorage`)?
 - This lab uses the native ADK API. What are the potential benefits of using a higher-level framework like the AG-UI Protocol and CopilotKit for a more complex, production-ready application?
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTI5LXVpLWludGVncmF0aW9uLWludHJvL2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module29-ui-integration-intro/lab-solution">Lab Solution</a>
+</div>

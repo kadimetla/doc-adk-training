@@ -111,3 +111,13 @@ You have successfully built a self-correcting system using a `LoopAgent`. You ha
 - Why is the `max_iterations` parameter a crucial safety feature for a `LoopAgent`? What could go wrong without it?
 - In our "Critic -> Refiner" pattern, the `refiner` agent overwrites the `current_essay` in the state on each iteration. Why is this overwriting behavior essential for the loop to work correctly?
 - Can you think of another problem, besides writing an essay, that could be solved effectively using a `LoopAgent` with a "Critic -> Refiner" pattern?
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTIwLWxvb3AtYWdlbnRzL2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module20-loop-agents/lab-solution">Lab Solution</a>
+</div>

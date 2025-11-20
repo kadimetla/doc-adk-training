@@ -25,3 +25,14 @@ Your task is to run and interact with your "Haiku Poet" agent using the three pr
 - In what scenarios would the detailed "Trace View" in `adk web` be more useful than the simple chat interface of `adk run`?
 - The `curl` command in the `adk api_server` section is a simple example of a programmatic client. What kind of real-world applications could you build that would interact with your agent's API in this way?
 - Why is it necessary to run the `adk api_server` and the `curl` command in two separate terminal windows? What does this separation represent in a real-world application architecture?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTA1LXJ1bm5pbmctYWdlbnRzL2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module05-running-agents/lab-solution">Lab Solution</a>
+</div>

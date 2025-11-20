@@ -143,3 +143,14 @@ You have successfully built a modular observability system using the ADK's Plugi
 - What is the main advantage of using the Plugin System for observability instead of adding logging and metrics code directly inside your agent and tool functions?
 - The `on_event_callback` method is called for every single event. In a high-traffic production system, what performance considerations would you need to keep in mind for the code you write inside this method?
 - How could you extend the `MetricsCollectorPlugin` to track not just latency, but also the number of tokens used in each LLM call? (Hint: Inspect the `Event` objects for token information).
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTI1LW9ic2VydmFiaWxpdHkvbGFiLXNvbHV0aW9u`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module25-observability/lab-solution">Lab Solution</a>
+</div>

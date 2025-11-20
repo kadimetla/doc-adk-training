@@ -100,3 +100,14 @@ You have successfully integrated a tool from an external library into your ADK a
 - The `LangchainTool` wrapper works by inspecting the LangChain tool object. What attributes do you think the wrapper is looking for on the LangChain tool to automatically generate the schema for the ADK agent?
 - Besides Wikipedia, what other pre-built tools from the LangChain ecosystem can you find that would be useful to integrate into an ADK agent?
 - What are the potential downsides or risks of relying on third-party, community-maintained tools in a production application?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTE0LXRoaXJkLXBhcnR5LXRvb2xzL2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module14-third-party-tools/lab-solution">Lab Solution</a>
+</div>

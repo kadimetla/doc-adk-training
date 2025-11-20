@@ -128,3 +128,14 @@ You have successfully built a multi-step document processing agent that uses art
 - Why is the versioning feature of the Artifacts system important for audibility and debugging in a production environment?
 - All the tool functions in this lab are `async`. Why is this a requirement for functions that interact with the Artifact Service?
 - The lab uses an `InMemoryArtifactService`. What changes would you need to make to the `Runner` configuration to use the persistent `GcsArtifactService` in a production deployment?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTIzLWFydGlmYWN0cy9sYWItc29sdXRpb24=`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module23-artifacts/lab-solution">Lab Solution</a>
+</div>

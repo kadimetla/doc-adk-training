@@ -186,3 +186,14 @@ You have successfully built a custom client for a streaming ADK agent. You have 
 - This lab's client only displays the text from the agent. How would you modify the `websocket.onmessage` handler to also process and play back the `audio/mp3` data that the server sends?
 - What are the benefits of using WebSockets for this application compared to the Server-Sent Events (SSE) approach used in the previous UI lab?
 - The `MediaRecorder` is configured to send audio data every 100ms. What do you think would be the impact on the user experience if you increased this value to 1000ms (1 second)?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTMwLWN1c3RvbS1zdHJlYW1pbmctY2xpZW50L2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module30-custom-streaming-client/lab-solution">Lab Solution</a>
+</div>

@@ -118,3 +118,13 @@ You have now created a tool with "memory"! You have learned to:
 - Why is it important that the `tool_context` parameter is *not* included in the function's docstring?
 - The `recall_name` function uses `tool_context.state.get('user_name')` instead of `tool_context.state['user_name']`. What is the difference, and why is `.get()` a safer choice here?
 - How could you extend this agent to forget a user's name? What would the new tool function look like?
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTEzLXRvb2wtY29udGV4dC9sYWItc29sdXRpb24=`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module13-tool-context/lab-solution">Lab Solution</a>
+</div>
