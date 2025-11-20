@@ -22,6 +22,11 @@ const config = {
           label: 'Modules',
           position: 'left'
         },
+        {
+          href: 'https://github.com/mauripsale/doc-adk-training',
+          label: 'GitHub',
+          position: 'right',
+        },
       ],
     },
     footer: {
