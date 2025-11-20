@@ -44,6 +44,28 @@ const config = {
           path: '../training',
           routeBasePath: '/',
           include: ['**/*.md','**/*.mdx'],
+          async sidebarItemsGenerator({defaultSidebarItemsGenerator, ...args}) {
+            const sidebarItems = await defaultSidebarItemsGenerator(args);
+            
+            // Recursive function to filter out 'lab-solution' items
+            const filterSolutions = (items) => {
+              return items.filter((item) => {
+                // If it's a category, filter its children recursively
+                if (item.type === 'category') {
+                  item.items = filterSolutions(item.items);
+                  // Keep the category only if it's not empty (optional, but good for clean menus)
+                  return item.items.length > 0;
+                }
+                // If it's a doc, check if its ID is 'lab-solution'
+                if (item.type === 'doc') {
+                  return !item.id.endsWith('lab-solution');
+                }
+                return true;
+              });
+            };
+
+            return filterSolutions(sidebarItems);
+          },
         },
         blog: false,
       },
