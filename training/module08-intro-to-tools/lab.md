@@ -32,8 +32,8 @@ Your task is to build and configure a new agent that can search the web to answe
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTA4LWludHJvLXRvLXRvb2xzL2xhYi1zb2x1dGlvbg==`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMDgtaW50cm8tdG8tdG9vbHMvbGFiLXNvbHV0aW9u`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module08-intro-to-tools/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module08-intro-to-tools/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>

@@ -149,8 +149,8 @@ You have successfully built a modular observability system using the ADK's Plugi
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTI1LW9ic2VydmFiaWxpdHkvbGFiLXNvbHV0aW9u`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMjUtb2JzZXJ2YWJpbGl0eS9sYWItc29sdXRpb24=`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module25-observability/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module25-observability/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>

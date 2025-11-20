@@ -126,13 +126,14 @@ You have successfully built a distributed multi-agent system. You have learned t
 - What are the main benefits of running the `research_specialist` as a separate service instead of just including it as a local sub-agent in the orchestrator?
 - The "A2A Context Handling" instruction is critical for the remote agent to function correctly. What kind of problems could arise if you forgot to include it?
 - How does the Agent Card (`/.well-known/agent-card.json`) enable a decoupled architecture? What would you need to do if this discovery mechanism didn't exist?
+
 <hr/>
 
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTIxLWFnZW50LXRvLWFnZW50L2xhYi1zb2x1dGlvbg==`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMjEtYWdlbnQtdG8tYWdlbnQvbGFiLXNvbHV0aW9u`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module21-agent-to-agent/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module21-agent-to-agent/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>

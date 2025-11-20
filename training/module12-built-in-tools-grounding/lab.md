@@ -128,8 +128,8 @@ You have successfully built an agent that can access real-world, current informa
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTEyLWJ1aWx0LWluLXRvb2xzLWdyb3VuZGluZy9sYWItc29sdXRpb24=`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMTItYnVpbHQtaW4tdG9vbHMtZ3JvdW5kaW5nL2xhYi1zb2x1dGlvbg==`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module12-built-in-tools-grounding/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module12-built-in-tools-grounding/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>

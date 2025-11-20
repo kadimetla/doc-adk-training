@@ -80,13 +80,14 @@ Check the `lab-solution.md` to see example answers for this exercise.
 - Why is a centralized "Agent Gallery" a valuable feature for a large enterprise? What problems does it solve?
 - The "Agent Designer" is a no-code tool. What are the benefits of empowering non-developers to build their own simple agents, and what are the potential risks you would need to manage?
 - How does grounding an agent in a private, enterprise data source (like SharePoint) using a secure data connector mitigate the risk of the agent hallucinating or providing incorrect information?
+
 <hr/>
 
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTM2LWdlbWluaS1lbnRlcnByaXNlL2xhYi1zb2x1dGlvbg==`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMzYtZ2VtaW5pLWVudGVycHJpc2UvbGFiLXNvbHV0aW9u`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module36-gemini-enterprise/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module36-gemini-enterprise/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>

@@ -165,13 +165,14 @@ You have successfully built and orchestrated a complex, production-quality multi
 - In this architecture, a single `GoogleSearchAgentTool` instance is shared across multiple agents. What are the benefits of this approach compared to each agent creating its own instance?
 - The final output of this system is a fully formatted article. How could you modify the system to produce a different type of output, such as a slide presentation or a podcast script, while reusing the parallel research phase?
 - This system is fully automated. Where would be the most logical place to insert a human-in-the-loop step if you wanted a person to approve the research before the `article_writer` begins its work?
+
 <hr/>
 
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTE5LWFkdmFuY2VkLW11bHRpLWFnZW50LWFyY2hpdGVjdHVyZXMvbGFiLXNvbHV0aW9u`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMTktYWR2YW5jZWQtbXVsdGktYWdlbnQtYXJjaGl0ZWN0dXJlcy9sYWItc29sdXRpb24=`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module19-advanced-multi-agent-architectures/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module19-advanced-multi-agent-architectures/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>

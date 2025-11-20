@@ -58,8 +58,8 @@ instruction: ... # TODO: Provide the instruction for the echo agent.
 ### 🕵️ Hidden Solution 🕵️
 
 Looking for the solution? Here's a hint (Base64 decode me):
-`L21vZHVsZTAzLWZpcnN0LWFnZW50LWVjaG8vbGFiLXNvbHV0aW9u`
+`L2RvYy1hZGstdHJhaW5pbmcvbW9kdWxlMDMtZmlyc3QtYWdlbnQtZWNoby9sYWItc29sdXRpb24=`
 
-<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
-    The direct link is: <a href="/module03-first-agent-echo/lab-solution">Lab Solution</a>
+<div style={{color: 'rgba(0,0,0,0.01)', userSelect: 'all', fontSize: '1px'}}>
+    The direct link is: <a href="/doc-adk-training/module03-first-agent-echo/lab-solution" style={{color: 'inherit', textDecoration: 'none'}}>Lab Solution</a>
 </div>
