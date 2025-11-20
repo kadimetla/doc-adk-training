@@ -6,21 +6,50 @@ Thank you for your interest in contributing to the ADK Developer Training Course
 
 Before you contribute, please take a moment to review our [Code of Conduct](#code-of-conduct). We expect all contributors to adhere to it to ensure a positive and collaborative environment.
 
-## Contribution Workflow
+## Branching Strategy & Workflow
 
-We use GitHub for all contributions. The general workflow is:
+This repository uses a specific two-branch system to ensure a spoil-free experience for students while maintaining a complete reference for instructors and contributors.
 
-1.  **Find Something to Work On:** Check the [GitHub Issues](https://github.com/mauripsale/doc-adk-training/issues) for bug reports, content errors, or feature requests. Feel free to open a new issue if you find a problem or have an idea.
+### The Branches
 
-2.  **Fork the Repository:** Create your own copy of the repository to work on.
+*   **`solution` (The "Source of Truth"):** 🌟 **ALWAYS WORK HERE.**
+    *   This is the primary branch where all development happens.
+    *   It contains the full course material, including labs, **solutions** (`lab-solution.md`), and instructor guides.
+    *   The documentation website is built from this branch.
+    *   **Contributors:** Always target your Pull Requests to the `solution` branch.
 
-3.  **Make Your Changes:**
-    *   Create a new branch for your changes.
-    *   Edit the Markdown files or code examples. Please try to follow the existing style and structure.
+*   **`main` (Student Branch):**
+    *   This is a sanitized version of the `solution` branch intended for students to clone.
+    *   It does **NOT** contain solution files (`lab-solution.md`).
+    *   **Do not commit directly to `main`.** It is automatically synchronized from `solution`.
 
-4.  **Submit a Pull Request:**
-    *   Once you are happy with your changes, submit a Pull Request (PR) from your fork to the main repository.
-    *   In the PR description, please explain the changes you made and why. If it's related to an existing issue, please link to it.
+### How to Contribute
+
+1.  **Find an Issue:** Check the [GitHub Issues](https://github.com/mauripsale/doc-adk-training/issues).
+2.  **Fork the Repository:** Fork the repo to your account.
+3.  **Create a Feature Branch:** Create a new branch starting from `solution`:
+    ```bash
+    git checkout -b my-feature-branch origin/solution
+    ```
+4.  **Make Changes:** Edit files as needed. If you are adding a new lab, remember to include the solution file (`lab-solution.md`) if applicable.
+5.  **Submit a Pull Request:** Open a PR targeting the **`solution`** branch.
+
+## For Maintainers: Publishing to Students
+
+To update the `main` (student) branch with the latest changes from `solution`, do not merge manually. Instead, use the provided automation script.
+
+1.  Ensure you are on the `solution` branch and your local state is up to date.
+2.  Run the publishing script from the root of the repository:
+    ```bash
+    ./scripts/publish_to_students.sh
+    ```
+    
+**What the script does:**
+*   Switches to `main` and pulls the latest changes.
+*   Merges `solution` into `main`.
+*   **Forcefully removes** all `lab-solution.md` files to prevent leakage.
+*   Pushes the updated `main` branch to GitHub.
+*   Returns you to the `solution` branch.
 
 ## Code of Conduct
 
