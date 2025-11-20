@@ -1,3 +1,6 @@
+export const GOOGLE_CLOUD_LOCATION = '${GOOGLE_CLOUD_LOCATION}';
+export const GOOGLE_CLOUD_PROJECT = '${GOOGLE_CLOUD_PROJECT}';
+
 # Lab 33: Manually Deploying an Agent to GKE Challenge
 
 ## Goal
@@ -76,7 +79,7 @@ In this lab, you will learn the fundamental process of deploying an ADK agent to
 2.  **Build and Push with Cloud Build:**
     ```shell
     gcloud builds submit \
-        --tag &#36;{GOOGLE_CLOUD_LOCATION}-docker.pkg.dev/&#36;{GOOGLE_CLOUD_PROJECT}/adk-images/echo-agent:v1
+        --tag ${GOOGLE_CLOUD_LOCATION}-docker.pkg.dev/${GOOGLE_CLOUD_PROJECT}/adk-images/echo-agent:v1
     ```
 
 ### Step 4: Create and Deploy to a GKE Cluster
@@ -112,16 +115,16 @@ spec:
 spec:
   containers:
   - name: echo-agent
-    image: &#36;{GOOGLE_CLOUD_LOCATION}-docker.pkg.dev/&#36;{GOOGLE_CLOUD_PROJECT}/adk-images/echo-agent:v1
+    image: ${GOOGLE_CLOUD_LOCATION}-docker.pkg.dev/${GOOGLE_CLOUD_PROJECT}/adk-images/echo-agent:v1
     ports:
     - containerPort: 8080
     env:
       - name: GOOGLE_GENAI_USE_VERTEXAI
         value: "1"
       - name: GOOGLE_CLOUD_PROJECT
-        value: "&#36;{GOOGLE_CLOUD_PROJECT}"
+        value: "${GOOGLE_CLOUD_PROJECT}"
       - name: GOOGLE_CLOUD_LOCATION
-        value: "&#36;{GOOGLE_CLOUD_LOCATION}"
+        value: "${GOOGLE_CLOUD_LOCATION}"
 ---
 apiVersion: v1
 kind: Service
