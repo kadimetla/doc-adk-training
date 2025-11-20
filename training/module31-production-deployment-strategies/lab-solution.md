@@ -5,6 +5,7 @@
 This file contains the recommended solutions and reasoning for the scenario-based exercise in the lab.
 
 ---
+sidebar_position: 3
 
 #### **Scenario 1: The Startup MVP**
 
@@ -12,6 +13,7 @@ This file contains the recommended solutions and reasoning for the scenario-base
 *   **Justification:** This scenario is the primary use case for Cloud Run. The key drivers are **speed** and **low cost**. The `adk deploy cloud_run` command allows the team to deploy in minutes without any DevOps expertise. The serverless, pay-per-use model is perfect for a startup managing its burn rate, and the platform's automatic security (HTTPS, DDoS, IAM) is more than sufficient for an MVP.
 
 ---
+sidebar_position: 3
 
 #### **Scenario 2: The Government Contractor**
 
@@ -19,6 +21,7 @@ This file contains the recommended solutions and reasoning for the scenario-base
 *   **Justification:** The non-negotiable requirement is **FedRAMP compliance**. Agent Engine is the only platform listed that provides this out of the box as a managed service. This eliminates a massive amount of complex and expensive compliance work the contractor would otherwise have to do themselves. The automatic audit logging and sandboxed execution are also critical features for this use case.
 
 ---
+sidebar_position: 3
 
 #### **Scenario 3: The FinTech Enterprise**
 
@@ -26,6 +29,7 @@ This file contains the recommended solutions and reasoning for the scenario-base
 *   **Justification:** The company already has a significant investment in Kubernetes. The requirements for **full control over the network** (via NetworkPolicies) and **custom hardware** (GPUs) are classic drivers for choosing Kubernetes over a more abstracted serverless platform. While GKE has a higher operational cost and complexity, it provides the flexibility and control this enterprise requires for its complex, high-performance computing environment.
 
 ---
+sidebar_position: 3
 
 #### **Scenario 4: The University Integration**
 

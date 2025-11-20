@@ -88,6 +88,7 @@ class ProductCatalogAnalyzer:
         """Analyze a product image and create a catalog entry."""
         print(f"\n--- Analyzing Product: {product_id} ---")
 
+
         # TODO: 1. Create a new session for this analysis.
         # Use `self.session_service.create_session`, providing an `app_name`
         # (e.g., "visual-catalog") and a `user_id`.

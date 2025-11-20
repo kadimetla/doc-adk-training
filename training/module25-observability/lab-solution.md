@@ -19,6 +19,7 @@ from google.adk.events import Event
 from google.genai import types
 
 # --- Data Classes for Metrics ---
+sidebar_position: 3
 
 @dataclass
 class RequestMetrics:
@@ -50,6 +51,7 @@ class AggregateMetrics:
         return self.total_latency / self.total_requests
 
 # --- Custom Observability Plugins ---
+sidebar_position: 3
 
 class MetricsCollectorPlugin(BasePlugin):
     """A plugin to collect request/response metrics."""
@@ -118,6 +120,7 @@ class PerformanceProfilerPlugin(BasePlugin):
                     self.current_profile = None
 
 # --- Agent Definition ---
+sidebar_position: 3
 
 root_agent = Agent(
     model='gemini-2.5-flash',
@@ -126,6 +129,7 @@ root_agent = Agent(
 )
 
 # --- Main Execution Block (for `adk web`) ---
+sidebar_position: 3
 
 # In a real application, you would likely run this in a separate script.
 # For this lab, we include it to show how plugins are registered.

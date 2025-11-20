@@ -58,6 +58,7 @@ PII_PATTERNS = {
 }
 
 # --- Data Classes for Metrics (for logging purposes) ---
+sidebar_position: 2
 @dataclass
 class RequestMetrics:
     """Metrics for a single agent request."""
@@ -300,6 +301,7 @@ root_agent = Agent(
 )
 
 # --- Main Execution Block (for `adk web`) ---
+sidebar_position: 2
 def main():
     """Demonstrates how to register plugins with the runner."""
     # In this lab, callbacks are registered directly with the agent, not as plugins.

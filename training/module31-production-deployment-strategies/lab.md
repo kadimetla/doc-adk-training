@@ -63,6 +63,7 @@ Be prepared to justify your choice based on the key requirements of each scenari
 **Your Task:** Which hybrid approach is necessary here, and why?
 
 ---
+sidebar_position: 2
 
 ### Lab Summary
 

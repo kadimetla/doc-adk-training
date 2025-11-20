@@ -16,11 +16,13 @@ from mcp.server.models import InitializationOptions
 import mcp.server.stdio
 
 # --- Server State ---
+sidebar_position: 3
 # In a real application, this would be a database. For this lab, a simple
 # in-memory dictionary is enough to demonstrate statefulness.
 SESSION_CARTS = {}
 
 # --- MCP Server Setup ---
+sidebar_position: 3
 app = Server("shopping_cart_mcp_server")
 
 @app.list_tools()
@@ -58,6 +60,7 @@ async def call_mcp_tool(name: str, arguments: dict, session_id: str) -> list[mcp
         SESSION_CARTS[session_id] = []
 
     # --- Tool Logic ---
+sidebar_position: 3
     if name == "add_item_to_cart":
         item = arguments.get("item")
         if item:
@@ -78,6 +81,7 @@ async def call_mcp_tool(name: str, arguments: dict, session_id: str) -> list[mcp
         return [mcp_types.TextContent(type="text", text=response_text)]
 
 # --- MCP Server Runner ---
+sidebar_position: 3
 async def run_mcp_stdio_server():
     """Runs the server, listening for connections over standard input/output."""
     async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):

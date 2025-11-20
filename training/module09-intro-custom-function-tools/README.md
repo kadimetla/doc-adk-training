@@ -113,3 +113,36 @@ In the lab for this module, you will put all these principles into practice by b
 - A well-defined tool function must have a descriptive name, clear type hints for all parameters, and a detailed docstring explaining its purpose and usage.
 - All custom tool functions must return a dictionary.
 - Tools are registered in your agent's definition, with the Python-based approach being the primary method.
+
+## Limitations: Mixing Tool Types
+
+As you start building more complex agents, it's important to be aware of a current limitation in the ADK regarding tool usage.
+
+### One Built-in Tool Per Agent
+
+Currently, a single agent generally supports using **only one type of tool at a time**.
+
+Specifically, you cannot easily mix a **Built-in Tool** (like `google_search`) with **Custom Function Tools** or other capabilities (like a code executor) within the same agent definition.
+
+**Unsupported Example:**
+You cannot simply list both `google_search` and your own `custom_function` in the same `tools` list for a single agent.
+
+```python
+# This approach is NOT currently supported
+root_agent = Agent(
+    name="MixedToolAgent",
+    model="gemini-2.5-flash",
+    tools=[google_search, custom_function], # Mixing types may cause issues
+)
+```
+
+### The Workaround: Multi-Agent Systems
+
+So, how do you build an agent that can search the web *and* use your custom calculator?
+
+The solution is to use a **Multi-Agent System**. Instead of one agent doing everything, you create two specialized agents:
+1.  A "Search Specialist" agent with the `google_search` tool.
+2.  A "Calculator Specialist" agent with your custom function tools.
+3.  A "Coordinator" agent that delegates tasks to the specialists.
+
+You will learn exactly how to build these powerful multi-agent architectures in **Module 15**. For now, focus on mastering custom tools within a single agent.
