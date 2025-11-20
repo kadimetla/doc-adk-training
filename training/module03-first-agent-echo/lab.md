@@ -52,3 +52,14 @@ instruction: ... # TODO: Provide the instruction for the echo agent.
 - What are the advantages of defining an agent in a Python script versus a YAML file?
 - Why is it important to keep API keys and other secrets in a `.env` file instead of directly in your agent's code?
 - Explore the "Events" tab in the Dev UI after running your agent. What information does it provide, and how could this be useful for debugging a more complex agent?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTAzLWZpcnN0LWFnZW50LWVjaG8vbGFiLXNvbHV0aW9u`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module03-first-agent-echo/lab-solution">Lab Solution</a>
+</div>

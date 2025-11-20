@@ -93,3 +93,13 @@ You have successfully built your first multi-agent system! You have learned to:
 - What do you think would happen if you forgot to add the `description` to the `spanish_greeter_agent`? How would the `router_agent` behave?
 - In the `router_agent`'s instruction, why is it important to explicitly tell it *not* to greet the user itself?
 - How does breaking the logic into a router and a specialist make the system easier to extend in the future (e.g., to add a `french_greeter_agent`)?
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTE2LWNvb3JkaW5hdG9yLWFnZW50L2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module16-coordinator-agent/lab-solution">Lab Solution</a>
+</div>

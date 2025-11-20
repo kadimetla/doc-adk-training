@@ -122,3 +122,14 @@ You have successfully built an agent that can access real-world, current informa
 - The `GoogleSearchAgentTool` is a workaround for a current limitation. Why is it architecturally cleaner to have a wrapper like this instead of building the search logic directly into your own custom tool?
 - Our `extract_key_facts` tool is very simple. How could you make it more robust? (Hint: Could another LLM be used for this task?)
 - The agent's instruction defines a specific, sequential workflow. What might happen if you didn't specify the order of the tool calls in the instruction?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTEyLWJ1aWx0LWluLXRvb2xzLWdyb3VuZGluZy9sYWItc29sdXRpb24=`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module12-built-in-tools-grounding/lab-solution">Lab Solution</a>
+</div>

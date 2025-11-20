@@ -32,3 +32,14 @@ If you are using a `root_agent.yaml` file:
 - How does providing examples (few-shot prompting) in the instruction help the LLM understand the task better than just describing it?
 - What would happen if you removed the constraint "Do not answer questions or have a conversation"? How would the agent's behavior change?
 - Experiment with creating a new persona for the agent (e.g., a Shakespearean poet, a futuristic robot). What are the key elements you need to include in the instruction to make the new persona convincing?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTA0LWxsbWFnZW50LWRlZXAtZGl2ZS9sYWItc29sdXRpb24=`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module04-llmagent-deep-dive/lab-solution">Lab Solution</a>
+</div>

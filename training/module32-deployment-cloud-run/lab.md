@@ -154,3 +154,13 @@ In the next module, you will learn about an alternative deployment target, Googl
 - The `adk deploy cloud_run` command automates many steps. What are these steps, and what would you have to do manually if this command didn't exist?
 - We deployed with the `--with_ui` flag. In a real production scenario where your agent is being called by another application (not a human in a browser), why would you omit this flag?
 - Cloud Run can scale down to zero instances. What are the cost and performance implications of this feature for an agent that receives infrequent traffic?
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTMyLWRlcGxveW1lbnQtY2xvdWQtcnVuL2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module32-deployment-cloud-run/lab-solution">Lab Solution</a>
+</div>

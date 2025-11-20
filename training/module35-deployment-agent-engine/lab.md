@@ -140,3 +140,14 @@ python deploy.py
 
 ### Cleanup (Important!)
 Follow the cleanup instructions in `lab-solution.md` to delete the Agent Engine instances and GCS buckets to avoid incurring costs.
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTM1LWRlcGxveW1lbnQtYWdlbnQtZW5naW5lL2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module35-deployment-agent-engine/lab-solution">Lab Solution</a>
+</div>

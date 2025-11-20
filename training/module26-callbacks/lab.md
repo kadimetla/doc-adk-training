@@ -322,3 +322,14 @@ if __name__ == "__main__":
 - What is the key difference between a callback and a plugin in the ADK? When would you choose one over the other?
 - The `before_model_callback` returns a `GenerateContentResponse` to block an inappropriate prompt. Why is it important to return a specific object type here instead of just a string or a dictionary?
 - How does using callbacks for guardrails and validation make an agent more reliable and safer to deploy in a production environment?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTI2LWNhbGxiYWNrcy9sYWItc29sdXRpb24=`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module26-callbacks/lab-solution">Lab Solution</a>
+</div>

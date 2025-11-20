@@ -104,3 +104,13 @@ You have successfully built a deterministic, multi-agent pipeline. You have lear
 - The `SequentialAgent` is deterministic. What does this mean, and why is it a desirable property for a workflow like content creation?
 - What do you think would happen if you forgot to add the `output_key` to the `research_agent`? How would the `writer_agent` behave?
 - How could you modify this pipeline to include a human-in-the-loop? For example, what if you wanted a human to approve the `draft_post` before the `editor_agent` runs?
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTE3LXNlcXVlbnRpYWwtd29ya2Zsb3ctYWdlbnRzL2xhYi1zb2x1dGlvbg==`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module17-sequential-workflow-agents/lab-solution">Lab Solution</a>
+</div>

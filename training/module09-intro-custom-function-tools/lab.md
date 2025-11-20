@@ -136,3 +136,14 @@ You have successfully built an agent with custom capabilities! You have learned 
 - The docstring for each function is critical. What do you think would happen if you removed the docstrings from your calculator functions? Would the agent still be able to use them?
 - Why is it a good practice to return a dictionary with a `status` key from a tool function, especially for operations that can fail (like division)?
 - How would you add a new tool to this agent, for example, a function to calculate the square root of a number? What steps would you need to take?
+
+<hr/>
+
+### 🕵️ Hidden Solution 🕵️
+
+Looking for the solution? Here's a hint (Base64 decode me):
+`L21vZHVsZTA5LWludHJvLWN1c3RvbS1mdW5jdGlvbi10b29scy9sYWItc29sdXRpb24=`
+
+<div style={{color: 'transparent', userSelect: 'all', fontSize: '0.1em'}}>
+    The direct link is: <a href="/module09-intro-custom-function-tools/lab-solution">Lab Solution</a>
+</div>
