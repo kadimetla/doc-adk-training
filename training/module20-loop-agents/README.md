@@ -51,8 +51,8 @@ An infinite loop is a bug. Every `LoopAgent` MUST have a way to stop.
     For intelligent control, you can create a tool that signals the loop to stop.
     *   The **Critic** agent can be instructed to output a specific phrase (e.g., "APPROVED") when the work is complete.
     *   The **Refiner** agent can be instructed to call an `exit_loop` tool when it sees this approval phrase.
-    *   The `exit_loop` tool uses `tool_context.actions.end_of_agent = True` to tell the `LoopAgent` to terminate immediately.
-    > **Note on Tool Output:** Even when a tool signals the end of an agent's execution (e.g., via `tool_context.actions.end_of_agent = True`), it must still return a valid, albeit minimal, dictionary output (e.g., `{"text": "Loop exited successfully."}`). This ensures the backend always produces a valid `LlmResponse` and completes the request's lifecycle gracefully.
+    *   The `exit_loop` tool uses `tool_context.actions.escalate = True` to tell the `LoopAgent` to terminate immediately.
+    > **Note on Tool Output:** Even when a tool signals the end of an agent's execution (e.g., via `tool_context.actions.escalate = True`), it must still return a valid, albeit minimal, dictionary output (e.g., `{"text": "Loop exited successfully."}`). This ensures the backend always produces a valid `LlmResponse` and completes the request's lifecycle gracefully.
 
 Using both `max_iterations` and an exit tool is the best practice for creating robust and efficient loops.
 

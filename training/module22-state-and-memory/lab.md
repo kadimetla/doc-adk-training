@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 title: "Challenge Lab"
 ---
 
@@ -8,6 +7,8 @@ title: "Challenge Lab"
 ## Lab 22: Building a Personal Learning Tutor
 
 ### Goal
+
+Understanding how to manage an agent's state and memory is crucial for developing intelligent, personalized, and robust AI assistants. In this lab, you'll put theory into practice by building a personal tutor that remembers user preferences, tracks progress, and simulates long-term knowledge retrieval.
 
 In this lab, you will build a **Personal Learning Tutor** that uses all four state scopes (`user:`, `app:`, session, and `temp:`) and simulates interacting with a long-term memory service. This will teach you how to create a truly stateful and personalized agent.
 
@@ -62,8 +63,7 @@ def set_user_preferences(
     """
     # TODO: Store the language and difficulty_level in the tool_context.state.
     # Use the correct prefix for data that should persist for the user.
-    tool_context.state['user:language'] = language
-    tool_context.state['user:difficulty_level'] = difficulty_level
+    pass # Implement here
 
     return {
         'status': 'success',
@@ -85,19 +85,11 @@ def record_topic_completion(
     """
     # TODO: Get existing lists or create new ones for topics and scores.
     # TODO: Update persistent user state with the new topic and score.
-    topics = tool_context.state.get('user:topics_covered', [])
-    scores = tool_context.state.get('user:quiz_scores', {})
-
-    if topic not in topics:
-        topics.append(topic)
-    scores[topic] = quiz_score
-
-    tool_context.state['user:topics_covered'] = topics
-    tool_context.state['user:quiz_scores'] = scores
+    pass # Implement here
 
     return {
         'status': 'success',
-        'topics_count': len(topics),
+        'topics_count': 0, # Placeholder
         'message': f'Recorded: {topic} with score {quiz_score}/100'
     }
 
@@ -110,12 +102,11 @@ def get_user_progress(tool_context: ToolContext) -> Dict[str, Any]:
     """
     # TODO: Read persistent user state for language, difficulty, topics, and scores.
     # TODO: Calculate average score.
-    language = tool_context.state.get('user:language', 'en')
-    difficulty = tool_context.state.get('user:difficulty_level', 'beginner')
-    topics = tool_context.state.get('user:topics_covered', [])
-    scores = tool_context.state.get('user:quiz_scores', {})
-
-    avg_score = sum(scores.values()) / len(scores) if scores else 0
+    language = "en" # Placeholder
+    difficulty = "beginner" # Placeholder
+    topics = [] # Placeholder
+    scores = {} # Placeholder
+    avg_score = 0 # Placeholder
 
     return {
         'status': 'success',
@@ -139,10 +130,7 @@ def start_learning_session(
     """
     # TODO: Store the topic and a simplified start time in session-level state.
     # TODO: Get user's difficulty level for personalization.
-    tool_context.state['current_topic'] = topic
-    tool_context.state['session_start_time'] = 'now'
-
-    difficulty = tool_context.state.get('user:difficulty_level', 'beginner')
+    difficulty = "beginner" # Placeholder
 
     return {
         'status': 'success',
@@ -162,29 +150,16 @@ def calculate_quiz_grade(
 
     Demonstrates temp: prefix for invocation-scoped data.
     """
-    percentage = (correct_answers / total_questions) * 100
     # TODO: Store the 'percentage' and 'raw_score' in temp state.
-    tool_context.state['temp:raw_score'] = correct_answers
-    tool_context.state['temp:quiz_percentage'] = percentage
-
     # TODO: Determine grade letter based on percentage.
-    if percentage >= 90:
-        grade = 'A'
-    elif percentage >= 80:
-        grade = 'B'
-    elif percentage >= 70:
-        grade = 'C'
-    elif percentage >= 60:
-        grade = 'D'
-    else:
-        grade = 'F'
+    grade = "F" # Placeholder
 
     return {
         'status': 'success',
         'score': f'{correct_answers}/{total_questions}',
-        'percentage': round(percentage, 1),
+        'percentage': 0.0, # Placeholder
         'grade': grade,
-        'message': f'Quiz grade: {grade} ({percentage:.1f}%)'
+        'message': f'Quiz grade: {grade} ({0.0:.1f}%)' # Placeholder
     }
 
 
@@ -199,22 +174,13 @@ def search_past_lessons(
     In production, this would use MemoryService.search_memory().
     """
     # TODO: Simulate searching past lessons based on topics covered in user state.
-    topics = tool_context.state.get('user:topics_covered', [])
-    relevant = [t for t in topics if query.lower() in t.lower()]
-
-    if relevant:
-        return {
-            'status': 'success',
-            'found': True,
-            'relevant_topics': relevant,
-            'message': f'Found {len(relevant)} past sessions related to "{query}"'
-        }
-    else:
-        return {
-            'status': 'success',
-            'found': False,
-            'message': f'No past sessions found for "{query}"'
-        }
+    # NOTE: This is a simplified simulation for demonstration purposes. In a real application,
+    # this would integrate with a persistent MemoryService like VertexAiMemoryBankService.
+    return {
+        'status': 'success',
+        'found': False,
+        'message': f'No past sessions found for "{query}"' # Placeholder
+    }
 
 
 # ============================================================================
@@ -223,39 +189,7 @@ def search_past_lessons(
 
 # TODO: Define the root_agent. Give it an appropriate instruction and
 # register all six tool functions you just implemented.
-root_agent = Agent(
-    name="personal_tutor",
-    model="gemini-2.5-flash",
-    description="Personal learning tutor that tracks your progress, preferences, and learning history.",
-    instruction="""
-    You are a personalized learning tutor (Course Version {app:course_version?}) with memory of the user's progress.
-
-    CAPABILITIES:
-    - Set and remember user preferences (language, difficulty level)
-    - Track completed topics and quiz scores across sessions
-    - Start new learning sessions on specific topics
-    - Calculate quiz grades and store results
-    - Search past learning sessions for context
-    - Adapt teaching based on user's level and history
-
-    WORKFLOW:
-    1. If new user, ask about preferences (language, difficulty).
-    2. For learning requests, start a session with start_learning_session and teach the topic.
-    3. After teaching, record completion with the user's quiz score.
-    4. When asked, search past lessons to provide context.
-
-    Always be encouraging and adapt to the user's learning pace!
-    """,
-    tools=[
-        set_user_preferences,
-        record_topic_completion,
-        get_user_progress,
-        start_learning_session,
-        calculate_quiz_grade,
-        search_past_lessons
-    ],
-    output_key="last_tutor_response"
-)
+root_agent = None
 ```
 
 ### Step 3: Run and Test the State Scopes

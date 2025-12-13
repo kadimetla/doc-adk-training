@@ -12,126 +12,145 @@ This file contains the complete code for the `agent.py` script in the Essay Refi
 ### `essay-refiner/agent.py`
 
 ```python
-from __future__ import annotations
-
-from google.adk.agents import Agent, LoopAgent, SequentialAgent
+# Part of agent.py --> Follow https://google.github.io/adk-docs/get-started/quickstart/ to learn the setup
+import asyncio
+import os
+from google.adk.agents import LoopAgent, LlmAgent, BaseAgent, SequentialAgent
+from google.genai import types
+from google.adk.runners import InMemoryRunner
+from google.adk.agents.invocation_context import InvocationContext
 from google.adk.tools.tool_context import ToolContext
-from google.adk.tools import FunctionTool
+from typing import AsyncGenerator, Optional
+from google.adk.events import Event, EventActions
 
-# ===== Exit Tool for Loop Termination =====
+# --- Constants ---
+APP_NAME = "doc_writing_app_v3"
+USER_ID = "dev_user_01"
+SESSION_ID_BASE = "loop_exit_tool_session"
+GEMINI_MODEL = "gemini-2.5-flash"
+STATE_INITIAL_TOPIC = "initial_topic"
+
+# --- State Keys ---
+STATE_CURRENT_DOC = "current_document"
+STATE_CRITICISM = "criticism"
+
+# Define the exact phrase the Critic should use to signal completion
+COMPLETION_PHRASE = "No major issues found."
+
+# --- Tool Definition ---
 def exit_loop(tool_context: ToolContext):
-    """
-    Signal that the essay refinement is complete.
-    Called by the refiner when critic approves the essay.
-    """
-    print(f"  [Exit Loop] Called by {tool_context.agent_name} - Essay approved!")
-    tool_context.actions.end_of_agent = True  # Signal to stop looping
-    # Return a minimal valid content part so the backend always produces a valid LlmResponse
-    return {"text": "Loop exited successfully. The agent has determined the task is complete."}
+    """Call this function ONLY when the critique indicates no further changes are needed, signaling the iterative process should end."""
+    print(f" [Tool Call] exit_loop triggered by {tool_context.agent_name}")
+    tool_context.actions.escalate = True
+    # Return empty dict as tools should typically return JSON-serializable output
+    return {}
 
-# =====================================================
-# PHASE 1: Initial Writer (Runs ONCE before loop)
-# =====================================================
-initial_writer = Agent(
-    name="InitialWriter",
-    model="gemini-2.5-flash",
-    description="Writes the first draft of an essay",
-    instruction=(
-        "You are a creative writer. Write a first draft essay on the topic "
-        "requested by the user.\n"
-        "\n"
-        "Write 3-4 paragraphs:\n"
-        "- Opening paragraph with thesis\n"
-        "- 1-2 body paragraphs with supporting points\n"
-        "- Concluding paragraph\n"
-        "\n"
-        "Don't worry about perfection - this is just the first draft.\n"
-        "\n"
-        "Output ONLY the essay text, no meta-commentary."
-    ),
-    output_key="current_essay"  # Saves to state
+# --- Agent Definitions ---
+
+# STEP 1: Initial Writer Agent (Runs ONCE at the beginning)
+initial_writer_agent = LlmAgent(
+    name="InitialWriterAgent",
+    model=GEMINI_MODEL,
+    include_contents='none',
+    # MODIFIED Instruction: Ask for a slightly more developed start
+    instruction=f"""You are a Creative Writing Assistant tasked with starting a story.
+Write the *first draft* of a short story (aim for 2-4 sentences).
+Base the content *only* on the topic provided below.
+Try to introduce a specific element (like a character, a setting detail, or a starting action) to make it engaging.
+
+Topic: {{initial_topic}}
+
+Output *only* the story/document text. Do not add introductions or explanations.
+""",
+    description="Writes the initial document draft based on the topic, aiming for some initial substance.",
+    output_key=STATE_CURRENT_DOC
 )
 
-# =====================================================
-# PHASE 2: Refinement Loop (Runs REPEATEDLY)
-# =====================================================
+# STEP 2a: Critic Agent (Inside the Refinement Loop)
+critic_agent_in_loop = LlmAgent(
+    name="CriticAgent",
+    model=GEMINI_MODEL,
+    include_contents='none',
+    # MODIFIED Instruction: More nuanced completion criteria, look for clear improvement paths.
+    instruction=f"""You are a Constructive Critic AI reviewing a short document draft (typically 2-6 sentences).
+Your goal is balanced feedback.
 
-# ===== Loop Agent 1: Critic =====
-critic = Agent(
-    name="Critic",
-    model="gemini-2.5-flash",
-    description="Evaluates essay quality and provides feedback",
-    instruction=(
-        "You are an experienced essay critic and teacher. Review the essay below "
-        "and evaluate its quality.\n"
-        "\n"
-        "**Essay to Review:**\n"
-        "{current_essay}\n"
-        "\n"
-        "**Evaluation Criteria:**\n"
-        "- Clear thesis and organization\n"
-        "- Strong supporting arguments\n"
-        "- Good grammar and style\n"
-        "\n"
-        "If the essay is excellent and meets all criteria, simply output: 'APPROVED'\n"
-        "\n"
-        "If improvements are needed, provide a short list of specific critiques "
-        "that the writer should address in the next revision.\n"
-        "\n"
-        "Output ONLY your critique or 'APPROVED'."
-    ),
-    output_key="critique"  # Saves critique to state
+**Document to Review:**
+```
+{{current_document}}
+```
+
+**Task:**
+Review the document for clarity, engagement, and basic coherence according to the initial topic (if known).
+
+IF you identify 1-2 *clear and actionable* ways the document could be improved to better capture the topic or enhance reader engagement (e.g., "Needs a stronger opening sentence", "Clarify the character's goal"):
+    Provide these specific suggestions concisely. Output *only* the critique text.
+
+ELSE IF the document is coherent, addresses the topic adequately for its length, and has no glaring errors or obvious omissions:
+    Respond *exactly* with the phrase "{COMPLETION_PHRASE}" and nothing else.
+    It doesn't need to be perfect, just functionally complete for this stage.
+    Avoid suggesting purely subjective stylistic preferences if the core is sound.
+
+Do not add explanations. Output only the critique OR the exact completion phrase.
+""",
+    description="Reviews the current draft, providing critique if clear improvements are needed, otherwise signals completion.",
+    output_key=STATE_CRITICISM
 )
 
-# ===== Loop Agent 2: Refiner =====
-refiner = Agent(
-    name="Refiner",
-    model="gemini-2.5-flash",
-    description="Improves essay based on critique or exits loop",
-    instruction=(
-        "You are a specialized editor. Your job is to improve the essay based "
-        "on the critic's feedback.\n"
-        "\n"
-        "**Current Essay:**\n"
-        "{current_essay}\n"
-        "\n"
-        "**Critic's Feedback:**\n"
-        "{critique}\n"
-        "\n"
-        "Instructions:\n"
-        "1. If the feedback is exactly 'APPROVED', you MUST call the `exit_loop` tool immediately. Do not modify the essay.\n"
-        "2. If there is feedback, rewrite the essay to address the specific points raised by the critic.\n"
-        "\n"
-        "If rewriting, output ONLY the full, revised essay text."
-    ),
-    tools=[FunctionTool(exit_loop)],
-    output_key="current_essay"  # OVERWRITES the old essay with the new version!
+# STEP 2b: Refiner/Exiter Agent (Inside the Refinement Loop)
+refiner_agent_in_loop = LlmAgent(
+    name="RefinerAgent",
+    model=GEMINI_MODEL,
+    # Relies solely on state via placeholders
+    include_contents='none',
+    instruction=f"""You are a Creative Writing Assistant refining a document based on feedback OR exiting the process.
+
+**Current Document:**
+```
+{{current_document}}
+```
+
+**Critique/Suggestions:**
+{{criticism}}
+
+**Task:**
+Analyze the 'Critique/Suggestions'.
+
+IF the critique is *exactly* "{COMPLETION_PHRASE}":
+    You MUST call the 'exit_loop' function. Do not output any text.
+
+ELSE (the critique contains actionable feedback):
+    Carefully apply the suggestions to improve the 'Current Document'.
+    Output *only* the refined document text. Do not add explanations.
+
+Either output the refined document OR call the exit_loop function.
+""",
+    description="Refines the document based on critique, or calls exit_loop if critique indicates completion.",
+    tools=[exit_loop], # Provide the exit_loop tool
+    output_key=STATE_CURRENT_DOC # Overwrites state['current_document'] with the refined version
 )
 
-# ===== Create Refinement Loop =====
+# STEP 2: Refinement Loop Agent
 refinement_loop = LoopAgent(
     name="RefinementLoop",
-    sub_agents=[critic, refiner],
-    max_iterations=5,  # Safety net: stop after 5 loops to prevent infinite running
-    description="Iteratively critiques and refines the essay"
-)
-
-# =====================================================
-# COMPLETE SYSTEM
-# =====================================================
-
-# ===== Create Sequential Pipeline =====
-essay_refinement_system = SequentialAgent(
-    name="EssayRefinementSystem",
+    # Agent order is crucial: Critique first, then Refine/Exit
     sub_agents=[
-        initial_writer,   # Step 1: Create Draft
-        refinement_loop   # Step 2: Improve Draft until perfect
+        critic_agent_in_loop,
+        refiner_agent_in_loop,
     ],
-    description="Full essay writing system with iterative refinement"
+    max_iterations=5 # Limit loops
 )
 
-# MUST be named root_agent for ADK
-root_agent = essay_refinement_system
+# STEP 3: Overall Sequential Pipeline
+# For ADK tools compatibility, the root agent must be named `root_agent`
+root_agent = SequentialAgent(
+    name="IterativeWritingPipeline",
+    sub_agents=[
+        initial_writer_agent, # Run first to create initial doc
+        refinement_loop       # Then run the critique/refine loop
+    ],
+    description="Writes an initial document and then iteratively refines it with critique using an exit tool."
+)
 ```
 
 ### Self-Reflection Answers
@@ -140,12 +159,10 @@ root_agent = essay_refinement_system
     *   **Answer:** LLMs are non-deterministic. It is possible for the `critic` and `refiner` to get stuck in an endless cycle where the critic is never satisfied ("infinite loop"). Without `max_iterations`, the agent would run forever, consuming API credits and time, until the system crashed or timed out. The `max_iterations` parameter guarantees that the loop will eventually stop, even if the logical exit condition is never met.
 
 2.  **In our "Critic -> Refiner" pattern, the `refiner` agent overwrites the `current_essay` in the state on each iteration. Why is this overwriting behavior essential for the loop to work correctly?**
-    *   **Answer:** The goal is *iterative improvement*. Each time the loop runs, we want the agents to work on the *latest, best version* of the essay, not the original draft. By overwriting `current_essay`, the Refiner ensures that in the next iteration, the Critic will evaluate the *revised* version. If we didn't overwrite it, the Critic would just critique the same original draft over and over again.
+    *   **Answer:** The goal is *iterative improvement*. Each time the loop runs, we want the agents to work on the *latest, best version* of the essay, not the original draft. By overwriting `current_essay` (or `current_document`), the Refiner ensures that in the next iteration, the Critic will evaluate the *revised* version. If we didn't overwrite it, the Critic would just critique the same original draft over and over again.
 
 3.  **Can you think of another problem, besides writing an essay, that could be solved effectively using a `LoopAgent` with a "Critic -> Refiner" pattern?**
     *   **Answer:**
         *   **Code Generation:** Writer generates code -> Critic runs tests/linters -> Refiner fixes errors -> Loop until tests pass.
         *   **Translation:** Writer translates text -> Critic checks for nuance/accuracy -> Refiner adjusts phrasing.
         *   **Plan Generation:** Planner proposes a schedule -> Critic checks for conflicts -> Refiner adjusts times.
-
-```
