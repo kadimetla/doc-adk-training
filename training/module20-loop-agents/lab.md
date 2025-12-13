@@ -39,20 +39,20 @@ In this lab, you will build a self-improving agent system that uses a `LoopAgent
 # In agent.py (Starter Code)
 
 from __future__ import annotations
-from google.adk.agents import Agent, LoopAgent, SequentialAgent
+from google.adk.agents import LlmAgent, LoopAgent, SequentialAgent
 from google.adk.tools.tool_context import ToolContext
 
 # ===== Specialist Agents and Tools (Provided for you) =====
 
 def exit_loop(tool_context: ToolContext):
     """Signals that the essay refinement is complete."""
-    tool_context.actions.end_of_agent = True
+    tool_context.actions.escalate = True
     # Return a minimal valid content part so the backend always produces a valid LlmResponse.
     return {"text": "Loop exited successfully."}
 
-initial_writer = Agent(name="InitialWriter", model="gemini-2.5-flash", ..., output_key="current_essay")
-critic = Agent(name="Critic", model="gemini-2.5-flash", ..., output_key="critique")
-refiner = Agent(name="Refiner", model="gemini-2.5-flash", ..., tools=[exit_loop], output_key="current_essay")
+initial_writer = LlmAgent(name="InitialWriter", model="gemini-2.5-flash", ..., output_key="current_essay")
+critic = LlmAgent(name="Critic", model="gemini-2.5-flash", ..., output_key="critique")
+refiner = LlmAgent(name="Refiner", model="gemini-2.5-flash", ..., tools=[exit_loop], output_key="current_essay")
 
 # =====================================================
 # ASSEMBLE THE AGENT SYSTEM
