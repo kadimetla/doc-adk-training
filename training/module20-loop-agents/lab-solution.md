@@ -11,7 +11,7 @@ This file contains the complete code for the `agent.py` script in the Essay Refi
 
 ### `essay-refiner/agent.py`
 
-```python
+````python
 # Part of agent.py --> Follow https://google.github.io/adk-docs/get-started/quickstart/ to learn the setup
 import asyncio
 import os
@@ -151,7 +151,7 @@ root_agent = SequentialAgent(
     ],
     description="Writes an initial document and then iteratively refines it with critique using an exit tool."
 )
-```
+````
 
 ### Self-Reflection Answers
 
