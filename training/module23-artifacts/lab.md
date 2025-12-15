@@ -13,7 +13,8 @@ In this lab, you will build a **Document Processor** agent that uses a multi-ste
 
 1.  **Extract Text:** Takes a source document name and saves its cleaned text as an artifact.
 2.  **Summarize:** Reads the extracted text artifact and saves a summary as a new artifact.
-3.  **Report:** Reads all previously generated artifacts and compiles them into a final report artifact.
+3.  **Generate Chart (New!):** Creates a visual representation (simulated binary image) of the document stats.
+4.  **Report:** Reads all previously generated artifacts and compiles them into a final report artifact.
 
 ### Step 1: Create the Agent Project
 
@@ -65,6 +66,18 @@ async def summarize_document(document_name: str, tool_context: ToolContext) -> s
     # TODO: 5. Return a confirmation message.
     return "Summarization complete."
 
+async def generate_chart(document_name: str, tool_context: ToolContext) -> str:
+    """Generates a dummy visualization chart for the document stats."""
+    # Simulating a binary PNG image (1x1 pixel)
+    # In a real app, you would use a library like matplotlib to generate bytes.
+    dummy_png_bytes = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x06\x00\x00\x00\x1f\x15\xc4\x89\x00\x00\x00\nIDATx\x9cc\x00\x01\x00\x00\x05\x00\x01\r\n-\xb4\x00\x00\x00\x00IEND\xaeB`\x82'
+    
+    # TODO: 1. Create a types.Part using `types.Part.from_bytes()`.
+    # IMPORTANT: You MUST specify `mime_type="image/png"`.
+    
+    # TODO: 2. Save the artifact as f"{document_name}_chart.png".
+    return "Chart generated."
+
 async def create_report(document_name: str, tool_context: ToolContext) -> str:
     """Creates a final report by compiling all artifacts for a document."""
     # TODO: 1. List all available artifacts using the tool_context.
@@ -72,7 +85,9 @@ async def create_report(document_name: str, tool_context: ToolContext) -> str:
     
     report = f"# Final Report for: {document_name}\n\n"
     # TODO: 3. Loop through your filtered list of artifact names. In the loop,
-    # load each artifact and append its name and content to the `report` string.
+    # load each artifact.
+    # - If it's text, append it to the `report`.
+    # - If it's an image (mime_type starts with 'image/'), append a reference like "[Attached Image: {name}]".
     
     # TODO: 4. Save the final `report` string as an artifact named
     # f"{document_name}_FINAL_REPORT.md".
@@ -84,8 +99,8 @@ async def create_report(document_name: str, tool_context: ToolContext) -> str:
 # ============================================================================ 
 
 # TODO: Define the `root_agent`. Give it an instruction that tells it to run the
-# pipeline in the correct order (extract -> summarize -> report) and register
-# the three async tools.
+# pipeline in the correct order (extract -> summarize -> chart -> report) and 
+# register the four async tools.
 root_agent = Agent(
     model='gemini-2.5-flash',
     name='document_processor',

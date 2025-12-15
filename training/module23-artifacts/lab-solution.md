@@ -55,6 +55,21 @@ async def summarize_document(document_name: str, tool_context: ToolContext) -> s
     )
     return f"Summary for '{document_name}' created and saved as version {version}."
 
+async def generate_chart(document_name: str, tool_context: ToolContext) -> str:
+    """Generates a dummy visualization chart for the document stats."""
+    print(f"Generating chart for '{document_name}'...")
+    
+    # 1x1 transparent pixel PNG bytes
+    dummy_png_bytes = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x06\x00\x00\x00\x1f\x15\xc4\x89\x00\x00\x00\nIDATx\x9cc\x00\x01\x00\x00\x05\x00\x01\r\n-\xb4\x00\x00\x00\x00IEND\xaeB`\x82'
+    
+    # IMPORTANT: Use .from_bytes for binary data and specify the MIME type!
+    part = types.Part.from_bytes(dummy_png_bytes, mime_type="image/png")
+    
+    version = await tool_context.save_artifact(
+        filename=f"{document_name}_chart.png", artifact=part
+    )
+    return f"Chart generated and saved as version {version}."
+
 async def create_report(document_name: str, tool_context: ToolContext) -> str:
     """Creates a final report by compiling all artifacts for a document."""
     print(f"Creating final report for '{document_name}'...")
@@ -66,9 +81,14 @@ async def create_report(document_name: str, tool_context: ToolContext) -> str:
     report = f"# Final Report for: {document_name}\n\n"
     for name in doc_artifacts_names:
         artifact = await tool_context.load_artifact(name)
-        if artifact and artifact.text:
-            report += f"## Artifact: {name}\n\n```text\n{artifact.text[:500]}...\n```\n\n"
-            
+        if artifact:
+            # Check if it is text or binary
+            if artifact.text:
+                report += f"## Artifact: {name}\n\n```text\n{artifact.text[:500]}...\n```\n\n"
+            else:
+                 # It's binary (like our chart), so we just mention it
+                report += f"## Artifact: {name}\n\n*[Binary File Attached: {name} - Type: {artifact.mime_type}]*\n\n"
+
     part = types.Part.from_text(report)
     version = await tool_context.save_artifact(
         filename=f"{document_name}_FINAL_REPORT.md", artifact=part
@@ -90,11 +110,13 @@ correct order.
 Workflow:
 1.  When the user wants to process a document, first call `extract_text`.
 2.  After extraction, call `summarize_document`.
-3.  Finally, call `create_report` to compile all the results.
+3.  Then, call `generate_chart` to create visual stats.
+4.  Finally, call `create_report` to compile all the results.
     """,
     tools=[
         FunctionTool(extract_text),
         FunctionTool(summarize_document),
+        FunctionTool(generate_chart),
         FunctionTool(create_report),
     ]
 )

@@ -92,3 +92,6 @@ This file contains the expected output for the `eval_results/calculator_tests.ev
                 run: adk eval . eval_results/calculator_tests.evalset.json
         ```
         If `adk eval` returns a non-zero exit code (indicating test failures), the CI/CD pipeline step will fail, preventing regressions from being merged or deployed. This provides an automated safety net for agent development.
+
+4.  **What is the difference between "Golden Path" testing and "User Simulation"?**
+    *   **Answer:** "Golden Path" testing (Regression Testing) uses *static*, recorded conversations to ensure the agent performs exactly as it did in the past for known inputs. It verifies correctness and prevents breaking changes. "User Simulation" (Stress/Dynamic Testing) uses a generative model to act as a *dynamic* user. It creates varied, unpredictable conversations based on a scenario, helping to find edge cases, safety issues, or robustness failures that static tests might miss.
