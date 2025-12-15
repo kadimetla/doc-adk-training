@@ -187,8 +187,10 @@ def search_past_lessons(
 # AGENT DEFINITION
 # ============================================================================
 
-# TODO: Define the root_agent. Give it an appropriate instruction and
-# register all six tool functions you just implemented.
+# TODO: Define the root_agent.
+# 1. Register all six tool functions you just implemented.
+# 2. In the instruction, try using the special syntax {app:course_version?}
+#    to dynamically inject the course version from the app state!
 root_agent = None
 ```
 
@@ -205,6 +207,14 @@ root_agent = None
     *   **Note on Persistence:** The default `InMemorySessionService` used in development will lose `user:` and `app:` state if the `adk web` server is restarted. For true persistence, a database-backed `SessionService` would be required.
     *   Start a new session (refresh the page) and verify that your preferences were remembered but the current lesson topic was forgotten.
 
+### Bonus Challenge: Dynamic Instructions
+
+Did you notice the `app:course_version` in Step 3?
+Try to modify your `root_agent` instruction to include:
+`"You are a personalized learning tutor (Course Version {app:course_version?}) ..."`
+
+This demonstrates **Instruction Injection**, where the ADK automatically replaces `{key}` placeholders with values from the state before sending the prompt to the LLM. The `?` makes it optional, so it won't crash if the state key is missing!
+
 ### Having Trouble?
 
 If you get stuck, you can find the complete, working code in the `lab-solution.md` file.
@@ -217,6 +227,7 @@ You have successfully built a sophisticated agent that leverages all four state 
 *   How to use `temp:` state for single-turn, intermediate data.
 *   How to use `app:` state for global, application-wide data.
 *   How these state mechanisms work together to create agents with memory.
+*   **Bonus:** How to inject state directly into instructions.
 
 ### Self-Reflection Questions
 - The `InMemorySessionService` loses `user:` and `app:` state on restart. What are the advantages and disadvantages of using a persistent `SessionService` (like one backed by a database) in a production environment?
