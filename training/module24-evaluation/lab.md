@@ -99,7 +99,21 @@ Let's see what a failure looks like.
 
 4.  **Don't forget to fix the bug!** Stop the server, change the `add` function back to `result = a + b`, and restart it.
 
-### Step 6: Understanding the EvalSet File
+### Step 6: Explore Advanced Metrics (Optional)
+
+In Step 4, we used the default metrics. However, for a production agent, you might care about more than just accuracy.
+
+1.  **Open the "Run Evaluation" Dialog** again.
+2.  **Examine the Criteria Dropdown:**
+    *   Notice options like `safety_v1` and `hallucinations_v1`.
+    *   **`safety_v1`** checks if your agent is generating harmful content.
+    *   **`hallucinations_v1`** checks if your agent is making up facts not present in its context.
+3.  **Rubric-Based Evaluation:**
+    *   You can also see options for **Rubric-based** evaluation. This allows you to define custom criteria (e.g., "Is the tone professional?") and have an LLM judge your agent's response against it.
+
+*Note: Enabling these advanced metrics often requires an LLM call for the evaluation itself (LLM-as-a-judge), which may take longer than simple text matching.*
+
+### Step 7: Understanding the EvalSet File
 
 When you saved the evaluation case, the ADK created a JSON file in your agent's directory at `eval_results/calculator_tests.evalset.json`. Understanding this file is key to creating more complex tests manually.
 
@@ -151,7 +165,7 @@ The structure looks like this:
     *   **`tool_uses`**: A list of the tools the agent is expected to call, with the exact arguments.
     *   **`tool_responses`**: The expected results from those tool calls.
 
-### Step 7: Running Evaluations from the Command Line
+### Step 8: Running Evaluations from the Command Line
 
 While the Dev UI is great for creating and running evaluations interactively, you can also run them from the command line. This is essential for integrating your agent tests into an automated CI/CD pipeline.
 
@@ -193,6 +207,7 @@ You have learned to:
 - Why is testing the `tool_trajectory` often more important for ensuring an agent's correctness than just testing its final text response?
 - The `response_match_score` is not a simple "equals" check. Why is this fuzzy matching necessary for evaluating LLM-generated text?
 - How could you integrate the `adk eval` command into a CI/CD pipeline (like GitHub Actions) to automatically test your agent every time you push new code?
+- What is the difference between "Golden Path" testing and "User Simulation"?
 
 <hr/>
 

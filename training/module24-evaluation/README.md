@@ -93,22 +93,37 @@ A robust testing strategy for AI agents involves multiple layers, often visualiz
 
 #### Available Evaluation Metrics
 
-The ADK provides a comprehensive set of built-in metrics to assess different aspects of agent behavior.
+The ADK provides a comprehensive set of built-in metrics, categorized by what they assess:
 
-*   **`response_match_score` (ROUGE):** Measures the n-gram overlap (similarity) between the agent's generated response and your expected response. A score of `1.0` is a perfect match. This is useful for checking if the key information is present.
-*   **`tool_trajectory_avg_score`:** Measures the accuracy of the agent's tool call sequence. It checks if the agent called the right tools in the right order with the right arguments. A score of `1.0` means the trajectory was exactly as expected.
-*   **`response_evaluation_score`:** Uses an "LLM-as-a-judge" approach to rate the overall quality and coherence of the final response on a scale from 1.0 to 5.0.
-*   **`safety_v1`:** Detects unsafe or harmful content in the agent's responses. A higher score (closer to 1.0) is safer.
-*   **`hallucinations_v1`:** Detects fabricated or incorrect information in the agent's response. A lower score (closer to 0.0) is better.
-*   **`rubric_based_final_response_quality_v1`:** Allows you to define your own custom criteria (a rubric) for what makes a "good" response, and then uses an LLM to score the agent's output against it.
-*   **`rubric_based_tool_use_quality_v1`:** Similar to the above, but evaluates the quality of the tool usage against your custom rubric.
+**1. Tool Use Trajectory (Reasoning)**
+*   **`tool_trajectory_avg_score`:** Measures the accuracy of the agent's tool call sequence against an expected list. It supports `EXACT`, `IN_ORDER`, or `ANY_ORDER` matching. This is critical for regression testing workflows.
+*   **`rubric_based_tool_use_quality_v1`:** Uses an LLM-as-a-judge to evaluate tool usage against a custom rubric (e.g., "Did the agent select the most efficient tool?").
+
+**2. Final Response Quality (Accuracy & Style)**
+*   **`response_match_score` (ROUGE):** Measures n-gram overlap. Good for checking if key keywords are present.
+*   **`final_response_match_v2`:** Uses an LLM to check for *semantic equivalence*. Allows for different phrasing as long as the meaning is the same as the reference.
+*   **`rubric_based_final_response_quality_v1`:** Rates the response against subjective criteria you define (e.g., "politeness", "conciseness") using an LLM judge.
+
+**3. Groundedness and Safety (Compliance)**
+*   **`hallucinations_v1`:** Checks if the response contains claims unsupported by the context (tool outputs). Essential for preventing misinformation.
+*   **`safety_v1`:** Evaluates the response for harmful content, ensuring compliance with safety guidelines.
+
+### Automating Interaction: User Simulation
+
+Static test cases (like the "Golden Path" above) are excellent for regression testing—ensuring yesterday's features still work today. However, they can't test how your agent handles the unpredictable nature of real users.
+
+For this, the ADK provides **User Simulation**.
+
+*   **Dynamic Prompt Generation:** Instead of hard-coding user questions, you configure a `ConversationScenario`.
+*   **Conversation Scenarios:** You define a `starting_prompt` (e.g., "I want to buy a car") and a `conversation_plan` (e.g., "The user is budget-conscious and indecisive").
+*   **The Simulator:** An LLM acts as the "User," generating dynamic responses based on your plan and the agent's replies.
+
+This allows you to "stress test" your agent against hundreds of diverse, generated conversations to find edge cases you might have missed manually. Note that for dynamic scenarios, you typically use reference-free metrics like `safety_v1` and `hallucinations_v1` since there is no single "expected" response.
 
 ### Key Takeaways
 - `LlmAgent`s are non-deterministic, so traditional pass/fail tests are insufficient.
 - The ADK evaluation framework measures quality by comparing an agent's behavior against a recorded "golden path" or **Evaluation Case**.
-- Evaluation focuses on two key areas: the **Final Response** (quality of the answer) and the **Trajectory** (correctness of the reasoning process).
-- **Importance of Trajectory Testing:** Testing the `tool_trajectory` is often more critical than just the final response because it validates the agent's underlying reasoning process. An LLM might coincidentally produce a correct final answer, but trajectory testing ensures it used the correct tools, in the right order, with the right arguments. This is vital for predictability, reliability, and preventing unexpected failures in complex scenarios.
-- Evaluation Cases can be easily created from the ADK Developer UI and run automatically from the UI, the command line (`adk eval`), or a CI/CD pipeline.
-- **Necessity of Fuzzy Matching:** Fuzzy matching (e.g., using ROUGE scores) is essential for evaluating LLM-generated text because LLMs are non-deterministic. They can produce semantically identical but syntactically different responses for the same input. Fuzzy matching measures semantic similarity or n-gram overlap, allowing tests to pass if the key meaning is conveyed, even if the exact wording differs from the reference.
-- A robust testing strategy follows the testing pyramid: a large base of fast, deterministic **Unit Tests** for tools, a smaller layer of **Integration Tests** for agent logic, and a focused set of **Evaluation Tests** for end-to-end quality.
-- **CI/CD Integration:** The `adk eval` command can be integrated as a standard test step in CI/CD pipelines (e.g., GitHub Actions, GitLab CI, Cloud Build). After code checkout and dependency installation, execute `adk eval . eval_results/your_evalset.json`. If the command returns a non-zero exit code (test failure), the pipeline will break, preventing regressions in agent behavior from reaching production.
+- **Metrics Categories:** Evaluation covers **Trajectory** (did it follow the right steps?), **Response Quality** (is the answer correct/good?), and **Safety/Groundedness** (is it harmless and factual?).
+- **User Simulation:** Use dynamic user simulation to test your agent against varied, LLM-generated personas and scenarios, going beyond static examples.
+- **Importance of Trajectory Testing:** Testing the `tool_trajectory` is often more critical than just the final response because it validates the agent's underlying reasoning process.
+- **CI/CD Integration:** The `adk eval` command can be integrated as a standard test step in CI/CD pipelines to prevent regressions.
